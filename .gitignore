@@ -1,34 +1,25 @@
-# rust_server 내 Rust 관련 파일 및 폴더 제외
-rust_server/target/
-rust_server/Cargo.lock
-rust_server/**/*.rs.bk
-rust_server/*.rmeta
-rust_server/*.rlib
-rust_server/*.dSYM
-rust_server/*.profraw
-rust_server/*.profdata
-rust_server/*.log
-rust_server/*.tmp
+# 백엔드 관련 ignore
+backend/rust_server/target/
+backend/rust_server/Cargo.lock
+backend/rust_server/**/*.rs.bk
+backend/rust_server/*.rmeta
+backend/rust_server/*.rlib
+backend/rust_server/*.log
+backend/rust_server/*.tmp
 
-# macOS 시스템 파일 제외
+# macOS 시스템 파일
 .DS_Store
 
-# 환경 변수 파일 제외
+# 환경 변수 파일
 *.env
 
 # Docker 빌드 캐시 제외
 docker-compose.override.yml
 
-# 특정 파일 및 폴더 제외
-!/tegola_server/tegola_git
+# 특정 백엔드 제외
+backend/tegola_server/tegola_git/
 
-# IDE와 에디터 관련 설정 폴더 제외
+# IDE와 에디터 설정 폴더
 .vscode/
 .idea/
 *.iml
-
-# Node.js 프로젝트 관련 파일 (프론트엔드 대비)
-node_modules/
-npm-debug.log
-yarn-debug.log
-yarn-error.log
