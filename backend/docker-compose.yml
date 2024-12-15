@@ -1,0 +1,36 @@
+services:
+  tegola_server:
+    build:
+      context: ./tegola_server
+      dockerfile: Dockerfile
+    container_name: tegola_server
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./tegola_server/config.toml:/tegola_server/config.toml
+
+  valhalla_server:
+    build:
+      context: ./valhalla_server
+      dockerfile: Dockerfile
+    platform: linux/amd64
+    container_name: valhalla_server
+    ports:
+      - "8002:8002"
+    volumes:
+      - ./valhalla:/app/valhalla
+
+  rust_server:
+    build:
+      context: ./rust_server
+      dockerfile: Dockerfile
+      args:
+        DATABASE_URL: postgres://postgres:postgres@host.docker.internal:5432/osm
+    container_name: rust_server
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@host.docker.internal:5432/osm
+    ports:
+      - "8000:8000"
+    depends_on:
+      - tegola_server
+      - valhalla_server
