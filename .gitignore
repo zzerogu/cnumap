@@ -20,7 +20,7 @@ rust_server/*.tmp
 docker-compose.override.yml
 
 # 특정 파일 및 폴더 제외
-tegola_server/tegola_git       # tegola_server 폴더 안의 tegola 파일 제외
+!/tegola_server/tegola_git
 
 # IDE와 에디터 관련 설정 폴더 제외
 .vscode/
