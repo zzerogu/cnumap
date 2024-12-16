@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS Building (
     node_id VARCHAR(255) NOT NULL,
     name VARCHAR(255) NOT NULL,
     alias VARCHAR(255),
-    category ENUM('A', 'B', 'C', 'D', 'E') NOT NULL
+    category VARCHAR(1) NOT NULL CHECK (category IN ('A', 'B', 'C', 'D', 'E'))
 );
 
 -- Ramp Table
@@ -32,11 +32,11 @@ CREATE TABLE IF NOT EXISTS Schedule (
     schedule_id SERIAL PRIMARY KEY,
     lecture_id INT NOT NULL,
     lecture_name VARCHAR(255) NOT NULL,
-    year YEAR NOT NULL,
-    semester ENUM('1', '2', '하기', '동기') NOT NULL,
+    year INT NOT NULL CHECK (year >= 1900 AND year <= 2100), -- 연도 유효성 검사
+    semester VARCHAR(10) NOT NULL CHECK (semester IN ('1', '2', '하기', '동기')),
     location VARCHAR(255) NOT NULL,
     room_number VARCHAR(255) NOT NULL,
-    day_of_week ENUM('월', '화', '수', '목', '금', '토', '일') NOT NULL,
+    day_of_week VARCHAR(10) NOT NULL CHECK (day_of_week IN ('월', '화', '수', '목', '금', '토', '일')),
     time TIME NOT NULL,
     professor_name TEXT NOT NULL
 );
@@ -46,6 +46,6 @@ CREATE TABLE IF NOT EXISTS Construction_News (
     news_id SERIAL PRIMARY KEY,
     content TEXT NOT NULL,
     location TEXT NOT NULL,
-    end_time DATETIME NOT NULL,
-    start_time DATETIME NOT NULL
+    end_time TIMESTAMP NOT NULL,
+    start_time TIMESTAMP NOT NULL
 );
