@@ -7,7 +7,9 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./tegola_server/config.toml:/tegola_server/config.toml
+      - ./tegola_server/config.toml:/tegola/config.toml
+    networks:
+      - navigation-network
 
   valhalla_server:
     build:
@@ -34,3 +36,10 @@ services:
     depends_on:
       - tegola_server
       - valhalla_server
+    networks:
+      - navigation-network
+
+networks:
+  navigation-network:
+    external: true
+
