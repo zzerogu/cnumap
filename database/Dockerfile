@@ -6,25 +6,24 @@ ENV POSTGRES_USER=postgres
 ENV POSTGRES_PASSWORD=postgres
 ENV POSTGRES_DB=osm
 
+# Install additional tools
+RUN apt-get update && \
+    apt-get install -y osm2pgsql osmosis && \
+    rm -rf /var/lib/apt/lists/*
+
 # Create working directory
 WORKDIR /docker-entrypoint-initdb.d
 
-# Copy initialization SQL scripts
-# 1. Extensions setup (PostGIS, hstore)
-COPY init-extensions.sql /docker-entrypoint-initdb.d/
+# Copy initialization scripts
+COPY init-extensions.sql /docker-entrypoint-initdb.d/00-init-extensions.sql
+COPY init-tables.sql /docker-entrypoint-initdb.d/01-init-tables.sql
+COPY init-data.sql /docker-entrypoint-initdb.d/02-init-data.sql
+COPY import-osm.sh /docker-entrypoint-initdb.d/03-import-osm.sh
 
-# Copy OSM data file for importing
-# Ensure you replace `osm_data.osm.pbf` with the actual file path
+# Copy OSM data file
 COPY osm_data.osm.pbf /osm_data.osm.pbf
 
-# Install additional tools like osm2pgsql
-RUN apt-get update && \
-    apt-get install -y osm2pgsql osmosis&& \
-    rm -rf /var/lib/apt/lists/*
+RUN chown postgres:postgres /osm_data.osm.pbf && chmod 644 /osm_data.osm.pbf
 
-# Import OSM data during initialization
-COPY import-osm.sh /usr/local/bin/import-osm.sh
-RUN chmod +x /usr/local/bin/import-osm.sh
-
-# Default command
+# Default command to start PostgreSQL
 CMD ["postgres"]

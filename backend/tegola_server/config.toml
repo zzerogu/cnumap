@@ -4,7 +4,7 @@ port = ":8080"
 [[providers]]
 name = "osm"
 type = "postgis"
-uri = "postgres://postgres:postgres@host.docker.internal:5432/osm?sslmode=disable"
+uri = "postgres://postgres:postgres@osm-database:5432/osm?sslmode=disable"
 srid = 3857
 geometry_fieldname = "geom"
 id_fieldname = "osm_id"
@@ -13,9 +13,12 @@ id_fieldname = "osm_id"
 name = "planet_osm_roads"
 geometry_fieldname = "geom"
 id_fieldname = "osm_id"
-sql = """SELECT osm_id, ST_AsBinary(ST_Transform(way, 3857)) AS geom 
-       FROM planet_osm_roads 
-       WHERE ST_IsValid(way) AND way && !BBOX!"""
+sql = """
+  SELECT osm_id, ST_AsBinary(ST_MakeValid(ST_Transform(way, 3857))) AS geom, 
+       name, building
+  FROM planet_osm_roads
+  WHERE way && !BBOX!
+"""
 geometry_type = "LineString"
 
 [[providers.layers]]
@@ -23,31 +26,38 @@ name = "planet_osm_polygon"
 geometry_fieldname = "geom"
 id_fieldname = "osm_id"
 sql = """
-  SELECT osm_id, ST_AsBinary(ST_Transform(way, 3857)) AS geom
+  SELECT osm_id, ST_AsBinary(ST_MakeValid(ST_Transform(way, 3857))) AS geom, 
+       name, building
   FROM planet_osm_polygon
-  WHERE ST_IsValid(way)
-    AND way && !BBOX!
-    AND building IS NOT NULL
-  """
+  WHERE way && !BBOX!
+"""
 geometry_type = "Polygon"
 
 [[providers.layers]]
 name = "planet_osm_line"
 geometry_fieldname = "geom"
 id_fieldname = "osm_id"
-sql = """SELECT osm_id, ST_AsBinary(ST_Transform(way, 3857)) AS geom 
-       FROM planet_osm_line 
-       WHERE ST_IsValid(way) AND way && !BBOX!"""
+sql = """
+  SELECT osm_id, ST_AsBinary(ST_MakeValid(ST_Transform(way, 3857))) AS geom, name, building, 
+         CASE 
+           WHEN LOWER(tags->'slope_warning') = 'true' THEN TRUE
+           WHEN LOWER(tags->'slope_warning') = 'false' THEN FALSE
+           ELSE NULL
+         END AS slope_warning
+  FROM planet_osm_line
+  WHERE way && !BBOX!
+"""
 geometry_type = "LineString"
-
 
 [[providers.layers]]
 name = "planet_osm_point"
 geometry_fieldname = "geom"
 id_fieldname = "osm_id"
-sql = """SELECT osm_id, ST_AsBinary(ST_Transform(way, 3857)) AS geom, name 
-       FROM planet_osm_point 
-       WHERE ST_IsValid(way) AND way && !BBOX!"""
+sql = """
+  SELECT osm_id, ST_AsBinary(ST_MakeValid(ST_Transform(way, 3857))) AS geom, name, building, ele
+  FROM planet_osm_point
+  WHERE way && !BBOX!
+"""
 geometry_type = "Point"
 
 [[maps]]
@@ -60,21 +70,25 @@ name = "osm_roads"
 provider_layer = "osm.planet_osm_roads"
 min_zoom = 0
 max_zoom = 20
+buffer = 64
 
 [[maps.layers]]
 name = "osm_polygon"
 provider_layer = "osm.planet_osm_polygon"
 min_zoom = 0
 max_zoom = 20
+buffer = 64
 
 [[maps.layers]]
 name = "osm_lines"
 provider_layer = "osm.planet_osm_line"
 min_zoom = 0
 max_zoom = 20
+buffer = 64
 
 [[maps.layers]]
 name = "osm_point"
 provider_layer = "osm.planet_osm_point"
 min_zoom = 0
 max_zoom = 20
+buffer = 64
