@@ -19,8 +19,6 @@ services:
     container_name: valhalla_server
     ports:
       - "8002:8002"
-    volumes:
-      - ./valhalla:/app/valhalla
 
   rust_server:
     build:
@@ -36,6 +34,18 @@ services:
     depends_on:
       - tegola_server
       - valhalla_server
+    networks:
+      - navigation-network
+
+  nginx_proxy:
+    image: nginx:latest
+    container_name: nginx_proxy
+    ports:
+      - "8081:8081" # NGINX가 외부에 노출될 포트
+    depends_on:
+      - tegola_server
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro # NGINX 설정 파일
     networks:
       - navigation-network
 

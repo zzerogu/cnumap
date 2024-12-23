@@ -42,5 +42,5 @@ COPY --from=builder /app/target/release/rust_server /usr/local/bin/rust_server
 COPY --from=builder /app/migrations ./migrations
 
 # 포트 노출 및 실행 명령어 설정
-EXPOSE 8080
+EXPOSE 8000
 CMD ["rust_server"]

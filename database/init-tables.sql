@@ -1,11 +1,14 @@
--- Building Table
 CREATE TABLE IF NOT EXISTS Building (
     building_id SERIAL PRIMARY KEY,
     node_id VARCHAR(255) NOT NULL,
     name VARCHAR(255) NOT NULL,
     alias VARCHAR(255),
-    category VARCHAR(1) NOT NULL CHECK (category IN ('A', 'B', 'C', 'D', 'E'))
+    category VARCHAR(1) NOT NULL CHECK (category IN ('A', 'B', 'C', 'D', 'E')),
+    basement_floors INT NOT NULL DEFAULT 0, -- 지하 층수
+    ground_floors INT NOT NULL DEFAULT 0,   -- 지상 층수
+    roof_floors INT NOT NULL DEFAULT 0      -- 옥상 층수
 );
+
 
 -- Ramp Table
 CREATE TABLE IF NOT EXISTS Ramp (
@@ -48,4 +51,12 @@ CREATE TABLE IF NOT EXISTS Construction_News (
     location TEXT NOT NULL,
     end_time TIMESTAMP NOT NULL,
     start_time TIMESTAMP NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Elevator (
+    elevator_id SERIAL PRIMARY KEY,
+    building_id INT NOT NULL,
+    node_id INT NOT NULL,
+    location_description TEXT NOT NULL,
+    FOREIGN KEY (building_id) REFERENCES Building(building_id) ON DELETE CASCADE
 );
