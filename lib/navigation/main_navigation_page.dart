@@ -19,8 +19,8 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
   // 각 탭에서 보여줄 페이지 위젯 리스트
   final List<Widget> _pages = [
     const MapPage(),
-    const Savepage(),
-    const Schoolpage(),
+    const SavePage(),
+    const SchoolPage(),
     const TimetablePage(),
   ];
 
