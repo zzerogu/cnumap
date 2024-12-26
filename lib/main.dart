@@ -35,8 +35,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: '/', // 초기 경로를 '/'로 설정
         getPages: [
-          GetPage(name: '/', page: () => _initialScreen()), // 초기 경로 설정
-          GetPage(name: '/login', page: () => LoginPage()), // 로그인 화면 경로
+          GetPage(name: '/', page: () => const MainNavigationPage()), // 초기 경로 설정
           GetPage(name: '/main', page: () => const MainNavigationPage()), // 메인 화면 경로
           GetPage(name: '/map', page: () => const MapPage()), // 채팅 화면 경로
           GetPage(name: '/school', page: () => const SchoolPage()), // 퀘스트 화면 경로
@@ -47,27 +46,5 @@ class MyApp extends StatelessWidget {
     );
   }
 
-  // 초기 화면 결정 함수 (자동 로그인 체크)
-  Widget _initialScreen() {
-    return FutureBuilder<User?>(
-      future: _checkAutoLogin(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (snapshot.hasData && snapshot.data != null) {
-          return const MainNavigationPage(); // 자동 로그인 성공 시 메인 화면으로 이동
-        } else {
-          return LoginPage(); // 자동 로그인 실패 시 로그인 화면으로 이동
-        }
-      },
-    );
-  }
-
-  // 자동 로그인 체크 함수
-  // - 현재는 null 을 리턴하도록 함 (TODO 해당 파트 추후 구현 필요)
-  Future<User?> _checkAutoLogin() async {
-    final autologinUsecase = GetIt.instance<AutoLoginUseCase>();
-    return await autologinUsecase.execute();
-  }
 }
 
