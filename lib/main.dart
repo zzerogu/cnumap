@@ -6,6 +6,7 @@ import 'package:get_it/get_it.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:moducnu/navigation/main_navigation_page.dart';
 import 'package:moducnu/presentation/map/map_page.dart';
+import 'package:moducnu/presentation/map/search_page.dart';
 import 'package:moducnu/presentation/saved/save_page.dart';
 import 'package:moducnu/presentation/school/school_page.dart';
 import 'package:moducnu/presentation/timetable/time_page.dart';
