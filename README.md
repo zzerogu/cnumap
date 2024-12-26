@@ -1,16 +1,33 @@
-# moducnu
+# cnumap
 
-A new Flutter project.
+## 👟 Git Flow
+- 해당 레포 fork -> 클론한 레포 개인 IDE 에 클론 -> 작업 전 `git checkout -b 'fe/login'` 처럼 브랜치 `fe/기능명`, `be/기능명` 으로 파서 작업 -> 작업 시 커밋 단위 잘게 가져가는 것이 좋음(커밋 컨벤션 아래 내용 참고 ex) `Design: 로그인 화면 구현` )  -> 작업 후 `git push` -> push 후 PR 생성하기 -> PR 생성후 다른 팀원들에게 PR 링크 전송 -> 확인 후 아무나 리뷰 또는 바로 머지
+![image](https://github.com/user-attachments/assets/fe80f284-dbf0-4e23-8d91-372c15c48e7b)
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## **✏️ Commit Type**
 
-A few resources to get you started if this is your first Flutter project:
+제목으로 표현하기 힘들경우 제목에 간단히 적고 본문에 자세히 작성하기
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+| **Type** | **설명** |
+| --- | --- |
+| Feat: | 새로운 기능 추가 |
+| Fix: | 버그 수정 |
+| Refactor: | 리팩토링 |
+| Design: | CSS 등 사용자 UI 디자인 변경 |
+| Comment: | 필요한 주석 추가 및 변경 |
+| Style: | 코드 포맷팅, 세미콜론 누락, 코드 변경이 없는 경우 |
+| Test: | 테스트(테스트 코드 추가, 수정, 삭제, 비즈니스 로직에 변경이 없는 경우) |
+| Chore: | 위에 걸리지 않는 기타 변경사항(빌드 스크립트 수정, assets image, 패키지 매니저 등) |
+| Init: | 프로젝트 초기 생성 |
+| Rename: | 파일 혹은 폴더명 수정하거나 옮기는 경우 |
+| Remove: | 파일을 삭제하는 작업만 수행하는 경우 |
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+### **Subject Rule**
+
+1.  제목은 최대 50글자 넘지 않기
+2.  마침표 및 특수기호 사용x
+3.  첫 글자 대문자, 명령문 사용
+4.  개조식 구문으로 작성(간결하고 요점적인 서술)
