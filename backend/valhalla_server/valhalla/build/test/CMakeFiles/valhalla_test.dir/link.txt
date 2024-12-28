@@ -1,0 +1,2 @@
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar qc libvalhalla_test.a CMakeFiles/valhalla_test.dir/test.cc.o CMakeFiles/valhalla_test.dir/gurka/gurka.cc.o CMakeFiles/valhalla_test.dir/__/third_party/microtar/src/microtar.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib libvalhalla_test.a
