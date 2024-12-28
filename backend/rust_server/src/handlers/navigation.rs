@@ -2,9 +2,10 @@ use actix_web::{post, web, HttpResponse, Responder};
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use reqwest::Client;
+use utoipa::{ToSchema}; // ToSchema 추가
 
-#[derive(Debug, Deserialize)]
-struct NavigationRequest {
+#[derive(Debug, Deserialize, ToSchema)]
+pub struct NavigationRequest {
     start: Coordinate,
     end: Coordinate,
     min_slope: f32,
@@ -12,43 +13,52 @@ struct NavigationRequest {
     avoid_areas: Option<Vec<AvoidArea>>,
 }
 
-#[derive(Debug, Deserialize, Serialize)] // Serialize 추가
-struct Coordinate {
+#[derive(Debug, Deserialize, Serialize, ToSchema)]
+pub struct Coordinate {
     latitude: f64,
     longitude: f64,
 }
 
-#[derive(Debug, Deserialize)]
-struct AvoidArea {
+#[derive(Debug, Deserialize, ToSchema)]
+pub struct AvoidArea {
     min_latitude: f64,
     min_longitude: f64,
     max_latitude: f64,
     max_longitude: f64,
 }
 
-#[derive(Debug, Serialize)]
-struct NavigationResponse {
+#[derive(Debug, Serialize, ToSchema)]
+pub struct NavigationResponse {
     duration: String,
     distance: String,
     route: Vec<Coordinate>,
     warnings: Vec<String>,
 }
 
+#[utoipa::path(
+    post,
+    path = "/api/navigation/route",
+    request_body = NavigationRequest,
+    responses(
+        (status = 200, description = "Route calculated successfully", body = NavigationResponse),
+        (status = 400, description = "Invalid slope range"),
+        (status = 404, description = "No valid route found for the given constraints"),
+        (status = 500, description = "Failed to calculate route")
+    ),
+    tag = "Navigation API"
+)]
 #[post("/api/navigation/route")]
 async fn calculate_route(
     body: web::Json<NavigationRequest>,
 ) -> impl Responder {
-    // 요청 데이터 추출
     let request = body.into_inner();
 
-    // 유효성 검사
     if request.min_slope > request.max_slope {
         return HttpResponse::BadRequest().json(json!({
             "error": "Invalid slope range. Ensure min_slope <= max_slope."
         }));
     }
 
-    // Valhalla 요청 생성 (예시 URL 및 요청 형식)
     let valhalla_url = "http://localhost:8002/route";
     let valhalla_request = json!({
         "locations": [
@@ -78,7 +88,6 @@ async fn calculate_route(
         })
     });
 
-    // Valhalla API 호출
     let client = Client::new();
     let valhalla_response = client.post(valhalla_url)
         .json(&valhalla_request)
@@ -114,6 +123,5 @@ async fn calculate_route(
 
 // Polyline 디코딩 함수 (샘플)
 fn decode_polyline(encoded: &str) -> Result<Vec<(f64, f64)>, String> {
-    // 여기서 Polyline 디코딩 로직 구현
     Ok(vec![]) // 샘플 리턴
 }

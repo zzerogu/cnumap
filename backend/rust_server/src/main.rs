@@ -10,6 +10,50 @@ use config::app::get_config;
 use sqlx::postgres::{PgPool, PgPoolOptions};
 use routes::init_routes;
 
+use utoipa::OpenApi; // OpenAPI 문서 생성
+use utoipa_swagger_ui::SwaggerUi; // Swagger UI
+
+// OpenAPI 문서 정의
+#[derive(OpenApi)]
+#[openapi(
+    paths(
+        crate::handlers::building::get_buildings,
+        crate::handlers::building::get_building_details,
+        crate::handlers::building::get_node_data,
+        crate::handlers::building::search_buildings,
+        crate::handlers::building::get_buildings_by_category,
+        crate::handlers::building::get_buildings_by_tag,
+        crate::handlers::construction_news::get_all_construction_news,
+        crate::handlers::disabled_restroom::get_all_disabled_restrooms,
+        crate::handlers::map::get_pbf_tile,
+        crate::handlers::map::get_user_location,
+        crate::handlers::navigation::calculate_route,
+        crate::handlers::ramp::get_all_ramps
+    ),
+    components(
+        schemas(
+            crate::models::building::Building,
+            crate::handlers::building::BuildingSearchResponse,
+            crate::models::construction_news::ConstructionNewsResponse,
+            crate::models::disabled_restroom::DisabledRestroom,
+            crate::models::ramp::Ramp,
+            crate::handlers::navigation::Coordinate,
+            crate::handlers::navigation::AvoidArea,
+            crate::handlers::navigation::NavigationRequest,
+            crate::handlers::navigation::NavigationResponse
+        )
+    ),
+    tags(
+        (name = "Building API", description = "건물 관련 API"),
+        (name = "Construction News API", description = "공사 소식 관련 API"),
+        (name = "Disabled Restroom API", description = "장애인 화장실 관련 API"),
+        (name = "Map API", description = "지도 관련 API"),
+        (name = "Navigation API", description = "길찾기 관련 API"),
+        (name = "Ramp API", description = "램프 관련 API")
+    )
+)]
+pub struct ApiDoc;
+
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     // 환경 변수에서 설정 로드
@@ -27,6 +71,9 @@ async fn main() -> std::io::Result<()> {
         .await
         .expect("Failed to connect to the database");
 
+    // OpenAPI 문서 생성
+    let api_doc = ApiDoc::openapi();
+
     // Actix 웹 서버 실행
     HttpServer::new(move || {
         let cors = Cors::default()
@@ -34,13 +81,18 @@ async fn main() -> std::io::Result<()> {
             .allow_any_method()
             .allow_any_header()
             .max_age(3600);
-
+    
         App::new()
-            .wrap(cors) // CORS 설정 추가
-            .app_data(web::Data::new(db_pool.clone())) // DB 풀 데이터 주입
-            .configure(init_routes) // 라우트 초기화
+            .wrap(cors)
+            .app_data(web::Data::new(db_pool.clone()))
+            .configure(init_routes)
+            .service(
+                SwaggerUi::new("/swagger-ui/{_:.*}") // Swagger UI 경로 설정
+                    .url("/api-doc/openapi.json", ApiDoc::openapi()) // OpenAPI JSON 문서 경로 지정
+            )
+        
     })
-    .bind("0.0.0.0:8000")? // 서버 주소 바인딩
+    .bind("0.0.0.0:8000")?
     .run()
     .await
 }
