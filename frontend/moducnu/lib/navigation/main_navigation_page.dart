@@ -34,6 +34,7 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
             gap: 8,
             activeColor: kSelectedColor,
             selectedIndex: _selectedIndex,
+
             onTabChange: (index) {
               setState(() {
                 _selectedIndex = index; // 선택된 탭의 인덱스를 업데이트
