@@ -10,3 +10,4 @@ const Color kBordercolor = Color(0xffD2D2D2);
 const Color kBackgroundColor = Color(0xfff8f7f7);
 const Color kDangerColor = Color(0xffFF4E4E);
 const Color kbackgroundColor = Colors.white;
+const Color kButtonColor = Color(0xff3478F6);
