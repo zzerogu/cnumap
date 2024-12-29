@@ -1,2 +1,0 @@
-/Users/changyoung/Desktop/공공데이터/cnumap/frontend/moducnu/android/app/.cxx/Debug/z355757u/x86_64/CMakeFiles/rebuild_cache.dir
-/Users/changyoung/Desktop/공공데이터/cnumap/frontend/moducnu/android/app/.cxx/Debug/z355757u/x86_64/CMakeFiles/edit_cache.dir

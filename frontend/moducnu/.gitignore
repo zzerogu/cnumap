@@ -5,9 +5,11 @@
 *.swp
 .DS_Store
 .atom/
+.build/
 .buildlog/
 .history
 .svn/
+.swiftpm/
 migrate_working_dir/
 
 # IntelliJ related
@@ -15,11 +17,14 @@ migrate_working_dir/
 *.ipr
 *.iws
 .idea/
+*.ninja
+*.cmake
+*.json
 
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
 # is commented out by default.
-#.vscode/
+.vscode/
 
 # Flutter/Dart/Pub related
 **/doc/api/
@@ -42,24 +47,44 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# Created by https://www.toptal.com/developers/gitignore/api/flutter,dart,androidstudio,dotenv
-# Edit at https://www.toptal.com/developers/gitignore?templates=flutter,dart,androidstudio,dotenv
+# Generated files and caches
+android/app/.cxx/
+android/.gradle/
+android/local.properties
+android/captures/
+android/key.properties
+android/gradlew
+android/gradlew.bat
+android/gradle/wrapper/gradle-wrapper.jar
 
-### Dart ###
-# See https://www.dartlang.org/guides/libraries/private-files
+# iOS/macOS related
+ios/Pods/
+ios/Flutter/.last_build_id
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_assets/
+ios/Flutter/flutter_export_environment.sh
+ios/ServiceDefinitions.json
+ios/Runner/GeneratedPluginRegistrant.*
+macos/Pods/
+macos/Podfile.lock
+macos/Runner.xcworkspace/
+macos/Runner.xcodeproj/project.xcworkspace/
+macos/Runner.xcodeproj/xcuserdata/
+macos/Runner.xcodeproj/xcshareddata/xcschemes/
+map.xcodeproj/project.xcworkspace/
+map.xcodeproj/xcuserdata/
+map.xcodeproj/xcshareddata/
 
-# Files and directories created by pub
-.dart_tool/
-.packages
-build/
-# If you're building an application, you may want to check-in your pubspec.lock
-pubspec.lock
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
 
-# Directory created by dartdoc
-# If you don't generate documentation locally you can remove this line.
-doc/api/
-
-# dotenv environment variables file
+# Dotenv environment variables
+.env
 .env*
 
 # Avoid committing generated Javascript files:
@@ -174,100 +199,17 @@ proguard/
 # Log Files
 *.log
 
-# Android Studio
-/*/build/
-/*/local.properties
-/*/out
-/*/*/build
-/*/*/production
-captures/
-.navigation/
-*.ipr
-*~
-*.swp
+# Coverage and test output
+coverage/
 
-# Keystore files
-*.jks
-*.keystore
+# Library-specific generated files
+lib/generated_plugin_registrant.dart
 
-# Google Services (e.g. APIs or Firebase)
-# google-services.json
+# Additional excludes based on your requirements
+android/app/.cxx/
 
-# Android Patch
-gen-external-apklibs
-
-# External native build folder generated in Android Studio 2.2 and later
-.externalNativeBuild
-
-# NDK
-obj/
-
-# IntelliJ IDEA
-*.iml
-*.iws
-/out/
-
-# User-specific configurations
-.idea/caches/
-.idea/libraries/
-.idea/shelf/
-.idea/workspace.xml
-.idea/tasks.xml
-.idea/.name
-.idea/compiler.xml
-.idea/copyright/profiles_settings.xml
-.idea/encodings.xml
-.idea/misc.xml
-.idea/modules.xml
-.idea/scopes/scope_settings.xml
-.idea/dictionaries
-.idea/vcs.xml
-.idea/jsLibraryMappings.xml
-.idea/datasources.xml
-.idea/dataSources.ids
-.idea/sqlDataSources.xml
-.idea/dynamic.xml
-.idea/uiDesigner.xml
-.idea/assetWizardSettings.xml
-.idea/gradle.xml
-.idea/jarRepositories.xml
-.idea/navEditor.xml
-
-# Legacy Eclipse project files
-.classpath
-.project
-.cproject
-.settings/
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.war
-*.ear
-
-# virtual machine crash logs (Reference: http://www.java.com/en/download/help/error_hotspot.xml)
-hs_err_pid*
-
-## Plugin-specific files:
-
-# mpeltonen/sbt-idea plugin
-.idea_modules/
-
-# JIRA plugin
-atlassian-ide-plugin.xml
-
-# Mongo Explorer plugin
-.idea/mongoSettings.xml
-
-# Crashlytics plugin (for Android Studio and IntelliJ)
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties
-fabric.properties
-
-### AndroidStudio Patch ###
-
+# Exceptions to above rules
+!/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 !/gradle/wrapper/gradle-wrapper.jar
 
-# End of https://www.toptal.com/developers/gitignore/api/flutter,dart,androidstudio,dotenv
+# End of file
