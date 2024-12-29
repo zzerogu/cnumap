@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/Users/changyoung/flutter/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/changyoung/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/changyoung/Desktop/공공데이터/cnumap/frontend/moducnu/android/app/.cxx/Debug/2k355t3a/armeabi-v7a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/changyoung/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/changyoung/Desktop/공공데이터/cnumap/frontend/moducnu/android/app/.cxx/Debug/2k355t3a/armeabi-v7a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}
