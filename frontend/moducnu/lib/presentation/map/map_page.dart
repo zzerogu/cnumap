@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
+import 'package:moducnu/presentation/common/custom_search_bar.dart';
 import '../common/modal_bottom_sheet.dart'; // ModalBottomSheet 임포트
 
 class MapPage extends StatefulWidget {
@@ -20,7 +21,7 @@ class _MapPageState extends State<MapPage> {
         children: [
           // Map 위젯
           MapWidget(
-            key: const ValueKey("mapWidget"),
+            key: ValueKey("mapWidget"),
             styleUri: "mapbox://styles/mapbox/streets-v11", // Mapbox Streets 스타일
             cameraOptions: CameraOptions(
               center: Point(coordinates: Position(127.3467804, 36.3688066)),
@@ -28,7 +29,11 @@ class _MapPageState extends State<MapPage> {
             ),
             onMapCreated: _onMapCreated,
           ),
-
+          // 검색바
+          const Positioned(
+            top: 56.0, // 화면 상단에서 50px 떨어짐
+            child: CustomSearchBar(),
+          ),
           // 모달창 열기 버튼
           Positioned(
             bottom: 16.0,
@@ -46,12 +51,12 @@ class _MapPageState extends State<MapPage> {
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white,
                 backgroundColor: Colors.blueAccent,
-                padding: const EdgeInsets.symmetric(vertical: 16),
+                padding: EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              child: const Text('모달 열기'),
+              child: Text('모달 열기'),
             ),
           ),
         ],
