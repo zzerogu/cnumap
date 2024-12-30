@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:moducnu/data/remote/dto/node/node_dto.dart';
 import 'package:retrofit/http.dart';
 
+import '../parse_error_loger.dart';
+
 part 'node_api.g.dart';
 
 @RestApi()

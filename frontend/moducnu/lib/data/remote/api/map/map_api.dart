@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:moducnu/data/remote/api/parse_error_loger.dart';
 import 'package:retrofit/http.dart';
 
 part 'map_api.g.dart';
@@ -9,7 +10,7 @@ abstract class MapApi {
 
   // /api/map/tiles/{z}/{x}/{y}.pbf
   @GET("/api/map/tiles/{z}/{x}/{y}.pbf")
-  Future<Response> getTile(
+  Future getTile(
       @Path("z") int zoomLevel,
       @Path("x") int tileX,
       @Path("y") int tileY,

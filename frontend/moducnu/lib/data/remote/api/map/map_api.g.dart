@@ -22,7 +22,7 @@ class _MapApi implements MapApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<Response<dynamic>> getTile(
+  Future<dynamic> getTile(
     int zoomLevel,
     int tileX,
     int tileY,
@@ -31,7 +31,7 @@ class _MapApi implements MapApi {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<Response<dynamic>>(Options(
+    final _options = _setStreamType<dynamic>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -47,14 +47,8 @@ class _MapApi implements MapApi {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late Response<dynamic> _value;
-    try {
-      _value = Response<dynamic>.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
+    final _result = await _dio.fetch(_options);
+    final _value = _result.data;
     return _value;
   }
 

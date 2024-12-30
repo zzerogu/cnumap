@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:moducnu/data/remote/api/parse_error_loger.dart';
 import 'package:moducnu/data/remote/dto/building/building_dto.dart';
 import 'package:retrofit/http.dart';
 
