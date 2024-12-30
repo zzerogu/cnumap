@@ -1,3 +1,28 @@
+# 백엔드 관련 ignore
+backend/rust_server/target/
+backend/rust_server/Cargo.lock
+backend/rust_server/**/*.rs.bk
+backend/rust_server/*.rmeta
+backend/rust_server/*.rlib
+backend/rust_server/*.log
+backend/rust_server/*.tmp
+
+# macOS 시스템 파일
+.DS_Store
+
+# 환경 변수 파일
+*.env
+
+# Docker 빌드 캐시 제외
+docker-compose.override.yml
+
+# 특정 백엔드 제외
+backend/tegola_server/tegola_git/
+
+# IDE와 에디터 설정 폴더
+.vscode/
+.idea/
+*.iml
 # Miscellaneous
 *.class
 *.log

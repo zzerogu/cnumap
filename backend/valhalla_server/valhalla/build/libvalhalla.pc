@@ -1,0 +1,12 @@
+prefix=/usr/local
+exec_prefix=/usr/local
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: libvalhalla
+Description: valhalla c++ library
+Version: 3.5.1
+Libs: -L${libdir} -lvalhalla
+Libs.private: -lm
+Requires: zlib protobuf-lite spatialite sqlite3 luajit geos libcurl libprime_server gdal
+Cflags: -I${includedir} -I${includedir}/valhalla/third_party

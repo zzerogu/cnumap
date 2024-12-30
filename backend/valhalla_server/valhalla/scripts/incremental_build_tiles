@@ -1,0 +1,27 @@
+#!/bin/bash
+
+error_exit() {
+  echo "$1" 1>&2
+  exit 1
+}
+
+function usage() {
+  echo "Usage: $0 config_file data_file(s)"
+  exit 1
+}
+
+if [ -z "$2" ]; then
+  usage
+fi
+
+config=$1
+datafiles=$2
+
+build_tiles=$(which valhalla_build_tiles)
+if [ -z "$build_tiles" ]; then
+    build_tiles="../build/valhalla_build_tiles"
+fi
+
+valhalla_build_tiles --help | awk '/^    initialize/,/^    cleanup/' | while read stage; do
+  $build_tiles --config $config --start $stage --end $stage $datafiles || error_exit "[Error] Stage $stage failed!"
+done
