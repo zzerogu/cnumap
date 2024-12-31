@@ -10,13 +10,39 @@ use crate::models::{
 use std::collections::HashMap;
 use utoipa::ToSchema;
 use serde::Serialize;
+use log::{info, error};
+use sqlx::FromRow;
+
+#[derive(Debug, Serialize, FromRow, ToSchema)]
+pub struct MinimalBuilding {
+    pub building_id: i32,
+    pub name: String,
+    pub alias: Option<String>,
+}
+
+#[derive(Serialize, ToSchema)]
+pub struct BuildingSearchResponse {
+    pub building_id: i32,
+    pub name: String,
+    pub alias: Option<String>,
+}
+
+impl From<MinimalBuilding> for BuildingSearchResponse {
+    fn from(building: MinimalBuilding) -> Self {
+        BuildingSearchResponse {
+            building_id: building.building_id,
+            name: building.name,
+            alias: building.alias,
+        }
+    }
+}
 
 #[utoipa::path(
     get,
     path = "/api/buildings",
     tag = "Building API",
     responses(
-        (status = 200, description = "Retrieve all buildings", body = [Building]),
+        (status = 200, description = "Retrieve all buildings", body = [BuildingSearchResponse]),
         (status = 500, description = "Internal server error")
     )
 )]
@@ -24,16 +50,34 @@ use serde::Serialize;
 async fn get_buildings(pool: web::Data<PgPool>) -> impl Responder {
     let query = "SELECT building_id, name, alias FROM Building";
 
-    match sqlx::query_as::<_, Building>(query)
+    info!("Starting to fetch buildings");
+
+    match sqlx::query_as::<_, MinimalBuilding>(query)
         .fetch_all(pool.get_ref())
         .await
     {
-        Ok(buildings) => HttpResponse::Ok().json(buildings),
-        Err(_) => HttpResponse::InternalServerError().json(json!({
-            "error": "Failed to retrieve building data"
-        })),
+        Ok(buildings) => {
+            info!("Successfully fetched {} buildings", buildings.len());
+
+            let response: Vec<BuildingSearchResponse> = buildings
+                .into_iter()
+                .map(BuildingSearchResponse::from)
+                .collect();
+
+            info!("Successfully transformed data into response format");
+
+            HttpResponse::Ok().json(response)
+        },
+        Err(e) => {
+            error!("Failed to fetch buildings: {:?}", e);
+
+            HttpResponse::InternalServerError().json(json!({
+                "error": "Failed to retrieve building data"
+            }))
+        },
     }
 }
+
 
 #[utoipa::path(
     get,
@@ -105,7 +149,7 @@ async fn get_building_details(
     get,
     path = "/api/nodes/{node_id}",
     params(
-        ("node_id" = i32, Path, description = "Node ID to fetch data"),
+        ("node_id" = String, Path, description = "Node ID to fetch data"),
         ("table" = String, Query, description = "Table name (Disabled_Restroom, Ramp, Elevator)")
     ),
     tag = "Node API",
@@ -119,7 +163,7 @@ async fn get_building_details(
 #[get("/api/nodes/{node_id}")]
 async fn get_node_data(
     pool: web::Data<PgPool>,
-    path: web::Path<i32>,
+    path: web::Path<String>,
     query: web::Query<HashMap<String, String>>,
 ) -> impl Responder {
     let node_id = path.into_inner();
@@ -195,13 +239,13 @@ async fn search_buildings(
 
     let query = match name_filter {
         Some(name) => {
-            sqlx::query_as::<_, Building>(
+            sqlx::query_as::<_, MinimalBuilding>(
                 "SELECT building_id, name, alias FROM Building WHERE name LIKE $1"
             )
             .bind(name)
         }
         None => {
-            sqlx::query_as::<_, Building>(
+            sqlx::query_as::<_, MinimalBuilding>(
                 "SELECT building_id, name, alias FROM Building"
             )
         }
@@ -235,7 +279,7 @@ async fn get_buildings_by_category(
     let category_filter = query.get("category").map(|category| category.clone());
 
     if let Some(category) = category_filter {
-        let query = sqlx::query_as::<_, Building>(
+        let query = sqlx::query_as::<_, MinimalBuilding>(
             "SELECT building_id, name, alias FROM Building WHERE category = $1"
         )
         .bind(category);
@@ -274,7 +318,7 @@ async fn get_buildings_by_tag(
     let tag_filter = query.get("tag").map(|tag| tag.clone());
 
     if let Some(tag) = tag_filter {
-        let query = sqlx::query_as::<_, Building>(
+        let query = sqlx::query_as::<_, MinimalBuilding>(
             "SELECT building_id, name, alias FROM Building WHERE tags LIKE $1"
         )
         .bind(format!("%{}%", tag));
@@ -290,22 +334,5 @@ async fn get_buildings_by_tag(
         }
     } else {
         HttpResponse::BadRequest().json(json!({ "error": "Tag parameter is required" }))
-    }
-}
-
-#[derive(Serialize, ToSchema)]
-pub struct BuildingSearchResponse {
-    pub building_id: i32,
-    pub name: String,
-    pub alias: Option<String>,
-}
-
-impl From<Building> for BuildingSearchResponse {
-    fn from(building: Building) -> Self {
-        BuildingSearchResponse {
-            building_id: building.building_id,
-            name: building.name,
-            alias: building.alias,
-        }
     }
 }

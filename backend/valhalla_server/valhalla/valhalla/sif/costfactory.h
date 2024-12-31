@@ -16,9 +16,7 @@
 #include <valhalla/sif/pedestriancost.h>
 #include <valhalla/sif/transitcost.h>
 #include <valhalla/sif/truckcost.h>
-#include <valhalla/sif/bicycle_heavy_hills.h>
-#include <valhalla/sif/bicycle_medium_hills.h>
-#include <valhalla/sif/bicycle_light_hills.h>
+#include <valhalla/sif/wheelchair_cost.h>
 
 namespace valhalla {
 namespace sif {
@@ -38,9 +36,9 @@ public:
     // auto_data_fix was deprecated
     // auto_shorter was deprecated
     Register(Costing::bicycle, CreateBicycleCost);
-    Register(Costing::bicycle_light_hills, CreateBicycleLightHillsCost);
-    Register(Costing::bicycle_medium_hills, CreateBicycleMediumHillsCost);
-    Register(Costing::bicycle_heavy_hills, CreateBicycleHeavyHillsCost);
+    Register(Costing::standard_wheelchair, CreateStandardWheelchairCost);
+    Register(Costing::basic_power_wheelchair, CreateBasicPowerWheelchairCost);
+    Register(Costing::advanced_power_wheelchair, CreateAdvancedPowerWheelchairCost);
     Register(Costing::bus, CreateBusCost);
     Register(Costing::taxi, CreateTaxiCost);
     Register(Costing::motor_scooter, CreateMotorScooterCost);

@@ -6,7 +6,7 @@ use utoipa::ToSchema;
 pub struct DisabledRestroom {
     pub restroom_id: i32,
     pub building_id: i32,
-    pub node_id: i32,
+    pub node_id: String,
     pub floor: i32,
     pub location_description: String,
 }

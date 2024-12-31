@@ -1,12 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/valhalla-sif.dir/autocost.cc.o"
   "CMakeFiles/valhalla-sif.dir/autocost.cc.o.d"
-  "CMakeFiles/valhalla-sif.dir/bicycle_heavy_hills.cc.o"
-  "CMakeFiles/valhalla-sif.dir/bicycle_heavy_hills.cc.o.d"
-  "CMakeFiles/valhalla-sif.dir/bicycle_light_hills.cc.o"
-  "CMakeFiles/valhalla-sif.dir/bicycle_light_hills.cc.o.d"
-  "CMakeFiles/valhalla-sif.dir/bicycle_medium_hills.cc.o"
-  "CMakeFiles/valhalla-sif.dir/bicycle_medium_hills.cc.o.d"
   "CMakeFiles/valhalla-sif.dir/bicyclecost.cc.o"
   "CMakeFiles/valhalla-sif.dir/bicyclecost.cc.o.d"
   "CMakeFiles/valhalla-sif.dir/dynamiccost.cc.o"
@@ -27,6 +21,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/valhalla-sif.dir/transitcost.cc.o.d"
   "CMakeFiles/valhalla-sif.dir/truckcost.cc.o"
   "CMakeFiles/valhalla-sif.dir/truckcost.cc.o.d"
+  "CMakeFiles/valhalla-sif.dir/wheelchair_cost.cc.o"
+  "CMakeFiles/valhalla-sif.dir/wheelchair_cost.cc.o.d"
 )
 
 # Per-language clean rules from dependency scanning.
