@@ -68,6 +68,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "runtime" OR NOT CMAKE_INSTALL_COMPONENT)
      NOT IS_SYMLINK "$ENV{DESTDIR}/opt/homebrew/lib/python3.13/site-packages/valhalla/python_valhalla.cpython-313-darwin.so")
     execute_process(COMMAND /usr/bin/install_name_tool
       -delete_rpath "/opt/homebrew/lib"
+      -delete_rpath "/opt/homebrew/Cellar/abseil/20240722.0/lib"
       "$ENV{DESTDIR}/opt/homebrew/lib/python3.13/site-packages/valhalla/python_valhalla.cpython-313-darwin.so")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip" -x "$ENV{DESTDIR}/opt/homebrew/lib/python3.13/site-packages/valhalla/python_valhalla.cpython-313-darwin.so")

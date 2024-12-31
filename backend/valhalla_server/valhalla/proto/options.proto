@@ -82,9 +82,27 @@ message Costing {
     taxi = 9;
     auto_ = 10;
     bikeshare = 11;    // turns into pedestrian + bike
+    standard_wheelchair = 12; // Standard wheelchair
+    basic_power_wheelchair = 13; // Basic power wheelchair
+    advanced_power_wheelchair = 14; // Advanced power wheelchair
   }
 
   message Options {
+    oneof has_standard_wheelchair_speed {
+      float standard_wheelchair_speed = 92;
+    }
+    oneof has_basic_power_wheelchair_speed {
+      float basic_power_wheelchair_speed = 93;
+    }
+    oneof has_advanced_power_wheelchair_speed {
+      float advanced_power_wheelchair_speed = 94;
+    }
+    oneof has_wheelchair_slope_penalty {
+      float wheelchair_slope_penalty = 95;
+    }
+    oneof has_wheelchair_surface_penalty {
+      float wheelchair_surface_penalty = 96;
+    }
     oneof has_maneuver_penalty {
       float maneuver_penalty = 1;
     }

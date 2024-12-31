@@ -40,9 +40,6 @@ endif()
 if(CMAKE_INSTALL_COMPONENT STREQUAL "development" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/valhalla/sif" TYPE FILE FILES
     "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/valhalla/sif/autocost.h"
-    "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/valhalla/sif/bicycle_heavy_hills.h"
-    "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/valhalla/sif/bicycle_light_hills.h"
-    "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/valhalla/sif/bicycle_medium_hills.h"
     "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/valhalla/sif/bicyclecost.h"
     "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/valhalla/sif/costconstants.h"
     "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/valhalla/sif/costfactory.h"
@@ -57,6 +54,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "development" OR NOT CMAKE_INSTALL_COMPONENT
     "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/valhalla/sif/recost.h"
     "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/valhalla/sif/transitcost.h"
     "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/valhalla/sif/truckcost.h"
+    "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/valhalla/sif/wheelchair_cost.h"
     )
 endif()
 

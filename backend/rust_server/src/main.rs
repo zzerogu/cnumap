@@ -9,9 +9,10 @@ use actix_web::{App, HttpServer, web};
 use config::app::get_config;
 use sqlx::postgres::{PgPool, PgPoolOptions};
 use routes::init_routes;
-
+use dotenv::dotenv;
 use utoipa::OpenApi; // OpenAPI 문서 생성
 use utoipa_swagger_ui::SwaggerUi; // Swagger UI
+use env_logger;
 
 // OpenAPI 문서 정의
 #[derive(OpenApi)]
@@ -34,6 +35,7 @@ use utoipa_swagger_ui::SwaggerUi; // Swagger UI
         schemas(
             crate::models::building::Building,
             crate::handlers::building::BuildingSearchResponse,
+            crate::handlers::building::MinimalBuilding,
             crate::models::construction_news::ConstructionNewsResponse,
             crate::models::disabled_restroom::DisabledRestroom,
             crate::models::ramp::Ramp,
@@ -56,6 +58,8 @@ pub struct ApiDoc;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    dotenv().ok();
+    env_logger::init();
     // 환경 변수에서 설정 로드
     let config = get_config();
 
@@ -71,6 +75,7 @@ async fn main() -> std::io::Result<()> {
         .await
         .expect("Failed to connect to the database");
 
+    let db_pool_data = web::Data::new(db_pool);
     // OpenAPI 문서 생성
     let api_doc = ApiDoc::openapi();
 
@@ -84,7 +89,7 @@ async fn main() -> std::io::Result<()> {
     
         App::new()
             .wrap(cors)
-            .app_data(web::Data::new(db_pool.clone()))
+            .app_data(db_pool_data.clone())
             .configure(init_routes)
             .service(
                 SwaggerUi::new("/swagger-ui/{_:.*}") // Swagger UI 경로 설정

@@ -463,7 +463,7 @@ SQLITE3_LIBRARY:FILEPATH=/opt/homebrew/opt/sqlite/lib/libsqlite3.dylib
 Threads_DIR:PATH=Threads_DIR-NOTFOUND
 
 //The directory containing a CMake configuration file for absl.
-absl_DIR:PATH=/opt/homebrew/lib/cmake/absl
+absl_DIR:PATH=/opt/homebrew/Cellar/abseil/20240722.0/lib/cmake/absl
 
 //The directory containing a CMake configuration file for boost_headers.
 boost_headers_DIR:PATH=/opt/homebrew/lib/cmake/boost_headers-1.86.0

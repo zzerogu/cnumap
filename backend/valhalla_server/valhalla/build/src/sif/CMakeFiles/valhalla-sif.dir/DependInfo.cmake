@@ -9,9 +9,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/autocost.cc" "src/sif/CMakeFiles/valhalla-sif.dir/autocost.cc.o" "gcc" "src/sif/CMakeFiles/valhalla-sif.dir/autocost.cc.o.d"
-  "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/bicycle_heavy_hills.cc" "src/sif/CMakeFiles/valhalla-sif.dir/bicycle_heavy_hills.cc.o" "gcc" "src/sif/CMakeFiles/valhalla-sif.dir/bicycle_heavy_hills.cc.o.d"
-  "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/bicycle_light_hills.cc" "src/sif/CMakeFiles/valhalla-sif.dir/bicycle_light_hills.cc.o" "gcc" "src/sif/CMakeFiles/valhalla-sif.dir/bicycle_light_hills.cc.o.d"
-  "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/bicycle_medium_hills.cc" "src/sif/CMakeFiles/valhalla-sif.dir/bicycle_medium_hills.cc.o" "gcc" "src/sif/CMakeFiles/valhalla-sif.dir/bicycle_medium_hills.cc.o.d"
   "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/bicyclecost.cc" "src/sif/CMakeFiles/valhalla-sif.dir/bicyclecost.cc.o" "gcc" "src/sif/CMakeFiles/valhalla-sif.dir/bicyclecost.cc.o.d"
   "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/dynamiccost.cc" "src/sif/CMakeFiles/valhalla-sif.dir/dynamiccost.cc.o" "gcc" "src/sif/CMakeFiles/valhalla-sif.dir/dynamiccost.cc.o.d"
   "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/hierarchylimits.cc" "src/sif/CMakeFiles/valhalla-sif.dir/hierarchylimits.cc.o" "gcc" "src/sif/CMakeFiles/valhalla-sif.dir/hierarchylimits.cc.o.d"
@@ -22,6 +19,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/recost.cc" "src/sif/CMakeFiles/valhalla-sif.dir/recost.cc.o" "gcc" "src/sif/CMakeFiles/valhalla-sif.dir/recost.cc.o.d"
   "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/transitcost.cc" "src/sif/CMakeFiles/valhalla-sif.dir/transitcost.cc.o" "gcc" "src/sif/CMakeFiles/valhalla-sif.dir/transitcost.cc.o.d"
   "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/truckcost.cc" "src/sif/CMakeFiles/valhalla-sif.dir/truckcost.cc.o" "gcc" "src/sif/CMakeFiles/valhalla-sif.dir/truckcost.cc.o.d"
+  "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/wheelchair_cost.cc" "src/sif/CMakeFiles/valhalla-sif.dir/wheelchair_cost.cc.o" "gcc" "src/sif/CMakeFiles/valhalla-sif.dir/wheelchair_cost.cc.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
