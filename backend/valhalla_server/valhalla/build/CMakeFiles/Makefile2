@@ -2088,8 +2088,8 @@ CMakeFiles/uninstall.dir/clean:
 
 # All Build rule for target.
 src/CMakeFiles/valhalla.dir/all: src/valhalla/proto/CMakeFiles/valhalla-proto.dir/all
-src/CMakeFiles/valhalla.dir/all: src/loki/CMakeFiles/valhalla-loki.dir/all
 src/CMakeFiles/valhalla.dir/all: src/baldr/CMakeFiles/valhalla-baldr.dir/all
+src/CMakeFiles/valhalla.dir/all: src/loki/CMakeFiles/valhalla-loki.dir/all
 src/CMakeFiles/valhalla.dir/all: src/meili/CMakeFiles/valhalla-meili.dir/all
 src/CMakeFiles/valhalla.dir/all: src/midgard/CMakeFiles/valhalla-midgard.dir/all
 src/CMakeFiles/valhalla.dir/all: src/odin/CMakeFiles/valhalla-odin.dir/all
