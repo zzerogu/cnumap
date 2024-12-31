@@ -6,6 +6,6 @@ use utoipa::ToSchema;
 pub struct Elevator {
     pub elevator_id: i32,
     pub building_id: i32,
-    pub node_id: i32,
+    pub node_id: String,
     pub location_description: String,
 }

@@ -6,15 +6,12 @@ import 'package:get_it/get_it.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:moducnu/navigation/main_navigation_page.dart';
 import 'package:moducnu/presentation/map/map_page.dart';
-import 'package:moducnu/presentation/map/search_page.dart';
 import 'package:moducnu/presentation/saved/save_page.dart';
 import 'package:moducnu/presentation/school/school_page.dart';
 import 'package:moducnu/presentation/timetable/time_page.dart';
 import 'package:sizing/sizing_builder.dart';
 import 'di/service_locator.dart';
-import 'domain/model/User.dart';
-import 'domain/usecases/auto_login_usecase.dart';
-import 'presentation/auth/login_page.dart';
+
 
 Future<void> main() async {
   await dotenv.load(fileName: ".env"); // .env 파일 로드

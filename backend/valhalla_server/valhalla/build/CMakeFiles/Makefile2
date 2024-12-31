@@ -2088,8 +2088,8 @@ CMakeFiles/uninstall.dir/clean:
 
 # All Build rule for target.
 src/CMakeFiles/valhalla.dir/all: src/valhalla/proto/CMakeFiles/valhalla-proto.dir/all
-src/CMakeFiles/valhalla.dir/all: src/baldr/CMakeFiles/valhalla-baldr.dir/all
 src/CMakeFiles/valhalla.dir/all: src/loki/CMakeFiles/valhalla-loki.dir/all
+src/CMakeFiles/valhalla.dir/all: src/baldr/CMakeFiles/valhalla-baldr.dir/all
 src/CMakeFiles/valhalla.dir/all: src/meili/CMakeFiles/valhalla-meili.dir/all
 src/CMakeFiles/valhalla.dir/all: src/midgard/CMakeFiles/valhalla-midgard.dir/all
 src/CMakeFiles/valhalla.dir/all: src/odin/CMakeFiles/valhalla-odin.dir/all
@@ -2131,7 +2131,7 @@ src/CMakeFiles/valhalla.dir/clean:
 src/valhalla/proto/CMakeFiles/valhalla-proto.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/valhalla/proto/CMakeFiles/valhalla-proto.dir/build.make src/valhalla/proto/CMakeFiles/valhalla-proto.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/valhalla/proto/CMakeFiles/valhalla-proto.dir/build.make src/valhalla/proto/CMakeFiles/valhalla-proto.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=85,86,87 "Built target valhalla-proto"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=86,87,88 "Built target valhalla-proto"
 .PHONY : src/valhalla/proto/CMakeFiles/valhalla-proto.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2201,7 +2201,7 @@ src/loki/CMakeFiles/valhalla-loki.dir/all: src/skadi/CMakeFiles/valhalla-skadi.d
 
 # Build rule for subdir invocation for target.
 src/loki/CMakeFiles/valhalla-loki.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 11
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/loki/CMakeFiles/valhalla-loki.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : src/loki/CMakeFiles/valhalla-loki.dir/rule
@@ -2232,7 +2232,7 @@ src/meili/CMakeFiles/valhalla-meili.dir/all: src/sif/CMakeFiles/valhalla-sif.dir
 
 # Build rule for subdir invocation for target.
 src/meili/CMakeFiles/valhalla-meili.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 11
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/meili/CMakeFiles/valhalla-meili.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : src/meili/CMakeFiles/valhalla-meili.dir/rule
@@ -2289,12 +2289,12 @@ src/midgard/CMakeFiles/valhalla-midgard.dir/clean:
 src/odin/CMakeFiles/valhalla-odin.dir/all: src/valhalla/proto/CMakeFiles/valhalla-proto.dir/all
 	$(MAKE) $(MAKESILENT) -f src/odin/CMakeFiles/valhalla-odin.dir/build.make src/odin/CMakeFiles/valhalla-odin.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/odin/CMakeFiles/valhalla-odin.dir/build.make src/odin/CMakeFiles/valhalla-odin.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=84 "Built target valhalla-odin"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=84,85 "Built target valhalla-odin"
 .PHONY : src/odin/CMakeFiles/valhalla-odin.dir/all
 
 # Build rule for subdir invocation for target.
 src/odin/CMakeFiles/valhalla-odin.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/odin/CMakeFiles/valhalla-odin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : src/odin/CMakeFiles/valhalla-odin.dir/rule
@@ -2321,12 +2321,12 @@ src/sif/CMakeFiles/valhalla-sif.dir/all: src/valhalla/proto/CMakeFiles/valhalla-
 src/sif/CMakeFiles/valhalla-sif.dir/all: src/baldr/CMakeFiles/valhalla-baldr.dir/all
 	$(MAKE) $(MAKESILENT) -f src/sif/CMakeFiles/valhalla-sif.dir/build.make src/sif/CMakeFiles/valhalla-sif.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/sif/CMakeFiles/valhalla-sif.dir/build.make src/sif/CMakeFiles/valhalla-sif.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=88,89 "Built target valhalla-sif"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=89 "Built target valhalla-sif"
 .PHONY : src/sif/CMakeFiles/valhalla-sif.dir/all
 
 # Build rule for subdir invocation for target.
 src/sif/CMakeFiles/valhalla-sif.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/sif/CMakeFiles/valhalla-sif.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : src/sif/CMakeFiles/valhalla-sif.dir/rule
@@ -2390,7 +2390,7 @@ src/thor/CMakeFiles/valhalla-thor.dir/all: src/sif/CMakeFiles/valhalla-sif.dir/a
 
 # Build rule for subdir invocation for target.
 src/thor/CMakeFiles/valhalla-thor.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 14
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 13
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/thor/CMakeFiles/valhalla-thor.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : src/thor/CMakeFiles/valhalla-thor.dir/rule
@@ -3356,12 +3356,12 @@ test/CMakeFiles/json.dir/all: googletest/googletest/CMakeFiles/gtest.dir/all
 test/CMakeFiles/json.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/json.dir/build.make test/CMakeFiles/json.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/json.dir/build.make test/CMakeFiles/json.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target json"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=33 "Built target json"
 .PHONY : test/CMakeFiles/json.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/json.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/json.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/json.dir/rule
@@ -3391,12 +3391,12 @@ test/CMakeFiles/laneconnectivity.dir/all: googletest/googletest/CMakeFiles/gtest
 test/CMakeFiles/laneconnectivity.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/laneconnectivity.dir/build.make test/CMakeFiles/laneconnectivity.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/laneconnectivity.dir/build.make test/CMakeFiles/laneconnectivity.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=33 "Built target laneconnectivity"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target laneconnectivity"
 .PHONY : test/CMakeFiles/laneconnectivity.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/laneconnectivity.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/laneconnectivity.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/laneconnectivity.dir/rule
@@ -3671,12 +3671,12 @@ test/CMakeFiles/nodeinfo.dir/all: googletest/googletest/CMakeFiles/gtest.dir/all
 test/CMakeFiles/nodeinfo.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/nodeinfo.dir/build.make test/CMakeFiles/nodeinfo.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/nodeinfo.dir/build.make test/CMakeFiles/nodeinfo.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target nodeinfo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=37 "Built target nodeinfo"
 .PHONY : test/CMakeFiles/nodeinfo.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/nodeinfo.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/nodeinfo.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/nodeinfo.dir/rule
@@ -3706,12 +3706,12 @@ test/CMakeFiles/nodetransition.dir/all: googletest/googletest/CMakeFiles/gtest.d
 test/CMakeFiles/nodetransition.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/nodetransition.dir/build.make test/CMakeFiles/nodetransition.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/nodetransition.dir/build.make test/CMakeFiles/nodetransition.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=37 "Built target nodetransition"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target nodetransition"
 .PHONY : test/CMakeFiles/nodetransition.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/nodetransition.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/nodetransition.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/nodetransition.dir/rule
@@ -3846,12 +3846,12 @@ test/CMakeFiles/parse_request.dir/all: googletest/googletest/CMakeFiles/gtest.di
 test/CMakeFiles/parse_request.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/parse_request.dir/build.make test/CMakeFiles/parse_request.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/parse_request.dir/build.make test/CMakeFiles/parse_request.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=38 "Built target parse_request"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target parse_request"
 .PHONY : test/CMakeFiles/parse_request.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/parse_request.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/parse_request.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/parse_request.dir/rule
@@ -4126,12 +4126,12 @@ test/CMakeFiles/sample.dir/all: googletest/googletest/CMakeFiles/gtest.dir/all
 test/CMakeFiles/sample.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/sample.dir/build.make test/CMakeFiles/sample.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/sample.dir/build.make test/CMakeFiles/sample.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target sample"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=65 "Built target sample"
 .PHONY : test/CMakeFiles/sample.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/sample.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/sample.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/sample.dir/rule
@@ -4231,12 +4231,12 @@ test/CMakeFiles/signs.dir/all: googletest/googletest/CMakeFiles/gtest.dir/all
 test/CMakeFiles/signs.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/signs.dir/build.make test/CMakeFiles/signs.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/signs.dir/build.make test/CMakeFiles/signs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=66 "Built target signs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target signs"
 .PHONY : test/CMakeFiles/signs.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/signs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/signs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/signs.dir/rule
@@ -4336,12 +4336,12 @@ test/CMakeFiles/streetnames.dir/all: googletest/googletest/CMakeFiles/gtest.dir/
 test/CMakeFiles/streetnames.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/streetnames.dir/build.make test/CMakeFiles/streetnames.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/streetnames.dir/build.make test/CMakeFiles/streetnames.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=67 "Built target streetnames"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target streetnames"
 .PHONY : test/CMakeFiles/streetnames.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/streetnames.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/streetnames.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/streetnames.dir/rule
@@ -4441,12 +4441,12 @@ test/CMakeFiles/streetname_us.dir/all: googletest/googletest/CMakeFiles/gtest.di
 test/CMakeFiles/streetname_us.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/streetname_us.dir/build.make test/CMakeFiles/streetname_us.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/streetname_us.dir/build.make test/CMakeFiles/streetname_us.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target streetname_us"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=67 "Built target streetname_us"
 .PHONY : test/CMakeFiles/streetname_us.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/streetname_us.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/streetname_us.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/streetname_us.dir/rule
@@ -4651,12 +4651,12 @@ test/CMakeFiles/transitstop.dir/all: googletest/googletest/CMakeFiles/gtest.dir/
 test/CMakeFiles/transitstop.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/transitstop.dir/build.make test/CMakeFiles/transitstop.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/transitstop.dir/build.make test/CMakeFiles/transitstop.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target transitstop"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=70 "Built target transitstop"
 .PHONY : test/CMakeFiles/transitstop.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/transitstop.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/transitstop.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/transitstop.dir/rule
@@ -5912,12 +5912,12 @@ test/CMakeFiles/reach.dir/all: googletest/googletest/CMakeFiles/gtest.dir/all
 test/CMakeFiles/reach.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/reach.dir/build.make test/CMakeFiles/reach.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/reach.dir/build.make test/CMakeFiles/reach.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target reach"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=40 "Built target reach"
 .PHONY : test/CMakeFiles/reach.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/reach.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/reach.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/reach.dir/rule
@@ -5947,12 +5947,12 @@ test/CMakeFiles/recover_shortcut.dir/all: googletest/googletest/CMakeFiles/gtest
 test/CMakeFiles/recover_shortcut.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/recover_shortcut.dir/build.make test/CMakeFiles/recover_shortcut.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/recover_shortcut.dir/build.make test/CMakeFiles/recover_shortcut.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=40 "Built target recover_shortcut"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target recover_shortcut"
 .PHONY : test/CMakeFiles/recover_shortcut.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/recover_shortcut.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/recover_shortcut.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/recover_shortcut.dir/rule
@@ -6017,12 +6017,12 @@ test/CMakeFiles/search.dir/all: googletest/googletest/CMakeFiles/gtest.dir/all
 test/CMakeFiles/search.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/search.dir/build.make test/CMakeFiles/search.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/search.dir/build.make test/CMakeFiles/search.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=65 "Built target search"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target search"
 .PHONY : test/CMakeFiles/search.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/search.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/search.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/search.dir/rule
@@ -6122,12 +6122,12 @@ test/CMakeFiles/signinfo.dir/all: googletest/googletest/CMakeFiles/gtest.dir/all
 test/CMakeFiles/signinfo.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/signinfo.dir/build.make test/CMakeFiles/signinfo.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/signinfo.dir/build.make test/CMakeFiles/signinfo.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target signinfo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=66 "Built target signinfo"
 .PHONY : test/CMakeFiles/signinfo.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/signinfo.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/signinfo.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/signinfo.dir/rule
@@ -6262,12 +6262,12 @@ test/CMakeFiles/thor_worker.dir/all: googletest/googletest/CMakeFiles/gtest.dir/
 test/CMakeFiles/thor_worker.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/thor_worker.dir/build.make test/CMakeFiles/thor_worker.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/thor_worker.dir/build.make test/CMakeFiles/thor_worker.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=68 "Built target thor_worker"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target thor_worker"
 .PHONY : test/CMakeFiles/thor_worker.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/thor_worker.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/thor_worker.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/thor_worker.dir/rule
@@ -6367,12 +6367,12 @@ test/CMakeFiles/trivial_paths.dir/all: googletest/googletest/CMakeFiles/gtest.di
 test/CMakeFiles/trivial_paths.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/trivial_paths.dir/build.make test/CMakeFiles/trivial_paths.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/trivial_paths.dir/build.make test/CMakeFiles/trivial_paths.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=70 "Built target trivial_paths"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target trivial_paths"
 .PHONY : test/CMakeFiles/trivial_paths.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/trivial_paths.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/trivial_paths.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/trivial_paths.dir/rule
@@ -7152,12 +7152,12 @@ test/CMakeFiles/roma_tiles.dir/clean:
 test/CMakeFiles/paris_bss_tiles.dir/all: CMakeFiles/valhalla_build_tiles.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/paris_bss_tiles.dir/build.make test/CMakeFiles/paris_bss_tiles.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/paris_bss_tiles.dir/build.make test/CMakeFiles/paris_bss_tiles.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target paris_bss_tiles"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=38 "Built target paris_bss_tiles"
 .PHONY : test/CMakeFiles/paris_bss_tiles.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/paris_bss_tiles.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 21
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/paris_bss_tiles.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/paris_bss_tiles.dir/rule
@@ -7348,12 +7348,12 @@ test/CMakeFiles/localedef.dir/clean:
 test/CMakeFiles/test_directories.dir/all:
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_directories.dir/build.make test/CMakeFiles/test_directories.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/test_directories.dir/build.make test/CMakeFiles/test_directories.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target test_directories"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=68 "Built target test_directories"
 .PHONY : test/CMakeFiles/test_directories.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/test_directories.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/test_directories.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/test_directories.dir/rule
@@ -7379,12 +7379,12 @@ test/CMakeFiles/test_directories.dir/clean:
 test/CMakeFiles/run-aabb2.dir/all: test/CMakeFiles/aabb2.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-aabb2.dir/build.make test/CMakeFiles/run-aabb2.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-aabb2.dir/build.make test/CMakeFiles/run-aabb2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-aabb2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=41 "Built target run-aabb2"
 .PHONY : test/CMakeFiles/run-aabb2.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-aabb2.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-aabb2.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-aabb2.dir/rule
@@ -7410,12 +7410,12 @@ test/CMakeFiles/run-aabb2.dir/clean:
 test/CMakeFiles/run-access_restriction.dir/all: test/CMakeFiles/access_restriction.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-access_restriction.dir/build.make test/CMakeFiles/run-access_restriction.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-access_restriction.dir/build.make test/CMakeFiles/run-access_restriction.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=41 "Built target run-access_restriction"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-access_restriction"
 .PHONY : test/CMakeFiles/run-access_restriction.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-access_restriction.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-access_restriction.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-access_restriction.dir/rule
@@ -7534,12 +7534,12 @@ test/CMakeFiles/run-attributes_controller.dir/clean:
 test/CMakeFiles/run-configuration.dir/all: test/CMakeFiles/configuration.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-configuration.dir/build.make test/CMakeFiles/run-configuration.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-configuration.dir/build.make test/CMakeFiles/run-configuration.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=42 "Built target run-configuration"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-configuration"
 .PHONY : test/CMakeFiles/run-configuration.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-configuration.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-configuration.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-configuration.dir/rule
@@ -7751,12 +7751,12 @@ test/CMakeFiles/run-edgestatus.dir/clean:
 test/CMakeFiles/run-ellipse.dir/all: test/CMakeFiles/ellipse.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-ellipse.dir/build.make test/CMakeFiles/run-ellipse.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-ellipse.dir/build.make test/CMakeFiles/run-ellipse.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-ellipse"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=43 "Built target run-ellipse"
 .PHONY : test/CMakeFiles/run-ellipse.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-ellipse.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-ellipse.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-ellipse.dir/rule
@@ -7782,12 +7782,12 @@ test/CMakeFiles/run-ellipse.dir/clean:
 test/CMakeFiles/run-encode.dir/all: test/CMakeFiles/encode.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-encode.dir/build.make test/CMakeFiles/run-encode.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-encode.dir/build.make test/CMakeFiles/run-encode.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=43 "Built target run-encode"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-encode"
 .PHONY : test/CMakeFiles/run-encode.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-encode.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-encode.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-encode.dir/rule
@@ -7937,12 +7937,12 @@ test/CMakeFiles/run-graphtile.dir/clean:
 test/CMakeFiles/run-graphtileheader.dir/all: test/CMakeFiles/graphtileheader.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-graphtileheader.dir/build.make test/CMakeFiles/run-graphtileheader.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-graphtileheader.dir/build.make test/CMakeFiles/run-graphtileheader.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-graphtileheader"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=44 "Built target run-graphtileheader"
 .PHONY : test/CMakeFiles/run-graphtileheader.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-graphtileheader.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-graphtileheader.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-graphtileheader.dir/rule
@@ -7999,12 +7999,12 @@ test/CMakeFiles/run-gridded_data.dir/clean:
 test/CMakeFiles/run-grid_range_query.dir/all: test/CMakeFiles/grid_range_query.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-grid_range_query.dir/build.make test/CMakeFiles/run-grid_range_query.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-grid_range_query.dir/build.make test/CMakeFiles/run-grid_range_query.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=44 "Built target run-grid_range_query"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-grid_range_query"
 .PHONY : test/CMakeFiles/run-grid_range_query.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-grid_range_query.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-grid_range_query.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-grid_range_query.dir/rule
@@ -8092,12 +8092,12 @@ test/CMakeFiles/run-instructions.dir/clean:
 test/CMakeFiles/run-json.dir/all: test/CMakeFiles/json.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-json.dir/build.make test/CMakeFiles/run-json.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-json.dir/build.make test/CMakeFiles/run-json.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-json"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=57 "Built target run-json"
 .PHONY : test/CMakeFiles/run-json.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-json.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-json.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-json.dir/rule
@@ -8123,12 +8123,12 @@ test/CMakeFiles/run-json.dir/clean:
 test/CMakeFiles/run-laneconnectivity.dir/all: test/CMakeFiles/laneconnectivity.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-laneconnectivity.dir/build.make test/CMakeFiles/run-laneconnectivity.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-laneconnectivity.dir/build.make test/CMakeFiles/run-laneconnectivity.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=57 "Built target run-laneconnectivity"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-laneconnectivity"
 .PHONY : test/CMakeFiles/run-laneconnectivity.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-laneconnectivity.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-laneconnectivity.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-laneconnectivity.dir/rule
@@ -8376,7 +8376,7 @@ test/CMakeFiles/run-nodeinfo.dir/all: test/CMakeFiles/nodeinfo.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-nodeinfo.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-nodeinfo.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-nodeinfo.dir/rule
@@ -8407,7 +8407,7 @@ test/CMakeFiles/run-nodetransition.dir/all: test/CMakeFiles/nodetransition.dir/a
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-nodetransition.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-nodetransition.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-nodetransition.dir/rule
@@ -8433,12 +8433,12 @@ test/CMakeFiles/run-nodetransition.dir/clean:
 test/CMakeFiles/run-obb2.dir/all: test/CMakeFiles/obb2.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-obb2.dir/build.make test/CMakeFiles/run-obb2.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-obb2.dir/build.make test/CMakeFiles/run-obb2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-obb2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=59 "Built target run-obb2"
 .PHONY : test/CMakeFiles/run-obb2.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-obb2.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-obb2.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-obb2.dir/rule
@@ -8464,12 +8464,12 @@ test/CMakeFiles/run-obb2.dir/clean:
 test/CMakeFiles/run-openlr.dir/all: test/CMakeFiles/openlr.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-openlr.dir/build.make test/CMakeFiles/run-openlr.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-openlr.dir/build.make test/CMakeFiles/run-openlr.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=59 "Built target run-openlr"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-openlr"
 .PHONY : test/CMakeFiles/run-openlr.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-openlr.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-openlr.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-openlr.dir/rule
@@ -8531,7 +8531,7 @@ test/CMakeFiles/run-parse_request.dir/all: test/CMakeFiles/parse_request.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-parse_request.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-parse_request.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-parse_request.dir/rule
@@ -8712,12 +8712,12 @@ test/CMakeFiles/run-predictedspeeds.dir/clean:
 test/CMakeFiles/run-queue.dir/all: test/CMakeFiles/queue.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-queue.dir/build.make test/CMakeFiles/run-queue.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-queue.dir/build.make test/CMakeFiles/run-queue.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=60 "Built target run-queue"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-queue"
 .PHONY : test/CMakeFiles/run-queue.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-queue.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-queue.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-queue.dir/rule
@@ -8780,7 +8780,7 @@ test/CMakeFiles/run-sample.dir/all: test/CMakeFiles/test_directories.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-sample.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-sample.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-sample.dir/rule
@@ -8874,7 +8874,7 @@ test/CMakeFiles/run-signs.dir/all: test/CMakeFiles/signs.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-signs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-signs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-signs.dir/rule
@@ -8967,7 +8967,7 @@ test/CMakeFiles/run-streetnames.dir/all: test/CMakeFiles/streetnames.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-streetnames.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-streetnames.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-streetnames.dir/rule
@@ -9024,12 +9024,12 @@ test/CMakeFiles/run-streetnames_factory.dir/clean:
 test/CMakeFiles/run-streetnames_us.dir/all: test/CMakeFiles/streetnames_us.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-streetnames_us.dir/build.make test/CMakeFiles/run-streetnames_us.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-streetnames_us.dir/build.make test/CMakeFiles/run-streetnames_us.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-streetnames_us"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=62 "Built target run-streetnames_us"
 .PHONY : test/CMakeFiles/run-streetnames_us.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-streetnames_us.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-streetnames_us.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-streetnames_us.dir/rule
@@ -9060,7 +9060,7 @@ test/CMakeFiles/run-streetname_us.dir/all: test/CMakeFiles/streetname_us.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-streetname_us.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-streetname_us.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-streetname_us.dir/rule
@@ -9179,12 +9179,12 @@ test/CMakeFiles/run-transitdeparture.dir/clean:
 test/CMakeFiles/run-transitroute.dir/all: test/CMakeFiles/transitroute.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-transitroute.dir/build.make test/CMakeFiles/run-transitroute.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-transitroute.dir/build.make test/CMakeFiles/run-transitroute.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-transitroute"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=63 "Built target run-transitroute"
 .PHONY : test/CMakeFiles/run-transitroute.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-transitroute.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-transitroute.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-transitroute.dir/rule
@@ -9210,12 +9210,12 @@ test/CMakeFiles/run-transitroute.dir/clean:
 test/CMakeFiles/run-transitschedule.dir/all: test/CMakeFiles/transitschedule.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-transitschedule.dir/build.make test/CMakeFiles/run-transitschedule.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-transitschedule.dir/build.make test/CMakeFiles/run-transitschedule.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=63 "Built target run-transitschedule"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-transitschedule"
 .PHONY : test/CMakeFiles/run-transitschedule.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-transitschedule.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-transitschedule.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-transitschedule.dir/rule
@@ -9246,7 +9246,7 @@ test/CMakeFiles/run-transitstop.dir/all: test/CMakeFiles/transitstop.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-transitstop.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-transitstop.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-transitstop.dir/rule
@@ -9582,12 +9582,12 @@ test/CMakeFiles/run-viterbi_search.dir/clean:
 test/CMakeFiles/run-compression.dir/all: test/CMakeFiles/compression.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-compression.dir/build.make test/CMakeFiles/run-compression.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-compression.dir/build.make test/CMakeFiles/run-compression.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-compression"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=42 "Built target run-compression"
 .PHONY : test/CMakeFiles/run-compression.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-compression.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-compression.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-compression.dir/rule
@@ -9823,7 +9823,7 @@ test/CMakeFiles/run-astar_bikeshare.dir/all: test/CMakeFiles/paris_bss_tiles.dir
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-astar_bikeshare.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-astar_bikeshare.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-astar_bikeshare.dir/rule
@@ -10198,12 +10198,12 @@ test/CMakeFiles/run-matrix.dir/all: test/CMakeFiles/matrix.dir/all
 test/CMakeFiles/run-matrix.dir/all: test/CMakeFiles/utrecht_tiles.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-matrix.dir/build.make test/CMakeFiles/run-matrix.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-matrix.dir/build.make test/CMakeFiles/run-matrix.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-matrix"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=58 "Built target run-matrix"
 .PHONY : test/CMakeFiles/run-matrix.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-matrix.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 25
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-matrix.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-matrix.dir/rule
@@ -10231,7 +10231,7 @@ test/CMakeFiles/run-matrix_bss.dir/all: test/CMakeFiles/matrix_bss.dir/all
 test/CMakeFiles/run-matrix_bss.dir/all: test/CMakeFiles/paris_bss_tiles.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-matrix_bss.dir/build.make test/CMakeFiles/run-matrix_bss.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-matrix_bss.dir/build.make test/CMakeFiles/run-matrix_bss.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=58 "Built target run-matrix_bss"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-matrix_bss"
 .PHONY : test/CMakeFiles/run-matrix_bss.dir/all
 
 # Build rule for subdir invocation for target.
@@ -10397,7 +10397,7 @@ test/CMakeFiles/run-reach.dir/all: test/CMakeFiles/utrecht_tiles.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-reach.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-reach.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-reach.dir/rule
@@ -10430,7 +10430,7 @@ test/CMakeFiles/run-recover_shortcut.dir/all: test/CMakeFiles/utrecht_tiles.dir/
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-recover_shortcut.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-recover_shortcut.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-recover_shortcut.dir/rule
@@ -10493,7 +10493,7 @@ test/CMakeFiles/run-search.dir/all: test/CMakeFiles/search.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-search.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-search.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-search.dir/rule
@@ -10519,12 +10519,12 @@ test/CMakeFiles/run-search.dir/clean:
 test/CMakeFiles/run-servicedays.dir/all: test/CMakeFiles/servicedays.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-servicedays.dir/build.make test/CMakeFiles/run-servicedays.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-servicedays.dir/build.make test/CMakeFiles/run-servicedays.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-servicedays"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=61 "Built target run-servicedays"
 .PHONY : test/CMakeFiles/run-servicedays.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-servicedays.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-servicedays.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-servicedays.dir/rule
@@ -10551,12 +10551,12 @@ test/CMakeFiles/run-shape_attributes.dir/all: test/CMakeFiles/shape_attributes.d
 test/CMakeFiles/run-shape_attributes.dir/all: test/CMakeFiles/utrecht_tiles.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-shape_attributes.dir/build.make test/CMakeFiles/run-shape_attributes.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-shape_attributes.dir/build.make test/CMakeFiles/run-shape_attributes.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=61 "Built target run-shape_attributes"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-shape_attributes"
 .PHONY : test/CMakeFiles/run-shape_attributes.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-shape_attributes.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-shape_attributes.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-shape_attributes.dir/rule
@@ -10588,7 +10588,7 @@ test/CMakeFiles/run-signinfo.dir/all: test/CMakeFiles/signinfo.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-signinfo.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-signinfo.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-signinfo.dir/rule
@@ -10615,12 +10615,12 @@ test/CMakeFiles/run-summary.dir/all: test/CMakeFiles/summary.dir/all
 test/CMakeFiles/run-summary.dir/all: test/CMakeFiles/utrecht_tiles.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-summary.dir/build.make test/CMakeFiles/run-summary.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-summary.dir/build.make test/CMakeFiles/run-summary.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=62 "Built target run-summary"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-summary"
 .PHONY : test/CMakeFiles/run-summary.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-summary.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-summary.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-summary.dir/rule
@@ -10719,7 +10719,7 @@ test/CMakeFiles/run-thor_worker.dir/all: test/CMakeFiles/utrecht_tiles.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-thor_worker.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-thor_worker.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-thor_worker.dir/rule
@@ -10816,7 +10816,7 @@ test/CMakeFiles/run-trivial_paths.dir/all: test/CMakeFiles/utrecht_tiles.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-trivial_paths.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-trivial_paths.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-trivial_paths.dir/rule
@@ -10874,12 +10874,12 @@ test/CMakeFiles/run-uniquenames.dir/clean:
 test/CMakeFiles/run-util_mjolnir.dir/all: test/CMakeFiles/util_mjolnir.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-util_mjolnir.dir/build.make test/CMakeFiles/run-util_mjolnir.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-util_mjolnir.dir/build.make test/CMakeFiles/run-util_mjolnir.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-util_mjolnir"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=64 "Built target run-util_mjolnir"
 .PHONY : test/CMakeFiles/run-util_mjolnir.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-util_mjolnir.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-util_mjolnir.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-util_mjolnir.dir/rule
@@ -10905,12 +10905,12 @@ test/CMakeFiles/run-util_mjolnir.dir/clean:
 test/CMakeFiles/run-utrecht.dir/all: test/CMakeFiles/utrecht.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-utrecht.dir/build.make test/CMakeFiles/run-utrecht.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-utrecht.dir/build.make test/CMakeFiles/run-utrecht.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=64 "Built target run-utrecht"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-utrecht"
 .PHONY : test/CMakeFiles/run-utrecht.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-utrecht.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-utrecht.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-utrecht.dir/rule
@@ -11070,7 +11070,7 @@ test/CMakeFiles/run-skadi_service.dir/all: test/CMakeFiles/test_directories.dir/
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-skadi_service.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-skadi_service.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-skadi_service.dir/rule
@@ -11346,12 +11346,12 @@ test/CMakeFiles/run-python_valhalla.dir/all: src/bindings/python/CMakeFiles/pyth
 test/CMakeFiles/run-python_valhalla.dir/all: test/CMakeFiles/utrecht_tiles.dir/all
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-python_valhalla.dir/build.make test/CMakeFiles/run-python_valhalla.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/CMakeFiles/run-python_valhalla.dir/build.make test/CMakeFiles/run-python_valhalla.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-python_valhalla"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=60 "Built target run-python_valhalla"
 .PHONY : test/CMakeFiles/run-python_valhalla.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/run-python_valhalla.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 22
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/run-python_valhalla.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/run-python_valhalla.dir/rule
@@ -11796,7 +11796,7 @@ test/CMakeFiles/tests.dir/all: test/gurka/CMakeFiles/gurka.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/tests.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 71
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 69
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/CMakeFiles/tests.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/tests.dir/rule
@@ -13803,12 +13803,12 @@ test/gurka/CMakeFiles/gurka_config_speed.dir/all: googletest/googletest/CMakeFil
 test/gurka/CMakeFiles/gurka_config_speed.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/gurka_config_speed.dir/build.make test/gurka/CMakeFiles/gurka_config_speed.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/gurka_config_speed.dir/build.make test/gurka/CMakeFiles/gurka_config_speed.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target gurka_config_speed"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=11 "Built target gurka_config_speed"
 .PHONY : test/gurka/CMakeFiles/gurka_config_speed.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/gurka_config_speed.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/gurka_config_speed.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/gurka_config_speed.dir/rule
@@ -13834,12 +13834,12 @@ test/gurka/CMakeFiles/gurka_config_speed.dir/clean:
 test/gurka/CMakeFiles/run-gurka_config_speed.dir/all: test/gurka/CMakeFiles/gurka_config_speed.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_config_speed.dir/build.make test/gurka/CMakeFiles/run-gurka_config_speed.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_config_speed.dir/build.make test/gurka/CMakeFiles/run-gurka_config_speed.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-gurka_config_speed"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=46 "Built target run-gurka_config_speed"
 .PHONY : test/gurka/CMakeFiles/run-gurka_config_speed.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_config_speed.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 25
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_config_speed.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_config_speed.dir/rule
@@ -13870,12 +13870,12 @@ test/gurka/CMakeFiles/gurka_construction.dir/all: googletest/googletest/CMakeFil
 test/gurka/CMakeFiles/gurka_construction.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/gurka_construction.dir/build.make test/gurka/CMakeFiles/gurka_construction.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/gurka_construction.dir/build.make test/gurka/CMakeFiles/gurka_construction.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=11 "Built target gurka_construction"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target gurka_construction"
 .PHONY : test/gurka/CMakeFiles/gurka_construction.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/gurka_construction.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/gurka_construction.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/gurka_construction.dir/rule
@@ -13901,12 +13901,12 @@ test/gurka/CMakeFiles/gurka_construction.dir/clean:
 test/gurka/CMakeFiles/run-gurka_construction.dir/all: test/gurka/CMakeFiles/gurka_construction.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_construction.dir/build.make test/gurka/CMakeFiles/run-gurka_construction.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_construction.dir/build.make test/gurka/CMakeFiles/run-gurka_construction.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=46 "Built target run-gurka_construction"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-gurka_construction"
 .PHONY : test/gurka/CMakeFiles/run-gurka_construction.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_construction.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 25
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_construction.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_construction.dir/rule
@@ -14571,12 +14571,12 @@ test/gurka/CMakeFiles/gurka_expansion.dir/clean:
 test/gurka/CMakeFiles/run-gurka_expansion.dir/all: test/gurka/CMakeFiles/gurka_expansion.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_expansion.dir/build.make test/gurka/CMakeFiles/run-gurka_expansion.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_expansion.dir/build.make test/gurka/CMakeFiles/run-gurka_expansion.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-gurka_expansion"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=47 "Built target run-gurka_expansion"
 .PHONY : test/gurka/CMakeFiles/run-gurka_expansion.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_expansion.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 25
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_expansion.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_expansion.dir/rule
@@ -14638,12 +14638,12 @@ test/gurka/CMakeFiles/gurka_ferry_connections.dir/clean:
 test/gurka/CMakeFiles/run-gurka_ferry_connections.dir/all: test/gurka/CMakeFiles/gurka_ferry_connections.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_ferry_connections.dir/build.make test/gurka/CMakeFiles/run-gurka_ferry_connections.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_ferry_connections.dir/build.make test/gurka/CMakeFiles/run-gurka_ferry_connections.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=47 "Built target run-gurka_ferry_connections"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-gurka_ferry_connections"
 .PHONY : test/gurka/CMakeFiles/run-gurka_ferry_connections.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_ferry_connections.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_ferry_connections.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_ferry_connections.dir/rule
@@ -15308,12 +15308,12 @@ test/gurka/CMakeFiles/gurka_hard_exclusions_highways.dir/clean:
 test/gurka/CMakeFiles/run-gurka_hard_exclusions_highways.dir/all: test/gurka/CMakeFiles/gurka_hard_exclusions_highways.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_hard_exclusions_highways.dir/build.make test/gurka/CMakeFiles/run-gurka_hard_exclusions_highways.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_hard_exclusions_highways.dir/build.make test/gurka/CMakeFiles/run-gurka_hard_exclusions_highways.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-gurka_hard_exclusions_highways"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=48 "Built target run-gurka_hard_exclusions_highways"
 .PHONY : test/gurka/CMakeFiles/run-gurka_hard_exclusions_highways.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_hard_exclusions_highways.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 25
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_hard_exclusions_highways.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_hard_exclusions_highways.dir/rule
@@ -15375,12 +15375,12 @@ test/gurka/CMakeFiles/gurka_hov.dir/clean:
 test/gurka/CMakeFiles/run-gurka_hov.dir/all: test/gurka/CMakeFiles/gurka_hov.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_hov.dir/build.make test/gurka/CMakeFiles/run-gurka_hov.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_hov.dir/build.make test/gurka/CMakeFiles/run-gurka_hov.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=48 "Built target run-gurka_hov"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-gurka_hov"
 .PHONY : test/gurka/CMakeFiles/run-gurka_hov.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_hov.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_hov.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_hov.dir/rule
@@ -16045,12 +16045,12 @@ test/gurka/CMakeFiles/gurka_instructions_keep_highway_signs.dir/clean:
 test/gurka/CMakeFiles/run-gurka_instructions_keep_highway_signs.dir/all: test/gurka/CMakeFiles/gurka_instructions_keep_highway_signs.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_instructions_keep_highway_signs.dir/build.make test/gurka/CMakeFiles/run-gurka_instructions_keep_highway_signs.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_instructions_keep_highway_signs.dir/build.make test/gurka/CMakeFiles/run-gurka_instructions_keep_highway_signs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-gurka_instructions_keep_highway_signs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=49 "Built target run-gurka_instructions_keep_highway_signs"
 .PHONY : test/gurka/CMakeFiles/run-gurka_instructions_keep_highway_signs.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_instructions_keep_highway_signs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 25
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_instructions_keep_highway_signs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_instructions_keep_highway_signs.dir/rule
@@ -16112,12 +16112,12 @@ test/gurka/CMakeFiles/gurka_instructions_keep_nonhighway_signs.dir/clean:
 test/gurka/CMakeFiles/run-gurka_instructions_keep_nonhighway_signs.dir/all: test/gurka/CMakeFiles/gurka_instructions_keep_nonhighway_signs.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_instructions_keep_nonhighway_signs.dir/build.make test/gurka/CMakeFiles/run-gurka_instructions_keep_nonhighway_signs.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_instructions_keep_nonhighway_signs.dir/build.make test/gurka/CMakeFiles/run-gurka_instructions_keep_nonhighway_signs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=49 "Built target run-gurka_instructions_keep_nonhighway_signs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-gurka_instructions_keep_nonhighway_signs"
 .PHONY : test/gurka/CMakeFiles/run-gurka_instructions_keep_nonhighway_signs.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_instructions_keep_nonhighway_signs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_instructions_keep_nonhighway_signs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_instructions_keep_nonhighway_signs.dir/rule
@@ -16782,12 +16782,12 @@ test/gurka/CMakeFiles/gurka_instructions_same_name.dir/clean:
 test/gurka/CMakeFiles/run-gurka_instructions_same_name.dir/all: test/gurka/CMakeFiles/gurka_instructions_same_name.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_instructions_same_name.dir/build.make test/gurka/CMakeFiles/run-gurka_instructions_same_name.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_instructions_same_name.dir/build.make test/gurka/CMakeFiles/run-gurka_instructions_same_name.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-gurka_instructions_same_name"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=50 "Built target run-gurka_instructions_same_name"
 .PHONY : test/gurka/CMakeFiles/run-gurka_instructions_same_name.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_instructions_same_name.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 25
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_instructions_same_name.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_instructions_same_name.dir/rule
@@ -16849,12 +16849,12 @@ test/gurka/CMakeFiles/gurka_instructions_sharp_bend.dir/clean:
 test/gurka/CMakeFiles/run-gurka_instructions_sharp_bend.dir/all: test/gurka/CMakeFiles/gurka_instructions_sharp_bend.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_instructions_sharp_bend.dir/build.make test/gurka/CMakeFiles/run-gurka_instructions_sharp_bend.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_instructions_sharp_bend.dir/build.make test/gurka/CMakeFiles/run-gurka_instructions_sharp_bend.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=50 "Built target run-gurka_instructions_sharp_bend"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-gurka_instructions_sharp_bend"
 .PHONY : test/gurka/CMakeFiles/run-gurka_instructions_sharp_bend.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_instructions_sharp_bend.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_instructions_sharp_bend.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_instructions_sharp_bend.dir/rule
@@ -17086,12 +17086,12 @@ test/gurka/CMakeFiles/gurka_instructions_uturn.dir/all: googletest/googletest/CM
 test/gurka/CMakeFiles/gurka_instructions_uturn.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/gurka_instructions_uturn.dir/build.make test/gurka/CMakeFiles/gurka_instructions_uturn.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/gurka_instructions_uturn.dir/build.make test/gurka/CMakeFiles/gurka_instructions_uturn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target gurka_instructions_uturn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=20 "Built target gurka_instructions_uturn"
 .PHONY : test/gurka/CMakeFiles/gurka_instructions_uturn.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/gurka_instructions_uturn.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/gurka_instructions_uturn.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/gurka_instructions_uturn.dir/rule
@@ -17122,7 +17122,7 @@ test/gurka/CMakeFiles/run-gurka_instructions_uturn.dir/all: test/gurka/CMakeFile
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_instructions_uturn.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_instructions_uturn.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_instructions_uturn.dir/rule
@@ -17153,12 +17153,12 @@ test/gurka/CMakeFiles/gurka_landmarks.dir/all: googletest/googletest/CMakeFiles/
 test/gurka/CMakeFiles/gurka_landmarks.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/gurka_landmarks.dir/build.make test/gurka/CMakeFiles/gurka_landmarks.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/gurka_landmarks.dir/build.make test/gurka/CMakeFiles/gurka_landmarks.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=20 "Built target gurka_landmarks"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target gurka_landmarks"
 .PHONY : test/gurka/CMakeFiles/gurka_landmarks.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/gurka_landmarks.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/gurka_landmarks.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/gurka_landmarks.dir/rule
@@ -17189,7 +17189,7 @@ test/gurka/CMakeFiles/run-gurka_landmarks.dir/all: test/gurka/CMakeFiles/gurka_l
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_landmarks.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_landmarks.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_landmarks.dir/rule
@@ -17519,12 +17519,12 @@ test/gurka/CMakeFiles/gurka_match.dir/clean:
 test/gurka/CMakeFiles/run-gurka_match.dir/all: test/gurka/CMakeFiles/gurka_match.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_match.dir/build.make test/gurka/CMakeFiles/run-gurka_match.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_match.dir/build.make test/gurka/CMakeFiles/run-gurka_match.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-gurka_match"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=51 "Built target run-gurka_match"
 .PHONY : test/gurka/CMakeFiles/run-gurka_match.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_match.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 25
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_match.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_match.dir/rule
@@ -17586,12 +17586,12 @@ test/gurka/CMakeFiles/gurka_matrix.dir/clean:
 test/gurka/CMakeFiles/run-gurka_matrix.dir/all: test/gurka/CMakeFiles/gurka_matrix.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_matrix.dir/build.make test/gurka/CMakeFiles/run-gurka_matrix.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_matrix.dir/build.make test/gurka/CMakeFiles/run-gurka_matrix.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=51 "Built target run-gurka_matrix"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-gurka_matrix"
 .PHONY : test/gurka/CMakeFiles/run-gurka_matrix.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_matrix.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_matrix.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_matrix.dir/rule
@@ -17823,12 +17823,12 @@ test/gurka/CMakeFiles/gurka_not_thru_pruning.dir/all: googletest/googletest/CMak
 test/gurka/CMakeFiles/gurka_not_thru_pruning.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/gurka_not_thru_pruning.dir/build.make test/gurka/CMakeFiles/gurka_not_thru_pruning.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/gurka_not_thru_pruning.dir/build.make test/gurka/CMakeFiles/gurka_not_thru_pruning.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target gurka_not_thru_pruning"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=22 "Built target gurka_not_thru_pruning"
 .PHONY : test/gurka/CMakeFiles/gurka_not_thru_pruning.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/gurka_not_thru_pruning.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/gurka_not_thru_pruning.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/gurka_not_thru_pruning.dir/rule
@@ -17859,7 +17859,7 @@ test/gurka/CMakeFiles/run-gurka_not_thru_pruning.dir/all: test/gurka/CMakeFiles/
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_not_thru_pruning.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_not_thru_pruning.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_not_thru_pruning.dir/rule
@@ -17890,12 +17890,12 @@ test/gurka/CMakeFiles/gurka_oneways.dir/all: googletest/googletest/CMakeFiles/gt
 test/gurka/CMakeFiles/gurka_oneways.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/gurka_oneways.dir/build.make test/gurka/CMakeFiles/gurka_oneways.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/gurka_oneways.dir/build.make test/gurka/CMakeFiles/gurka_oneways.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=22 "Built target gurka_oneways"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target gurka_oneways"
 .PHONY : test/gurka/CMakeFiles/gurka_oneways.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/gurka_oneways.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/gurka_oneways.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/gurka_oneways.dir/rule
@@ -17926,7 +17926,7 @@ test/gurka/CMakeFiles/run-gurka_oneways.dir/all: test/gurka/CMakeFiles/gurka_one
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_oneways.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_oneways.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_oneways.dir/rule
@@ -18256,12 +18256,12 @@ test/gurka/CMakeFiles/gurka_pbf_api.dir/clean:
 test/gurka/CMakeFiles/run-gurka_pbf_api.dir/all: test/gurka/CMakeFiles/gurka_pbf_api.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_pbf_api.dir/build.make test/gurka/CMakeFiles/run-gurka_pbf_api.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_pbf_api.dir/build.make test/gurka/CMakeFiles/run-gurka_pbf_api.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-gurka_pbf_api"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=52 "Built target run-gurka_pbf_api"
 .PHONY : test/gurka/CMakeFiles/run-gurka_pbf_api.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_pbf_api.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 25
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_pbf_api.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_pbf_api.dir/rule
@@ -18323,12 +18323,12 @@ test/gurka/CMakeFiles/gurka_permissible_dimensions.dir/clean:
 test/gurka/CMakeFiles/run-gurka_permissible_dimensions.dir/all: test/gurka/CMakeFiles/gurka_permissible_dimensions.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_permissible_dimensions.dir/build.make test/gurka/CMakeFiles/run-gurka_permissible_dimensions.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_permissible_dimensions.dir/build.make test/gurka/CMakeFiles/run-gurka_permissible_dimensions.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=52 "Built target run-gurka_permissible_dimensions"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-gurka_permissible_dimensions"
 .PHONY : test/gurka/CMakeFiles/run-gurka_permissible_dimensions.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_permissible_dimensions.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_permissible_dimensions.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_permissible_dimensions.dir/rule
@@ -18993,12 +18993,12 @@ test/gurka/CMakeFiles/gurka_route.dir/clean:
 test/gurka/CMakeFiles/run-gurka_route.dir/all: test/gurka/CMakeFiles/gurka_route.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_route.dir/build.make test/gurka/CMakeFiles/run-gurka_route.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_route.dir/build.make test/gurka/CMakeFiles/run-gurka_route.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-gurka_route"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=53 "Built target run-gurka_route"
 .PHONY : test/gurka/CMakeFiles/run-gurka_route.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_route.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 25
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_route.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_route.dir/rule
@@ -19060,12 +19060,12 @@ test/gurka/CMakeFiles/gurka_route_incidents.dir/clean:
 test/gurka/CMakeFiles/run-gurka_route_incidents.dir/all: test/gurka/CMakeFiles/gurka_route_incidents.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_route_incidents.dir/build.make test/gurka/CMakeFiles/run-gurka_route_incidents.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_route_incidents.dir/build.make test/gurka/CMakeFiles/run-gurka_route_incidents.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=53 "Built target run-gurka_route_incidents"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-gurka_route_incidents"
 .PHONY : test/gurka/CMakeFiles/run-gurka_route_incidents.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_route_incidents.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_route_incidents.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_route_incidents.dir/rule
@@ -19730,12 +19730,12 @@ test/gurka/CMakeFiles/gurka_stop_signs.dir/clean:
 test/gurka/CMakeFiles/run-gurka_stop_signs.dir/all: test/gurka/CMakeFiles/gurka_stop_signs.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_stop_signs.dir/build.make test/gurka/CMakeFiles/run-gurka_stop_signs.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_stop_signs.dir/build.make test/gurka/CMakeFiles/run-gurka_stop_signs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-gurka_stop_signs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=54 "Built target run-gurka_stop_signs"
 .PHONY : test/gurka/CMakeFiles/run-gurka_stop_signs.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_stop_signs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 25
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_stop_signs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_stop_signs.dir/rule
@@ -19797,12 +19797,12 @@ test/gurka/CMakeFiles/gurka_sump_buster.dir/clean:
 test/gurka/CMakeFiles/run-gurka_sump_buster.dir/all: test/gurka/CMakeFiles/gurka_sump_buster.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_sump_buster.dir/build.make test/gurka/CMakeFiles/run-gurka_sump_buster.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_sump_buster.dir/build.make test/gurka/CMakeFiles/run-gurka_sump_buster.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=54 "Built target run-gurka_sump_buster"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-gurka_sump_buster"
 .PHONY : test/gurka/CMakeFiles/run-gurka_sump_buster.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_sump_buster.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_sump_buster.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_sump_buster.dir/rule
@@ -20369,12 +20369,12 @@ test/gurka/CMakeFiles/gurka_traffic_smoothing.dir/all: googletest/googletest/CMa
 test/gurka/CMakeFiles/gurka_traffic_smoothing.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/gurka_traffic_smoothing.dir/build.make test/gurka/CMakeFiles/gurka_traffic_smoothing.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/gurka_traffic_smoothing.dir/build.make test/gurka/CMakeFiles/gurka_traffic_smoothing.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target gurka_traffic_smoothing"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=29 "Built target gurka_traffic_smoothing"
 .PHONY : test/gurka/CMakeFiles/gurka_traffic_smoothing.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/gurka_traffic_smoothing.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/gurka_traffic_smoothing.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/gurka_traffic_smoothing.dir/rule
@@ -20400,12 +20400,12 @@ test/gurka/CMakeFiles/gurka_traffic_smoothing.dir/clean:
 test/gurka/CMakeFiles/run-gurka_traffic_smoothing.dir/all: test/gurka/CMakeFiles/gurka_traffic_smoothing.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_traffic_smoothing.dir/build.make test/gurka/CMakeFiles/run-gurka_traffic_smoothing.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_traffic_smoothing.dir/build.make test/gurka/CMakeFiles/run-gurka_traffic_smoothing.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-gurka_traffic_smoothing"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=55 "Built target run-gurka_traffic_smoothing"
 .PHONY : test/gurka/CMakeFiles/run-gurka_traffic_smoothing.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_traffic_smoothing.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 25
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_traffic_smoothing.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_traffic_smoothing.dir/rule
@@ -20436,12 +20436,12 @@ test/gurka/CMakeFiles/gurka_trimming.dir/all: googletest/googletest/CMakeFiles/g
 test/gurka/CMakeFiles/gurka_trimming.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/gurka_trimming.dir/build.make test/gurka/CMakeFiles/gurka_trimming.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/gurka_trimming.dir/build.make test/gurka/CMakeFiles/gurka_trimming.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=29 "Built target gurka_trimming"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target gurka_trimming"
 .PHONY : test/gurka/CMakeFiles/gurka_trimming.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/gurka_trimming.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/gurka_trimming.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/gurka_trimming.dir/rule
@@ -20472,7 +20472,7 @@ test/gurka/CMakeFiles/run-gurka_trimming.dir/all: test/gurka/CMakeFiles/gurka_tr
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_trimming.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_trimming.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_trimming.dir/rule
@@ -20534,12 +20534,12 @@ test/gurka/CMakeFiles/gurka_truck.dir/clean:
 test/gurka/CMakeFiles/run-gurka_truck.dir/all: test/gurka/CMakeFiles/gurka_truck.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_truck.dir/build.make test/gurka/CMakeFiles/run-gurka_truck.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_truck.dir/build.make test/gurka/CMakeFiles/run-gurka_truck.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=55 "Built target run-gurka_truck"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-gurka_truck"
 .PHONY : test/gurka/CMakeFiles/run-gurka_truck.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_truck.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_truck.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_truck.dir/rule
@@ -21106,12 +21106,12 @@ test/gurka/CMakeFiles/gurka_use_platforms.dir/all: googletest/googletest/CMakeFi
 test/gurka/CMakeFiles/gurka_use_platforms.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/gurka_use_platforms.dir/build.make test/gurka/CMakeFiles/gurka_use_platforms.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/gurka_use_platforms.dir/build.make test/gurka/CMakeFiles/gurka_use_platforms.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target gurka_use_platforms"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=31 "Built target gurka_use_platforms"
 .PHONY : test/gurka/CMakeFiles/gurka_use_platforms.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/gurka_use_platforms.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/gurka_use_platforms.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/gurka_use_platforms.dir/rule
@@ -21137,12 +21137,12 @@ test/gurka/CMakeFiles/gurka_use_platforms.dir/clean:
 test/gurka/CMakeFiles/run-gurka_use_platforms.dir/all: test/gurka/CMakeFiles/gurka_use_platforms.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_use_platforms.dir/build.make test/gurka/CMakeFiles/run-gurka_use_platforms.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_use_platforms.dir/build.make test/gurka/CMakeFiles/run-gurka_use_platforms.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-gurka_use_platforms"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=56 "Built target run-gurka_use_platforms"
 .PHONY : test/gurka/CMakeFiles/run-gurka_use_platforms.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_use_platforms.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 25
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_use_platforms.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_use_platforms.dir/rule
@@ -21173,12 +21173,12 @@ test/gurka/CMakeFiles/gurka_use_tracks.dir/all: googletest/googletest/CMakeFiles
 test/gurka/CMakeFiles/gurka_use_tracks.dir/all: googletest/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/gurka_use_tracks.dir/build.make test/gurka/CMakeFiles/gurka_use_tracks.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/gurka_use_tracks.dir/build.make test/gurka/CMakeFiles/gurka_use_tracks.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=31 "Built target gurka_use_tracks"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target gurka_use_tracks"
 .PHONY : test/gurka/CMakeFiles/gurka_use_tracks.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/gurka_use_tracks.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/gurka_use_tracks.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/gurka_use_tracks.dir/rule
@@ -21204,12 +21204,12 @@ test/gurka/CMakeFiles/gurka_use_tracks.dir/clean:
 test/gurka/CMakeFiles/run-gurka_use_tracks.dir/all: test/gurka/CMakeFiles/gurka_use_tracks.dir/all
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_use_tracks.dir/build.make test/gurka/CMakeFiles/run-gurka_use_tracks.dir/depend
 	$(MAKE) $(MAKESILENT) -f test/gurka/CMakeFiles/run-gurka_use_tracks.dir/build.make test/gurka/CMakeFiles/run-gurka_use_tracks.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=56 "Built target run-gurka_use_tracks"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num= "Built target run-gurka_use_tracks"
 .PHONY : test/gurka/CMakeFiles/run-gurka_use_tracks.dir/all
 
 # Build rule for subdir invocation for target.
 test/gurka/CMakeFiles/run-gurka_use_tracks.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 25
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 23
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test/gurka/CMakeFiles/run-gurka_use_tracks.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles 0
 .PHONY : test/gurka/CMakeFiles/run-gurka_use_tracks.dir/rule

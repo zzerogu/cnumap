@@ -154,6 +154,11 @@ inline constexpr Costing_Options::Impl_::Impl_(
         exclude_tolls_{false},
         exclude_highways_{false},
         exclude_ferries_{false},
+        has_standard_wheelchair_speed_{},
+        has_basic_power_wheelchair_speed_{},
+        has_advanced_power_wheelchair_speed_{},
+        has_wheelchair_slope_penalty_{},
+        has_wheelchair_surface_penalty_{},
         has_maneuver_penalty_{},
         has_destination_only_penalty_{},
         has_gate_cost_{},
@@ -362,15 +367,17 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 }  // namespace valhalla
 namespace valhalla {
 PROTOBUF_CONSTINIT const uint32_t Costing_Type_internal_data_[] = {
-    786432u, 0u, };
+    983040u, 0u, };
 bool Costing_Type_IsValid(int value) {
-  return 0 <= value && value <= 11;
+  return 0 <= value && value <= 14;
 }
 static ::google::protobuf::internal::ExplicitlyConstructed<std::string>
-    Costing_Type_strings[12] = {};
+    Costing_Type_strings[15] = {};
 
 static const char Costing_Type_names[] = {
+    "advanced_power_wheelchair"
     "auto_"
+    "basic_power_wheelchair"
     "bicycle"
     "bikeshare"
     "bus"
@@ -379,6 +386,7 @@ static const char Costing_Type_names[] = {
     "multimodal"
     "none_"
     "pedestrian"
+    "standard_wheelchair"
     "taxi"
     "transit"
     "truck"
@@ -386,44 +394,50 @@ static const char Costing_Type_names[] = {
 
 static const ::google::protobuf::internal::EnumEntry Costing_Type_entries[] =
     {
-        {{&Costing_Type_names[0], 5}, 10},
-        {{&Costing_Type_names[5], 7}, 1},
-        {{&Costing_Type_names[12], 9}, 11},
-        {{&Costing_Type_names[21], 3}, 2},
-        {{&Costing_Type_names[24], 13}, 3},
-        {{&Costing_Type_names[37], 10}, 8},
-        {{&Costing_Type_names[47], 10}, 4},
-        {{&Costing_Type_names[57], 5}, 0},
-        {{&Costing_Type_names[62], 10}, 5},
-        {{&Costing_Type_names[72], 4}, 9},
-        {{&Costing_Type_names[76], 7}, 6},
-        {{&Costing_Type_names[83], 5}, 7},
+        {{&Costing_Type_names[0], 25}, 14},
+        {{&Costing_Type_names[25], 5}, 10},
+        {{&Costing_Type_names[30], 22}, 13},
+        {{&Costing_Type_names[52], 7}, 1},
+        {{&Costing_Type_names[59], 9}, 11},
+        {{&Costing_Type_names[68], 3}, 2},
+        {{&Costing_Type_names[71], 13}, 3},
+        {{&Costing_Type_names[84], 10}, 8},
+        {{&Costing_Type_names[94], 10}, 4},
+        {{&Costing_Type_names[104], 5}, 0},
+        {{&Costing_Type_names[109], 10}, 5},
+        {{&Costing_Type_names[119], 19}, 12},
+        {{&Costing_Type_names[138], 4}, 9},
+        {{&Costing_Type_names[142], 7}, 6},
+        {{&Costing_Type_names[149], 5}, 7},
 };
 
 static const int Costing_Type_entries_by_number[] = {
-    7,  // 0 -> none_
-    1,  // 1 -> bicycle
-    3,  // 2 -> bus
-    4,  // 3 -> motor_scooter
-    6,  // 4 -> multimodal
-    8,  // 5 -> pedestrian
-    10,  // 6 -> transit
-    11,  // 7 -> truck
-    5,  // 8 -> motorcycle
-    9,  // 9 -> taxi
-    0,  // 10 -> auto_
-    2,  // 11 -> bikeshare
+    9,  // 0 -> none_
+    3,  // 1 -> bicycle
+    5,  // 2 -> bus
+    6,  // 3 -> motor_scooter
+    8,  // 4 -> multimodal
+    10,  // 5 -> pedestrian
+    13,  // 6 -> transit
+    14,  // 7 -> truck
+    7,  // 8 -> motorcycle
+    12,  // 9 -> taxi
+    1,  // 10 -> auto_
+    4,  // 11 -> bikeshare
+    11,  // 12 -> standard_wheelchair
+    2,  // 13 -> basic_power_wheelchair
+    0,  // 14 -> advanced_power_wheelchair
 };
 
 const std::string& Costing_Type_Name(Costing_Type value) {
   static const bool kDummy =
       ::google::protobuf::internal::InitializeEnumStrings(
           Costing_Type_entries, Costing_Type_entries_by_number,
-          12, Costing_Type_strings);
+          15, Costing_Type_strings);
   (void)kDummy;
 
   int idx = ::google::protobuf::internal::LookUpEnumName(
-      Costing_Type_entries, Costing_Type_entries_by_number, 12,
+      Costing_Type_entries, Costing_Type_entries_by_number, 15,
       value);
   return idx == -1 ? ::google::protobuf::internal::GetEmptyString()
                    : Costing_Type_strings[idx].get();
@@ -432,7 +446,7 @@ const std::string& Costing_Type_Name(Costing_Type value) {
 bool Costing_Type_Parse(absl::string_view name, Costing_Type* value) {
   int int_value;
   bool success = ::google::protobuf::internal::LookUpEnumValue(
-      Costing_Type_entries, 12, name, &int_value);
+      Costing_Type_entries, 15, name, &int_value);
   if (success) {
     *value = static_cast<Costing_Type>(int_value);
   }
@@ -453,6 +467,9 @@ constexpr Costing_Type Costing::motorcycle;
 constexpr Costing_Type Costing::taxi;
 constexpr Costing_Type Costing::auto_;
 constexpr Costing_Type Costing::bikeshare;
+constexpr Costing_Type Costing::standard_wheelchair;
+constexpr Costing_Type Costing::basic_power_wheelchair;
+constexpr Costing_Type Costing::advanced_power_wheelchair;
 constexpr Costing_Type Costing::Type_MIN;
 constexpr Costing_Type Costing::Type_MAX;
 constexpr int Costing::Type_ARRAYSIZE;
@@ -2393,6 +2410,11 @@ inline PROTOBUF_NDEBUG_INLINE Costing_Options::Impl_::Impl_(
         filter_operator_ids_{visibility, arena, from.filter_operator_ids_},
         filter_route_ids_{visibility, arena, from.filter_route_ids_},
         exclude_edges_{visibility, arena, from.exclude_edges_},
+        has_standard_wheelchair_speed_{},
+        has_basic_power_wheelchair_speed_{},
+        has_advanced_power_wheelchair_speed_{},
+        has_wheelchair_slope_penalty_{},
+        has_wheelchair_surface_penalty_{},
         has_maneuver_penalty_{},
         has_destination_only_penalty_{},
         has_gate_cost_{},
@@ -2467,7 +2489,7 @@ inline PROTOBUF_NDEBUG_INLINE Costing_Options::Impl_::Impl_(
         has_elevator_penalty_{},
         has_hgv_no_access_penalty_{},
         _cached_size_{0},
-        _oneof_case_{from._oneof_case_[0], from._oneof_case_[1], from._oneof_case_[2], from._oneof_case_[3], from._oneof_case_[4], from._oneof_case_[5], from._oneof_case_[6], from._oneof_case_[7], from._oneof_case_[8], from._oneof_case_[9], from._oneof_case_[10], from._oneof_case_[11], from._oneof_case_[12], from._oneof_case_[13], from._oneof_case_[14], from._oneof_case_[15], from._oneof_case_[16], from._oneof_case_[17], from._oneof_case_[18], from._oneof_case_[19], from._oneof_case_[20], from._oneof_case_[21], from._oneof_case_[22], from._oneof_case_[23], from._oneof_case_[24], from._oneof_case_[25], from._oneof_case_[26], from._oneof_case_[27], from._oneof_case_[28], from._oneof_case_[29], from._oneof_case_[30], from._oneof_case_[31], from._oneof_case_[32], from._oneof_case_[33], from._oneof_case_[34], from._oneof_case_[35], from._oneof_case_[36], from._oneof_case_[37], from._oneof_case_[38], from._oneof_case_[39], from._oneof_case_[40], from._oneof_case_[41], from._oneof_case_[42], from._oneof_case_[43], from._oneof_case_[44], from._oneof_case_[45], from._oneof_case_[46], from._oneof_case_[47], from._oneof_case_[48], from._oneof_case_[49], from._oneof_case_[50], from._oneof_case_[51], from._oneof_case_[52], from._oneof_case_[53], from._oneof_case_[54], from._oneof_case_[55], from._oneof_case_[56], from._oneof_case_[57], from._oneof_case_[58], from._oneof_case_[59], from._oneof_case_[60], from._oneof_case_[61], from._oneof_case_[62], from._oneof_case_[63], from._oneof_case_[64], from._oneof_case_[65], from._oneof_case_[66], from._oneof_case_[67], from._oneof_case_[68], from._oneof_case_[69], from._oneof_case_[70], from._oneof_case_[71], from._oneof_case_[72]} {}
+        _oneof_case_{from._oneof_case_[0], from._oneof_case_[1], from._oneof_case_[2], from._oneof_case_[3], from._oneof_case_[4], from._oneof_case_[5], from._oneof_case_[6], from._oneof_case_[7], from._oneof_case_[8], from._oneof_case_[9], from._oneof_case_[10], from._oneof_case_[11], from._oneof_case_[12], from._oneof_case_[13], from._oneof_case_[14], from._oneof_case_[15], from._oneof_case_[16], from._oneof_case_[17], from._oneof_case_[18], from._oneof_case_[19], from._oneof_case_[20], from._oneof_case_[21], from._oneof_case_[22], from._oneof_case_[23], from._oneof_case_[24], from._oneof_case_[25], from._oneof_case_[26], from._oneof_case_[27], from._oneof_case_[28], from._oneof_case_[29], from._oneof_case_[30], from._oneof_case_[31], from._oneof_case_[32], from._oneof_case_[33], from._oneof_case_[34], from._oneof_case_[35], from._oneof_case_[36], from._oneof_case_[37], from._oneof_case_[38], from._oneof_case_[39], from._oneof_case_[40], from._oneof_case_[41], from._oneof_case_[42], from._oneof_case_[43], from._oneof_case_[44], from._oneof_case_[45], from._oneof_case_[46], from._oneof_case_[47], from._oneof_case_[48], from._oneof_case_[49], from._oneof_case_[50], from._oneof_case_[51], from._oneof_case_[52], from._oneof_case_[53], from._oneof_case_[54], from._oneof_case_[55], from._oneof_case_[56], from._oneof_case_[57], from._oneof_case_[58], from._oneof_case_[59], from._oneof_case_[60], from._oneof_case_[61], from._oneof_case_[62], from._oneof_case_[63], from._oneof_case_[64], from._oneof_case_[65], from._oneof_case_[66], from._oneof_case_[67], from._oneof_case_[68], from._oneof_case_[69], from._oneof_case_[70], from._oneof_case_[71], from._oneof_case_[72], from._oneof_case_[73], from._oneof_case_[74], from._oneof_case_[75], from._oneof_case_[76], from._oneof_case_[77]} {}
 
 Costing_Options::Costing_Options(
     ::google::protobuf::Arena* arena,
@@ -2489,6 +2511,41 @@ Costing_Options::Costing_Options(
            offsetof(Impl_, exclude_ferries_) -
                offsetof(Impl_, filter_stop_action_) +
                sizeof(Impl_::exclude_ferries_));
+  switch (has_standard_wheelchair_speed_case()) {
+    case HAS_STANDARD_WHEELCHAIR_SPEED_NOT_SET:
+      break;
+      case kStandardWheelchairSpeed:
+        _impl_.has_standard_wheelchair_speed_.standard_wheelchair_speed_ = from._impl_.has_standard_wheelchair_speed_.standard_wheelchair_speed_;
+        break;
+  }
+  switch (has_basic_power_wheelchair_speed_case()) {
+    case HAS_BASIC_POWER_WHEELCHAIR_SPEED_NOT_SET:
+      break;
+      case kBasicPowerWheelchairSpeed:
+        _impl_.has_basic_power_wheelchair_speed_.basic_power_wheelchair_speed_ = from._impl_.has_basic_power_wheelchair_speed_.basic_power_wheelchair_speed_;
+        break;
+  }
+  switch (has_advanced_power_wheelchair_speed_case()) {
+    case HAS_ADVANCED_POWER_WHEELCHAIR_SPEED_NOT_SET:
+      break;
+      case kAdvancedPowerWheelchairSpeed:
+        _impl_.has_advanced_power_wheelchair_speed_.advanced_power_wheelchair_speed_ = from._impl_.has_advanced_power_wheelchair_speed_.advanced_power_wheelchair_speed_;
+        break;
+  }
+  switch (has_wheelchair_slope_penalty_case()) {
+    case HAS_WHEELCHAIR_SLOPE_PENALTY_NOT_SET:
+      break;
+      case kWheelchairSlopePenalty:
+        _impl_.has_wheelchair_slope_penalty_.wheelchair_slope_penalty_ = from._impl_.has_wheelchair_slope_penalty_.wheelchair_slope_penalty_;
+        break;
+  }
+  switch (has_wheelchair_surface_penalty_case()) {
+    case HAS_WHEELCHAIR_SURFACE_PENALTY_NOT_SET:
+      break;
+      case kWheelchairSurfacePenalty:
+        _impl_.has_wheelchair_surface_penalty_.wheelchair_surface_penalty_ = from._impl_.has_wheelchair_surface_penalty_.wheelchair_surface_penalty_;
+        break;
+  }
   switch (has_maneuver_penalty_case()) {
     case HAS_MANEUVER_PENALTY_NOT_SET:
       break;
@@ -3010,6 +3067,11 @@ inline PROTOBUF_NDEBUG_INLINE Costing_Options::Impl_::Impl_(
         filter_operator_ids_{visibility, arena},
         filter_route_ids_{visibility, arena},
         exclude_edges_{visibility, arena},
+        has_standard_wheelchair_speed_{},
+        has_basic_power_wheelchair_speed_{},
+        has_advanced_power_wheelchair_speed_{},
+        has_wheelchair_slope_penalty_{},
+        has_wheelchair_surface_penalty_{},
         has_maneuver_penalty_{},
         has_destination_only_penalty_{},
         has_gate_cost_{},
@@ -3103,6 +3165,21 @@ inline void Costing_Options::SharedDtor(MessageLite& self) {
   Costing_Options& this_ = static_cast<Costing_Options&>(self);
   this_._internal_metadata_.Delete<std::string>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
+  if (this_.has_has_standard_wheelchair_speed()) {
+    this_.clear_has_standard_wheelchair_speed();
+  }
+  if (this_.has_has_basic_power_wheelchair_speed()) {
+    this_.clear_has_basic_power_wheelchair_speed();
+  }
+  if (this_.has_has_advanced_power_wheelchair_speed()) {
+    this_.clear_has_advanced_power_wheelchair_speed();
+  }
+  if (this_.has_has_wheelchair_slope_penalty()) {
+    this_.clear_has_wheelchair_slope_penalty();
+  }
+  if (this_.has_has_wheelchair_surface_penalty()) {
+    this_.clear_has_wheelchair_surface_penalty();
+  }
   if (this_.has_has_maneuver_penalty()) {
     this_.clear_has_maneuver_penalty();
   }
@@ -3325,6 +3402,81 @@ inline void Costing_Options::SharedDtor(MessageLite& self) {
   this_._impl_.~Impl_();
 }
 
+void Costing_Options::clear_has_standard_wheelchair_speed() {
+// @@protoc_insertion_point(one_of_clear_start:valhalla.Costing.Options)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  switch (has_standard_wheelchair_speed_case()) {
+    case kStandardWheelchairSpeed: {
+      // No need to clear
+      break;
+    }
+    case HAS_STANDARD_WHEELCHAIR_SPEED_NOT_SET: {
+      break;
+    }
+  }
+  _impl_._oneof_case_[0] = HAS_STANDARD_WHEELCHAIR_SPEED_NOT_SET;
+}
+
+void Costing_Options::clear_has_basic_power_wheelchair_speed() {
+// @@protoc_insertion_point(one_of_clear_start:valhalla.Costing.Options)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  switch (has_basic_power_wheelchair_speed_case()) {
+    case kBasicPowerWheelchairSpeed: {
+      // No need to clear
+      break;
+    }
+    case HAS_BASIC_POWER_WHEELCHAIR_SPEED_NOT_SET: {
+      break;
+    }
+  }
+  _impl_._oneof_case_[1] = HAS_BASIC_POWER_WHEELCHAIR_SPEED_NOT_SET;
+}
+
+void Costing_Options::clear_has_advanced_power_wheelchair_speed() {
+// @@protoc_insertion_point(one_of_clear_start:valhalla.Costing.Options)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  switch (has_advanced_power_wheelchair_speed_case()) {
+    case kAdvancedPowerWheelchairSpeed: {
+      // No need to clear
+      break;
+    }
+    case HAS_ADVANCED_POWER_WHEELCHAIR_SPEED_NOT_SET: {
+      break;
+    }
+  }
+  _impl_._oneof_case_[2] = HAS_ADVANCED_POWER_WHEELCHAIR_SPEED_NOT_SET;
+}
+
+void Costing_Options::clear_has_wheelchair_slope_penalty() {
+// @@protoc_insertion_point(one_of_clear_start:valhalla.Costing.Options)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  switch (has_wheelchair_slope_penalty_case()) {
+    case kWheelchairSlopePenalty: {
+      // No need to clear
+      break;
+    }
+    case HAS_WHEELCHAIR_SLOPE_PENALTY_NOT_SET: {
+      break;
+    }
+  }
+  _impl_._oneof_case_[3] = HAS_WHEELCHAIR_SLOPE_PENALTY_NOT_SET;
+}
+
+void Costing_Options::clear_has_wheelchair_surface_penalty() {
+// @@protoc_insertion_point(one_of_clear_start:valhalla.Costing.Options)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  switch (has_wheelchair_surface_penalty_case()) {
+    case kWheelchairSurfacePenalty: {
+      // No need to clear
+      break;
+    }
+    case HAS_WHEELCHAIR_SURFACE_PENALTY_NOT_SET: {
+      break;
+    }
+  }
+  _impl_._oneof_case_[4] = HAS_WHEELCHAIR_SURFACE_PENALTY_NOT_SET;
+}
+
 void Costing_Options::clear_has_maneuver_penalty() {
 // @@protoc_insertion_point(one_of_clear_start:valhalla.Costing.Options)
   ::google::protobuf::internal::TSanWrite(&_impl_);
@@ -3337,7 +3489,7 @@ void Costing_Options::clear_has_maneuver_penalty() {
       break;
     }
   }
-  _impl_._oneof_case_[0] = HAS_MANEUVER_PENALTY_NOT_SET;
+  _impl_._oneof_case_[5] = HAS_MANEUVER_PENALTY_NOT_SET;
 }
 
 void Costing_Options::clear_has_destination_only_penalty() {
@@ -3352,7 +3504,7 @@ void Costing_Options::clear_has_destination_only_penalty() {
       break;
     }
   }
-  _impl_._oneof_case_[1] = HAS_DESTINATION_ONLY_PENALTY_NOT_SET;
+  _impl_._oneof_case_[6] = HAS_DESTINATION_ONLY_PENALTY_NOT_SET;
 }
 
 void Costing_Options::clear_has_gate_cost() {
@@ -3367,7 +3519,7 @@ void Costing_Options::clear_has_gate_cost() {
       break;
     }
   }
-  _impl_._oneof_case_[2] = HAS_GATE_COST_NOT_SET;
+  _impl_._oneof_case_[7] = HAS_GATE_COST_NOT_SET;
 }
 
 void Costing_Options::clear_has_gate_penalty() {
@@ -3382,7 +3534,7 @@ void Costing_Options::clear_has_gate_penalty() {
       break;
     }
   }
-  _impl_._oneof_case_[3] = HAS_GATE_PENALTY_NOT_SET;
+  _impl_._oneof_case_[8] = HAS_GATE_PENALTY_NOT_SET;
 }
 
 void Costing_Options::clear_has_toll_booth_cost() {
@@ -3397,7 +3549,7 @@ void Costing_Options::clear_has_toll_booth_cost() {
       break;
     }
   }
-  _impl_._oneof_case_[4] = HAS_TOLL_BOOTH_COST_NOT_SET;
+  _impl_._oneof_case_[9] = HAS_TOLL_BOOTH_COST_NOT_SET;
 }
 
 void Costing_Options::clear_has_toll_booth_penalty() {
@@ -3412,7 +3564,7 @@ void Costing_Options::clear_has_toll_booth_penalty() {
       break;
     }
   }
-  _impl_._oneof_case_[5] = HAS_TOLL_BOOTH_PENALTY_NOT_SET;
+  _impl_._oneof_case_[10] = HAS_TOLL_BOOTH_PENALTY_NOT_SET;
 }
 
 void Costing_Options::clear_has_alley_penalty() {
@@ -3427,7 +3579,7 @@ void Costing_Options::clear_has_alley_penalty() {
       break;
     }
   }
-  _impl_._oneof_case_[6] = HAS_ALLEY_PENALTY_NOT_SET;
+  _impl_._oneof_case_[11] = HAS_ALLEY_PENALTY_NOT_SET;
 }
 
 void Costing_Options::clear_has_country_crossing_cost() {
@@ -3442,7 +3594,7 @@ void Costing_Options::clear_has_country_crossing_cost() {
       break;
     }
   }
-  _impl_._oneof_case_[7] = HAS_COUNTRY_CROSSING_COST_NOT_SET;
+  _impl_._oneof_case_[12] = HAS_COUNTRY_CROSSING_COST_NOT_SET;
 }
 
 void Costing_Options::clear_has_country_crossing_penalty() {
@@ -3457,7 +3609,7 @@ void Costing_Options::clear_has_country_crossing_penalty() {
       break;
     }
   }
-  _impl_._oneof_case_[8] = HAS_COUNTRY_CROSSING_PENALTY_NOT_SET;
+  _impl_._oneof_case_[13] = HAS_COUNTRY_CROSSING_PENALTY_NOT_SET;
 }
 
 void Costing_Options::clear_has_ferry_cost() {
@@ -3472,7 +3624,7 @@ void Costing_Options::clear_has_ferry_cost() {
       break;
     }
   }
-  _impl_._oneof_case_[9] = HAS_FERRY_COST_NOT_SET;
+  _impl_._oneof_case_[14] = HAS_FERRY_COST_NOT_SET;
 }
 
 void Costing_Options::clear_has_avoid_bad_surfaces() {
@@ -3487,7 +3639,7 @@ void Costing_Options::clear_has_avoid_bad_surfaces() {
       break;
     }
   }
-  _impl_._oneof_case_[10] = HAS_AVOID_BAD_SURFACES_NOT_SET;
+  _impl_._oneof_case_[15] = HAS_AVOID_BAD_SURFACES_NOT_SET;
 }
 
 void Costing_Options::clear_has_use_ferry() {
@@ -3502,7 +3654,7 @@ void Costing_Options::clear_has_use_ferry() {
       break;
     }
   }
-  _impl_._oneof_case_[11] = HAS_USE_FERRY_NOT_SET;
+  _impl_._oneof_case_[16] = HAS_USE_FERRY_NOT_SET;
 }
 
 void Costing_Options::clear_has_use_highways() {
@@ -3517,7 +3669,7 @@ void Costing_Options::clear_has_use_highways() {
       break;
     }
   }
-  _impl_._oneof_case_[12] = HAS_USE_HIGHWAYS_NOT_SET;
+  _impl_._oneof_case_[17] = HAS_USE_HIGHWAYS_NOT_SET;
 }
 
 void Costing_Options::clear_has_use_tolls() {
@@ -3532,7 +3684,7 @@ void Costing_Options::clear_has_use_tolls() {
       break;
     }
   }
-  _impl_._oneof_case_[13] = HAS_USE_TOLLS_NOT_SET;
+  _impl_._oneof_case_[18] = HAS_USE_TOLLS_NOT_SET;
 }
 
 void Costing_Options::clear_has_use_roads() {
@@ -3547,7 +3699,7 @@ void Costing_Options::clear_has_use_roads() {
       break;
     }
   }
-  _impl_._oneof_case_[14] = HAS_USE_ROADS_NOT_SET;
+  _impl_._oneof_case_[19] = HAS_USE_ROADS_NOT_SET;
 }
 
 void Costing_Options::clear_has_max_distance() {
@@ -3562,7 +3714,7 @@ void Costing_Options::clear_has_max_distance() {
       break;
     }
   }
-  _impl_._oneof_case_[15] = HAS_MAX_DISTANCE_NOT_SET;
+  _impl_._oneof_case_[20] = HAS_MAX_DISTANCE_NOT_SET;
 }
 
 void Costing_Options::clear_has_walking_speed() {
@@ -3577,7 +3729,7 @@ void Costing_Options::clear_has_walking_speed() {
       break;
     }
   }
-  _impl_._oneof_case_[16] = HAS_WALKING_SPEED_NOT_SET;
+  _impl_._oneof_case_[21] = HAS_WALKING_SPEED_NOT_SET;
 }
 
 void Costing_Options::clear_has_step_penalty() {
@@ -3592,7 +3744,7 @@ void Costing_Options::clear_has_step_penalty() {
       break;
     }
   }
-  _impl_._oneof_case_[17] = HAS_STEP_PENALTY_NOT_SET;
+  _impl_._oneof_case_[22] = HAS_STEP_PENALTY_NOT_SET;
 }
 
 void Costing_Options::clear_has_max_grade() {
@@ -3607,7 +3759,7 @@ void Costing_Options::clear_has_max_grade() {
       break;
     }
   }
-  _impl_._oneof_case_[18] = HAS_MAX_GRADE_NOT_SET;
+  _impl_._oneof_case_[23] = HAS_MAX_GRADE_NOT_SET;
 }
 
 void Costing_Options::clear_has_max_hiking_difficulty() {
@@ -3622,7 +3774,7 @@ void Costing_Options::clear_has_max_hiking_difficulty() {
       break;
     }
   }
-  _impl_._oneof_case_[19] = HAS_MAX_HIKING_DIFFICULTY_NOT_SET;
+  _impl_._oneof_case_[24] = HAS_MAX_HIKING_DIFFICULTY_NOT_SET;
 }
 
 void Costing_Options::clear_has_mode_factor() {
@@ -3637,7 +3789,7 @@ void Costing_Options::clear_has_mode_factor() {
       break;
     }
   }
-  _impl_._oneof_case_[20] = HAS_MODE_FACTOR_NOT_SET;
+  _impl_._oneof_case_[25] = HAS_MODE_FACTOR_NOT_SET;
 }
 
 void Costing_Options::clear_has_walkway_factor() {
@@ -3652,7 +3804,7 @@ void Costing_Options::clear_has_walkway_factor() {
       break;
     }
   }
-  _impl_._oneof_case_[21] = HAS_WALKWAY_FACTOR_NOT_SET;
+  _impl_._oneof_case_[26] = HAS_WALKWAY_FACTOR_NOT_SET;
 }
 
 void Costing_Options::clear_has_sidewalk_factor() {
@@ -3667,7 +3819,7 @@ void Costing_Options::clear_has_sidewalk_factor() {
       break;
     }
   }
-  _impl_._oneof_case_[22] = HAS_SIDEWALK_FACTOR_NOT_SET;
+  _impl_._oneof_case_[27] = HAS_SIDEWALK_FACTOR_NOT_SET;
 }
 
 void Costing_Options::clear_has_alley_factor() {
@@ -3682,7 +3834,7 @@ void Costing_Options::clear_has_alley_factor() {
       break;
     }
   }
-  _impl_._oneof_case_[23] = HAS_ALLEY_FACTOR_NOT_SET;
+  _impl_._oneof_case_[28] = HAS_ALLEY_FACTOR_NOT_SET;
 }
 
 void Costing_Options::clear_has_driveway_factor() {
@@ -3697,7 +3849,7 @@ void Costing_Options::clear_has_driveway_factor() {
       break;
     }
   }
-  _impl_._oneof_case_[24] = HAS_DRIVEWAY_FACTOR_NOT_SET;
+  _impl_._oneof_case_[29] = HAS_DRIVEWAY_FACTOR_NOT_SET;
 }
 
 void Costing_Options::clear_has_driveway_penalty() {
@@ -3712,7 +3864,7 @@ void Costing_Options::clear_has_driveway_penalty() {
       break;
     }
   }
-  _impl_._oneof_case_[25] = HAS_DRIVEWAY_PENALTY_NOT_SET;
+  _impl_._oneof_case_[30] = HAS_DRIVEWAY_PENALTY_NOT_SET;
 }
 
 void Costing_Options::clear_has_transit_start_end_max_distance() {
@@ -3727,7 +3879,7 @@ void Costing_Options::clear_has_transit_start_end_max_distance() {
       break;
     }
   }
-  _impl_._oneof_case_[26] = HAS_TRANSIT_START_END_MAX_DISTANCE_NOT_SET;
+  _impl_._oneof_case_[31] = HAS_TRANSIT_START_END_MAX_DISTANCE_NOT_SET;
 }
 
 void Costing_Options::clear_has_transit_transfer_max_distance() {
@@ -3742,7 +3894,7 @@ void Costing_Options::clear_has_transit_transfer_max_distance() {
       break;
     }
   }
-  _impl_._oneof_case_[27] = HAS_TRANSIT_TRANSFER_MAX_DISTANCE_NOT_SET;
+  _impl_._oneof_case_[32] = HAS_TRANSIT_TRANSFER_MAX_DISTANCE_NOT_SET;
 }
 
 void Costing_Options::clear_has_transport_type() {
@@ -3757,7 +3909,7 @@ void Costing_Options::clear_has_transport_type() {
       break;
     }
   }
-  _impl_._oneof_case_[28] = HAS_TRANSPORT_TYPE_NOT_SET;
+  _impl_._oneof_case_[33] = HAS_TRANSPORT_TYPE_NOT_SET;
 }
 
 void Costing_Options::clear_has_top_speed() {
@@ -3772,7 +3924,7 @@ void Costing_Options::clear_has_top_speed() {
       break;
     }
   }
-  _impl_._oneof_case_[29] = HAS_TOP_SPEED_NOT_SET;
+  _impl_._oneof_case_[34] = HAS_TOP_SPEED_NOT_SET;
 }
 
 void Costing_Options::clear_has_use_hills() {
@@ -3787,7 +3939,7 @@ void Costing_Options::clear_has_use_hills() {
       break;
     }
   }
-  _impl_._oneof_case_[30] = HAS_USE_HILLS_NOT_SET;
+  _impl_._oneof_case_[35] = HAS_USE_HILLS_NOT_SET;
 }
 
 void Costing_Options::clear_has_use_primary() {
@@ -3802,7 +3954,7 @@ void Costing_Options::clear_has_use_primary() {
       break;
     }
   }
-  _impl_._oneof_case_[31] = HAS_USE_PRIMARY_NOT_SET;
+  _impl_._oneof_case_[36] = HAS_USE_PRIMARY_NOT_SET;
 }
 
 void Costing_Options::clear_has_use_trails() {
@@ -3817,7 +3969,7 @@ void Costing_Options::clear_has_use_trails() {
       break;
     }
   }
-  _impl_._oneof_case_[32] = HAS_USE_TRAILS_NOT_SET;
+  _impl_._oneof_case_[37] = HAS_USE_TRAILS_NOT_SET;
 }
 
 void Costing_Options::clear_has_low_class_penalty() {
@@ -3832,7 +3984,7 @@ void Costing_Options::clear_has_low_class_penalty() {
       break;
     }
   }
-  _impl_._oneof_case_[33] = HAS_LOW_CLASS_PENALTY_NOT_SET;
+  _impl_._oneof_case_[38] = HAS_LOW_CLASS_PENALTY_NOT_SET;
 }
 
 void Costing_Options::clear_has_hazmat() {
@@ -3847,7 +3999,7 @@ void Costing_Options::clear_has_hazmat() {
       break;
     }
   }
-  _impl_._oneof_case_[34] = HAS_HAZMAT_NOT_SET;
+  _impl_._oneof_case_[39] = HAS_HAZMAT_NOT_SET;
 }
 
 void Costing_Options::clear_has_weight() {
@@ -3862,7 +4014,7 @@ void Costing_Options::clear_has_weight() {
       break;
     }
   }
-  _impl_._oneof_case_[35] = HAS_WEIGHT_NOT_SET;
+  _impl_._oneof_case_[40] = HAS_WEIGHT_NOT_SET;
 }
 
 void Costing_Options::clear_has_axle_load() {
@@ -3877,7 +4029,7 @@ void Costing_Options::clear_has_axle_load() {
       break;
     }
   }
-  _impl_._oneof_case_[36] = HAS_AXLE_LOAD_NOT_SET;
+  _impl_._oneof_case_[41] = HAS_AXLE_LOAD_NOT_SET;
 }
 
 void Costing_Options::clear_has_height() {
@@ -3892,7 +4044,7 @@ void Costing_Options::clear_has_height() {
       break;
     }
   }
-  _impl_._oneof_case_[37] = HAS_HEIGHT_NOT_SET;
+  _impl_._oneof_case_[42] = HAS_HEIGHT_NOT_SET;
 }
 
 void Costing_Options::clear_has_width() {
@@ -3907,7 +4059,7 @@ void Costing_Options::clear_has_width() {
       break;
     }
   }
-  _impl_._oneof_case_[38] = HAS_WIDTH_NOT_SET;
+  _impl_._oneof_case_[43] = HAS_WIDTH_NOT_SET;
 }
 
 void Costing_Options::clear_has_length() {
@@ -3922,7 +4074,7 @@ void Costing_Options::clear_has_length() {
       break;
     }
   }
-  _impl_._oneof_case_[39] = HAS_LENGTH_NOT_SET;
+  _impl_._oneof_case_[44] = HAS_LENGTH_NOT_SET;
 }
 
 void Costing_Options::clear_has_cycling_speed() {
@@ -3937,7 +4089,7 @@ void Costing_Options::clear_has_cycling_speed() {
       break;
     }
   }
-  _impl_._oneof_case_[40] = HAS_CYCLING_SPEED_NOT_SET;
+  _impl_._oneof_case_[45] = HAS_CYCLING_SPEED_NOT_SET;
 }
 
 void Costing_Options::clear_has_wheelchair() {
@@ -3952,7 +4104,7 @@ void Costing_Options::clear_has_wheelchair() {
       break;
     }
   }
-  _impl_._oneof_case_[41] = HAS_WHEELCHAIR_NOT_SET;
+  _impl_._oneof_case_[46] = HAS_WHEELCHAIR_NOT_SET;
 }
 
 void Costing_Options::clear_has_bicycle() {
@@ -3967,7 +4119,7 @@ void Costing_Options::clear_has_bicycle() {
       break;
     }
   }
-  _impl_._oneof_case_[42] = HAS_BICYCLE_NOT_SET;
+  _impl_._oneof_case_[47] = HAS_BICYCLE_NOT_SET;
 }
 
 void Costing_Options::clear_has_use_bus() {
@@ -3982,7 +4134,7 @@ void Costing_Options::clear_has_use_bus() {
       break;
     }
   }
-  _impl_._oneof_case_[43] = HAS_USE_BUS_NOT_SET;
+  _impl_._oneof_case_[48] = HAS_USE_BUS_NOT_SET;
 }
 
 void Costing_Options::clear_has_use_rail() {
@@ -3997,7 +4149,7 @@ void Costing_Options::clear_has_use_rail() {
       break;
     }
   }
-  _impl_._oneof_case_[44] = HAS_USE_RAIL_NOT_SET;
+  _impl_._oneof_case_[49] = HAS_USE_RAIL_NOT_SET;
 }
 
 void Costing_Options::clear_has_use_transfers() {
@@ -4012,7 +4164,7 @@ void Costing_Options::clear_has_use_transfers() {
       break;
     }
   }
-  _impl_._oneof_case_[45] = HAS_USE_TRANSFERS_NOT_SET;
+  _impl_._oneof_case_[50] = HAS_USE_TRANSFERS_NOT_SET;
 }
 
 void Costing_Options::clear_has_transfer_cost() {
@@ -4027,7 +4179,7 @@ void Costing_Options::clear_has_transfer_cost() {
       break;
     }
   }
-  _impl_._oneof_case_[46] = HAS_TRANSFER_COST_NOT_SET;
+  _impl_._oneof_case_[51] = HAS_TRANSFER_COST_NOT_SET;
 }
 
 void Costing_Options::clear_has_transfer_penalty() {
@@ -4042,7 +4194,7 @@ void Costing_Options::clear_has_transfer_penalty() {
       break;
     }
   }
-  _impl_._oneof_case_[47] = HAS_TRANSFER_PENALTY_NOT_SET;
+  _impl_._oneof_case_[52] = HAS_TRANSFER_PENALTY_NOT_SET;
 }
 
 void Costing_Options::clear_has_flow_mask() {
@@ -4057,7 +4209,7 @@ void Costing_Options::clear_has_flow_mask() {
       break;
     }
   }
-  _impl_._oneof_case_[48] = HAS_FLOW_MASK_NOT_SET;
+  _impl_._oneof_case_[53] = HAS_FLOW_MASK_NOT_SET;
 }
 
 void Costing_Options::clear_has_bike_share_cost() {
@@ -4072,7 +4224,7 @@ void Costing_Options::clear_has_bike_share_cost() {
       break;
     }
   }
-  _impl_._oneof_case_[49] = HAS_BIKE_SHARE_COST_NOT_SET;
+  _impl_._oneof_case_[54] = HAS_BIKE_SHARE_COST_NOT_SET;
 }
 
 void Costing_Options::clear_has_bike_share_penalty() {
@@ -4087,7 +4239,7 @@ void Costing_Options::clear_has_bike_share_penalty() {
       break;
     }
   }
-  _impl_._oneof_case_[50] = HAS_BIKE_SHARE_PENALTY_NOT_SET;
+  _impl_._oneof_case_[55] = HAS_BIKE_SHARE_PENALTY_NOT_SET;
 }
 
 void Costing_Options::clear_has_rail_ferry_cost() {
@@ -4102,7 +4254,7 @@ void Costing_Options::clear_has_rail_ferry_cost() {
       break;
     }
   }
-  _impl_._oneof_case_[51] = HAS_RAIL_FERRY_COST_NOT_SET;
+  _impl_._oneof_case_[56] = HAS_RAIL_FERRY_COST_NOT_SET;
 }
 
 void Costing_Options::clear_has_use_rail_ferry() {
@@ -4117,7 +4269,7 @@ void Costing_Options::clear_has_use_rail_ferry() {
       break;
     }
   }
-  _impl_._oneof_case_[52] = HAS_USE_RAIL_FERRY_NOT_SET;
+  _impl_._oneof_case_[57] = HAS_USE_RAIL_FERRY_NOT_SET;
 }
 
 void Costing_Options::clear_has_ignore_restrictions() {
@@ -4132,7 +4284,7 @@ void Costing_Options::clear_has_ignore_restrictions() {
       break;
     }
   }
-  _impl_._oneof_case_[53] = HAS_IGNORE_RESTRICTIONS_NOT_SET;
+  _impl_._oneof_case_[58] = HAS_IGNORE_RESTRICTIONS_NOT_SET;
 }
 
 void Costing_Options::clear_has_ignore_oneways() {
@@ -4147,7 +4299,7 @@ void Costing_Options::clear_has_ignore_oneways() {
       break;
     }
   }
-  _impl_._oneof_case_[54] = HAS_IGNORE_ONEWAYS_NOT_SET;
+  _impl_._oneof_case_[59] = HAS_IGNORE_ONEWAYS_NOT_SET;
 }
 
 void Costing_Options::clear_has_ignore_access() {
@@ -4162,7 +4314,7 @@ void Costing_Options::clear_has_ignore_access() {
       break;
     }
   }
-  _impl_._oneof_case_[55] = HAS_IGNORE_ACCESS_NOT_SET;
+  _impl_._oneof_case_[60] = HAS_IGNORE_ACCESS_NOT_SET;
 }
 
 void Costing_Options::clear_has_ignore_closures() {
@@ -4177,7 +4329,7 @@ void Costing_Options::clear_has_ignore_closures() {
       break;
     }
   }
-  _impl_._oneof_case_[56] = HAS_IGNORE_CLOSURES_NOT_SET;
+  _impl_._oneof_case_[61] = HAS_IGNORE_CLOSURES_NOT_SET;
 }
 
 void Costing_Options::clear_has_shortest() {
@@ -4192,7 +4344,7 @@ void Costing_Options::clear_has_shortest() {
       break;
     }
   }
-  _impl_._oneof_case_[57] = HAS_SHORTEST_NOT_SET;
+  _impl_._oneof_case_[62] = HAS_SHORTEST_NOT_SET;
 }
 
 void Costing_Options::clear_has_service_penalty() {
@@ -4207,7 +4359,7 @@ void Costing_Options::clear_has_service_penalty() {
       break;
     }
   }
-  _impl_._oneof_case_[58] = HAS_SERVICE_PENALTY_NOT_SET;
+  _impl_._oneof_case_[63] = HAS_SERVICE_PENALTY_NOT_SET;
 }
 
 void Costing_Options::clear_has_use_tracks() {
@@ -4222,7 +4374,7 @@ void Costing_Options::clear_has_use_tracks() {
       break;
     }
   }
-  _impl_._oneof_case_[59] = HAS_USE_TRACKS_NOT_SET;
+  _impl_._oneof_case_[64] = HAS_USE_TRACKS_NOT_SET;
 }
 
 void Costing_Options::clear_has_use_distance() {
@@ -4237,7 +4389,7 @@ void Costing_Options::clear_has_use_distance() {
       break;
     }
   }
-  _impl_._oneof_case_[60] = HAS_USE_DISTANCE_NOT_SET;
+  _impl_._oneof_case_[65] = HAS_USE_DISTANCE_NOT_SET;
 }
 
 void Costing_Options::clear_has_use_living_streets() {
@@ -4252,7 +4404,7 @@ void Costing_Options::clear_has_use_living_streets() {
       break;
     }
   }
-  _impl_._oneof_case_[61] = HAS_USE_LIVING_STREETS_NOT_SET;
+  _impl_._oneof_case_[66] = HAS_USE_LIVING_STREETS_NOT_SET;
 }
 
 void Costing_Options::clear_has_service_factor() {
@@ -4267,7 +4419,7 @@ void Costing_Options::clear_has_service_factor() {
       break;
     }
   }
-  _impl_._oneof_case_[62] = HAS_SERVICE_FACTOR_NOT_SET;
+  _impl_._oneof_case_[67] = HAS_SERVICE_FACTOR_NOT_SET;
 }
 
 void Costing_Options::clear_has_closure_factor() {
@@ -4282,7 +4434,7 @@ void Costing_Options::clear_has_closure_factor() {
       break;
     }
   }
-  _impl_._oneof_case_[63] = HAS_CLOSURE_FACTOR_NOT_SET;
+  _impl_._oneof_case_[68] = HAS_CLOSURE_FACTOR_NOT_SET;
 }
 
 void Costing_Options::clear_has_private_access_penalty() {
@@ -4297,7 +4449,7 @@ void Costing_Options::clear_has_private_access_penalty() {
       break;
     }
   }
-  _impl_._oneof_case_[64] = HAS_PRIVATE_ACCESS_PENALTY_NOT_SET;
+  _impl_._oneof_case_[69] = HAS_PRIVATE_ACCESS_PENALTY_NOT_SET;
 }
 
 void Costing_Options::clear_has_exclude_unpaved() {
@@ -4312,7 +4464,7 @@ void Costing_Options::clear_has_exclude_unpaved() {
       break;
     }
   }
-  _impl_._oneof_case_[65] = HAS_EXCLUDE_UNPAVED_NOT_SET;
+  _impl_._oneof_case_[70] = HAS_EXCLUDE_UNPAVED_NOT_SET;
 }
 
 void Costing_Options::clear_has_include_hot() {
@@ -4327,7 +4479,7 @@ void Costing_Options::clear_has_include_hot() {
       break;
     }
   }
-  _impl_._oneof_case_[66] = HAS_INCLUDE_HOT_NOT_SET;
+  _impl_._oneof_case_[71] = HAS_INCLUDE_HOT_NOT_SET;
 }
 
 void Costing_Options::clear_has_include_hov2() {
@@ -4342,7 +4494,7 @@ void Costing_Options::clear_has_include_hov2() {
       break;
     }
   }
-  _impl_._oneof_case_[67] = HAS_INCLUDE_HOV2_NOT_SET;
+  _impl_._oneof_case_[72] = HAS_INCLUDE_HOV2_NOT_SET;
 }
 
 void Costing_Options::clear_has_include_hov3() {
@@ -4357,7 +4509,7 @@ void Costing_Options::clear_has_include_hov3() {
       break;
     }
   }
-  _impl_._oneof_case_[68] = HAS_INCLUDE_HOV3_NOT_SET;
+  _impl_._oneof_case_[73] = HAS_INCLUDE_HOV3_NOT_SET;
 }
 
 void Costing_Options::clear_has_exclude_cash_only_tolls() {
@@ -4372,7 +4524,7 @@ void Costing_Options::clear_has_exclude_cash_only_tolls() {
       break;
     }
   }
-  _impl_._oneof_case_[69] = HAS_EXCLUDE_CASH_ONLY_TOLLS_NOT_SET;
+  _impl_._oneof_case_[74] = HAS_EXCLUDE_CASH_ONLY_TOLLS_NOT_SET;
 }
 
 void Costing_Options::clear_has_restriction_probability() {
@@ -4387,7 +4539,7 @@ void Costing_Options::clear_has_restriction_probability() {
       break;
     }
   }
-  _impl_._oneof_case_[70] = HAS_RESTRICTION_PROBABILITY_NOT_SET;
+  _impl_._oneof_case_[75] = HAS_RESTRICTION_PROBABILITY_NOT_SET;
 }
 
 void Costing_Options::clear_has_elevator_penalty() {
@@ -4402,7 +4554,7 @@ void Costing_Options::clear_has_elevator_penalty() {
       break;
     }
   }
-  _impl_._oneof_case_[71] = HAS_ELEVATOR_PENALTY_NOT_SET;
+  _impl_._oneof_case_[76] = HAS_ELEVATOR_PENALTY_NOT_SET;
 }
 
 void Costing_Options::clear_has_hgv_no_access_penalty() {
@@ -4417,7 +4569,7 @@ void Costing_Options::clear_has_hgv_no_access_penalty() {
       break;
     }
   }
-  _impl_._oneof_case_[72] = HAS_HGV_NO_ACCESS_PENALTY_NOT_SET;
+  _impl_._oneof_case_[77] = HAS_HGV_NO_ACCESS_PENALTY_NOT_SET;
 }
 
 
@@ -4477,15 +4629,15 @@ const ::google::protobuf::internal::ClassData* Costing_Options::GetClassData() c
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 91, 1, 185, 13> Costing_Options::_table_ = {
+const ::_pbi::TcParseTable<4, 96, 1, 193, 13> Costing_Options::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    91, 120,  // max_field_number, fast_idx_mask
+    96, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
     0,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    91,  // num_field_entries
+    96,  // num_field_entries
     1,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
@@ -4539,152 +4691,152 @@ const ::_pbi::TcParseTable<4, 91, 1, 185, 13> Costing_Options::_table_ = {
     {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     33, 0, 4,
-    0, 32, 0, 48, 0, 64, 63488, 80,
+    0, 32, 0, 48, 0, 64, 0, 80,
     65535, 65535
   }}, {{
     // float maneuver_penalty = 1;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_maneuver_penalty_.maneuver_penalty_), _Internal::kOneofCaseOffset + 0, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_maneuver_penalty_.maneuver_penalty_), _Internal::kOneofCaseOffset + 20, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float destination_only_penalty = 2;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_destination_only_penalty_.destination_only_penalty_), _Internal::kOneofCaseOffset + 4, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_destination_only_penalty_.destination_only_penalty_), _Internal::kOneofCaseOffset + 24, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float gate_cost = 3;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_gate_cost_.gate_cost_), _Internal::kOneofCaseOffset + 8, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_gate_cost_.gate_cost_), _Internal::kOneofCaseOffset + 28, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float gate_penalty = 4;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_gate_penalty_.gate_penalty_), _Internal::kOneofCaseOffset + 12, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_gate_penalty_.gate_penalty_), _Internal::kOneofCaseOffset + 32, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float toll_booth_cost = 5;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_toll_booth_cost_.toll_booth_cost_), _Internal::kOneofCaseOffset + 16, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_toll_booth_cost_.toll_booth_cost_), _Internal::kOneofCaseOffset + 36, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float toll_booth_penalty = 6;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_toll_booth_penalty_.toll_booth_penalty_), _Internal::kOneofCaseOffset + 20, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_toll_booth_penalty_.toll_booth_penalty_), _Internal::kOneofCaseOffset + 40, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float alley_penalty = 7;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_alley_penalty_.alley_penalty_), _Internal::kOneofCaseOffset + 24, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_alley_penalty_.alley_penalty_), _Internal::kOneofCaseOffset + 44, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float country_crossing_cost = 8;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_country_crossing_cost_.country_crossing_cost_), _Internal::kOneofCaseOffset + 28, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_country_crossing_cost_.country_crossing_cost_), _Internal::kOneofCaseOffset + 48, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float country_crossing_penalty = 9;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_country_crossing_penalty_.country_crossing_penalty_), _Internal::kOneofCaseOffset + 32, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_country_crossing_penalty_.country_crossing_penalty_), _Internal::kOneofCaseOffset + 52, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float ferry_cost = 10;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_ferry_cost_.ferry_cost_), _Internal::kOneofCaseOffset + 36, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_ferry_cost_.ferry_cost_), _Internal::kOneofCaseOffset + 56, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float avoid_bad_surfaces = 11;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_avoid_bad_surfaces_.avoid_bad_surfaces_), _Internal::kOneofCaseOffset + 40, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_avoid_bad_surfaces_.avoid_bad_surfaces_), _Internal::kOneofCaseOffset + 60, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float use_ferry = 12;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_ferry_.use_ferry_), _Internal::kOneofCaseOffset + 44, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_ferry_.use_ferry_), _Internal::kOneofCaseOffset + 64, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float use_highways = 13;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_highways_.use_highways_), _Internal::kOneofCaseOffset + 48, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_highways_.use_highways_), _Internal::kOneofCaseOffset + 68, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float use_tolls = 14;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_tolls_.use_tolls_), _Internal::kOneofCaseOffset + 52, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_tolls_.use_tolls_), _Internal::kOneofCaseOffset + 72, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float use_roads = 15;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_roads_.use_roads_), _Internal::kOneofCaseOffset + 56, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_roads_.use_roads_), _Internal::kOneofCaseOffset + 76, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // uint32 max_distance = 16;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_max_distance_.max_distance_), _Internal::kOneofCaseOffset + 60, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_max_distance_.max_distance_), _Internal::kOneofCaseOffset + 80, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kUInt32)},
     // float walking_speed = 17;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_walking_speed_.walking_speed_), _Internal::kOneofCaseOffset + 64, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_walking_speed_.walking_speed_), _Internal::kOneofCaseOffset + 84, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float step_penalty = 18;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_step_penalty_.step_penalty_), _Internal::kOneofCaseOffset + 68, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_step_penalty_.step_penalty_), _Internal::kOneofCaseOffset + 88, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // uint32 max_grade = 19;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_max_grade_.max_grade_), _Internal::kOneofCaseOffset + 72, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_max_grade_.max_grade_), _Internal::kOneofCaseOffset + 92, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kUInt32)},
     // uint32 max_hiking_difficulty = 20;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_max_hiking_difficulty_.max_hiking_difficulty_), _Internal::kOneofCaseOffset + 76, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_max_hiking_difficulty_.max_hiking_difficulty_), _Internal::kOneofCaseOffset + 96, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kUInt32)},
     // float mode_factor = 21;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_mode_factor_.mode_factor_), _Internal::kOneofCaseOffset + 80, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_mode_factor_.mode_factor_), _Internal::kOneofCaseOffset + 100, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float walkway_factor = 22;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_walkway_factor_.walkway_factor_), _Internal::kOneofCaseOffset + 84, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_walkway_factor_.walkway_factor_), _Internal::kOneofCaseOffset + 104, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float sidewalk_factor = 23;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_sidewalk_factor_.sidewalk_factor_), _Internal::kOneofCaseOffset + 88, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_sidewalk_factor_.sidewalk_factor_), _Internal::kOneofCaseOffset + 108, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float alley_factor = 24;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_alley_factor_.alley_factor_), _Internal::kOneofCaseOffset + 92, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_alley_factor_.alley_factor_), _Internal::kOneofCaseOffset + 112, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float driveway_factor = 25;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_driveway_factor_.driveway_factor_), _Internal::kOneofCaseOffset + 96, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_driveway_factor_.driveway_factor_), _Internal::kOneofCaseOffset + 116, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float driveway_penalty = 26;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_driveway_penalty_.driveway_penalty_), _Internal::kOneofCaseOffset + 100, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_driveway_penalty_.driveway_penalty_), _Internal::kOneofCaseOffset + 120, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // uint32 transit_start_end_max_distance = 27;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_transit_start_end_max_distance_.transit_start_end_max_distance_), _Internal::kOneofCaseOffset + 104, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_transit_start_end_max_distance_.transit_start_end_max_distance_), _Internal::kOneofCaseOffset + 124, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kUInt32)},
     // uint32 transit_transfer_max_distance = 28;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_transit_transfer_max_distance_.transit_transfer_max_distance_), _Internal::kOneofCaseOffset + 108, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_transit_transfer_max_distance_.transit_transfer_max_distance_), _Internal::kOneofCaseOffset + 128, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kUInt32)},
     // string transport_type = 29;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_transport_type_.transport_type_), _Internal::kOneofCaseOffset + 112, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_transport_type_.transport_type_), _Internal::kOneofCaseOffset + 132, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // float top_speed = 30;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_top_speed_.top_speed_), _Internal::kOneofCaseOffset + 116, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_top_speed_.top_speed_), _Internal::kOneofCaseOffset + 136, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float use_hills = 31;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_hills_.use_hills_), _Internal::kOneofCaseOffset + 120, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_hills_.use_hills_), _Internal::kOneofCaseOffset + 140, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float use_primary = 32;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_primary_.use_primary_), _Internal::kOneofCaseOffset + 124, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_primary_.use_primary_), _Internal::kOneofCaseOffset + 144, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float use_trails = 33;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_trails_.use_trails_), _Internal::kOneofCaseOffset + 128, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_trails_.use_trails_), _Internal::kOneofCaseOffset + 148, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float low_class_penalty = 34;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_low_class_penalty_.low_class_penalty_), _Internal::kOneofCaseOffset + 132, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_low_class_penalty_.low_class_penalty_), _Internal::kOneofCaseOffset + 152, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // bool hazmat = 35;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_hazmat_.hazmat_), _Internal::kOneofCaseOffset + 136, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_hazmat_.hazmat_), _Internal::kOneofCaseOffset + 156, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kBool)},
     // float weight = 36;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_weight_.weight_), _Internal::kOneofCaseOffset + 140, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_weight_.weight_), _Internal::kOneofCaseOffset + 160, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float axle_load = 37;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_axle_load_.axle_load_), _Internal::kOneofCaseOffset + 144, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_axle_load_.axle_load_), _Internal::kOneofCaseOffset + 164, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float height = 38;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_height_.height_), _Internal::kOneofCaseOffset + 148, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_height_.height_), _Internal::kOneofCaseOffset + 168, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float width = 39;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_width_.width_), _Internal::kOneofCaseOffset + 152, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_width_.width_), _Internal::kOneofCaseOffset + 172, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float length = 40;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_length_.length_), _Internal::kOneofCaseOffset + 156, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_length_.length_), _Internal::kOneofCaseOffset + 176, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float cycling_speed = 41;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_cycling_speed_.cycling_speed_), _Internal::kOneofCaseOffset + 160, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_cycling_speed_.cycling_speed_), _Internal::kOneofCaseOffset + 180, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // bool wheelchair = 42;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_wheelchair_.wheelchair_), _Internal::kOneofCaseOffset + 164, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_wheelchair_.wheelchair_), _Internal::kOneofCaseOffset + 184, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kBool)},
     // bool bicycle = 43;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_bicycle_.bicycle_), _Internal::kOneofCaseOffset + 168, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_bicycle_.bicycle_), _Internal::kOneofCaseOffset + 188, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kBool)},
     // float use_bus = 44;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_bus_.use_bus_), _Internal::kOneofCaseOffset + 172, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_bus_.use_bus_), _Internal::kOneofCaseOffset + 192, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float use_rail = 45;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_rail_.use_rail_), _Internal::kOneofCaseOffset + 176, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_rail_.use_rail_), _Internal::kOneofCaseOffset + 196, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float use_transfers = 46;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_transfers_.use_transfers_), _Internal::kOneofCaseOffset + 180, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_transfers_.use_transfers_), _Internal::kOneofCaseOffset + 200, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float transfer_cost = 47;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_transfer_cost_.transfer_cost_), _Internal::kOneofCaseOffset + 184, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_transfer_cost_.transfer_cost_), _Internal::kOneofCaseOffset + 204, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float transfer_penalty = 48;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_transfer_penalty_.transfer_penalty_), _Internal::kOneofCaseOffset + 188, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_transfer_penalty_.transfer_penalty_), _Internal::kOneofCaseOffset + 208, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // .valhalla.FilterAction filter_stop_action = 49;
     {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.filter_stop_action_), 0, 0,
@@ -4705,79 +4857,79 @@ const ::_pbi::TcParseTable<4, 91, 1, 185, 13> Costing_Options::_table_ = {
     {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.filter_route_ids_), 0, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
     // uint32 flow_mask = 55;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_flow_mask_.flow_mask_), _Internal::kOneofCaseOffset + 192, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_flow_mask_.flow_mask_), _Internal::kOneofCaseOffset + 212, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kUInt32)},
     // float bike_share_cost = 56;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_bike_share_cost_.bike_share_cost_), _Internal::kOneofCaseOffset + 196, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_bike_share_cost_.bike_share_cost_), _Internal::kOneofCaseOffset + 216, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float bike_share_penalty = 57;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_bike_share_penalty_.bike_share_penalty_), _Internal::kOneofCaseOffset + 200, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_bike_share_penalty_.bike_share_penalty_), _Internal::kOneofCaseOffset + 220, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float rail_ferry_cost = 58;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_rail_ferry_cost_.rail_ferry_cost_), _Internal::kOneofCaseOffset + 204, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_rail_ferry_cost_.rail_ferry_cost_), _Internal::kOneofCaseOffset + 224, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float use_rail_ferry = 59;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_rail_ferry_.use_rail_ferry_), _Internal::kOneofCaseOffset + 208, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_rail_ferry_.use_rail_ferry_), _Internal::kOneofCaseOffset + 228, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // bool ignore_restrictions = 60;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_ignore_restrictions_.ignore_restrictions_), _Internal::kOneofCaseOffset + 212, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_ignore_restrictions_.ignore_restrictions_), _Internal::kOneofCaseOffset + 232, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kBool)},
     // bool ignore_oneways = 61;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_ignore_oneways_.ignore_oneways_), _Internal::kOneofCaseOffset + 216, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_ignore_oneways_.ignore_oneways_), _Internal::kOneofCaseOffset + 236, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kBool)},
     // bool ignore_access = 62;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_ignore_access_.ignore_access_), _Internal::kOneofCaseOffset + 220, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_ignore_access_.ignore_access_), _Internal::kOneofCaseOffset + 240, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kBool)},
     // bool ignore_closures = 63;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_ignore_closures_.ignore_closures_), _Internal::kOneofCaseOffset + 224, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_ignore_closures_.ignore_closures_), _Internal::kOneofCaseOffset + 244, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kBool)},
     // bool shortest = 64;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_shortest_.shortest_), _Internal::kOneofCaseOffset + 228, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_shortest_.shortest_), _Internal::kOneofCaseOffset + 248, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kBool)},
     // float service_penalty = 65;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_service_penalty_.service_penalty_), _Internal::kOneofCaseOffset + 232, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_service_penalty_.service_penalty_), _Internal::kOneofCaseOffset + 252, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float use_tracks = 66;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_tracks_.use_tracks_), _Internal::kOneofCaseOffset + 236, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_tracks_.use_tracks_), _Internal::kOneofCaseOffset + 256, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float use_distance = 67;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_distance_.use_distance_), _Internal::kOneofCaseOffset + 240, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_distance_.use_distance_), _Internal::kOneofCaseOffset + 260, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float use_living_streets = 68;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_living_streets_.use_living_streets_), _Internal::kOneofCaseOffset + 244, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_use_living_streets_.use_living_streets_), _Internal::kOneofCaseOffset + 264, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float service_factor = 69;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_service_factor_.service_factor_), _Internal::kOneofCaseOffset + 248, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_service_factor_.service_factor_), _Internal::kOneofCaseOffset + 268, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float closure_factor = 70;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_closure_factor_.closure_factor_), _Internal::kOneofCaseOffset + 252, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_closure_factor_.closure_factor_), _Internal::kOneofCaseOffset + 272, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float private_access_penalty = 71;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_private_access_penalty_.private_access_penalty_), _Internal::kOneofCaseOffset + 256, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_private_access_penalty_.private_access_penalty_), _Internal::kOneofCaseOffset + 276, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // bool exclude_unpaved = 72;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_exclude_unpaved_.exclude_unpaved_), _Internal::kOneofCaseOffset + 260, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_exclude_unpaved_.exclude_unpaved_), _Internal::kOneofCaseOffset + 280, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kBool)},
     // bool include_hot = 73;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_include_hot_.include_hot_), _Internal::kOneofCaseOffset + 264, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_include_hot_.include_hot_), _Internal::kOneofCaseOffset + 284, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kBool)},
     // bool include_hov2 = 74;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_include_hov2_.include_hov2_), _Internal::kOneofCaseOffset + 268, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_include_hov2_.include_hov2_), _Internal::kOneofCaseOffset + 288, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kBool)},
     // bool include_hov3 = 75;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_include_hov3_.include_hov3_), _Internal::kOneofCaseOffset + 272, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_include_hov3_.include_hov3_), _Internal::kOneofCaseOffset + 292, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kBool)},
     // bool exclude_cash_only_tolls = 76;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_exclude_cash_only_tolls_.exclude_cash_only_tolls_), _Internal::kOneofCaseOffset + 276, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_exclude_cash_only_tolls_.exclude_cash_only_tolls_), _Internal::kOneofCaseOffset + 296, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kBool)},
     // uint32 restriction_probability = 77;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_restriction_probability_.restriction_probability_), _Internal::kOneofCaseOffset + 280, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_restriction_probability_.restriction_probability_), _Internal::kOneofCaseOffset + 300, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kUInt32)},
     // repeated .valhalla.AvoidEdge exclude_edges = 78;
     {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.exclude_edges_), 0, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
     // float elevator_penalty = 79;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_elevator_penalty_.elevator_penalty_), _Internal::kOneofCaseOffset + 284, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_elevator_penalty_.elevator_penalty_), _Internal::kOneofCaseOffset + 304, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // uint32 fixed_speed = 80;
     {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.fixed_speed_), 0, 0,
@@ -4795,7 +4947,7 @@ const ::_pbi::TcParseTable<4, 91, 1, 185, 13> Costing_Options::_table_ = {
     {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.ignore_non_vehicular_restrictions_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kBool)},
     // float hgv_no_access_penalty = 85;
-    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_hgv_no_access_penalty_.hgv_no_access_penalty_), _Internal::kOneofCaseOffset + 288, 0,
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_hgv_no_access_penalty_.hgv_no_access_penalty_), _Internal::kOneofCaseOffset + 308, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
     // float use_truck_route = 86;
     {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.use_truck_route_), 0, 0,
@@ -4815,10 +4967,25 @@ const ::_pbi::TcParseTable<4, 91, 1, 185, 13> Costing_Options::_table_ = {
     // bool exclude_ferries = 91;
     {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.exclude_ferries_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+    // float standard_wheelchair_speed = 92;
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_standard_wheelchair_speed_.standard_wheelchair_speed_), _Internal::kOneofCaseOffset + 0, 0,
+    (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
+    // float basic_power_wheelchair_speed = 93;
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_basic_power_wheelchair_speed_.basic_power_wheelchair_speed_), _Internal::kOneofCaseOffset + 4, 0,
+    (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
+    // float advanced_power_wheelchair_speed = 94;
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_advanced_power_wheelchair_speed_.advanced_power_wheelchair_speed_), _Internal::kOneofCaseOffset + 8, 0,
+    (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
+    // float wheelchair_slope_penalty = 95;
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_wheelchair_slope_penalty_.wheelchair_slope_penalty_), _Internal::kOneofCaseOffset + 12, 0,
+    (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
+    // float wheelchair_surface_penalty = 96;
+    {PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.has_wheelchair_surface_penalty_.wheelchair_surface_penalty_), _Internal::kOneofCaseOffset + 16, 0,
+    (0 | ::_fl::kFcOneof | ::_fl::kFloat)},
   }}, {{
     {::_pbi::TcParser::GetTable<::valhalla::AvoidEdge>()},
   }}, {{
-    "\30\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\17\0\23\0\20\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    "\30\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\17\0\23\0\20\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
     "valhalla.Costing.Options"
     "transport_type"
     "filter_stop_ids"
@@ -4841,6 +5008,11 @@ PROTOBUF_NOINLINE void Costing_Options::Clear() {
   ::memset(&_impl_.filter_stop_action_, 0, static_cast<::size_t>(
       reinterpret_cast<char*>(&_impl_.exclude_ferries_) -
       reinterpret_cast<char*>(&_impl_.filter_stop_action_)) + sizeof(_impl_.exclude_ferries_));
+  clear_has_standard_wheelchair_speed();
+  clear_has_basic_power_wheelchair_speed();
+  clear_has_advanced_power_wheelchair_speed();
+  clear_has_wheelchair_slope_penalty();
+  clear_has_wheelchair_surface_penalty();
   clear_has_maneuver_penalty();
   clear_has_destination_only_penalty();
   clear_has_gate_cost();
@@ -5577,6 +5749,41 @@ PROTOBUF_NOINLINE void Costing_Options::Clear() {
                 91, this_._internal_exclude_ferries(), target);
           }
 
+          // float standard_wheelchair_speed = 92;
+          if (this_.has_standard_wheelchair_speed_case() == kStandardWheelchairSpeed) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteFloatToArray(
+                92, this_._internal_standard_wheelchair_speed(), target);
+          }
+
+          // float basic_power_wheelchair_speed = 93;
+          if (this_.has_basic_power_wheelchair_speed_case() == kBasicPowerWheelchairSpeed) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteFloatToArray(
+                93, this_._internal_basic_power_wheelchair_speed(), target);
+          }
+
+          // float advanced_power_wheelchair_speed = 94;
+          if (this_.has_advanced_power_wheelchair_speed_case() == kAdvancedPowerWheelchairSpeed) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteFloatToArray(
+                94, this_._internal_advanced_power_wheelchair_speed(), target);
+          }
+
+          // float wheelchair_slope_penalty = 95;
+          if (this_.has_wheelchair_slope_penalty_case() == kWheelchairSlopePenalty) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteFloatToArray(
+                95, this_._internal_wheelchair_slope_penalty(), target);
+          }
+
+          // float wheelchair_surface_penalty = 96;
+          if (this_.has_wheelchair_surface_penalty_case() == kWheelchairSurfacePenalty) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteFloatToArray(
+                96, this_._internal_wheelchair_surface_penalty(), target);
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target = stream->WriteRaw(
                 this_._internal_metadata_.unknown_fields<std::string>(::google::protobuf::internal::GetEmptyString).data(),
@@ -5698,6 +5905,56 @@ PROTOBUF_NOINLINE void Costing_Options::Clear() {
             // bool exclude_ferries = 91;
             if (this_._internal_exclude_ferries() != 0) {
               total_size += 3;
+            }
+          }
+          switch (this_.has_standard_wheelchair_speed_case()) {
+            // float standard_wheelchair_speed = 92;
+            case kStandardWheelchairSpeed: {
+              total_size += 6;
+              break;
+            }
+            case HAS_STANDARD_WHEELCHAIR_SPEED_NOT_SET: {
+              break;
+            }
+          }
+          switch (this_.has_basic_power_wheelchair_speed_case()) {
+            // float basic_power_wheelchair_speed = 93;
+            case kBasicPowerWheelchairSpeed: {
+              total_size += 6;
+              break;
+            }
+            case HAS_BASIC_POWER_WHEELCHAIR_SPEED_NOT_SET: {
+              break;
+            }
+          }
+          switch (this_.has_advanced_power_wheelchair_speed_case()) {
+            // float advanced_power_wheelchair_speed = 94;
+            case kAdvancedPowerWheelchairSpeed: {
+              total_size += 6;
+              break;
+            }
+            case HAS_ADVANCED_POWER_WHEELCHAIR_SPEED_NOT_SET: {
+              break;
+            }
+          }
+          switch (this_.has_wheelchair_slope_penalty_case()) {
+            // float wheelchair_slope_penalty = 95;
+            case kWheelchairSlopePenalty: {
+              total_size += 6;
+              break;
+            }
+            case HAS_WHEELCHAIR_SLOPE_PENALTY_NOT_SET: {
+              break;
+            }
+          }
+          switch (this_.has_wheelchair_surface_penalty_case()) {
+            // float wheelchair_surface_penalty = 96;
+            case kWheelchairSurfacePenalty: {
+              total_size += 6;
+              break;
+            }
+            case HAS_WHEELCHAIR_SURFACE_PENALTY_NOT_SET: {
+              break;
             }
           }
           switch (this_.has_maneuver_penalty_case()) {
@@ -6506,9 +6763,104 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
-        _this->clear_has_maneuver_penalty();
+        _this->clear_has_standard_wheelchair_speed();
       }
       _this->_impl_._oneof_case_[0] = oneof_from_case;
+    }
+
+    switch (oneof_from_case) {
+      case kStandardWheelchairSpeed: {
+        _this->_impl_.has_standard_wheelchair_speed_.standard_wheelchair_speed_ = from._impl_.has_standard_wheelchair_speed_.standard_wheelchair_speed_;
+        break;
+      }
+      case HAS_STANDARD_WHEELCHAIR_SPEED_NOT_SET:
+        break;
+    }
+  }
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[1]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[1];
+    const bool oneof_needs_init = oneof_to_case != oneof_from_case;
+    if (oneof_needs_init) {
+      if (oneof_to_case != 0) {
+        _this->clear_has_basic_power_wheelchair_speed();
+      }
+      _this->_impl_._oneof_case_[1] = oneof_from_case;
+    }
+
+    switch (oneof_from_case) {
+      case kBasicPowerWheelchairSpeed: {
+        _this->_impl_.has_basic_power_wheelchair_speed_.basic_power_wheelchair_speed_ = from._impl_.has_basic_power_wheelchair_speed_.basic_power_wheelchair_speed_;
+        break;
+      }
+      case HAS_BASIC_POWER_WHEELCHAIR_SPEED_NOT_SET:
+        break;
+    }
+  }
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[2]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[2];
+    const bool oneof_needs_init = oneof_to_case != oneof_from_case;
+    if (oneof_needs_init) {
+      if (oneof_to_case != 0) {
+        _this->clear_has_advanced_power_wheelchair_speed();
+      }
+      _this->_impl_._oneof_case_[2] = oneof_from_case;
+    }
+
+    switch (oneof_from_case) {
+      case kAdvancedPowerWheelchairSpeed: {
+        _this->_impl_.has_advanced_power_wheelchair_speed_.advanced_power_wheelchair_speed_ = from._impl_.has_advanced_power_wheelchair_speed_.advanced_power_wheelchair_speed_;
+        break;
+      }
+      case HAS_ADVANCED_POWER_WHEELCHAIR_SPEED_NOT_SET:
+        break;
+    }
+  }
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[3]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[3];
+    const bool oneof_needs_init = oneof_to_case != oneof_from_case;
+    if (oneof_needs_init) {
+      if (oneof_to_case != 0) {
+        _this->clear_has_wheelchair_slope_penalty();
+      }
+      _this->_impl_._oneof_case_[3] = oneof_from_case;
+    }
+
+    switch (oneof_from_case) {
+      case kWheelchairSlopePenalty: {
+        _this->_impl_.has_wheelchair_slope_penalty_.wheelchair_slope_penalty_ = from._impl_.has_wheelchair_slope_penalty_.wheelchair_slope_penalty_;
+        break;
+      }
+      case HAS_WHEELCHAIR_SLOPE_PENALTY_NOT_SET:
+        break;
+    }
+  }
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[4]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[4];
+    const bool oneof_needs_init = oneof_to_case != oneof_from_case;
+    if (oneof_needs_init) {
+      if (oneof_to_case != 0) {
+        _this->clear_has_wheelchair_surface_penalty();
+      }
+      _this->_impl_._oneof_case_[4] = oneof_from_case;
+    }
+
+    switch (oneof_from_case) {
+      case kWheelchairSurfacePenalty: {
+        _this->_impl_.has_wheelchair_surface_penalty_.wheelchair_surface_penalty_ = from._impl_.has_wheelchair_surface_penalty_.wheelchair_surface_penalty_;
+        break;
+      }
+      case HAS_WHEELCHAIR_SURFACE_PENALTY_NOT_SET:
+        break;
+    }
+  }
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[5]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[5];
+    const bool oneof_needs_init = oneof_to_case != oneof_from_case;
+    if (oneof_needs_init) {
+      if (oneof_to_case != 0) {
+        _this->clear_has_maneuver_penalty();
+      }
+      _this->_impl_._oneof_case_[5] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6520,14 +6872,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[1]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[1];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[6]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[6];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_destination_only_penalty();
       }
-      _this->_impl_._oneof_case_[1] = oneof_from_case;
+      _this->_impl_._oneof_case_[6] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6539,14 +6891,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[2]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[2];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[7]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[7];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_gate_cost();
       }
-      _this->_impl_._oneof_case_[2] = oneof_from_case;
+      _this->_impl_._oneof_case_[7] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6558,14 +6910,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[3]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[3];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[8]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[8];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_gate_penalty();
       }
-      _this->_impl_._oneof_case_[3] = oneof_from_case;
+      _this->_impl_._oneof_case_[8] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6577,14 +6929,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[4]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[4];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[9]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[9];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_toll_booth_cost();
       }
-      _this->_impl_._oneof_case_[4] = oneof_from_case;
+      _this->_impl_._oneof_case_[9] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6596,14 +6948,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[5]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[5];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[10]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[10];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_toll_booth_penalty();
       }
-      _this->_impl_._oneof_case_[5] = oneof_from_case;
+      _this->_impl_._oneof_case_[10] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6615,14 +6967,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[6]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[6];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[11]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[11];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_alley_penalty();
       }
-      _this->_impl_._oneof_case_[6] = oneof_from_case;
+      _this->_impl_._oneof_case_[11] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6634,14 +6986,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[7]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[7];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[12]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[12];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_country_crossing_cost();
       }
-      _this->_impl_._oneof_case_[7] = oneof_from_case;
+      _this->_impl_._oneof_case_[12] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6653,14 +7005,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[8]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[8];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[13]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[13];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_country_crossing_penalty();
       }
-      _this->_impl_._oneof_case_[8] = oneof_from_case;
+      _this->_impl_._oneof_case_[13] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6672,14 +7024,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[9]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[9];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[14]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[14];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_ferry_cost();
       }
-      _this->_impl_._oneof_case_[9] = oneof_from_case;
+      _this->_impl_._oneof_case_[14] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6691,14 +7043,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[10]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[10];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[15]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[15];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_avoid_bad_surfaces();
       }
-      _this->_impl_._oneof_case_[10] = oneof_from_case;
+      _this->_impl_._oneof_case_[15] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6710,14 +7062,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[11]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[11];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[16]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[16];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_use_ferry();
       }
-      _this->_impl_._oneof_case_[11] = oneof_from_case;
+      _this->_impl_._oneof_case_[16] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6729,14 +7081,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[12]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[12];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[17]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[17];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_use_highways();
       }
-      _this->_impl_._oneof_case_[12] = oneof_from_case;
+      _this->_impl_._oneof_case_[17] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6748,14 +7100,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[13]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[13];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[18]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[18];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_use_tolls();
       }
-      _this->_impl_._oneof_case_[13] = oneof_from_case;
+      _this->_impl_._oneof_case_[18] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6767,14 +7119,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[14]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[14];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[19]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[19];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_use_roads();
       }
-      _this->_impl_._oneof_case_[14] = oneof_from_case;
+      _this->_impl_._oneof_case_[19] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6786,14 +7138,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[15]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[15];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[20]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[20];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_max_distance();
       }
-      _this->_impl_._oneof_case_[15] = oneof_from_case;
+      _this->_impl_._oneof_case_[20] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6805,14 +7157,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[16]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[16];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[21]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[21];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_walking_speed();
       }
-      _this->_impl_._oneof_case_[16] = oneof_from_case;
+      _this->_impl_._oneof_case_[21] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6824,14 +7176,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[17]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[17];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[22]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[22];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_step_penalty();
       }
-      _this->_impl_._oneof_case_[17] = oneof_from_case;
+      _this->_impl_._oneof_case_[22] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6843,14 +7195,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[18]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[18];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[23]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[23];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_max_grade();
       }
-      _this->_impl_._oneof_case_[18] = oneof_from_case;
+      _this->_impl_._oneof_case_[23] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6862,14 +7214,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[19]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[19];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[24]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[24];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_max_hiking_difficulty();
       }
-      _this->_impl_._oneof_case_[19] = oneof_from_case;
+      _this->_impl_._oneof_case_[24] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6881,14 +7233,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[20]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[20];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[25]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[25];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_mode_factor();
       }
-      _this->_impl_._oneof_case_[20] = oneof_from_case;
+      _this->_impl_._oneof_case_[25] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6900,14 +7252,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[21]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[21];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[26]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[26];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_walkway_factor();
       }
-      _this->_impl_._oneof_case_[21] = oneof_from_case;
+      _this->_impl_._oneof_case_[26] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6919,14 +7271,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[22]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[22];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[27]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[27];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_sidewalk_factor();
       }
-      _this->_impl_._oneof_case_[22] = oneof_from_case;
+      _this->_impl_._oneof_case_[27] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6938,14 +7290,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[23]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[23];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[28]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[28];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_alley_factor();
       }
-      _this->_impl_._oneof_case_[23] = oneof_from_case;
+      _this->_impl_._oneof_case_[28] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6957,14 +7309,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[24]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[24];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[29]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[29];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_driveway_factor();
       }
-      _this->_impl_._oneof_case_[24] = oneof_from_case;
+      _this->_impl_._oneof_case_[29] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6976,14 +7328,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[25]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[25];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[30]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[30];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_driveway_penalty();
       }
-      _this->_impl_._oneof_case_[25] = oneof_from_case;
+      _this->_impl_._oneof_case_[30] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -6995,14 +7347,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[26]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[26];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[31]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[31];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_transit_start_end_max_distance();
       }
-      _this->_impl_._oneof_case_[26] = oneof_from_case;
+      _this->_impl_._oneof_case_[31] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7014,14 +7366,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[27]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[27];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[32]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[32];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_transit_transfer_max_distance();
       }
-      _this->_impl_._oneof_case_[27] = oneof_from_case;
+      _this->_impl_._oneof_case_[32] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7033,14 +7385,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[28]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[28];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[33]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[33];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_transport_type();
       }
-      _this->_impl_._oneof_case_[28] = oneof_from_case;
+      _this->_impl_._oneof_case_[33] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7055,14 +7407,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[29]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[29];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[34]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[34];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_top_speed();
       }
-      _this->_impl_._oneof_case_[29] = oneof_from_case;
+      _this->_impl_._oneof_case_[34] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7074,14 +7426,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[30]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[30];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[35]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[35];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_use_hills();
       }
-      _this->_impl_._oneof_case_[30] = oneof_from_case;
+      _this->_impl_._oneof_case_[35] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7093,14 +7445,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[31]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[31];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[36]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[36];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_use_primary();
       }
-      _this->_impl_._oneof_case_[31] = oneof_from_case;
+      _this->_impl_._oneof_case_[36] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7112,14 +7464,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[32]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[32];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[37]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[37];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_use_trails();
       }
-      _this->_impl_._oneof_case_[32] = oneof_from_case;
+      _this->_impl_._oneof_case_[37] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7131,14 +7483,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[33]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[33];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[38]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[38];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_low_class_penalty();
       }
-      _this->_impl_._oneof_case_[33] = oneof_from_case;
+      _this->_impl_._oneof_case_[38] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7150,14 +7502,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[34]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[34];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[39]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[39];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_hazmat();
       }
-      _this->_impl_._oneof_case_[34] = oneof_from_case;
+      _this->_impl_._oneof_case_[39] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7169,14 +7521,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[35]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[35];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[40]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[40];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_weight();
       }
-      _this->_impl_._oneof_case_[35] = oneof_from_case;
+      _this->_impl_._oneof_case_[40] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7188,14 +7540,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[36]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[36];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[41]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[41];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_axle_load();
       }
-      _this->_impl_._oneof_case_[36] = oneof_from_case;
+      _this->_impl_._oneof_case_[41] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7207,14 +7559,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[37]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[37];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[42]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[42];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_height();
       }
-      _this->_impl_._oneof_case_[37] = oneof_from_case;
+      _this->_impl_._oneof_case_[42] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7226,14 +7578,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[38]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[38];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[43]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[43];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_width();
       }
-      _this->_impl_._oneof_case_[38] = oneof_from_case;
+      _this->_impl_._oneof_case_[43] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7245,14 +7597,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[39]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[39];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[44]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[44];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_length();
       }
-      _this->_impl_._oneof_case_[39] = oneof_from_case;
+      _this->_impl_._oneof_case_[44] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7264,14 +7616,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[40]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[40];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[45]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[45];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_cycling_speed();
       }
-      _this->_impl_._oneof_case_[40] = oneof_from_case;
+      _this->_impl_._oneof_case_[45] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7283,14 +7635,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[41]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[41];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[46]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[46];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_wheelchair();
       }
-      _this->_impl_._oneof_case_[41] = oneof_from_case;
+      _this->_impl_._oneof_case_[46] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7302,14 +7654,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[42]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[42];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[47]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[47];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_bicycle();
       }
-      _this->_impl_._oneof_case_[42] = oneof_from_case;
+      _this->_impl_._oneof_case_[47] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7321,14 +7673,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[43]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[43];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[48]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[48];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_use_bus();
       }
-      _this->_impl_._oneof_case_[43] = oneof_from_case;
+      _this->_impl_._oneof_case_[48] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7340,14 +7692,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[44]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[44];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[49]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[49];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_use_rail();
       }
-      _this->_impl_._oneof_case_[44] = oneof_from_case;
+      _this->_impl_._oneof_case_[49] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7359,14 +7711,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[45]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[45];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[50]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[50];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_use_transfers();
       }
-      _this->_impl_._oneof_case_[45] = oneof_from_case;
+      _this->_impl_._oneof_case_[50] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7378,14 +7730,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[46]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[46];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[51]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[51];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_transfer_cost();
       }
-      _this->_impl_._oneof_case_[46] = oneof_from_case;
+      _this->_impl_._oneof_case_[51] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7397,14 +7749,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[47]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[47];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[52]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[52];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_transfer_penalty();
       }
-      _this->_impl_._oneof_case_[47] = oneof_from_case;
+      _this->_impl_._oneof_case_[52] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7416,14 +7768,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[48]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[48];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[53]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[53];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_flow_mask();
       }
-      _this->_impl_._oneof_case_[48] = oneof_from_case;
+      _this->_impl_._oneof_case_[53] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7435,14 +7787,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[49]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[49];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[54]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[54];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_bike_share_cost();
       }
-      _this->_impl_._oneof_case_[49] = oneof_from_case;
+      _this->_impl_._oneof_case_[54] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7454,14 +7806,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[50]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[50];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[55]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[55];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_bike_share_penalty();
       }
-      _this->_impl_._oneof_case_[50] = oneof_from_case;
+      _this->_impl_._oneof_case_[55] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7473,14 +7825,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[51]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[51];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[56]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[56];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_rail_ferry_cost();
       }
-      _this->_impl_._oneof_case_[51] = oneof_from_case;
+      _this->_impl_._oneof_case_[56] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7492,14 +7844,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[52]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[52];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[57]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[57];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_use_rail_ferry();
       }
-      _this->_impl_._oneof_case_[52] = oneof_from_case;
+      _this->_impl_._oneof_case_[57] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7511,14 +7863,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[53]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[53];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[58]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[58];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_ignore_restrictions();
       }
-      _this->_impl_._oneof_case_[53] = oneof_from_case;
+      _this->_impl_._oneof_case_[58] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7530,14 +7882,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[54]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[54];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[59]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[59];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_ignore_oneways();
       }
-      _this->_impl_._oneof_case_[54] = oneof_from_case;
+      _this->_impl_._oneof_case_[59] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7549,14 +7901,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[55]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[55];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[60]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[60];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_ignore_access();
       }
-      _this->_impl_._oneof_case_[55] = oneof_from_case;
+      _this->_impl_._oneof_case_[60] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7568,14 +7920,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[56]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[56];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[61]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[61];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_ignore_closures();
       }
-      _this->_impl_._oneof_case_[56] = oneof_from_case;
+      _this->_impl_._oneof_case_[61] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7587,14 +7939,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[57]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[57];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[62]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[62];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_shortest();
       }
-      _this->_impl_._oneof_case_[57] = oneof_from_case;
+      _this->_impl_._oneof_case_[62] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7606,14 +7958,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[58]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[58];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[63]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[63];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_service_penalty();
       }
-      _this->_impl_._oneof_case_[58] = oneof_from_case;
+      _this->_impl_._oneof_case_[63] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7625,14 +7977,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[59]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[59];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[64]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[64];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_use_tracks();
       }
-      _this->_impl_._oneof_case_[59] = oneof_from_case;
+      _this->_impl_._oneof_case_[64] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7644,14 +7996,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[60]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[60];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[65]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[65];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_use_distance();
       }
-      _this->_impl_._oneof_case_[60] = oneof_from_case;
+      _this->_impl_._oneof_case_[65] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7663,14 +8015,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[61]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[61];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[66]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[66];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_use_living_streets();
       }
-      _this->_impl_._oneof_case_[61] = oneof_from_case;
+      _this->_impl_._oneof_case_[66] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7682,14 +8034,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[62]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[62];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[67]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[67];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_service_factor();
       }
-      _this->_impl_._oneof_case_[62] = oneof_from_case;
+      _this->_impl_._oneof_case_[67] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7701,14 +8053,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[63]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[63];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[68]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[68];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_closure_factor();
       }
-      _this->_impl_._oneof_case_[63] = oneof_from_case;
+      _this->_impl_._oneof_case_[68] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7720,14 +8072,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[64]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[64];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[69]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[69];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_private_access_penalty();
       }
-      _this->_impl_._oneof_case_[64] = oneof_from_case;
+      _this->_impl_._oneof_case_[69] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7739,14 +8091,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[65]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[65];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[70]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[70];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_exclude_unpaved();
       }
-      _this->_impl_._oneof_case_[65] = oneof_from_case;
+      _this->_impl_._oneof_case_[70] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7758,14 +8110,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[66]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[66];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[71]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[71];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_include_hot();
       }
-      _this->_impl_._oneof_case_[66] = oneof_from_case;
+      _this->_impl_._oneof_case_[71] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7777,14 +8129,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[67]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[67];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[72]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[72];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_include_hov2();
       }
-      _this->_impl_._oneof_case_[67] = oneof_from_case;
+      _this->_impl_._oneof_case_[72] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7796,14 +8148,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[68]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[68];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[73]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[73];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_include_hov3();
       }
-      _this->_impl_._oneof_case_[68] = oneof_from_case;
+      _this->_impl_._oneof_case_[73] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7815,14 +8167,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[69]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[69];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[74]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[74];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_exclude_cash_only_tolls();
       }
-      _this->_impl_._oneof_case_[69] = oneof_from_case;
+      _this->_impl_._oneof_case_[74] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7834,14 +8186,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[70]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[70];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[75]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[75];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_restriction_probability();
       }
-      _this->_impl_._oneof_case_[70] = oneof_from_case;
+      _this->_impl_._oneof_case_[75] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7853,14 +8205,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[71]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[71];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[76]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[76];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_elevator_penalty();
       }
-      _this->_impl_._oneof_case_[71] = oneof_from_case;
+      _this->_impl_._oneof_case_[76] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7872,14 +8224,14 @@ void Costing_Options::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         break;
     }
   }
-  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[72]) {
-    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[72];
+  if (const uint32_t oneof_from_case = from._impl_._oneof_case_[77]) {
+    const uint32_t oneof_to_case = _this->_impl_._oneof_case_[77];
     const bool oneof_needs_init = oneof_to_case != oneof_from_case;
     if (oneof_needs_init) {
       if (oneof_to_case != 0) {
         _this->clear_has_hgv_no_access_penalty();
       }
-      _this->_impl_._oneof_case_[72] = oneof_from_case;
+      _this->_impl_._oneof_case_[77] = oneof_from_case;
     }
 
     switch (oneof_from_case) {
@@ -7915,6 +8267,11 @@ void Costing_Options::InternalSwap(Costing_Options* PROTOBUF_RESTRICT other) {
       - PROTOBUF_FIELD_OFFSET(Costing_Options, _impl_.filter_stop_action_)>(
           reinterpret_cast<char*>(&_impl_.filter_stop_action_),
           reinterpret_cast<char*>(&other->_impl_.filter_stop_action_));
+  swap(_impl_.has_standard_wheelchair_speed_, other->_impl_.has_standard_wheelchair_speed_);
+  swap(_impl_.has_basic_power_wheelchair_speed_, other->_impl_.has_basic_power_wheelchair_speed_);
+  swap(_impl_.has_advanced_power_wheelchair_speed_, other->_impl_.has_advanced_power_wheelchair_speed_);
+  swap(_impl_.has_wheelchair_slope_penalty_, other->_impl_.has_wheelchair_slope_penalty_);
+  swap(_impl_.has_wheelchair_surface_penalty_, other->_impl_.has_wheelchair_surface_penalty_);
   swap(_impl_.has_maneuver_penalty_, other->_impl_.has_maneuver_penalty_);
   swap(_impl_.has_destination_only_penalty_, other->_impl_.has_destination_only_penalty_);
   swap(_impl_.has_gate_cost_, other->_impl_.has_gate_cost_);
@@ -8061,6 +8418,11 @@ void Costing_Options::InternalSwap(Costing_Options* PROTOBUF_RESTRICT other) {
   swap(_impl_._oneof_case_[70], other->_impl_._oneof_case_[70]);
   swap(_impl_._oneof_case_[71], other->_impl_._oneof_case_[71]);
   swap(_impl_._oneof_case_[72], other->_impl_._oneof_case_[72]);
+  swap(_impl_._oneof_case_[73], other->_impl_._oneof_case_[73]);
+  swap(_impl_._oneof_case_[74], other->_impl_._oneof_case_[74]);
+  swap(_impl_._oneof_case_[75], other->_impl_._oneof_case_[75]);
+  swap(_impl_._oneof_case_[76], other->_impl_._oneof_case_[76]);
+  swap(_impl_._oneof_case_[77], other->_impl_._oneof_case_[77]);
 }
 
 // ===================================================================

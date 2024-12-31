@@ -219,78 +219,6 @@ autocost.cc.s:
 	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build && $(MAKE) $(MAKESILENT) -f src/sif/CMakeFiles/valhalla-sif.dir/build.make src/sif/CMakeFiles/valhalla-sif.dir/autocost.cc.s
 .PHONY : autocost.cc.s
 
-bicycle_heavy_hills.o: bicycle_heavy_hills.cc.o
-.PHONY : bicycle_heavy_hills.o
-
-# target to build an object file
-bicycle_heavy_hills.cc.o:
-	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build && $(MAKE) $(MAKESILENT) -f src/sif/CMakeFiles/valhalla-sif.dir/build.make src/sif/CMakeFiles/valhalla-sif.dir/bicycle_heavy_hills.cc.o
-.PHONY : bicycle_heavy_hills.cc.o
-
-bicycle_heavy_hills.i: bicycle_heavy_hills.cc.i
-.PHONY : bicycle_heavy_hills.i
-
-# target to preprocess a source file
-bicycle_heavy_hills.cc.i:
-	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build && $(MAKE) $(MAKESILENT) -f src/sif/CMakeFiles/valhalla-sif.dir/build.make src/sif/CMakeFiles/valhalla-sif.dir/bicycle_heavy_hills.cc.i
-.PHONY : bicycle_heavy_hills.cc.i
-
-bicycle_heavy_hills.s: bicycle_heavy_hills.cc.s
-.PHONY : bicycle_heavy_hills.s
-
-# target to generate assembly for a file
-bicycle_heavy_hills.cc.s:
-	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build && $(MAKE) $(MAKESILENT) -f src/sif/CMakeFiles/valhalla-sif.dir/build.make src/sif/CMakeFiles/valhalla-sif.dir/bicycle_heavy_hills.cc.s
-.PHONY : bicycle_heavy_hills.cc.s
-
-bicycle_light_hills.o: bicycle_light_hills.cc.o
-.PHONY : bicycle_light_hills.o
-
-# target to build an object file
-bicycle_light_hills.cc.o:
-	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build && $(MAKE) $(MAKESILENT) -f src/sif/CMakeFiles/valhalla-sif.dir/build.make src/sif/CMakeFiles/valhalla-sif.dir/bicycle_light_hills.cc.o
-.PHONY : bicycle_light_hills.cc.o
-
-bicycle_light_hills.i: bicycle_light_hills.cc.i
-.PHONY : bicycle_light_hills.i
-
-# target to preprocess a source file
-bicycle_light_hills.cc.i:
-	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build && $(MAKE) $(MAKESILENT) -f src/sif/CMakeFiles/valhalla-sif.dir/build.make src/sif/CMakeFiles/valhalla-sif.dir/bicycle_light_hills.cc.i
-.PHONY : bicycle_light_hills.cc.i
-
-bicycle_light_hills.s: bicycle_light_hills.cc.s
-.PHONY : bicycle_light_hills.s
-
-# target to generate assembly for a file
-bicycle_light_hills.cc.s:
-	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build && $(MAKE) $(MAKESILENT) -f src/sif/CMakeFiles/valhalla-sif.dir/build.make src/sif/CMakeFiles/valhalla-sif.dir/bicycle_light_hills.cc.s
-.PHONY : bicycle_light_hills.cc.s
-
-bicycle_medium_hills.o: bicycle_medium_hills.cc.o
-.PHONY : bicycle_medium_hills.o
-
-# target to build an object file
-bicycle_medium_hills.cc.o:
-	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build && $(MAKE) $(MAKESILENT) -f src/sif/CMakeFiles/valhalla-sif.dir/build.make src/sif/CMakeFiles/valhalla-sif.dir/bicycle_medium_hills.cc.o
-.PHONY : bicycle_medium_hills.cc.o
-
-bicycle_medium_hills.i: bicycle_medium_hills.cc.i
-.PHONY : bicycle_medium_hills.i
-
-# target to preprocess a source file
-bicycle_medium_hills.cc.i:
-	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build && $(MAKE) $(MAKESILENT) -f src/sif/CMakeFiles/valhalla-sif.dir/build.make src/sif/CMakeFiles/valhalla-sif.dir/bicycle_medium_hills.cc.i
-.PHONY : bicycle_medium_hills.cc.i
-
-bicycle_medium_hills.s: bicycle_medium_hills.cc.s
-.PHONY : bicycle_medium_hills.s
-
-# target to generate assembly for a file
-bicycle_medium_hills.cc.s:
-	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build && $(MAKE) $(MAKESILENT) -f src/sif/CMakeFiles/valhalla-sif.dir/build.make src/sif/CMakeFiles/valhalla-sif.dir/bicycle_medium_hills.cc.s
-.PHONY : bicycle_medium_hills.cc.s
-
 bicyclecost.o: bicyclecost.cc.o
 .PHONY : bicyclecost.o
 
@@ -531,6 +459,30 @@ truckcost.cc.s:
 	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build && $(MAKE) $(MAKESILENT) -f src/sif/CMakeFiles/valhalla-sif.dir/build.make src/sif/CMakeFiles/valhalla-sif.dir/truckcost.cc.s
 .PHONY : truckcost.cc.s
 
+wheelchair_cost.o: wheelchair_cost.cc.o
+.PHONY : wheelchair_cost.o
+
+# target to build an object file
+wheelchair_cost.cc.o:
+	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build && $(MAKE) $(MAKESILENT) -f src/sif/CMakeFiles/valhalla-sif.dir/build.make src/sif/CMakeFiles/valhalla-sif.dir/wheelchair_cost.cc.o
+.PHONY : wheelchair_cost.cc.o
+
+wheelchair_cost.i: wheelchair_cost.cc.i
+.PHONY : wheelchair_cost.i
+
+# target to preprocess a source file
+wheelchair_cost.cc.i:
+	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build && $(MAKE) $(MAKESILENT) -f src/sif/CMakeFiles/valhalla-sif.dir/build.make src/sif/CMakeFiles/valhalla-sif.dir/wheelchair_cost.cc.i
+.PHONY : wheelchair_cost.cc.i
+
+wheelchair_cost.s: wheelchair_cost.cc.s
+.PHONY : wheelchair_cost.s
+
+# target to generate assembly for a file
+wheelchair_cost.cc.s:
+	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build && $(MAKE) $(MAKESILENT) -f src/sif/CMakeFiles/valhalla-sif.dir/build.make src/sif/CMakeFiles/valhalla-sif.dir/wheelchair_cost.cc.s
+.PHONY : wheelchair_cost.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -549,15 +501,6 @@ help:
 	@echo "... autocost.o"
 	@echo "... autocost.i"
 	@echo "... autocost.s"
-	@echo "... bicycle_heavy_hills.o"
-	@echo "... bicycle_heavy_hills.i"
-	@echo "... bicycle_heavy_hills.s"
-	@echo "... bicycle_light_hills.o"
-	@echo "... bicycle_light_hills.i"
-	@echo "... bicycle_light_hills.s"
-	@echo "... bicycle_medium_hills.o"
-	@echo "... bicycle_medium_hills.i"
-	@echo "... bicycle_medium_hills.s"
 	@echo "... bicyclecost.o"
 	@echo "... bicyclecost.i"
 	@echo "... bicyclecost.s"
@@ -588,6 +531,9 @@ help:
 	@echo "... truckcost.o"
 	@echo "... truckcost.i"
 	@echo "... truckcost.s"
+	@echo "... wheelchair_cost.o"
+	@echo "... wheelchair_cost.i"
+	@echo "... wheelchair_cost.s"
 .PHONY : help
 
 

@@ -29,7 +29,7 @@ RUN git clone https://github.com/kevinkreiser/prime_server.git && \
 
 # Build Valhalla
 WORKDIR /app/valhalla
-RUN mkdir build && cd build && \
+RUN rm -rf build && mkdir build && cd build && \
     cmake .. && \
     make -j1 && \
     make install && \
