@@ -31,7 +31,9 @@ class _MapPageState extends State<MapPage> {
           ),
           // 검색바
           const Positioned(
-            top: 56.0, // 화면 상단에서 50px 떨어짐
+            top: 70.0, // 화면 상단에서 50px 떨어짐
+            left: 4.0, // 화면 좌측에서 16px 떨어짐
+            right: 4.0, // 화면 우측에서 16px 떨어짐
             child: CustomSearchBar(),
           ),
           // 모달창 열기 버튼
