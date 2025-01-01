@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
+import 'package:moducnu/presentation/common/category_list.dart';
 import 'package:moducnu/presentation/common/custom_search_bar.dart';
 import '../common/modal_bottom_sheet.dart'; // ModalBottomSheet 임포트
 
@@ -34,7 +35,13 @@ class _MapPageState extends State<MapPage> {
             top: 70.0, // 화면 상단에서 50px 떨어짐
             left: 4.0, // 화면 좌측에서 16px 떨어짐
             right: 4.0, // 화면 우측에서 16px 떨어짐
-            child: CustomSearchBar(),
+            child: Column(
+              children: [
+                CustomSearchBar(),
+                SizedBox(height: 12.0),
+                CategoryList()
+              ],
+            ),
           ),
           // 모달창 열기 버튼
           Positioned(
