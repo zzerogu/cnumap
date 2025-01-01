@@ -10,15 +10,9 @@ namespace sif {
 
 WheelchairCost::WheelchairCost(const Costing& costing_options)
     : DynamicCost(costing_options, TravelMode::kPedestrian, baldr::kPedestrianAccess, false) {
-  speed_ = costing_options.options().has_standard_wheelchair_speed()
-               ? costing_options.options().standard_wheelchair_speed()
-               : 1.5f; // 기본 속도
-  slope_penalty_ = costing_options.options().has_wheelchair_slope_penalty()
-                       ? costing_options.options().wheelchair_slope_penalty()
-                       : 1.0f; // 기본 경사 페널티
-  surface_penalty_ = costing_options.options().has_wheelchair_surface_penalty()
-                         ? costing_options.options().wheelchair_surface_penalty()
-                         : 1.0f; // 기본 표면 페널티
+  speed_ = 1.5f; // 기본 속도
+  slope_penalty_ = 1.0f; // 기본 경사 페널티
+  surface_penalty_ = 1.0f; // 기본 표면 페널티
 }
 
 // ---------------------------

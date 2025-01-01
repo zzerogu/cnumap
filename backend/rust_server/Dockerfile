@@ -15,7 +15,7 @@ COPY . .
 ARG DATABASE_URL
 
 # 필요한 라이브러리 설치 및 sqlx-cli 설치
-RUN apt-get update && apt-get install -y libssl-dev pkg-config \
+RUN apt-get update && apt-get install -y libssl-dev pkg-config curl \
     && cargo install sqlx-cli --no-default-features --features native-tls,postgres
 
 RUN cargo sqlx prepare --database-url ${DATABASE_URL}
@@ -27,7 +27,7 @@ FROM debian:bookworm-slim
 
 # 필요한 라이브러리 설치
 RUN apt-get update && apt-get install -y \
-    libssl3 ca-certificates tzdata && \
+    libssl3 ca-certificates tzdata curl && \
     ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime && \
     echo "Asia/Seoul" > /etc/timezone && \
     rm -rf /var/lib/apt/lists/*
