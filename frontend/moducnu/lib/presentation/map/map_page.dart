@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:moducnu/data/remote/api/map/map_api.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:moducnu/presentation/common/custom_search_bar.dart';
 import '../common/modal_bottom_sheet.dart'; // ModalBottomSheet 임포트
+import 'package:moducnu/presentation/common/map_component.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({Key? key}) : super(key: key);
@@ -12,7 +15,20 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
-  MapboxMap? _mapboxMap;
+  late MapApi _mapApi;
+  late String _baseUrl;
+  late String _accessToken;
+
+  @override
+  void initState() {
+    super.initState();
+    final dio = Dio();
+    _baseUrl = dotenv.env['SERVER_URL'] ??
+        "http://localhost:8000"; // .env에서 타일 서버 URL 가져오기
+    _accessToken =
+        dotenv.env['MAPBOX_ACCESS_TOKEN'] ?? ""; // .env에서 Access Token 가져오기
+    _mapApi = MapApi(dio, baseUrl: _baseUrl); // 사용자 API 설정
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +36,10 @@ class _MapPageState extends State<MapPage> {
       body: Stack(
         children: [
           // Map 위젯
-          MapWidget(
-            key: ValueKey("mapWidget"),
-            styleUri: "mapbox://styles/mapbox/streets-v11", // Mapbox Streets 스타일
-            cameraOptions: CameraOptions(
-              center: Point(coordinates: Position(127.3467804, 36.3688066)),
-              zoom: 14.0, // 초기 줌 레벨
-            ),
-            onMapCreated: _onMapCreated,
+          MapComponent(
+            mapApi: _mapApi,
+            baseUrl: _baseUrl,
+            accessToken: _accessToken,
           ),
           // 검색바
           const Positioned(
@@ -62,20 +74,5 @@ class _MapPageState extends State<MapPage> {
         ],
       ),
     );
-  }
-
-  void _onMapCreated(MapboxMap mapboxMap) {
-    _mapboxMap = mapboxMap;
-
-    // 초기 카메라 설정
-    mapboxMap.setCamera(
-      CameraOptions(
-        center: Point(coordinates: Position(127.3467804, 36.3688066)),
-        zoom: 15.0,
-      ),
-    );
-
-    // 지도 스타일 변경
-    mapboxMap.style.setStyleURI("mapbox://styles/mapbox/outdoors-v11");
   }
 }
