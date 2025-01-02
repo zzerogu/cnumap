@@ -256,9 +256,7 @@ valhalla_EXTERNAL_OBJECTS = \
 "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/odin/CMakeFiles/valhalla-odin.dir/util.cc.o" \
 "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif/CMakeFiles/valhalla-sif.dir/autocost.cc.o" \
 "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif/CMakeFiles/valhalla-sif.dir/bicyclecost.cc.o" \
-"/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif/CMakeFiles/valhalla-sif.dir/bicycle_light_hills.cc.o" \
-"/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif/CMakeFiles/valhalla-sif.dir/bicycle_medium_hills.cc.o" \
-"/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif/CMakeFiles/valhalla-sif.dir/bicycle_heavy_hills.cc.o" \
+"/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif/CMakeFiles/valhalla-sif.dir/wheelchair_cost.cc.o" \
 "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif/CMakeFiles/valhalla-sif.dir/hierarchylimits.cc.o" \
 "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif/CMakeFiles/valhalla-sif.dir/motorcyclecost.cc.o" \
 "/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif/CMakeFiles/valhalla-sif.dir/motorscootercost.cc.o" \
@@ -453,9 +451,7 @@ src/libvalhalla.a: src/odin/CMakeFiles/valhalla-odin.dir/narrativebuilder.cc.o
 src/libvalhalla.a: src/odin/CMakeFiles/valhalla-odin.dir/util.cc.o
 src/libvalhalla.a: src/sif/CMakeFiles/valhalla-sif.dir/autocost.cc.o
 src/libvalhalla.a: src/sif/CMakeFiles/valhalla-sif.dir/bicyclecost.cc.o
-src/libvalhalla.a: src/sif/CMakeFiles/valhalla-sif.dir/bicycle_light_hills.cc.o
-src/libvalhalla.a: src/sif/CMakeFiles/valhalla-sif.dir/bicycle_medium_hills.cc.o
-src/libvalhalla.a: src/sif/CMakeFiles/valhalla-sif.dir/bicycle_heavy_hills.cc.o
+src/libvalhalla.a: src/sif/CMakeFiles/valhalla-sif.dir/wheelchair_cost.cc.o
 src/libvalhalla.a: src/sif/CMakeFiles/valhalla-sif.dir/hierarchylimits.cc.o
 src/libvalhalla.a: src/sif/CMakeFiles/valhalla-sif.dir/motorcyclecost.cc.o
 src/libvalhalla.a: src/sif/CMakeFiles/valhalla-sif.dir/motorscootercost.cc.o

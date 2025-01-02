@@ -100,52 +100,24 @@ src/sif/CMakeFiles/valhalla-sif.dir/bicyclecost.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/valhalla-sif.dir/bicyclecost.cc.s"
 	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Werror -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -S /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/bicyclecost.cc -o CMakeFiles/valhalla-sif.dir/bicyclecost.cc.s
 
-src/sif/CMakeFiles/valhalla-sif.dir/bicycle_light_hills.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/flags.make
-src/sif/CMakeFiles/valhalla-sif.dir/bicycle_light_hills.cc.o: /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/bicycle_light_hills.cc
-src/sif/CMakeFiles/valhalla-sif.dir/bicycle_light_hills.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/sif/CMakeFiles/valhalla-sif.dir/bicycle_light_hills.cc.o"
-	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Werror -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -MD -MT src/sif/CMakeFiles/valhalla-sif.dir/bicycle_light_hills.cc.o -MF CMakeFiles/valhalla-sif.dir/bicycle_light_hills.cc.o.d -o CMakeFiles/valhalla-sif.dir/bicycle_light_hills.cc.o -c /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/bicycle_light_hills.cc
+src/sif/CMakeFiles/valhalla-sif.dir/wheelchair_cost.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/flags.make
+src/sif/CMakeFiles/valhalla-sif.dir/wheelchair_cost.cc.o: /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/wheelchair_cost.cc
+src/sif/CMakeFiles/valhalla-sif.dir/wheelchair_cost.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/sif/CMakeFiles/valhalla-sif.dir/wheelchair_cost.cc.o"
+	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Werror -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -MD -MT src/sif/CMakeFiles/valhalla-sif.dir/wheelchair_cost.cc.o -MF CMakeFiles/valhalla-sif.dir/wheelchair_cost.cc.o.d -o CMakeFiles/valhalla-sif.dir/wheelchair_cost.cc.o -c /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/wheelchair_cost.cc
 
-src/sif/CMakeFiles/valhalla-sif.dir/bicycle_light_hills.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/valhalla-sif.dir/bicycle_light_hills.cc.i"
-	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Werror -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -E /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/bicycle_light_hills.cc > CMakeFiles/valhalla-sif.dir/bicycle_light_hills.cc.i
+src/sif/CMakeFiles/valhalla-sif.dir/wheelchair_cost.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/valhalla-sif.dir/wheelchair_cost.cc.i"
+	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Werror -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -E /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/wheelchair_cost.cc > CMakeFiles/valhalla-sif.dir/wheelchair_cost.cc.i
 
-src/sif/CMakeFiles/valhalla-sif.dir/bicycle_light_hills.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/valhalla-sif.dir/bicycle_light_hills.cc.s"
-	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Werror -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -S /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/bicycle_light_hills.cc -o CMakeFiles/valhalla-sif.dir/bicycle_light_hills.cc.s
-
-src/sif/CMakeFiles/valhalla-sif.dir/bicycle_medium_hills.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/flags.make
-src/sif/CMakeFiles/valhalla-sif.dir/bicycle_medium_hills.cc.o: /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/bicycle_medium_hills.cc
-src/sif/CMakeFiles/valhalla-sif.dir/bicycle_medium_hills.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/sif/CMakeFiles/valhalla-sif.dir/bicycle_medium_hills.cc.o"
-	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Werror -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -MD -MT src/sif/CMakeFiles/valhalla-sif.dir/bicycle_medium_hills.cc.o -MF CMakeFiles/valhalla-sif.dir/bicycle_medium_hills.cc.o.d -o CMakeFiles/valhalla-sif.dir/bicycle_medium_hills.cc.o -c /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/bicycle_medium_hills.cc
-
-src/sif/CMakeFiles/valhalla-sif.dir/bicycle_medium_hills.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/valhalla-sif.dir/bicycle_medium_hills.cc.i"
-	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Werror -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -E /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/bicycle_medium_hills.cc > CMakeFiles/valhalla-sif.dir/bicycle_medium_hills.cc.i
-
-src/sif/CMakeFiles/valhalla-sif.dir/bicycle_medium_hills.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/valhalla-sif.dir/bicycle_medium_hills.cc.s"
-	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Werror -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -S /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/bicycle_medium_hills.cc -o CMakeFiles/valhalla-sif.dir/bicycle_medium_hills.cc.s
-
-src/sif/CMakeFiles/valhalla-sif.dir/bicycle_heavy_hills.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/flags.make
-src/sif/CMakeFiles/valhalla-sif.dir/bicycle_heavy_hills.cc.o: /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/bicycle_heavy_hills.cc
-src/sif/CMakeFiles/valhalla-sif.dir/bicycle_heavy_hills.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/sif/CMakeFiles/valhalla-sif.dir/bicycle_heavy_hills.cc.o"
-	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Werror -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -MD -MT src/sif/CMakeFiles/valhalla-sif.dir/bicycle_heavy_hills.cc.o -MF CMakeFiles/valhalla-sif.dir/bicycle_heavy_hills.cc.o.d -o CMakeFiles/valhalla-sif.dir/bicycle_heavy_hills.cc.o -c /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/bicycle_heavy_hills.cc
-
-src/sif/CMakeFiles/valhalla-sif.dir/bicycle_heavy_hills.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/valhalla-sif.dir/bicycle_heavy_hills.cc.i"
-	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Werror -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -E /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/bicycle_heavy_hills.cc > CMakeFiles/valhalla-sif.dir/bicycle_heavy_hills.cc.i
-
-src/sif/CMakeFiles/valhalla-sif.dir/bicycle_heavy_hills.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/valhalla-sif.dir/bicycle_heavy_hills.cc.s"
-	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Werror -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -S /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/bicycle_heavy_hills.cc -o CMakeFiles/valhalla-sif.dir/bicycle_heavy_hills.cc.s
+src/sif/CMakeFiles/valhalla-sif.dir/wheelchair_cost.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/valhalla-sif.dir/wheelchair_cost.cc.s"
+	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Werror -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -S /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/wheelchair_cost.cc -o CMakeFiles/valhalla-sif.dir/wheelchair_cost.cc.s
 
 src/sif/CMakeFiles/valhalla-sif.dir/hierarchylimits.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/flags.make
 src/sif/CMakeFiles/valhalla-sif.dir/hierarchylimits.cc.o: /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/hierarchylimits.cc
 src/sif/CMakeFiles/valhalla-sif.dir/hierarchylimits.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/sif/CMakeFiles/valhalla-sif.dir/hierarchylimits.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/sif/CMakeFiles/valhalla-sif.dir/hierarchylimits.cc.o"
 	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Werror -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -MD -MT src/sif/CMakeFiles/valhalla-sif.dir/hierarchylimits.cc.o -MF CMakeFiles/valhalla-sif.dir/hierarchylimits.cc.o.d -o CMakeFiles/valhalla-sif.dir/hierarchylimits.cc.o -c /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/hierarchylimits.cc
 
 src/sif/CMakeFiles/valhalla-sif.dir/hierarchylimits.cc.i: cmake_force
@@ -159,7 +131,7 @@ src/sif/CMakeFiles/valhalla-sif.dir/hierarchylimits.cc.s: cmake_force
 src/sif/CMakeFiles/valhalla-sif.dir/motorcyclecost.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/flags.make
 src/sif/CMakeFiles/valhalla-sif.dir/motorcyclecost.cc.o: /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/motorcyclecost.cc
 src/sif/CMakeFiles/valhalla-sif.dir/motorcyclecost.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/sif/CMakeFiles/valhalla-sif.dir/motorcyclecost.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/sif/CMakeFiles/valhalla-sif.dir/motorcyclecost.cc.o"
 	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Werror -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -MD -MT src/sif/CMakeFiles/valhalla-sif.dir/motorcyclecost.cc.o -MF CMakeFiles/valhalla-sif.dir/motorcyclecost.cc.o.d -o CMakeFiles/valhalla-sif.dir/motorcyclecost.cc.o -c /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/motorcyclecost.cc
 
 src/sif/CMakeFiles/valhalla-sif.dir/motorcyclecost.cc.i: cmake_force
@@ -173,7 +145,7 @@ src/sif/CMakeFiles/valhalla-sif.dir/motorcyclecost.cc.s: cmake_force
 src/sif/CMakeFiles/valhalla-sif.dir/motorscootercost.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/flags.make
 src/sif/CMakeFiles/valhalla-sif.dir/motorscootercost.cc.o: /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/motorscootercost.cc
 src/sif/CMakeFiles/valhalla-sif.dir/motorscootercost.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/sif/CMakeFiles/valhalla-sif.dir/motorscootercost.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/sif/CMakeFiles/valhalla-sif.dir/motorscootercost.cc.o"
 	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Werror -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -MD -MT src/sif/CMakeFiles/valhalla-sif.dir/motorscootercost.cc.o -MF CMakeFiles/valhalla-sif.dir/motorscootercost.cc.o.d -o CMakeFiles/valhalla-sif.dir/motorscootercost.cc.o -c /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/motorscootercost.cc
 
 src/sif/CMakeFiles/valhalla-sif.dir/motorscootercost.cc.i: cmake_force
@@ -187,7 +159,7 @@ src/sif/CMakeFiles/valhalla-sif.dir/motorscootercost.cc.s: cmake_force
 src/sif/CMakeFiles/valhalla-sif.dir/nocost.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/flags.make
 src/sif/CMakeFiles/valhalla-sif.dir/nocost.cc.o: /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/nocost.cc
 src/sif/CMakeFiles/valhalla-sif.dir/nocost.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/sif/CMakeFiles/valhalla-sif.dir/nocost.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/sif/CMakeFiles/valhalla-sif.dir/nocost.cc.o"
 	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Werror -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -MD -MT src/sif/CMakeFiles/valhalla-sif.dir/nocost.cc.o -MF CMakeFiles/valhalla-sif.dir/nocost.cc.o.d -o CMakeFiles/valhalla-sif.dir/nocost.cc.o -c /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/nocost.cc
 
 src/sif/CMakeFiles/valhalla-sif.dir/nocost.cc.i: cmake_force
@@ -201,7 +173,7 @@ src/sif/CMakeFiles/valhalla-sif.dir/nocost.cc.s: cmake_force
 src/sif/CMakeFiles/valhalla-sif.dir/pedestriancost.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/flags.make
 src/sif/CMakeFiles/valhalla-sif.dir/pedestriancost.cc.o: /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/pedestriancost.cc
 src/sif/CMakeFiles/valhalla-sif.dir/pedestriancost.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/sif/CMakeFiles/valhalla-sif.dir/pedestriancost.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/sif/CMakeFiles/valhalla-sif.dir/pedestriancost.cc.o"
 	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Werror -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -MD -MT src/sif/CMakeFiles/valhalla-sif.dir/pedestriancost.cc.o -MF CMakeFiles/valhalla-sif.dir/pedestriancost.cc.o.d -o CMakeFiles/valhalla-sif.dir/pedestriancost.cc.o -c /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/pedestriancost.cc
 
 src/sif/CMakeFiles/valhalla-sif.dir/pedestriancost.cc.i: cmake_force
@@ -215,7 +187,7 @@ src/sif/CMakeFiles/valhalla-sif.dir/pedestriancost.cc.s: cmake_force
 src/sif/CMakeFiles/valhalla-sif.dir/transitcost.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/flags.make
 src/sif/CMakeFiles/valhalla-sif.dir/transitcost.cc.o: /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/transitcost.cc
 src/sif/CMakeFiles/valhalla-sif.dir/transitcost.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/sif/CMakeFiles/valhalla-sif.dir/transitcost.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/sif/CMakeFiles/valhalla-sif.dir/transitcost.cc.o"
 	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Werror -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -MD -MT src/sif/CMakeFiles/valhalla-sif.dir/transitcost.cc.o -MF CMakeFiles/valhalla-sif.dir/transitcost.cc.o.d -o CMakeFiles/valhalla-sif.dir/transitcost.cc.o -c /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/transitcost.cc
 
 src/sif/CMakeFiles/valhalla-sif.dir/transitcost.cc.i: cmake_force
@@ -229,7 +201,7 @@ src/sif/CMakeFiles/valhalla-sif.dir/transitcost.cc.s: cmake_force
 src/sif/CMakeFiles/valhalla-sif.dir/truckcost.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/flags.make
 src/sif/CMakeFiles/valhalla-sif.dir/truckcost.cc.o: /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/truckcost.cc
 src/sif/CMakeFiles/valhalla-sif.dir/truckcost.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/sif/CMakeFiles/valhalla-sif.dir/truckcost.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/sif/CMakeFiles/valhalla-sif.dir/truckcost.cc.o"
 	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Werror -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -MD -MT src/sif/CMakeFiles/valhalla-sif.dir/truckcost.cc.o -MF CMakeFiles/valhalla-sif.dir/truckcost.cc.o.d -o CMakeFiles/valhalla-sif.dir/truckcost.cc.o -c /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/truckcost.cc
 
 src/sif/CMakeFiles/valhalla-sif.dir/truckcost.cc.i: cmake_force
@@ -243,7 +215,7 @@ src/sif/CMakeFiles/valhalla-sif.dir/truckcost.cc.s: cmake_force
 src/sif/CMakeFiles/valhalla-sif.dir/dynamiccost.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/flags.make
 src/sif/CMakeFiles/valhalla-sif.dir/dynamiccost.cc.o: /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/dynamiccost.cc
 src/sif/CMakeFiles/valhalla-sif.dir/dynamiccost.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/sif/CMakeFiles/valhalla-sif.dir/dynamiccost.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/sif/CMakeFiles/valhalla-sif.dir/dynamiccost.cc.o"
 	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Werror -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -MD -MT src/sif/CMakeFiles/valhalla-sif.dir/dynamiccost.cc.o -MF CMakeFiles/valhalla-sif.dir/dynamiccost.cc.o.d -o CMakeFiles/valhalla-sif.dir/dynamiccost.cc.o -c /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/dynamiccost.cc
 
 src/sif/CMakeFiles/valhalla-sif.dir/dynamiccost.cc.i: cmake_force
@@ -257,7 +229,7 @@ src/sif/CMakeFiles/valhalla-sif.dir/dynamiccost.cc.s: cmake_force
 src/sif/CMakeFiles/valhalla-sif.dir/recost.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/flags.make
 src/sif/CMakeFiles/valhalla-sif.dir/recost.cc.o: /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/recost.cc
 src/sif/CMakeFiles/valhalla-sif.dir/recost.cc.o: src/sif/CMakeFiles/valhalla-sif.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object src/sif/CMakeFiles/valhalla-sif.dir/recost.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/sif/CMakeFiles/valhalla-sif.dir/recost.cc.o"
 	cd /Users/yijungu/cnumap/backend/valhalla_server/valhalla/build/src/sif && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Werror -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -MD -MT src/sif/CMakeFiles/valhalla-sif.dir/recost.cc.o -MF CMakeFiles/valhalla-sif.dir/recost.cc.o.d -o CMakeFiles/valhalla-sif.dir/recost.cc.o -c /Users/yijungu/cnumap/backend/valhalla_server/valhalla/src/sif/recost.cc
 
 src/sif/CMakeFiles/valhalla-sif.dir/recost.cc.i: cmake_force
@@ -270,9 +242,7 @@ src/sif/CMakeFiles/valhalla-sif.dir/recost.cc.s: cmake_force
 
 valhalla-sif: src/sif/CMakeFiles/valhalla-sif.dir/autocost.cc.o
 valhalla-sif: src/sif/CMakeFiles/valhalla-sif.dir/bicyclecost.cc.o
-valhalla-sif: src/sif/CMakeFiles/valhalla-sif.dir/bicycle_light_hills.cc.o
-valhalla-sif: src/sif/CMakeFiles/valhalla-sif.dir/bicycle_medium_hills.cc.o
-valhalla-sif: src/sif/CMakeFiles/valhalla-sif.dir/bicycle_heavy_hills.cc.o
+valhalla-sif: src/sif/CMakeFiles/valhalla-sif.dir/wheelchair_cost.cc.o
 valhalla-sif: src/sif/CMakeFiles/valhalla-sif.dir/hierarchylimits.cc.o
 valhalla-sif: src/sif/CMakeFiles/valhalla-sif.dir/motorcyclecost.cc.o
 valhalla-sif: src/sif/CMakeFiles/valhalla-sif.dir/motorscootercost.cc.o
