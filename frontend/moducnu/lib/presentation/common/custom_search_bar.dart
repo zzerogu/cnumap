@@ -18,7 +18,6 @@ class CustomSearchBar extends StatelessWidget {
       Get.to(() => const SearchPage());
     },
     child: Container(
-      margin: const EdgeInsets.all(12.0),
       padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 2.0),
       decoration: BoxDecoration(
         color: Colors.transparent, // 배경색
@@ -39,7 +38,7 @@ class CustomSearchBar extends StatelessWidget {
         children: [
           // 검색 텍스트 필드
           SizedBox(
-            width: 0.74.sw,
+            width: 0.72.sw,
             // 텍스트필드의 색을 하얀색으로해야햄
             child: TextField(
               cursorColor: Colors.grey.shade900,

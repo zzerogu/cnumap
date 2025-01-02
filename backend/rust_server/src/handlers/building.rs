@@ -78,7 +78,6 @@ async fn get_buildings(pool: web::Data<PgPool>) -> impl Responder {
     }
 }
 
-
 #[utoipa::path(
     get,
     path = "/api/buildings/{id}",
@@ -107,6 +106,74 @@ async fn get_building_details(
 
     match building {
         Ok(building) => {
+            let disabled_restrooms_query = "SELECT * FROM Disabled_Restroom WHERE building_id = $1";
+            let ramps_query = "SELECT * FROM Ramp WHERE building_id = $1";
+            let elevators_query = "SELECT * FROM Elevator WHERE building_id = $1";
+
+            let disabled_restrooms = sqlx::query_as::<_, DisabledRestroom>(disabled_restrooms_query)
+                .bind(building_id)
+                .fetch_all(pool.get_ref())
+                .await
+                .unwrap_or_else(|_| vec![]);
+
+            let ramps = sqlx::query_as::<_, Ramp>(ramps_query)
+                .bind(building_id)
+                .fetch_all(pool.get_ref())
+                .await
+                .unwrap_or_else(|_| vec![]);
+
+            let elevators = sqlx::query_as::<_, Elevator>(elevators_query)
+                .bind(building_id)
+                .fetch_all(pool.get_ref())
+                .await
+                .unwrap_or_else(|_| vec![]);
+
+            HttpResponse::Ok().json(json!({
+                "building": building,
+                "disabled_restrooms": disabled_restrooms,
+                "ramps": ramps,
+                "elevators": elevators,
+            }))
+        }
+        Err(sqlx::Error::RowNotFound) => HttpResponse::NotFound().json(json!({
+            "error": "Building not found"
+        })),
+        Err(_) => HttpResponse::InternalServerError().json(json!({
+            "error": "Failed to retrieve building details"
+        })),
+    }
+}
+
+#[utoipa::path(
+    get,
+    path = "/api/buildings_node/{id}",
+    params(
+        ("id" = String, Path, description = "Building ID to retrieve details")
+    ),
+    tag = "Building API",
+    responses(
+        (status = 200, description = "Retrieve building details including related data", body = Object),
+        (status = 404, description = "Building not found"),
+        (status = 500, description = "Internal server error")
+    )
+)]
+#[get("/api/buildings_node/{id}")]
+async fn get_building_node_details(
+    pool: web::Data<PgPool>,
+    path: web::Path<String>,
+) -> impl Responder {
+    let node_id = path.into_inner();
+
+    let building_query = "SELECT * FROM Building WHERE node_id = $1";
+    let building = sqlx::query_as::<_, Building>(building_query)
+        .bind(&node_id)
+        .fetch_one(pool.get_ref())
+        .await;
+
+    match building {
+        Ok(building) => {
+            let building_id = building.building_id; 
+
             let disabled_restrooms_query = "SELECT * FROM Disabled_Restroom WHERE building_id = $1";
             let ramps_query = "SELECT * FROM Ramp WHERE building_id = $1";
             let elevators_query = "SELECT * FROM Elevator WHERE building_id = $1";

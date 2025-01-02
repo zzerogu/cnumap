@@ -27,6 +27,7 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: _pages[_selectedIndex], // 현재 선택된 페이지 표시
       bottomNavigationBar: SafeArea(
         // SafeArea로 하단 영역 보호

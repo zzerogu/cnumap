@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:moducnu/data/remote/api/map/map_api.dart';
-import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
+import 'package:moducnu/data/remote/api/building/building_api.dart';
+
+import 'package:moducnu/presentation/common/category_list.dart';
 import 'package:moducnu/presentation/common/custom_search_bar.dart';
-import '../common/modal_bottom_sheet.dart'; // ModalBottomSheet 임포트
 import 'package:moducnu/presentation/common/map_component.dart';
 
 class MapPage extends StatefulWidget {
@@ -15,7 +16,7 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
-  late MapApi _mapApi;
+  late BuildingApi _buildingApi;
   late String _baseUrl;
   late String _accessToken;
 
@@ -27,7 +28,7 @@ class _MapPageState extends State<MapPage> {
         "http://localhost:8000"; // .env에서 타일 서버 URL 가져오기
     _accessToken =
         dotenv.env['MAPBOX_ACCESS_TOKEN'] ?? ""; // .env에서 Access Token 가져오기
-    _mapApi = MapApi(dio, baseUrl: _baseUrl); // 사용자 API 설정
+    _buildingApi = BuildingApi(dio, baseUrl: _baseUrl); // 사용자 API 설정
   }
 
   @override
@@ -37,38 +38,21 @@ class _MapPageState extends State<MapPage> {
         children: [
           // Map 위젯
           MapComponent(
-            mapApi: _mapApi,
+            buildingApi: _buildingApi,
             baseUrl: _baseUrl,
             accessToken: _accessToken,
           ),
           // 검색바
           const Positioned(
-            top: 56.0, // 화면 상단에서 50px 떨어짐
-            child: CustomSearchBar(),
-          ),
-          // 모달창 열기 버튼
-          Positioned(
-            bottom: 16.0,
-            left: 16.0,
-            right: 16.0,
-            child: ElevatedButton(
-              onPressed: () {
-                // ModalBottomSheet 표시
-                ModalBottomSheet.showModal(
-                  context,
-                  '제목', // 제목
-                  '부제목', // 부제목
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.white,
-                backgroundColor: Colors.blueAccent,
-                padding: EdgeInsets.symmetric(vertical: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-              child: Text('모달 열기'),
+            top: 70.0, // 화면 상단에서 50px 떨어짐
+            left: 4.0, // 화면 좌측에서 16px 떨어짐
+            right: 4.0, // 화면 우측에서 16px 떨어짐
+            child: Column(
+              children: [
+                CustomSearchBar(),
+                SizedBox(height: 12.0),
+                CategoryList()
+              ],
             ),
           ),
         ],

@@ -20,6 +20,7 @@ use env_logger;
     paths(
         crate::handlers::building::get_buildings,
         crate::handlers::building::get_building_details,
+        crate::handlers::building::get_building_node_details,
         crate::handlers::building::get_node_data,
         crate::handlers::building::search_buildings,
         crate::handlers::building::get_buildings_by_category,
