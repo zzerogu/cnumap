@@ -40,6 +40,7 @@ class SearchPage extends StatelessWidget {
       body: ListView(
         children: [
           const CustomSearchBar(hasShadow: false),  // 검색 바 추가
+          const SizedBox(height: 20.0),
           // PlaceItem 리스트를 동적으로 표시
           for (var place in places)
             PlaceItem(
