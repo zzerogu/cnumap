@@ -3,10 +3,10 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:moducnu/data/remote/api/map/map_api.dart';
 import 'package:moducnu/data/remote/api/building/building_api.dart';
-
 import 'package:moducnu/presentation/common/category_list.dart';
 import 'package:moducnu/presentation/common/custom_search_bar.dart';
 import 'package:moducnu/presentation/common/map_component.dart';
+import 'package:moducnu/presentation/common/ramp_detail_popup.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({Key? key}) : super(key: key);
@@ -56,6 +56,12 @@ class _MapPageState extends State<MapPage> {
             ),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          RampDetailPopup.showPopup(context, rampIndex: 0);
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }
