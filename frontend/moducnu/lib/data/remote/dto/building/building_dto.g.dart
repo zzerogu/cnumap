@@ -52,3 +52,22 @@ Map<String, dynamic> _$BuildingDetailResponseDtoToJson(
       'roof_floors': instance.roofFloors,
       'tags': instance.tags,
     };
+
+BuildingFullResponseDto _$BuildingFullResponseDtoFromJson(
+        Map<String, dynamic> json) =>
+    BuildingFullResponseDto(
+      building: BuildingDetailResponseDto.fromJson(
+          json['building'] as Map<String, dynamic>),
+      disabledRestrooms: json['disabled_restrooms'] as List<dynamic>,
+      elevators: json['elevators'] as List<dynamic>,
+      ramps: json['ramps'] as List<dynamic>,
+    );
+
+Map<String, dynamic> _$BuildingFullResponseDtoToJson(
+        BuildingFullResponseDto instance) =>
+    <String, dynamic>{
+      'building': instance.building.toJson(),
+      'disabled_restrooms': instance.disabledRestrooms,
+      'elevators': instance.elevators,
+      'ramps': instance.ramps,
+    };
