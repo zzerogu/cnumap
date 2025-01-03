@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:moducnu/presentation/theme/color.dart'; // kbackgroundColor, kButtonColor 등 필요한 경우
+import 'package:moducnu/presentation/theme/color.dart'; 
 import 'package:moducnu/presentation/common/route_finder_modal.dart'; 
 
 /// 건물 편의시설 모델
