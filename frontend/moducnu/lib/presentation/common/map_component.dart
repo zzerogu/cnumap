@@ -358,7 +358,7 @@ class MapComponentState extends State<MapComponent> {
   }
 
   void _addCustomTileSource(MapboxMap mapboxMap) {
-    final tileUrl = "${widget.baseUrl}/api/map/tiles/{z}/{x}/{y}.pbf";
+    final tileUrl = "${widget.baseUrl}api/map/tiles/{z}/{x}/{y}.pbf";
 
     mapboxMap.style.addSource(
       VectorSource(

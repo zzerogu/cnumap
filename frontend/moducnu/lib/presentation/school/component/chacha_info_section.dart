@@ -13,7 +13,7 @@ class ChaChaInfoSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SectionTitle(title: '📻 차차 정보'),
+          SectionTitle(title: '📻 도움이 필요하신가요?'),
           SizedBox(height: 10.0),
           InfoGrid(),
         ],
@@ -43,9 +43,7 @@ class InfoGrid extends StatelessWidget {
         crossAxisSpacing: 16,
         childAspectRatio: 1.5,
         children: const [
-          InfoCard(title: '공사 소식', icon: Icons.construction),
           InfoCard(title: '도움 요청', icon: Icons.help),
-          InfoCard(title: '휠체어 충전소', icon: Icons.electric_scooter),
           InfoCard(title: '장애학습 지원센터', icon: Icons.accessible),
         ],
       ),
