@@ -8,16 +8,16 @@ part of 'ramp_dto.dart';
 
 RampResponseDto _$RampResponseDtoFromJson(Map<String, dynamic> json) =>
     RampResponseDto(
-      buildingId2: (json['building_id2'] as num).toInt(),
+      buildingId: (json['building_id'] as num).toInt(),
       floor: (json['floor'] as num).toInt(),
       locationDescription: json['location_description'] as String,
-      nodeId: (json['node_id'] as num).toInt(),
+      nodeId: json['node_id'] as String,
       rampId: (json['ramp_id'] as num).toInt(),
     );
 
 Map<String, dynamic> _$RampResponseDtoToJson(RampResponseDto instance) =>
     <String, dynamic>{
-      'building_id2': instance.buildingId2,
+      'building_id': instance.buildingId,
       'floor': instance.floor,
       'location_description': instance.locationDescription,
       'node_id': instance.nodeId,

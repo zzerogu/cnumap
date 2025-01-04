@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:moducnu/data/remote/api/disabled_restroom/disabled_restroom_api.dart';
 import 'package:moducnu/data/remote/api/map/map_api.dart';
 import 'package:moducnu/data/remote/api/building/building_api.dart';
+import 'package:moducnu/data/remote/api/navigation/navigation_api.dart';
+import 'package:moducnu/data/remote/api/ramp/ramp_api.dart';
 
 import 'package:moducnu/presentation/common/category_list.dart';
 import 'package:moducnu/presentation/common/custom_search_bar.dart';
@@ -17,18 +20,27 @@ class MapPage extends StatefulWidget {
 
 class _MapPageState extends State<MapPage> {
   late BuildingApi _buildingApi;
+  late NavigationApi _navigationApi;
+  late RampApi _rampApi;
+  late DisabledRestroomApi _disabledRestroomApi;
   late String _baseUrl;
   late String _accessToken;
+
+  final GlobalKey<MapComponentState> _mapComponentKey =
+      GlobalKey<MapComponentState>();
 
   @override
   void initState() {
     super.initState();
     final dio = Dio();
-    _baseUrl = dotenv.env['SERVER_URL'] ??
-        "http://localhost:8000"; // .env에서 타일 서버 URL 가져오기
+    _baseUrl = "http://localhost:8000/"; // .env에서 타일 서버 URL 가져오기
     _accessToken =
         dotenv.env['MAPBOX_ACCESS_TOKEN'] ?? ""; // .env에서 Access Token 가져오기
     _buildingApi = BuildingApi(dio, baseUrl: _baseUrl); // 사용자 API 설정
+    _navigationApi = NavigationApi(dio, baseUrl: _baseUrl); // 사용자 API 설정
+    _rampApi = RampApi(dio, baseUrl: _baseUrl); // 사용자 API 설정
+    _disabledRestroomApi =
+        DisabledRestroomApi(dio, baseUrl: _baseUrl); // 사용자 API 설정
   }
 
   @override
@@ -38,20 +50,30 @@ class _MapPageState extends State<MapPage> {
         children: [
           // Map 위젯
           MapComponent(
+            key: _mapComponentKey,
             buildingApi: _buildingApi,
+            navigationApi: _navigationApi,
             baseUrl: _baseUrl,
             accessToken: _accessToken,
           ),
           // 검색바
-          const Positioned(
+          Positioned(
             top: 70.0, // 화면 상단에서 50px 떨어짐
             left: 4.0, // 화면 좌측에서 16px 떨어짐
             right: 4.0, // 화면 우측에서 16px 떨어짐
             child: Column(
               children: [
-                CustomSearchBar(),
-                SizedBox(height: 12.0),
-                CategoryList()
+                const CustomSearchBar(),
+                const SizedBox(height: 12.0),
+                CategoryList(
+                  rampApi: _rampApi,
+                  disabledRestroomApi: _disabledRestroomApi,
+                  navigationApi: _navigationApi,
+                  onDisplayMarkers: (coordinates) {
+                    _mapComponentKey.currentState?.addMarkers(
+                        coordinates); // ✅ MapComponent의 마커 추가 함수 호출
+                  },
+                )
               ],
             ),
           ),

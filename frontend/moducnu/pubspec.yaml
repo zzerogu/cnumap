@@ -40,7 +40,8 @@ dependencies:
   flutter_dotenv: ^5.2.1
   get: ^4.6.6
   sizing: ^1.1.2
-
+  geolocator: ^10.1.0
+  permission_handler: ^11.0.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

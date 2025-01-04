@@ -11,10 +11,10 @@ abstract class MapApi {
   // /api/map/tiles/{z}/{x}/{y}.pbf
   @GET("/api/map/tiles/{z}/{x}/{y}.pbf")
   Future getTile(
-      @Path("z") int zoomLevel,
-      @Path("x") int tileX,
-      @Path("y") int tileY,
-      );
+    @Path("z") int zoomLevel,
+    @Path("x") int tileX,
+    @Path("y") int tileY,
+  );
 
   // // /api/user/location
   // @GET("/api/user/location")
