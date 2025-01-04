@@ -6,10 +6,11 @@ import 'package:moducnu/data/remote/api/map/map_api.dart';
 import 'package:moducnu/data/remote/api/building/building_api.dart';
 import 'package:moducnu/data/remote/api/navigation/navigation_api.dart';
 import 'package:moducnu/data/remote/api/ramp/ramp_api.dart';
-
 import 'package:moducnu/presentation/common/category_list.dart';
 import 'package:moducnu/presentation/common/custom_search_bar.dart';
 import 'package:moducnu/presentation/common/map_component.dart';
+import 'package:moducnu/presentation/common/ramp_detail_popup.dart';
+import 'package:moducnu/presentation/common/restroom_detail_popup.dart'; // 추가된 import
 
 class MapPage extends StatefulWidget {
   const MapPage({Key? key}) : super(key: key);
@@ -76,6 +77,26 @@ class _MapPageState extends State<MapPage> {
                 )
               ],
             ),
+          ),
+        ],
+      ),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            heroTag: 'ramp_button', // Hero 태그 추가
+            onPressed: () {
+              RampDetailPopup.showPopup(context, rampIndex: 0);
+            },
+            child: const Icon(Icons.accessible),
+          ),
+          const SizedBox(height: 12.0), // 버튼 사이 간격 추가
+          FloatingActionButton(
+            heroTag: 'restroom_button', // Hero 태그 추가
+            onPressed: () {
+              RestroomDetailPopup.showPopup(context, restroomIndex: 0);
+            },
+            child: const Icon(Icons.wc),
           ),
         ],
       ),
