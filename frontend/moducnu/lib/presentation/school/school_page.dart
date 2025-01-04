@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:moducnu/presentation/common/custom_search_bar.dart';
 import 'package:moducnu/presentation/school/component/building_info_section.dart';
 import 'package:moducnu/presentation/school/component/chacha_info_section.dart';
+import 'package:moducnu/presentation/school/component/construction_news.dart';
 import 'package:moducnu/presentation/theme/color.dart';
 import 'package:sizing/sizing.dart';
 
@@ -30,12 +31,15 @@ class SchoolPage extends StatelessWidget {
           child: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomSearchBar(hasShadow: false),
+              SizedBox(height: 16),
+              ConstructionNews(),
               SizedBox(height: 16),
               ChaChaInfoSection(),
               SizedBox(height: 20),
+              CustomSearchBar(hasShadow: false),
+              SizedBox(height: 20),
               BuildingInfoSection(),
-              SizedBox(height: 16),
+              SizedBox(height: 20),
             ],
           ),
         ),
