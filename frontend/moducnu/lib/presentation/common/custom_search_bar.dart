@@ -1,96 +1,111 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:moducnu/presentation/map/search_page.dart';
+import 'package:moducnu/presentation/map/search_viewmodel.dart';
 import 'package:moducnu/presentation/theme/color.dart';
 import 'package:sizing/sizing.dart';
 
 class CustomSearchBar extends StatelessWidget {
-  final bool hasShadow; // 그림자 여부를 결정하는 변수
+  final bool hasShadow;
+  final VoidCallback? onTap;
+  final bool readOnly; // 텍스트 입력 비활성화 여부
+  final SearchViewModel? viewModel; // ViewModel 주입
 
-  const CustomSearchBar({super.key, this.hasShadow = true}); // 기본값은 true
-
+  const CustomSearchBar({
+    super.key,
+    this.hasShadow = true,
+    this.onTap,
+    this.readOnly = false, // 기본값: 텍스트 입력 가능
+    this.viewModel,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController controller = TextEditingController();
+
     return GestureDetector(
-        onTap: () {
-      // Get 패키지를 사용하여 검색 화면으로 이동
-      Get.to(() => const SearchPage());
-    },
-    child: Container(
-      padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 2.0),
-      decoration: BoxDecoration(
-        color: Colors.transparent, // 배경색
-        borderRadius: BorderRadius.circular(10.0), // 둥근 모서리
-        boxShadow: hasShadow // 그림자 여부를 결정
-            ? [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2), // 그림자 색상
-            spreadRadius: 3, // 그림자의 확산 정도
-            blurRadius: 5, // 그림자의 흐림 정도
-            offset: const Offset(0, 3), // 그림자의 위치 (x, y)
-          ),
-        ]
-            : [], // 그림자가 없을 경우 빈 리스트
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // 검색 텍스트 필드
-          SizedBox(
-            width: 0.72.sw,
-            // 텍스트필드의 색을 하얀색으로해야햄
-            child: TextField(
-              cursorColor: Colors.grey.shade900,
-              enabled: !hasShadow, // 그림자가 없는 경우 텍스트 필드 활성화
-              decoration: InputDecoration(
-                hintText: '학교 장소 검색', // Placeholder text
-                contentPadding: const EdgeInsets.only(top: 12.0, left: 16.0, bottom: 12.0), // 텍스트 필드 안의 텍스트 여백
-                hintStyle: TextStyle(color: Colors.grey.shade500, fontSize: 16.0),
-                fillColor: Colors.white,
-                filled: true,
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(4.0),
-                  borderSide: hasShadow
-                      ? BorderSide.none // 그림자가 있는 경우 경계선 제거
-                      : BorderSide(
-                    color: Colors.grey.shade500, // 회색 경계선
-                    width: 0.6, // 얇은 두께
+      onTap: readOnly
+          ? onTap
+          : null, // readOnly가 false일 때는 탭 이벤트를 무시
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 2.0),
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(10.0),
+          boxShadow: hasShadow
+              ? [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 3,
+              blurRadius: 5,
+              offset: const Offset(0, 3),
+            ),
+          ]
+              : [],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 0.72.sw, // 화면 너비의 72%를 사용
+              child: TextField(
+                controller: controller,
+                cursorColor: Colors.grey.shade400,
+                readOnly: readOnly, // readOnly 여부 설정
+                onTap: () {
+                  if (readOnly && onTap != null) {
+                    onTap!(); // readOnly가 true일 때 onTap 호출
+                  }
+                },
+                onChanged: (value) {
+                  if (!readOnly && viewModel != null) {
+                    viewModel!.searchPlaces(value); // 검색어 변경 시 ViewModel 호출
+                  }
+                },
+                decoration: InputDecoration(
+                  hintText: '학교 장소 검색',
+                  fillColor: Colors.white,
+                  filled: true,
+                  contentPadding: const EdgeInsets.symmetric(
+                    vertical: 14.0, // 텍스트 필드 내부 위아래 여백 줄임
+                    horizontal: 12.0, // 기본 좌우 여백 유지
                   ),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(4.0),
-                  borderSide: BorderSide(
-                    color: Colors.grey.shade700, // 포커스 시 회색 경계선
-                    width: 0.6, // 얇은 두께
+                  border: hasShadow
+                      ? OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(6.0),
+                    borderSide: BorderSide.none, // 테두리 없음
+                  )
+                      : null, // 기본 테두리는 enabledBorder로 대체
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(6.0),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(169, 169, 169, 1.0), // 적당한 회색
+                      width: 0.6, // 테두리 두께
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(6.0),
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(100, 100, 100, 1.0), // 포커스 상태 연한 검정색
+                      width: 0.8,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          // 텍스트 필드와 버튼 사이의 여백
-          const SizedBox(width: 12.0), // 여백 추가
-          // 검색 버튼
-          Container(
-              width: 0.13.sw,
-              height: 0.13.sw,
-              alignment: Alignment.center,
-              padding: const EdgeInsets.all(12.0),
-              decoration: BoxDecoration(
-                color: Colors.orange, // Orange button color
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: const Center( // Center 위젯을 사용하여 아이콘을 정 가운데 배치
-                child: Icon(
-                  Icons.search,
-                  color: Colors.white,
+            const SizedBox(width: 12.0),
+            GestureDetector(
+              onTap: onTap,
+              child: Container(
+                padding: const EdgeInsets.all(12.0),
+                decoration: BoxDecoration(
+                  color: Colors.orange,
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
+                child: const Icon(Icons.search, color: Colors.white),
               ),
             ),
-        ],
+          ],
+        ),
       ),
-    ),
     );
   }
 }

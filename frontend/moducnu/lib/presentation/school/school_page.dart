@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:moducnu/presentation/common/custom_search_bar.dart';
 import 'package:moducnu/presentation/school/component/building_info_section.dart';
 import 'package:moducnu/presentation/school/component/chacha_info_section.dart';
@@ -30,7 +32,7 @@ class SchoolPage extends StatelessWidget {
           child: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomSearchBar(hasShadow: false),
+              CustomSearchBar(hasShadow: false, readOnly: true),
               SizedBox(height: 16),
               ChaChaInfoSection(),
               SizedBox(height: 20),

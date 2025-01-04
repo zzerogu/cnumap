@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
+import 'package:moducnu/presentation/map/search_page.dart';
 import '../common/route_finder_modal.dart';
 import '../common/building_detail_popup.dart';
 import 'package:moducnu/presentation/common/category_list.dart';
@@ -69,15 +71,21 @@ class _MapPageState extends State<MapPage> {
           ),
 
           // 검색바
-          const Positioned(
+          Positioned(
             top: 70.0, // 화면 상단에서 50px 떨어짐
             left: 4.0, // 화면 좌측에서 16px 떨어짐
             right: 4.0, // 화면 우측에서 16px 떨어짐
             child: Column(
               children: [
-                CustomSearchBar(),
-                SizedBox(height: 12.0),
-                CategoryList()
+                CustomSearchBar(
+                  hasShadow: true,
+                  readOnly: true,
+                  onTap: () {
+                    Get.to(() => const SearchPage());
+                  },
+                ),
+                const SizedBox(height: 12.0),
+                const CategoryList()
               ],
             ),
           ),
