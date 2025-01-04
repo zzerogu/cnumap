@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:moducnu/presentation/school/component/section_title.dart';
 import 'package:moducnu/presentation/theme/color.dart';
 import 'package:intl/intl.dart';
+import 'package:moducnu/presentation/school/component/construction_news_detail.dart';
 
 /// 공사 소식을 표시하는 위젯
 class ConstructionNews extends StatelessWidget {
@@ -22,7 +23,7 @@ class ConstructionNews extends StatelessWidget {
           const SizedBox(height: 10.0),
 
           // 공사 소식 리스트 출력
-          ...constructionData.map((news) => _buildNewsCard(news)).toList(),
+          ...constructionData.map((news) => _buildNewsCard(context, news)).toList(),
         ],
       ),
     );
@@ -45,7 +46,7 @@ class ConstructionNews extends StatelessWidget {
   }
 
   /// 공사 소식 카드 위젯 생성
-  Widget _buildNewsCard(Map<String, String> news) {
+  Widget _buildNewsCard(BuildContext context, Map<String, String> news) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12.0),
       padding: const EdgeInsets.all(16.0),
@@ -63,7 +64,7 @@ class ConstructionNews extends StatelessWidget {
             style: TextStyle(
               fontSize: 14.0,
               color: Colors.brown[700],
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.bold,
             ),
           ),
           const SizedBox(height: 8.0),
@@ -78,7 +79,7 @@ class ConstructionNews extends StatelessWidget {
           // '자세히 보기' 버튼
           Center(
             child: ElevatedButton(
-              onPressed: () => _onDetailButtonPressed(),
+              onPressed: () => _onDetailButtonPressed(context),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.amber,
                 shape: RoundedRectangleBorder(
@@ -97,8 +98,12 @@ class ConstructionNews extends StatelessWidget {
     );
   }
 
-  /// '자세히 보기' 버튼 클릭 이벤트 처리 (추후 구현 예정)
-  void _onDetailButtonPressed() {
-    // 버튼 클릭 이벤트 처리 로직 추가 필요
+  void _onDetailButtonPressed(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ConstructionNewsDetail(),
+      ),
+    );
   }
 }
