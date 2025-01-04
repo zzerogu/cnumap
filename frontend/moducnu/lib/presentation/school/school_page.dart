@@ -4,7 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:moducnu/presentation/common/custom_search_bar.dart';
 import 'package:moducnu/presentation/school/component/building_info_section.dart';
 import 'package:moducnu/presentation/school/component/chacha_info_section.dart';
-import 'package:moducnu/presentation/school/component/construction_news.dart';
+import 'package:moducnu/presentation/school/component/construction_news_component.dart';
 import 'package:moducnu/presentation/theme/color.dart';
 import 'package:sizing/sizing.dart';
 
@@ -34,7 +34,7 @@ class SchoolPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 16),
-              ConstructionNews(),
+              ConstructionNewsComponent(),
               SizedBox(height: 16),
               ChaChaInfoSection(),
               SizedBox(height: 20),
