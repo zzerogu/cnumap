@@ -10,7 +10,5 @@ abstract class DisabledRestroomApi {
   factory DisabledRestroomApi(Dio dio, {String baseUrl}) = _DisabledRestroomApi;
 
   @GET("api/construction-news")
-  Future<List<DisabledRestroomResponseDto>> getAllConstructionNews();
+  Future<List<DisabledRestroomResponseDto>> getAllRestrooms();
 }
-
-

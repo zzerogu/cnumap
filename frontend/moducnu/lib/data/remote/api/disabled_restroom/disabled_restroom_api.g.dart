@@ -22,7 +22,7 @@ class _DisabledRestroomApi implements DisabledRestroomApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<List<DisabledRestroomResponseDto>> getAllConstructionNews() async {
+  Future<List<DisabledRestroomResponseDto>> getAllRestrooms() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

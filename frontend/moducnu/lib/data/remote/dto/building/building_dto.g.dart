@@ -58,16 +58,75 @@ BuildingFullResponseDto _$BuildingFullResponseDtoFromJson(
     BuildingFullResponseDto(
       building: BuildingDetailResponseDto.fromJson(
           json['building'] as Map<String, dynamic>),
-      disabledRestrooms: json['disabled_restrooms'] as List<dynamic>,
-      elevators: json['elevators'] as List<dynamic>,
-      ramps: json['ramps'] as List<dynamic>,
+      disabledRestrooms: (json['disabled_restrooms'] as List<dynamic>)
+          .map((e) => RestroomDto.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      elevators: (json['elevators'] as List<dynamic>)
+          .map((e) => ElevatorDto.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      ramps: (json['ramps'] as List<dynamic>)
+          .map((e) => RampDto.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$BuildingFullResponseDtoToJson(
         BuildingFullResponseDto instance) =>
     <String, dynamic>{
-      'building': instance.building.toJson(),
-      'disabled_restrooms': instance.disabledRestrooms,
+      'building': instance.building,
+      'disabledRestrooms': instance.disabledRestrooms,
       'elevators': instance.elevators,
       'ramps': instance.ramps,
+    };
+
+RestroomDto _$RestroomDtoFromJson(Map<String, dynamic> json) => RestroomDto(
+      restroomId: (json['restroom_id'] as num?)?.toInt() ?? 0, // null check 추가
+      buildingId: (json['building_id'] as num?)?.toInt() ?? 0,
+      nodeId: json['node_id'] as String? ?? '', // null check 추가
+      floor: (json['floor'] as num?)!.toInt(), // nullable 적용
+      locationDescription:
+          json['location_description'] as String? ?? '위치 정보 없음',
+    );
+
+Map<String, dynamic> _$RestroomDtoToJson(RestroomDto instance) =>
+    <String, dynamic>{
+      'restroom_id': instance.restroomId,
+      'building_id': instance.buildingId,
+      'node_id': instance.nodeId,
+      'floor': instance.floor,
+      'location_description': instance.locationDescription,
+    };
+
+ElevatorDto _$ElevatorDtoFromJson(Map<String, dynamic> json) => ElevatorDto(
+      elevatorId: (json['elevator_id'] as num?)?.toInt() ?? 0,
+      buildingId: (json['building_id'] as num?)?.toInt() ?? 0,
+      nodeId: json['node_id'] as String? ?? '',
+      floor: (json['floor'] as num?)!.toInt(),
+      locationDescription:
+          json['location_description'] as String? ?? '위치 정보 없음',
+    );
+
+Map<String, dynamic> _$ElevatorDtoToJson(ElevatorDto instance) =>
+    <String, dynamic>{
+      'elevator_id': instance.elevatorId,
+      'building_id': instance.buildingId,
+      'node_id': instance.nodeId,
+      'floor': instance.floor,
+      'location_description': instance.locationDescription,
+    };
+
+RampDto _$RampDtoFromJson(Map<String, dynamic> json) => RampDto(
+      rampId: (json['ramp_id'] as num?)?.toInt() ?? 0,
+      buildingId: (json['building_id'] as num?)?.toInt() ?? 0,
+      nodeId: json['node_id'] as String? ?? '',
+      floor: (json['floor'] as num?)!.toInt(),
+      locationDescription:
+          json['location_description'] as String? ?? '위치 정보 없음',
+    );
+
+Map<String, dynamic> _$RampDtoToJson(RampDto instance) => <String, dynamic>{
+      'ramp_id': instance.rampId,
+      'building_id': instance.buildingId,
+      'node_id': instance.nodeId,
+      'floor': instance.floor,
+      'location_description': instance.locationDescription,
     };

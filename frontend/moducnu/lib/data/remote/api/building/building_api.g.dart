@@ -205,7 +205,7 @@ class _BuildingApi implements BuildingApi {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<BuildingDetailResponseDto>(Options(
+    final _options = _setStreamType<BuildingFullResponseDto>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,

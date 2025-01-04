@@ -64,9 +64,9 @@ class BuildingDetailResponseDto {
 @JsonSerializable()
 class BuildingFullResponseDto {
   final BuildingDetailResponseDto building;
-  final List<dynamic> disabledRestrooms;
-  final List<dynamic> elevators;
-  final List<dynamic> ramps;
+  final List<RestroomDto> disabledRestrooms;
+  final List<ElevatorDto> elevators;
+  final List<RampDto> ramps;
 
   BuildingFullResponseDto({
     required this.building,
@@ -79,4 +79,73 @@ class BuildingFullResponseDto {
       _$BuildingFullResponseDtoFromJson(json);
 
   Map<String, dynamic> toJson() => _$BuildingFullResponseDtoToJson(this);
+}
+
+/// ✅ RestroomDto 정의
+@JsonSerializable()
+class RestroomDto {
+  final int restroomId;
+  final int buildingId;
+  final String nodeId;
+  final int floor;
+  final String locationDescription;
+
+  RestroomDto({
+    required this.restroomId,
+    required this.buildingId,
+    required this.nodeId,
+    required this.floor,
+    required this.locationDescription,
+  });
+
+  factory RestroomDto.fromJson(Map<String, dynamic> json) =>
+      _$RestroomDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$RestroomDtoToJson(this);
+}
+
+/// ✅ ElevatorDto 정의
+@JsonSerializable()
+class ElevatorDto {
+  final int elevatorId;
+  final int buildingId;
+  final String nodeId;
+  final int floor;
+  final String locationDescription;
+
+  ElevatorDto({
+    required this.elevatorId,
+    required this.buildingId,
+    required this.nodeId,
+    required this.floor,
+    required this.locationDescription,
+  });
+
+  factory ElevatorDto.fromJson(Map<String, dynamic> json) =>
+      _$ElevatorDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ElevatorDtoToJson(this);
+}
+
+/// ✅ RampDto 정의
+@JsonSerializable()
+class RampDto {
+  final int rampId;
+  final int buildingId;
+  final String nodeId;
+  final int floor;
+  final String locationDescription;
+
+  RampDto({
+    required this.rampId,
+    required this.buildingId,
+    required this.nodeId,
+    required this.floor,
+    required this.locationDescription,
+  });
+
+  factory RampDto.fromJson(Map<String, dynamic> json) =>
+      _$RampDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$RampDtoToJson(this);
 }

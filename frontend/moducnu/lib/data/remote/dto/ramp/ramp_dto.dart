@@ -4,18 +4,18 @@ part 'ramp_dto.g.dart';
 
 @JsonSerializable()
 class RampResponseDto {
-  @JsonKey(name: "building_id2")
-  final int buildingId2;
+  @JsonKey(name: "building_id")
+  final int buildingId;
   final int floor;
   @JsonKey(name: "location_description")
   final String locationDescription;
   @JsonKey(name: "node_id")
-  final int nodeId;
+  final String nodeId;
   @JsonKey(name: "ramp_id")
   final int rampId;
 
   RampResponseDto({
-    required this.buildingId2,
+    required this.buildingId,
     required this.floor,
     required this.locationDescription,
     required this.nodeId,
