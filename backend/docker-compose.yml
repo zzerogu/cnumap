@@ -17,6 +17,8 @@ services:
       dockerfile: Dockerfile
     platform: linux/amd64
     container_name: valhalla_server
+    volumes:
+      - ./valhalla_server/valhalla.json:/data/valhalla/valhalla.json
     ports:
       - "8002:8002"
 
@@ -36,6 +38,8 @@ services:
       - valhalla_server
     networks:
       - navigation-network
+    volumes:
+      - ./rust_server/src:/app/src
 
   nginx_proxy:
     image: nginx:latest

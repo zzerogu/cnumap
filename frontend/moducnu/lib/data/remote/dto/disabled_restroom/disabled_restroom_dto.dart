@@ -13,7 +13,7 @@ class DisabledRestroomResponseDto {
   final String locationDescription;
 
   @JsonKey(name: 'node_id')
-  final int nodeId;
+  final String nodeId;
 
   @JsonKey(name: 'restroom_id')
   final int restroomId;

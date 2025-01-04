@@ -20,6 +20,7 @@ use env_logger;
     paths(
         crate::handlers::building::get_buildings,
         crate::handlers::building::get_building_details,
+        crate::handlers::building::get_building_node_details,
         crate::handlers::building::get_node_data,
         crate::handlers::building::search_buildings,
         crate::handlers::building::get_buildings_by_category,
@@ -29,6 +30,7 @@ use env_logger;
         crate::handlers::map::get_pbf_tile,
         crate::handlers::map::get_user_location,
         crate::handlers::navigation::calculate_route,
+        crate::handlers::navigation::get_node_coordinates,
         crate::handlers::ramp::get_all_ramps
     ),
     components(
@@ -40,7 +42,7 @@ use env_logger;
             crate::models::disabled_restroom::DisabledRestroom,
             crate::models::ramp::Ramp,
             crate::handlers::navigation::Coordinate,
-            crate::handlers::navigation::AvoidArea,
+            crate::handlers::navigation::WheelchairVersion,
             crate::handlers::navigation::NavigationRequest,
             crate::handlers::navigation::NavigationResponse
         )

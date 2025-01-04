@@ -8,15 +8,15 @@ WORKDIR /app
 COPY Cargo.toml Cargo.lock ./
 RUN cargo fetch
 
-# 소스 코드 및 migrations 디렉토리 복사
-COPY . .
-
 # 빌드 시 필요한 환경 변수 전달
 ARG DATABASE_URL
 
 # 필요한 라이브러리 설치 및 sqlx-cli 설치
 RUN apt-get update && apt-get install -y libssl-dev pkg-config curl \
     && cargo install sqlx-cli --no-default-features --features native-tls,postgres
+
+# 소스 코드 및 migrations 디렉토리 복사
+COPY . .
 
 RUN cargo sqlx prepare --database-url ${DATABASE_URL}
 # 프로젝트 빌드
