@@ -19,31 +19,31 @@ class ConstructionNewsComponent extends StatelessWidget {
     // 데이터 로드
     viewModel.fetchAllConstructionNews();
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // 섹션 제목
-          const SectionTitle(title: '🚨 공사 소식'),
-          const SizedBox(height: 10.0),
+    return Obx(() {
+      if (viewModel.constructionNews.isEmpty) {
+        // 데이터가 없으면 빈 컨테이너 반환
+        return const SizedBox.shrink();
+      }
 
-          // Obx로 상태 변화 감지
-          Obx(() {
-            if (viewModel.constructionNews.isEmpty) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-            return Column(
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // 섹션 제목
+            const SectionTitle(title: '🚨 공사 소식'),
+            const SizedBox(height: 10.0),
+
+            // 공사 소식 리스트 출력
+            Column(
               children: viewModel.constructionNews
                   .map((news) => _buildNewsCard(news))
                   .toList(),
-            );
-          }),
-        ],
-      ),
-    );
+            ),
+          ],
+        ),
+      );
+    });
   }
 
   /// 날짜와 시간 포맷팅
