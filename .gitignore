@@ -6,6 +6,7 @@ backend/rust_server/*.rmeta
 backend/rust_server/*.rlib
 backend/rust_server/*.log
 backend/rust_server/*.tmp
+backend/valhalla_server/valhalla/build/
 
 # macOS 시스템 파일
 .DS_Store

@@ -60,3 +60,23 @@ class BuildingDetailResponseDto {
 
   Map<String, dynamic> toJson() => _$BuildingDetailResponseDtoToJson(this);
 }
+
+@JsonSerializable()
+class BuildingFullResponseDto {
+  final BuildingDetailResponseDto building;
+  final List<dynamic> disabledRestrooms;
+  final List<dynamic> elevators;
+  final List<dynamic> ramps;
+
+  BuildingFullResponseDto({
+    required this.building,
+    required this.disabledRestrooms,
+    required this.elevators,
+    required this.ramps,
+  });
+
+  factory BuildingFullResponseDto.fromJson(Map<String, dynamic> json) =>
+      _$BuildingFullResponseDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$BuildingFullResponseDtoToJson(this);
+}

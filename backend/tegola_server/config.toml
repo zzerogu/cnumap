@@ -14,7 +14,7 @@ name = "planet_osm_roads"
 geometry_fieldname = "geom"
 id_fieldname = "osm_id"
 sql = """
-  SELECT osm_id, ST_AsBinary(ST_MakeValid(ST_Transform(way, 3857))) AS geom, 
+  SELECT osm_id, ST_AsBinary(ST_MakeValid(way)) AS geom, 
        name, building
   FROM planet_osm_roads
   WHERE way && !BBOX!
@@ -26,7 +26,7 @@ name = "planet_osm_polygon"
 geometry_fieldname = "geom"
 id_fieldname = "osm_id"
 sql = """
-  SELECT osm_id, ST_AsBinary(ST_MakeValid(ST_Transform(way, 3857))) AS geom, 
+  SELECT osm_id, ST_AsBinary(ST_MakeValid(way)) AS geom, 
        name, building
   FROM planet_osm_polygon
   WHERE way && !BBOX!
@@ -38,12 +38,11 @@ name = "planet_osm_line"
 geometry_fieldname = "geom"
 id_fieldname = "osm_id"
 sql = """
-  SELECT osm_id, ST_AsBinary(ST_MakeValid(ST_Transform(way, 3857))) AS geom, name, building, 
-         CASE 
-           WHEN LOWER(tags->'slope_warning') = 'true' THEN TRUE
-           WHEN LOWER(tags->'slope_warning') = 'false' THEN FALSE
-           ELSE NULL
-         END AS slope_warning
+  SELECT osm_id, 
+         ST_AsBinary(ST_MakeValid(way)) AS geom, 
+         name, 
+         building, 
+         tags->'slope_bucket' AS slope_bucket
   FROM planet_osm_line
   WHERE way && !BBOX!
 """
@@ -54,7 +53,7 @@ name = "planet_osm_point"
 geometry_fieldname = "geom"
 id_fieldname = "osm_id"
 sql = """
-  SELECT osm_id, ST_AsBinary(ST_MakeValid(ST_Transform(way, 3857))) AS geom, name, building, ele
+  SELECT osm_id, ST_AsBinary(ST_MakeValid(way)) AS geom, name, building, ele
   FROM planet_osm_point
   WHERE way && !BBOX!
 """

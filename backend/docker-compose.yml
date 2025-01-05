@@ -36,6 +36,8 @@ services:
       - valhalla_server
     networks:
       - navigation-network
+    volumes:
+      - ./rust_server/src:/app/src
 
   nginx_proxy:
     image: nginx:latest

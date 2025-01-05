@@ -10,11 +10,13 @@ abstract class BuildingApi {
   factory BuildingApi(Dio dio, {String baseUrl}) = _BuildingApi;
 
   @GET("api/building")
-  Future<List<BuildingResponseDto>> getBuildingsByName(@Query("name") String name);
+  Future<List<BuildingResponseDto>> getBuildingsByName(
+      @Query("name") String name);
 
   /// Retrieve building categories.
   @GET("api/building/category")
-  Future<List<BuildingResponseDto>> getBuildingCategories(@Query("category") String category);
+  Future<List<BuildingResponseDto>> getBuildingCategories(
+      @Query("category") String category);
 
   /// Retrieve building tags.
   @GET("api/building/tag")
@@ -28,6 +30,7 @@ abstract class BuildingApi {
   @GET("api/buildings/{id}")
   Future<BuildingDetailResponseDto> getBuildingById(@Path("id") int id);
 
+  @GET("api/buildings_node/{node_id}")
+  Future<BuildingFullResponseDto> getBuildingByNodeId(
+      @Path("node_id") String nodeId);
 }
-
-
