@@ -100,7 +100,6 @@ ElevatorDto _$ElevatorDtoFromJson(Map<String, dynamic> json) => ElevatorDto(
       elevatorId: (json['elevator_id'] as num?)?.toInt() ?? 0,
       buildingId: (json['building_id'] as num?)?.toInt() ?? 0,
       nodeId: json['node_id'] as String? ?? '',
-      floor: (json['floor'] as num?)!.toInt(),
       locationDescription:
           json['location_description'] as String? ?? '위치 정보 없음',
     );
@@ -110,7 +109,6 @@ Map<String, dynamic> _$ElevatorDtoToJson(ElevatorDto instance) =>
       'elevator_id': instance.elevatorId,
       'building_id': instance.buildingId,
       'node_id': instance.nodeId,
-      'floor': instance.floor,
       'location_description': instance.locationDescription,
     };
 

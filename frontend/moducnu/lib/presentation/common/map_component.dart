@@ -6,10 +6,27 @@ import 'package:moducnu/data/remote/api/map/map_api.dart';
 import 'package:moducnu/data/remote/api/building/building_api.dart';
 import 'package:moducnu/data/remote/dto/building/building_dto.dart';
 import 'package:moducnu/data/remote/api/navigation/navigation_api.dart';
+import 'package:moducnu/data/remote/dto/disabled_restroom/disabled_restroom_dto.dart';
 import 'package:moducnu/data/remote/dto/navigation/navigation_dto.dart';
+import 'package:moducnu/data/remote/dto/ramp/ramp_dto.dart';
 import 'package:moducnu/presentation/common/building_detail_popup.dart';
 import 'package:geolocator/geolocator.dart' as geo;
+import 'package:moducnu/presentation/common/ramp_detail_popup.dart';
+import 'package:moducnu/presentation/common/restroom_detail_popup.dart';
 import 'package:permission_handler/permission_handler.dart';
+
+class CustomPointAnnotationClickListener
+    implements OnPointAnnotationClickListener {
+  final Function(PointAnnotation) onClick;
+
+  CustomPointAnnotationClickListener(this.onClick);
+
+  @override
+  bool onPointAnnotationClick(PointAnnotation annotation) {
+    onClick(annotation);
+    return true; // 클릭 이벤트가 소비됨
+  }
+}
 
 class MapComponent extends StatefulWidget {
   final BuildingApi buildingApi;
@@ -34,6 +51,7 @@ class MapComponentState extends State<MapComponent> {
   PointAnnotationManager? _pointAnnotationManager;
   String? selectedRampNodeId;
   final List<PointAnnotation> _annotations = [];
+  final Map<String, Map<String, dynamic>> _markerData = {};
 
   @override
   Widget build(BuildContext context) {
@@ -261,28 +279,114 @@ class MapComponentState extends State<MapComponent> {
   }
 
   /// ✅ 새로운 마커를 추가하는 함수 (화장실 및 경사로 등)
-  void addMarkers(List<CoordinateDto> coordinates) async {
-    print(11111);
+  void addMarkers(List<dynamic> items, String category) async {
     await _pointAnnotationManager?.deleteAll(); // 기존 마커 제거
     _annotations.clear(); // 수동 마커 리스트 초기화
+    _markerData.clear(); // 마커 데이터 초기화
 
-    for (var coordinate in coordinates) {
+    for (int index = 0; index < items.length; index++) {
+      var item = items[index];
       try {
+        double latitude = 0.0;
+        double longitude = 0.0;
+        String locationDescription = "";
+        int buildingId = 0;
+        String nodeId = "";
+
+        // ✅ RampResponseDto 처리
+        if (item is RampResponseDto) {
+          final coordinate =
+              await widget.navigationApi.getNodeCoordinates(item.nodeId);
+          latitude = coordinate.latitude;
+          longitude = coordinate.longitude;
+          locationDescription = item.locationDescription;
+          buildingId = item.buildingId;
+        }
+
+        // ✅ DisabledRestroomResponseDto 처리
+        else if (item is DisabledRestroomResponseDto) {
+          final coordinate =
+              await widget.navigationApi.getNodeCoordinates(item.nodeId);
+          latitude = coordinate.latitude;
+          longitude = coordinate.longitude;
+          locationDescription = item.locationDescription;
+          buildingId = item.buildingId;
+        }
+
+        // ✅ BuildingDetailResponseDto 처리
+        else if (item is BuildingDetailResponseDto) {
+          final coordinate =
+              await widget.navigationApi.getNodePolygonCoordinates(item.nodeId);
+          latitude = coordinate.latitude;
+          longitude = coordinate.longitude;
+          locationDescription = item.address;
+          buildingId = item.buildingId;
+          nodeId = item.nodeId;
+        }
+
+        // ✅ 마커 추가
         final annotation = await _pointAnnotationManager!.create(
           PointAnnotationOptions(
-            geometry: Point(
-                coordinates:
-                    Position(coordinate.longitude, coordinate.latitude)),
+            geometry: Point(coordinates: Position(longitude, latitude)),
             iconSize: 2.0,
             iconImage: "marker-15",
           ),
         );
+        _markerData[annotation.id] = {
+          'buildingId': buildingId,
+          'locationDescription': locationDescription,
+          'nodeId': nodeId
+        };
+
+        // ✅ 마커 클릭 이벤트 (category에 따라 다르게 처리)
+        _pointAnnotationManager?.addOnPointAnnotationClickListener(
+          CustomPointAnnotationClickListener((clickedAnnotation) async {
+            try {
+              // ✅ 클릭된 마커의 ID로 데이터 조회
+              final userData = _markerData[clickedAnnotation.id];
+              if (userData == null) return false;
+
+              final buildingId = userData['buildingId'];
+              final locationDescription = userData['locationDescription'];
+              final nodeId = userData['nodeId'];
+
+              if (category == "경사로") {
+                await RampDetailPopup.showPopup(
+                  context,
+                  buildingId: buildingId,
+                  location: locationDescription,
+                );
+              } else if (category == "화장실") {
+                await RestroomDetailPopup.showPopup(
+                  context,
+                  buildingId: buildingId,
+                  location: locationDescription,
+                );
+              } else if (category == "편의점" || category == "휠체어 충전소") {
+                final response =
+                    await widget.buildingApi.getBuildingByNodeId(nodeId);
+                if (response != null) {
+                  _showBuildingDetailPopup(response);
+                } else {
+                  print("Building data not found.");
+                }
+              } else {
+                print("클릭된 마커: $locationDescription (건물 ID: $buildingId)");
+              }
+            } catch (e) {
+              print("Error handling marker click: $e");
+            }
+            return true;
+          }),
+        );
+
         _annotations.add(annotation);
       } catch (e) {
         print("Failed to add marker: $e");
       }
     }
-    print("${coordinates.length}개의 마커를 추가했습니다.");
+
+    print("${items.length}개의 마커를 추가했습니다.");
   }
 
   void _showBuildingDetailPopup(BuildingFullResponseDto buildingData) {
@@ -326,7 +430,6 @@ class MapComponentState extends State<MapComponent> {
           featureId: elevator.elevatorId, // ✅ dot notation 사용
           buildingId: elevator.buildingId, // ✅ dot notation 사용
           nodeId: elevator.nodeId, // ✅ dot notation 사용
-          floor: elevator.floor, // ✅ dot notation 사용
           locationDescription:
               elevator.locationDescription, // ✅ dot notation 사용
         ));
@@ -428,6 +531,16 @@ class MapComponentState extends State<MapComponent> {
 
     if (_mapboxMap == null) return;
 
+    // ✅ 마커 클릭 여부 검사
+    for (var annotation in _annotations) {
+      final tappedPosition = annotation.geometry.coordinates;
+      if ((tappedPosition.lat - position.lat).abs() < 0.0001 &&
+          (tappedPosition.lng - position.lng).abs() < 0.0001) {
+        print("마커가 클릭되었습니다. 지도 클릭 이벤트를 무시합니다.");
+        return; // ✅ 마커 클릭 시, 건물 이벤트 방지
+      }
+    }
+
     try {
       _mapboxMap!
           .pixelForCoordinate(
@@ -448,6 +561,7 @@ class MapComponentState extends State<MapComponent> {
           if (features != null && features.isNotEmpty) {
             for (var feature in features) {
               final buildingId = feature?.queriedFeature.feature['id'];
+              // print(buildingId);
               if (buildingId != null) {
                 // 서버 요청으로 빌딩 상세 정보 가져오기
                 final buildingData =

@@ -110,14 +110,12 @@ class ElevatorDto {
   final int elevatorId;
   final int buildingId;
   final String nodeId;
-  final int floor;
   final String locationDescription;
 
   ElevatorDto({
     required this.elevatorId,
     required this.buildingId,
     required this.nodeId,
-    required this.floor,
     required this.locationDescription,
   });
 

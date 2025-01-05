@@ -33,6 +33,15 @@ CREATE TABLE IF NOT EXISTS Disabled_Restroom (
     FOREIGN KEY (building_id) REFERENCES Building(building_id)
 );
 
+-- Ramp Table
+CREATE TABLE IF NOT EXISTS Elevator (
+    elevator_id SERIAL PRIMARY KEY,
+    building_id INT NOT NULL,
+    node_id VARCHAR(255) NOT NULL,
+    location_description TEXT NOT NULL,
+    FOREIGN KEY (building_id) REFERENCES Building(building_id)
+);
+
 -- 장애학습 지원 센터 테이블
 CREATE TABLE IF NOT EXISTS DisabilitySupportCenter (
     id SERIAL PRIMARY KEY,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moducnu/data/remote/api/building/building_api.dart';
 import 'package:moducnu/data/remote/api/disabled_restroom/disabled_restroom_api.dart';
 import 'package:moducnu/data/remote/api/navigation/navigation_api.dart';
 import 'package:moducnu/data/remote/api/ramp/ramp_api.dart';
@@ -9,13 +10,15 @@ class CategoryList extends StatefulWidget {
   final RampApi rampApi;
   final DisabledRestroomApi disabledRestroomApi;
   final NavigationApi navigationApi;
-  final Function(List<CoordinateDto>) onDisplayMarkers; // ✅ 마커 추가 콜백
+  final BuildingApi buildingApi;
+  final Function(List<dynamic>, String) onDisplayMarkers; // ✅ 마커 추가 콜백
 
   const CategoryList({
     Key? key,
     required this.rampApi,
     required this.disabledRestroomApi,
     required this.navigationApi,
+    required this.buildingApi,
     required this.onDisplayMarkers, // ✅ 콜백 추가
   }) : super(key: key);
 
@@ -26,7 +29,7 @@ class CategoryList extends StatefulWidget {
 class _CategoryListState extends State<CategoryList> {
   int? activeIndex;
 
-  final List<String> categories = ['화장실', '경사로'];
+  final List<String> categories = ['화장실', '경사로', '편의점', '휠체어 충전소'];
 
   /// ✅ nodeId를 기반으로 경도, 위도를 가져오는 함수
   Future<List<CoordinateDto>> _fetchCoordinatesByNodeIds(
@@ -48,20 +51,21 @@ class _CategoryListState extends State<CategoryList> {
   Future<void> _fetchMarkers(String category) async {
     List<String> nodeIds = [];
     List<CoordinateDto> coordinates = [];
+
     try {
       if (category == '화장실') {
         final restrooms = await widget.disabledRestroomApi.getAllRestrooms();
-        nodeIds = restrooms.map((restroom) => restroom.nodeId).toList();
+        widget.onDisplayMarkers(restrooms, "화장실");
       } else if (category == '경사로') {
         final ramps = await widget.rampApi.getAllRamps();
-        nodeIds = ramps.map((ramp) => ramp.nodeId).toList();
+        widget.onDisplayMarkers(ramps, '경사로');
+      } else if (category == '편의점') {
+        final buildings = await widget.buildingApi.getBuildingTags("편의점");
+        widget.onDisplayMarkers(buildings, '편의점');
+      } else if (category == '휠체어 충전소') {
+        final buildings = await widget.buildingApi.getBuildingTags("편의점");
+        widget.onDisplayMarkers(buildings, '휠체어 충전소');
       }
-
-      // ✅ nodeId로 좌표 요청
-      coordinates = await _fetchCoordinatesByNodeIds(nodeIds);
-
-      // ✅ 마커 추가 콜백 실행
-      widget.onDisplayMarkers(coordinates);
     } catch (e) {
       print('Failed to fetch markers for $category: $e');
     }

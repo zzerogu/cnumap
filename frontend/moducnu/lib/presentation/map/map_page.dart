@@ -78,36 +78,17 @@ class _MapPageState extends State<MapPage> {
                 ),
                 const SizedBox(height: 12.0),
                 CategoryList(
+                  buildingApi: _buildingApi,
                   rampApi: _rampApi,
                   disabledRestroomApi: _disabledRestroomApi,
                   navigationApi: _navigationApi,
-                  onDisplayMarkers: (coordinates) {
-                    _mapComponentKey.currentState?.addMarkers(
-                        coordinates); // ✅ MapComponent의 마커 추가 함수 호출
+                  onDisplayMarkers: (coordinates, category) {
+                    _mapComponentKey.currentState
+                        ?.addMarkers(coordinates, category);
                   },
                 )
               ],
             ),
-          ),
-        ],
-      ),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            heroTag: 'ramp_button', // Hero 태그 추가
-            onPressed: () {
-              RampDetailPopup.showPopup(context, rampIndex: 0);
-            },
-            child: const Icon(Icons.accessible),
-          ),
-          const SizedBox(height: 12.0), // 버튼 사이 간격 추가
-          FloatingActionButton(
-            heroTag: 'restroom_button', // Hero 태그 추가
-            onPressed: () {
-              RestroomDetailPopup.showPopup(context, restroomIndex: 0);
-            },
-            child: const Icon(Icons.wc),
           ),
         ],
       ),
