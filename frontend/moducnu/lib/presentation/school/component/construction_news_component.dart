@@ -1,51 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:get_it/get_it.dart';
+import 'package:moducnu/domain/model/construction_news.dart';
 import 'package:moducnu/presentation/school/component/section_title.dart';
 import 'package:moducnu/presentation/theme/color.dart';
 import 'package:intl/intl.dart';
 
+import 'construction_news_viewmodel.dart';
+
 /// 공사 소식을 표시하는 위젯
-class ConstructionNews extends StatelessWidget {
-  const ConstructionNews({super.key});
+class ConstructionNewsComponent extends StatelessWidget {
+  const ConstructionNewsComponent({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // 공사 소식 데이터 설정
-    final List<Map<String, String>> constructionData = _getConstructionData();
+    // ViewModel 주입
+    final ConstructionViewModel viewModel = GetIt.instance<ConstructionViewModel>();
+    // 데이터 로드
+    viewModel.fetchAllConstructionNews();
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // 섹션 제목
-          const SectionTitle(title: '🚨 공사 소식'),
-          const SizedBox(height: 10.0),
-
-          // 공사 소식 리스트 출력
-          ...constructionData.map((news) => _buildNewsCard(news)).toList(),
-        ],
-      ),
-    );
-  }
-
-  /// 현재 날짜와 시간 포맷팅하여 반환
-  String _formattedDateTime() {
-    final now = DateTime.now();
-    return DateFormat('MM/dd일 HH:mm분의 소식').format(now);
-  }
-
-  /// 공사 소식 데이터를 반환
-  List<Map<String, String>> _getConstructionData() {
-    return [
-      {
-        'dateTime': _formattedDateTime(),
-        'content': '공대 5호관 오른편 경사로가 공사중에 있습니다.\n다른 출입문을 이용해주시기 바랍니다.'
+    return Obx(() {
+      if (viewModel.constructionNews.isEmpty) {
+        // 데이터가 없으면 빈 컨테이너 반환
+        return const SizedBox.shrink();
       }
-    ];
+
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // 섹션 제목
+            const SectionTitle(title: '🚨 공사 소식'),
+            const SizedBox(height: 10.0),
+
+            // 공사 소식 리스트 출력
+            Column(
+              children: viewModel.constructionNews
+                  .map((news) => _buildNewsCard(news))
+                  .toList(),
+            ),
+          ],
+        ),
+      );
+    });
+  }
+
+  /// 날짜와 시간 포맷팅
+  String _formattedDateRange(DateTime startTime, DateTime endTime) {
+    return '${DateFormat('MM/dd HH:mm').format(startTime)} ~ ${DateFormat('MM/dd HH:mm').format(endTime)}의 소식';
   }
 
   /// 공사 소식 카드 위젯 생성
-  Widget _buildNewsCard(Map<String, String> news) {
+  Widget _buildNewsCard(ConstructionNews news) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12.0),
       padding: const EdgeInsets.all(16.0),
@@ -59,7 +66,7 @@ class ConstructionNews extends StatelessWidget {
         children: [
           // 날짜 및 시간 표시
           Text(
-            news['dateTime']!,
+            _formattedDateRange(news.startTime, news.endTime),
             style: TextStyle(
               fontSize: 14.0,
               color: Colors.brown[700],
@@ -70,7 +77,7 @@ class ConstructionNews extends StatelessWidget {
 
           // 공사 소식 내용 표시
           Text(
-            news['content']!,
+            news.content,
             style: const TextStyle(fontSize: 16.0, color: Colors.black87),
           ),
           const SizedBox(height: 16.0),
@@ -96,6 +103,7 @@ class ConstructionNews extends StatelessWidget {
       ),
     );
   }
+
 
   /// '자세히 보기' 버튼 클릭 이벤트 처리 (추후 구현 예정)
   void _onDetailButtonPressed() {

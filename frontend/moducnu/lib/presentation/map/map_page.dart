@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
+import 'package:moducnu/presentation/map/search_page.dart';
+import '../common/route_finder_modal.dart';
+import '../common/building_detail_popup.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:moducnu/data/remote/api/disabled_restroom/disabled_restroom_api.dart';
@@ -64,7 +69,13 @@ class _MapPageState extends State<MapPage> {
             right: 4.0, // 화면 우측에서 16px 떨어짐
             child: Column(
               children: [
-                const CustomSearchBar(),
+                CustomSearchBar(
+                  hasShadow: true,
+                  readOnly: true,
+                  onTap: () {
+                    Get.to(() => const SearchPage());
+                  },
+                ),
                 const SizedBox(height: 12.0),
                 CategoryList(
                   rampApi: _rampApi,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:moducnu/domain/model/Place.dart'; // Import the Place model
+import 'package:moducnu/domain/model/place.dart'; // Import the Place model
 
 class PlaceItem extends StatelessWidget {
   final Place place;
