@@ -22,12 +22,13 @@ class _BuildingApi implements BuildingApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<List<BuildingResponseDto>> getBuildingsByName(String name) async {
+  Future<List<BuildingDetailResponseDto>> getBuildingsByName(
+      String name) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'name': name};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<BuildingResponseDto>>(Options(
+    final _options = _setStreamType<List<BuildingDetailResponseDto>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -44,11 +45,11 @@ class _BuildingApi implements BuildingApi {
           baseUrl,
         )));
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<BuildingResponseDto> _value;
+    late List<BuildingDetailResponseDto> _value;
     try {
       _value = _result.data!
           .map((dynamic i) =>
-              BuildingResponseDto.fromJson(i as Map<String, dynamic>))
+              BuildingDetailResponseDto.fromJson(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
@@ -58,13 +59,13 @@ class _BuildingApi implements BuildingApi {
   }
 
   @override
-  Future<List<BuildingResponseDto>> getBuildingCategories(
+  Future<List<BuildingDetailResponseDto>> getBuildingCategories(
       String category) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'category': category};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<BuildingResponseDto>>(Options(
+    final _options = _setStreamType<List<BuildingDetailResponseDto>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -81,11 +82,11 @@ class _BuildingApi implements BuildingApi {
           baseUrl,
         )));
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<BuildingResponseDto> _value;
+    late List<BuildingDetailResponseDto> _value;
     try {
       _value = _result.data!
           .map((dynamic i) =>
-              BuildingResponseDto.fromJson(i as Map<String, dynamic>))
+              BuildingDetailResponseDto.fromJson(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
@@ -95,12 +96,12 @@ class _BuildingApi implements BuildingApi {
   }
 
   @override
-  Future<List<BuildingResponseDto>> getBuildingTags(String tag) async {
+  Future<List<BuildingDetailResponseDto>> getBuildingTags(String tag) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'tag': tag};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<BuildingResponseDto>>(Options(
+    final _options = _setStreamType<List<BuildingDetailResponseDto>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -117,11 +118,11 @@ class _BuildingApi implements BuildingApi {
           baseUrl,
         )));
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<BuildingResponseDto> _value;
+    late List<BuildingDetailResponseDto> _value;
     try {
       _value = _result.data!
           .map((dynamic i) =>
-              BuildingResponseDto.fromJson(i as Map<String, dynamic>))
+              BuildingDetailResponseDto.fromJson(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
@@ -225,6 +226,7 @@ class _BuildingApi implements BuildingApi {
     late BuildingFullResponseDto _value;
     try {
       _value = BuildingFullResponseDto.fromJson(_result.data!);
+      print(111111);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

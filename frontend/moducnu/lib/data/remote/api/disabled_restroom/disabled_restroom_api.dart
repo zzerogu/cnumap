@@ -9,6 +9,6 @@ part 'disabled_restroom_api.g.dart';
 abstract class DisabledRestroomApi {
   factory DisabledRestroomApi(Dio dio, {String baseUrl}) = _DisabledRestroomApi;
 
-  @GET("api/construction-news")
+  @GET("/api/disabled_restrooms")
   Future<List<DisabledRestroomResponseDto>> getAllRestrooms();
 }

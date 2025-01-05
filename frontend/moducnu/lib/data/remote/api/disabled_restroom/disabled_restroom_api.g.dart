@@ -34,7 +34,7 @@ class _DisabledRestroomApi implements DisabledRestroomApi {
     )
         .compose(
           _dio.options,
-          'api/construction-news',
+          'api/disabled_restrooms',
           queryParameters: queryParameters,
           data: _data,
         )

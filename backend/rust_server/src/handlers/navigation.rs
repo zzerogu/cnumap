@@ -77,6 +77,51 @@ async fn get_node_coordinates(
         })),
     }
 }
+
+#[utoipa::path(
+    get,
+    path = "/api/navigation/node_coordinates/{node_id}",
+    params(
+        ("node_id" = String, Path, description = "Building ID to retrieve details")
+    ),
+    responses(
+        (status = 200, description = "Coordinates retrieved successfully", body = Coordinate),
+        (status = 404, description = "Node not found"),
+        (status = 500, description = "Database error")
+    ),
+    tag = "Navigation API"
+)]
+#[get("/api/navigation/polygon_center/{node_id}")]
+async fn get_polygon_center(
+    pool: web::Data<PgPool>,
+    node_id: web::Path<String>,
+) -> impl Responder {
+    let node_id = node_id.into_inner();
+
+    let query = r#"
+        SELECT 
+            ST_Y(ST_Centroid(ST_Transform(way, 4326))) AS latitude,
+            ST_X(ST_Centroid(ST_Transform(way, 4326))) AS longitude
+        FROM planet_osm_polygon
+        WHERE osm_id = $1::bigint
+    "#;
+
+    // ✅ 데이터베이스 쿼리 실행
+    match sqlx::query_as::<_, Coordinate>(query)
+        .bind(node_id)
+        .fetch_optional(pool.get_ref())
+        .await
+    {
+        Ok(Some(coordinate)) => HttpResponse::Ok().json(coordinate),
+        Ok(None) => HttpResponse::NotFound().json(json!({
+            "error": "No matching node_id found."
+        })),
+        Err(e) => HttpResponse::InternalServerError().json(json!({
+            "error": format!("Database error: {:?}", e)
+        })),
+    }
+}
+
 #[utoipa::path(
     post,
     path = "/api/navigation/route",

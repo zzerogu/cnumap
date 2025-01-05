@@ -31,6 +31,7 @@ use env_logger;
         crate::handlers::map::get_user_location,
         crate::handlers::navigation::calculate_route,
         crate::handlers::navigation::get_node_coordinates,
+        crate::handlers::navigation::get_polygon_center,
         crate::handlers::ramp::get_all_ramps
     ),
     components(

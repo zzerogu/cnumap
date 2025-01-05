@@ -20,4 +20,9 @@ abstract class NavigationApi {
   Future<CoordinateDto> getNodeCoordinates(
     @Path("nodeId") String nodeId,
   );
+
+  @GET("/api/navigation/polygon_center/{nodeId}")
+  Future<CoordinateDto> getNodePolygonCoordinates(
+    @Path("nodeId") String nodeId,
+  );
 }
