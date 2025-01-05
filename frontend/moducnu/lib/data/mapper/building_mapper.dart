@@ -16,8 +16,8 @@ class BuildingToPlaceMapper {
   static Place fromDetailResponseDto(BuildingDetailResponseDto dto) {
     return Place(
       placeName: dto.name,
-      category: dto.category,
-      contact: dto.phoneNumber,
+      category: dto.category ?? "없음",
+      contact: dto.phoneNumber ?? "없음",
       address: dto.address,
     );
   }

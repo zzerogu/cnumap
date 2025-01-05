@@ -35,7 +35,7 @@ class _BuildingApi implements BuildingApi {
     )
         .compose(
           _dio.options,
-          'api/building',
+          '/api/building',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -72,7 +72,7 @@ class _BuildingApi implements BuildingApi {
     )
         .compose(
           _dio.options,
-          'api/building/category',
+          '/api/building/category',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -108,7 +108,7 @@ class _BuildingApi implements BuildingApi {
     )
         .compose(
           _dio.options,
-          'api/building/tag',
+          '/api/building/tag',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -144,7 +144,7 @@ class _BuildingApi implements BuildingApi {
     )
         .compose(
           _dio.options,
-          'api/buildings',
+          '/api/buildings',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -180,7 +180,7 @@ class _BuildingApi implements BuildingApi {
     )
         .compose(
           _dio.options,
-          'api/buildings/${id}',
+          '/api/buildings/${id}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -213,7 +213,7 @@ class _BuildingApi implements BuildingApi {
     )
         .compose(
           _dio.options,
-          'api/buildings_node/${nodeId}',
+          '/api/buildings_node/${nodeId}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -226,7 +226,6 @@ class _BuildingApi implements BuildingApi {
     late BuildingFullResponseDto _value;
     try {
       _value = BuildingFullResponseDto.fromJson(_result.data!);
-      print(111111);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

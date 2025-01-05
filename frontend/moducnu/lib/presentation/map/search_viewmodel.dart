@@ -42,6 +42,7 @@ class SearchViewModel extends GetxController {
       _places.assignAll(uniquePlaces.cast<Place>().toList());
     } catch (e) {
       _error.value = "검색 중 오류 발생: ${e.toString()}";
+      print("검색 중 오류 발생: ${e.toString()}");
     } finally {
       _isLoading.value = false;
     }
