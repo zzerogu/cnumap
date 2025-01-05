@@ -35,7 +35,7 @@ class _BuildingApi implements BuildingApi {
     )
         .compose(
           _dio.options,
-          'api/building',
+          '/api/building',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -46,7 +46,6 @@ class _BuildingApi implements BuildingApi {
         )));
     final _result = await _dio.fetch<List<dynamic>>(_options);
     late List<BuildingDetailResponseDto> _value;
-    print(_result);
     try {
       _value = _result.data!
           .map((dynamic i) =>
@@ -73,7 +72,7 @@ class _BuildingApi implements BuildingApi {
     )
         .compose(
           _dio.options,
-          'api/building/category',
+          '/api/building/category',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -109,7 +108,7 @@ class _BuildingApi implements BuildingApi {
     )
         .compose(
           _dio.options,
-          'api/building/tag',
+          '/api/building/tag',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -133,19 +132,19 @@ class _BuildingApi implements BuildingApi {
   }
 
   @override
-  Future<List<BuildingDetailResponseDto>> getAllBuildings() async {
+  Future<List<BuildingResponseDto>> getAllBuildings() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<BuildingDetailResponseDto>>(Options(
+    final _options = _setStreamType<List<BuildingResponseDto>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          'api/buildings',
+          '/api/buildings',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -155,11 +154,11 @@ class _BuildingApi implements BuildingApi {
           baseUrl,
         )));
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<BuildingDetailResponseDto> _value;
+    late List<BuildingResponseDto> _value;
     try {
       _value = _result.data!
           .map((dynamic i) =>
-              BuildingDetailResponseDto.fromJson(i as Map<String, dynamic>))
+              BuildingResponseDto.fromJson(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
@@ -181,7 +180,7 @@ class _BuildingApi implements BuildingApi {
     )
         .compose(
           _dio.options,
-          'api/buildings/${id}',
+          '/api/buildings/${id}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -214,7 +213,7 @@ class _BuildingApi implements BuildingApi {
     )
         .compose(
           _dio.options,
-          'api/buildings_node/${nodeId}',
+          '/api/buildings_node/${nodeId}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -227,39 +226,6 @@ class _BuildingApi implements BuildingApi {
     late BuildingFullResponseDto _value;
     try {
       _value = BuildingFullResponseDto.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<String> getBuildingNameByBuildingId(int buildingId) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<BuildingFullResponseDto>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          'api/buildings/name/${buildingId}',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch<String>(_options);
-    late String _value;
-    try {
-      _value = _result.toString();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
