@@ -32,7 +32,8 @@ BuildingDetailResponseDto _$BuildingDetailResponseDtoFromJson(
       groundFloors: (json['ground_floors'] as num).toInt(),
       name: json['name'] as String,
       nodeId: json['node_id'] as String,
-      phoneNumber: json['phone_number'] as String,
+      phoneNumber:
+          json['phone_number'] != null ? json['phone_number'] as String : "--",
       roofFloors: (json['roof_floors'] as num).toInt(),
       tags: json['tags'] as String,
     );

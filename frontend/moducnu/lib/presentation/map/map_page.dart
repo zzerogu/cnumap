@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:moducnu/presentation/map/search_page.dart';
-import '../common/route_finder_modal.dart';
-import '../common/building_detail_popup.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:moducnu/data/remote/api/disabled_restroom/disabled_restroom_api.dart';
-import 'package:moducnu/data/remote/api/map/map_api.dart';
 import 'package:moducnu/data/remote/api/building/building_api.dart';
 import 'package:moducnu/data/remote/api/navigation/navigation_api.dart';
 import 'package:moducnu/data/remote/api/ramp/ramp_api.dart';
 import 'package:moducnu/presentation/common/category_list.dart';
 import 'package:moducnu/presentation/common/custom_search_bar.dart';
 import 'package:moducnu/presentation/common/map_component.dart';
-import 'package:moducnu/presentation/common/ramp_detail_popup.dart';
-import 'package:moducnu/presentation/common/restroom_detail_popup.dart'; // 추가된 import
 
 class MapPage extends StatefulWidget {
   const MapPage({Key? key}) : super(key: key);
