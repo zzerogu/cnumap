@@ -5,6 +5,7 @@ import 'package:moducnu/domain/model/construction_news.dart';
 import 'package:moducnu/presentation/school/component/section_title.dart';
 import 'package:moducnu/presentation/theme/color.dart';
 import 'package:intl/intl.dart';
+import 'package:moducnu/presentation/school/component/construction_news_detail.dart';
 
 import 'construction_news_viewmodel.dart';
 
@@ -21,10 +22,9 @@ class ConstructionNewsComponent extends StatelessWidget {
 
     return Obx(() {
       if (viewModel.constructionNews.isEmpty) {
-        // 데이터가 없으면 빈 컨테이너 반환
-        return const SizedBox.shrink();
-      }
-
+      // 데이터가 없으면 빈 컨테이너 반환
+      return const SizedBox.shrink();
+    }
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12.0),
         child: Column(
@@ -37,7 +37,7 @@ class ConstructionNewsComponent extends StatelessWidget {
             // 공사 소식 리스트 출력
             Column(
               children: viewModel.constructionNews
-                  .map((news) => _buildNewsCard(news))
+                  .map((news) => _buildNewsCard(context, news))
                   .toList(),
             ),
           ],
@@ -52,7 +52,7 @@ class ConstructionNewsComponent extends StatelessWidget {
   }
 
   /// 공사 소식 카드 위젯 생성
-  Widget _buildNewsCard(ConstructionNews news) {
+  Widget _buildNewsCard(BuildContext context, ConstructionNews news) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12.0),
       padding: const EdgeInsets.all(16.0),
@@ -70,7 +70,7 @@ class ConstructionNewsComponent extends StatelessWidget {
             style: TextStyle(
               fontSize: 14.0,
               color: Colors.brown[700],
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.bold,
             ),
           ),
           const SizedBox(height: 8.0),
@@ -85,7 +85,7 @@ class ConstructionNewsComponent extends StatelessWidget {
           // '자세히 보기' 버튼
           Center(
             child: ElevatedButton(
-              onPressed: () => _onDetailButtonPressed(),
+              onPressed: () => _onDetailButtonPressed(context),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.amber,
                 shape: RoundedRectangleBorder(
@@ -104,9 +104,12 @@ class ConstructionNewsComponent extends StatelessWidget {
     );
   }
 
-
-  /// '자세히 보기' 버튼 클릭 이벤트 처리 (추후 구현 예정)
-  void _onDetailButtonPressed() {
-    // 버튼 클릭 이벤트 처리 로직 추가 필요
+  void _onDetailButtonPressed(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const ConstructionNewsDetail(),
+      ),
+    );
   }
 }
