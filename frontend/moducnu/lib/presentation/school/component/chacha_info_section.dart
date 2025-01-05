@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:moducnu/presentation/school/component/%08disabled_center_detail.dart';
 import 'package:moducnu/presentation/school/component/section_title.dart';
 import 'package:moducnu/presentation/theme/color.dart';
+import 'package:moducnu/presentation/school/component/disabled_center_detail.dart'; // 추가된 파일 임포트
 
 
 class ChaChaInfoSection extends StatelessWidget {
@@ -42,9 +44,20 @@ class InfoGrid extends StatelessWidget {
         mainAxisSpacing: 16,
         crossAxisSpacing: 16,
         childAspectRatio: 1.5,
-        children: const [
-          InfoCard(title: '도움 요청', icon: Icons.help),
-          InfoCard(title: '장애학습 지원센터', icon: Icons.accessible),
+        children: [
+          const InfoCard(title: '도움 요청', icon: Icons.help),
+          InfoCard(
+            title: '장애학습 지원센터',
+            icon: Icons.accessible,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const DisabledCenterDetail(),
+                ),
+              );
+            },
+          ),
         ],
       ),
     );
@@ -55,30 +68,34 @@ class InfoGrid extends StatelessWidget {
 class InfoCard extends StatelessWidget {
   final String title;
   final IconData icon;
+  final VoidCallback? onTap; // 클릭 이벤트 추가
 
-  const InfoCard({super.key, required this.title, required this.icon});
+  const InfoCard({super.key, required this.title, required this.icon, this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 140.0,
-      height: 95.0,
-      decoration: BoxDecoration(
-        color: kInfoBackgroundColor, // 배경색
-        borderRadius: BorderRadius.circular(8.0), // 모서리 둥글게
-        border: Border.all(color: kInfoBorderColor, width: 0.8), // 보더 추가
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 16.0),
-          ),
-          const SizedBox(height: 8),
-          Icon(icon, size: 36, color: kNoticeButtonColor),
-        ],
+    return GestureDetector(
+      onTap: onTap, // 클릭 이벤트 연결
+      child: Container(
+        width: 140.0,
+        height: 95.0,
+        decoration: BoxDecoration(
+          color: kInfoBackgroundColor, // 배경색
+          borderRadius: BorderRadius.circular(8.0), // 모서리 둥글게
+          border: Border.all(color: kInfoBorderColor, width: 0.8), // 보더 추가
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 16.0),
+            ),
+            const SizedBox(height: 8),
+            Icon(icon, size: 36, color: kNoticeButtonColor),
+          ],
+        ),
       ),
     );
   }
