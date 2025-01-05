@@ -34,4 +34,8 @@ abstract class BuildingApi {
   @GET("/api/buildings_node/{node_id}")
   Future<BuildingFullResponseDto> getBuildingByNodeId(
       @Path("node_id") String nodeId);
+
+  @GET("/api/buildings/name/{building_id}")
+  Future<String> getBuildingNameByBuildingId(
+      @Path("building_id") int buildingId);
 }

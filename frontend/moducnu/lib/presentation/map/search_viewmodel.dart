@@ -36,7 +36,6 @@ class SearchViewModel extends GetxController {
     try {
       final placesByName = await _getPlacesByNameUseCase.execute(query);
       final placesByCategory = await _getPlacesByCategoryUseCase.execute(query);
-
       // Ensure the uniquePlaces is treated as Iterable<Place>
       final uniquePlaces = {...placesByName, ...placesByCategory};
       _places.assignAll(uniquePlaces.cast<Place>().toList());

@@ -14,7 +14,9 @@ class PlaceRepositoryImpl implements PlaceRepository {
       // BuildingResponseDto 리스트를 가져옴
       final response = await buildingApi.getBuildingsByName(name);
       // BuildingResponseDto -> Place 매핑
-      return response.map((dto) => BuildingToPlaceMapper.fromDetailResponseDto(dto)).toList();
+      return response
+          .map((dto) => BuildingToPlaceMapper.fromDetailResponseDto(dto))
+          .toList();
     } catch (e) {
       throw Exception('Failed to fetch places by name: $e');
     }
@@ -26,7 +28,9 @@ class PlaceRepositoryImpl implements PlaceRepository {
       // BuildingResponseDto 리스트를 가져옴
       final response = await buildingApi.getBuildingCategories(category);
       // BuildingResponseDto -> Place 매핑
-      return response.map((dto) => BuildingToPlaceMapper.fromDetailResponseDto(dto)).toList();
+      return response
+          .map((dto) => BuildingToPlaceMapper.fromDetailResponseDto(dto))
+          .toList();
     } catch (e) {
       throw Exception('Failed to fetch places by category: $e');
     }

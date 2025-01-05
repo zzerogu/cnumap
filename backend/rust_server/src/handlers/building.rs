@@ -401,3 +401,40 @@ async fn get_buildings_by_tag(
         HttpResponse::BadRequest().json(json!({ "error": "Tag parameter is required" }))
     }
 }
+
+#[utoipa::path(
+    get,
+    path = "/api/buildings/name/{building_id}",
+    params(
+        ("building_id" = i32, Path, description = "Building ID to retrieve the name")
+    ),
+    tag = "Building API",
+    responses(
+        (status = 200, description = "Retrieve building name", body = String),
+        (status = 404, description = "Building not found"),
+        (status = 500, description = "Internal server error")
+    )
+)]
+#[get("/api/buildings/name/{building_id}")]
+async fn get_building_name(
+    pool: web::Data<PgPool>,
+    path: web::Path<i32>,
+) -> impl Responder {
+    let building_id = path.into_inner();
+
+    let query = "SELECT name FROM Building WHERE building_id = $1";
+    
+    match sqlx::query_scalar::<_, String>(query)
+        .bind(building_id)
+        .fetch_optional(pool.get_ref())
+        .await
+    {
+        Ok(Some(name)) => HttpResponse::Ok().json(name),
+        Ok(None) => HttpResponse::NotFound().json(json!({
+            "error": "Building not found"
+        })),
+        Err(_) => HttpResponse::InternalServerError().json(json!({
+            "error": "Failed to retrieve building name"
+        })),
+    }
+}

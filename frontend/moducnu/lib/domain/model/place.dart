@@ -1,10 +1,9 @@
-
 class Place {
   final int? id;
   final String placeName;
   final String category;
   final String contact;
-  final String address;
+  final String alias;
 
   // Constructor to initialize the properties
   const Place({
@@ -12,6 +11,6 @@ class Place {
     required this.placeName,
     required this.category,
     required this.contact,
-    required this.address,
+    required this.alias,
   });
 }

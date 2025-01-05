@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:moducnu/data/remote/api/map/map_api.dart';
 import 'package:moducnu/data/remote/api/building/building_api.dart';
@@ -60,7 +62,7 @@ class MapComponentState extends State<MapComponent> {
         // 지도 위젯
         MapWidget(
           key: const ValueKey("mapWidget"),
-          styleUri: "mapbox://styles/mapbox/streets-v11",
+          styleUri: "mapbox://styles/mapbox/outdoors-v12",
           cameraOptions: CameraOptions(
             center: Point(coordinates: Position(127.3467804, 36.3688066)),
             zoom: 14.0,
@@ -83,12 +85,54 @@ class MapComponentState extends State<MapComponent> {
     );
   }
 
-  void _onMapCreated(MapboxMap mapboxMap) {
-    _mapboxMap = mapboxMap;
-    // 사용자 타일 소스 추가
-    _addCustomTileSource(mapboxMap);
+  /// ✅ 카테고리별 아이콘을 결정하는 함수
+  String _getIconForCategory(String category) {
+    switch (category) {
+      case "경사로":
+        return "ramp-icon";
+      case "화장실":
+        return "restroom-icon";
+      case "편의점":
+        return "store-icon";
+      case "휠체어 충전소":
+        return "wheel-icon";
+      default:
+        return "marker-15"; // 기본 아이콘
+    }
+  }
 
+  void _onMapCreated(MapboxMap mapboxMap) async {
+    _mapboxMap = mapboxMap;
+    _addCustomTileSource(mapboxMap);
     _initializeAnnotationManager();
+
+    await _addIcon("ic_ramp", "ramp-icon", 2.7);
+    await _addIcon("ic_restroom", "restroom-icon", 2.7);
+    await _addIcon("ic_store", "store-icon", 2.7);
+    await _addIcon("ic_wheelchairCharge", "wheel-icon", 2.7);
+  }
+
+  Future<void> _addIcon(
+      String assetFileName, String iconId, double scale) async {
+    final ByteData raw =
+        await rootBundle.load('assets/icons/$assetFileName.png');
+    final Uint8List bytes = raw.buffer.asUint8List();
+
+    final MbxImage mbxImage = MbxImage(
+      data: bytes,
+      width: 64,
+      height: 64,
+    );
+
+    await _mapboxMap?.style.addStyleImage(
+      iconId,
+      scale,
+      mbxImage,
+      false,
+      [],
+      [],
+      null,
+    );
   }
 
   Future<void> _initializeAnnotationManager() async {
@@ -223,7 +267,7 @@ class MapComponentState extends State<MapComponent> {
                 coordinates:
                     Position(coordinate.longitude, coordinate.latitude)),
             iconSize: 2.0,
-            iconImage: "marker-15",
+            iconImage: "ramp-icon",
           ),
         );
         _annotations.add(annotation); // ✅ 리스트에 마커 추가
@@ -255,7 +299,7 @@ class MapComponentState extends State<MapComponent> {
                 coordinates: Position(
                     rampCoordinate.longitude, rampCoordinate.latitude)),
             iconSize: isSelected ? 3.0 : 2.0, // ✅ 포커스 여부에 따라 크기 변경
-            iconImage: "marker-15",
+            iconImage: "ramp-icon",
           ),
         );
         _annotations.add(annotation);
@@ -324,12 +368,14 @@ class MapComponentState extends State<MapComponent> {
           nodeId = item.nodeId;
         }
 
+        final String iconImage = _getIconForCategory(category);
+
         // ✅ 마커 추가
         final annotation = await _pointAnnotationManager!.create(
           PointAnnotationOptions(
             geometry: Point(coordinates: Position(longitude, latitude)),
             iconSize: 2.0,
-            iconImage: "marker-15",
+            iconImage: iconImage,
           ),
         );
         _markerData[annotation.id] = {
@@ -353,12 +399,14 @@ class MapComponentState extends State<MapComponent> {
               if (category == "경사로") {
                 await RampDetailPopup.showPopup(
                   context,
+                  buildingApi: widget.buildingApi,
                   buildingId: buildingId,
                   location: locationDescription,
                 );
               } else if (category == "화장실") {
                 await RestroomDetailPopup.showPopup(
                   context,
+                  buildingApi: widget.buildingApi,
                   buildingId: buildingId,
                   location: locationDescription,
                 );
@@ -472,47 +520,71 @@ class MapComponentState extends State<MapComponent> {
       ),
     );
 
-    mapboxMap.style.addLayer(
-      LineLayer(
-        id: "lineLayer",
-        sourceId: "customTileSource",
-        sourceLayer: "osm_lines",
-        lineWidth: 8,
-        lineColorExpression: [
-          'match',
-          ['get', 'slope_bucket'],
-          'slope_-7_-6',
-          '#AA0000',
-          'slope_-6_-5',
-          '#AA0000',
-          'slope_-5_-4',
-          '#AA0000',
-          'slope_-4_-3',
-          '#AA0000',
-          'slope_-3_-2',
-          '#FFCCCC',
-          'slope_-2_-1',
-          '#FFCCCC',
-          'slope_-1_0',
-          '#FFCCCC',
-          'slope_0_1',
-          '#FFCCCC',
-          'slope_1_2',
-          '#FFCCCC',
-          'slope_2_3',
-          '#FFCCCC',
-          'slope_3_4',
-          '#AA0000',
-          'slope_4_5',
-          '#AA0000',
-          'slope_5_6',
-          '#AA0000',
-          'slope_6_7',
-          '#AA0000',
-          '#FF0000',
-        ],
-      ),
-    );
+    final slopeStyles = [
+      {
+        'slope_bucket': 'slope_-∞_~_-10',
+        'color': ['rgba', 100, 0, 0, 1.0], // 진한 어두운 빨강
+      },
+      {
+        'slope_bucket': 'slope_-9_-8',
+        'color': ['rgba', 120, 0, 0, 1.0], // 조금 밝아진 빨강
+      },
+      {
+        'slope_bucket': 'slope_-8_-7',
+        'color': ['rgba', 140, 0, 0, 1.0], // 더 밝은 빨강
+      },
+      {
+        'slope_bucket': 'slope_-7_-6',
+        'color': ['rgba', 160, 0, 0, 1.0], // 더 밝은 빨강
+      },
+      {
+        'slope_bucket': 'slope_-6_-5',
+        'color': ['rgba', 180, 0, 0, 1.0], // 더 밝은 빨강
+      },
+      {
+        'slope_bucket': 'slope_6_7',
+        'color': ['rgba', 200, 0, 0, 1.0], // 밝은 빨강
+      },
+      {
+        'slope_bucket': 'slope_7_8',
+        'color': ['rgba', 220, 0, 0, 1.0], // 더 밝은 빨강
+      },
+      {
+        'slope_bucket': 'slope_8_9',
+        'color': ['rgba', 240, 0, 0, 1.0], // 거의 완전 빨강
+      },
+      {
+        'slope_bucket': 'slope_9_10',
+        'color': ['rgba', 255, 0, 0, 1.0], // 순수 빨강
+      },
+      {
+        'slope_bucket': 'slope_10_∞',
+        'color': ['rgba', 255, 50, 50, 1.0], // 약간 연한 빨강
+      }
+    ];
+
+    for (var style in slopeStyles) {
+      final String slopeBucket = style['slope_bucket'] as String;
+      final List<Object> color = style['color'] as List<Object>;
+
+      mapboxMap.style.addLayer(
+        LineLayer(
+          id: "gradientLineLayer_$slopeBucket",
+          sourceId: "customTileSource",
+          sourceLayer: "osm_lines",
+          lineWidth: 4,
+          lineBlur: 10,
+          lineCap: LineCap.ROUND, // ✅ 라인 끝을 둥글게
+          lineJoin: LineJoin.ROUND, // ✅ 라인 연결부 둥글게
+          lineColorExpression: [
+            'match',
+            ['get', 'slope_bucket'],
+            slopeBucket, color,
+            ['rgba', 150, 150, 150, 0.0] // ✅ 기본값 회색
+          ],
+        ),
+      );
+    }
 
     mapboxMap.style.addLayer(
       SymbolLayer(
