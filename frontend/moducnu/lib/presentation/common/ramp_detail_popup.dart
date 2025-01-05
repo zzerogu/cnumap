@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:moducnu/data/remote/api/building/building_api.dart';
 
 /// 경사로 상세 정보 팝업
 class RampDetailPopup {
   static Future<void> showPopup(
     BuildContext context, {
+    required BuildingApi buildingApi,
     required int buildingId,
     required String location,
   }) {
@@ -12,6 +14,7 @@ class RampDetailPopup {
       barrierDismissible: true,
       builder: (BuildContext ctx) {
         return _RampDetailPopupContent(
+          buildingApi: buildingApi,
           buildingId: buildingId,
           location: location,
         );
@@ -21,15 +24,48 @@ class RampDetailPopup {
 }
 
 /// 팝업 내부 구성
-class _RampDetailPopupContent extends StatelessWidget {
+class _RampDetailPopupContent extends StatefulWidget {
+  final BuildingApi buildingApi;
   final int buildingId;
   final String location;
 
   const _RampDetailPopupContent({
     Key? key,
+    required this.buildingApi,
     required this.buildingId,
     required this.location,
   }) : super(key: key);
+
+  @override
+  State<_RampDetailPopupContent> createState() =>
+      _RampDetailPopupContentState();
+}
+
+class _RampDetailPopupContentState extends State<_RampDetailPopupContent> {
+  String? buildingName;
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchBuildingName();
+  }
+
+  Future<void> _fetchBuildingName() async {
+    try {
+      final name = await widget.buildingApi
+          .getBuildingNameByBuildingId(widget.buildingId);
+      setState(() {
+        buildingName = name;
+        isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        buildingName = "이름을 불러올 수 없음";
+        isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +78,9 @@ class _RampDetailPopupContent extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            '건물 ID: $buildingId',
+            isLoading
+                ? '로딩 중...'
+                : (buildingName ?? '알 수 없는 건물').replaceAll('"', ''),
             style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           IconButton(
@@ -56,7 +94,7 @@ class _RampDetailPopupContent extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _InfoRow(label: '위치', value: location),
+            _InfoRow(label: '위치', value: widget.location),
             const Divider(),
             _InfoRow(
               label: '휠체어 출입 가능 여부',
