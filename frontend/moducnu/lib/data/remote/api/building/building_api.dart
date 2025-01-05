@@ -25,7 +25,7 @@ abstract class BuildingApi {
 
   /// Retrieve all buildings.
   @GET("/api/buildings")
-  Future<List<BuildingDetailResponseDto>> getAllBuildings();
+  Future<List<BuildingResponseDto>> getAllBuildings();
 
   /// Retrieve a specific building by its ID.
   @GET("/api/buildings/{id}")

@@ -2,10 +2,12 @@ import 'package:get_it/get_it.dart';
 import 'package:moducnu/data/remote/api/building/building_api.dart';
 import 'package:moducnu/data/repository/place_repositoryImpl.dart';
 import 'package:moducnu/domain/repository/place_repository.dart';
+import 'package:moducnu/domain/usecases/get_all_buildings_usecase.dart';
 import 'package:moducnu/domain/usecases/get_place_by_name_usecase.dart';
 import 'package:moducnu/domain/usecases/get_places_by_category_usecase.dart';
 import 'package:dio/dio.dart';
 import 'package:moducnu/presentation/map/search_viewmodel.dart';
+import 'package:moducnu/presentation/school/component/building_info_viewmodel.dart';
 
 /*
 <의존성 등록 순서>
@@ -37,11 +39,21 @@ void setupPlaceDependencies() {
         () => GetPlacesByCategoryUseCase(getIt<PlaceRepository>()),
   );
 
+  // 3. UseCase 등록
+  getIt.registerFactory<GetAllBuildingsUsecase>(
+        () => GetAllBuildingsUsecase(getIt<PlaceRepository>()),
+  );
+
+
+
   // 4. ViewModel 의존성 등록
   getIt.registerFactory<SearchViewModel>(
         () => SearchViewModel(
       getPlacesByNameUseCase: getIt<GetPlacesByNameUseCase>(),
       getPlacesByCategoryUseCase: getIt<GetPlacesByCategoryUseCase>(),
     ),
+  );
+  getIt.registerFactory<BuildingInfoViewModel>(
+        () => BuildingInfoViewModel(getIt<GetAllBuildingsUsecase>()),
   );
 }

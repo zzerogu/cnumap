@@ -43,4 +43,16 @@ class PlaceRepositoryImpl implements PlaceRepository {
       throw Exception('Failed to fetch place by ID: $e');
     }
   }
+
+  @override
+  Future<List<Place>> getAllPlaces() async {
+    try {
+      // BuildingResponseDto 리스트를 가져옴
+      final response = await buildingApi.getAllBuildings();
+      // BuildingResponseDto -> Place 매핑
+      return response.map((dto) => BuildingToPlaceMapper.fromResponseDto(dto)).toList();
+    } catch (e) {
+      throw Exception('Failed to fetch all places: $e');
+    }
+  }
 }
