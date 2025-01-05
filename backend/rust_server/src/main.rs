@@ -25,6 +25,7 @@ use env_logger;
         crate::handlers::building::search_buildings,
         crate::handlers::building::get_buildings_by_category,
         crate::handlers::building::get_buildings_by_tag,
+        crate::handlers::building::get_building_name,
         crate::handlers::construction_news::get_all_construction_news,
         crate::handlers::disabled_restroom::get_all_disabled_restrooms,
         crate::handlers::map::get_pbf_tile,

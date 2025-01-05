@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:moducnu/data/remote/api/building/building_api.dart';
 import 'package:moducnu/presentation/theme/color.dart';
 
 /// 화장실 상세 정보 팝업
 class RestroomDetailPopup {
   static Future<void> showPopup(
     BuildContext context, {
+    required BuildingApi buildingApi,
     required int buildingId,
     required String location,
   }) {
@@ -13,6 +15,7 @@ class RestroomDetailPopup {
       barrierDismissible: true,
       builder: (BuildContext ctx) {
         return _RestroomDetailPopupContent(
+          buildingApi: buildingApi,
           buildingId: buildingId,
           location: location,
         );
@@ -22,15 +25,49 @@ class RestroomDetailPopup {
 }
 
 /// 팝업 내부 구성
-class _RestroomDetailPopupContent extends StatelessWidget {
+class _RestroomDetailPopupContent extends StatefulWidget {
+  final BuildingApi buildingApi;
   final int buildingId;
   final String location;
 
   const _RestroomDetailPopupContent({
     Key? key,
+    required this.buildingApi,
     required this.buildingId,
     required this.location,
   }) : super(key: key);
+
+  @override
+  State<_RestroomDetailPopupContent> createState() =>
+      _RestroomDetailPopupContentState();
+}
+
+class _RestroomDetailPopupContentState
+    extends State<_RestroomDetailPopupContent> {
+  String? buildingName;
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchBuildingName();
+  }
+
+  Future<void> _fetchBuildingName() async {
+    try {
+      final name = await widget.buildingApi
+          .getBuildingNameByBuildingId(widget.buildingId);
+      setState(() {
+        buildingName = name;
+        isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        buildingName = "이름을 불러올 수 없음";
+        isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +80,9 @@ class _RestroomDetailPopupContent extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            '화장실 상세 정보',
+            isLoading
+                ? '로딩 중...'
+                : (buildingName ?? '알 수 없는 건물').replaceAll('"', ''),
             style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           const Spacer(),
@@ -58,9 +97,7 @@ class _RestroomDetailPopupContent extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _InfoRow(label: '건물 ID', value: buildingId.toString()),
-            const Divider(),
-            _InfoRow(label: '위치', value: location),
+            _InfoRow(label: '위치', value: widget.location),
             const Divider(),
             _InfoRow(label: '출입구 너비', value: '90cm'), // ✅ 고정값 90cm
             const Divider(),
