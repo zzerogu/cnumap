@@ -5,9 +5,11 @@ import 'package:moducnu/data/remote/api/disability_support_center/disability_sup
 import 'package:moducnu/data/repository/construction_repositoryImpl.dart';
 import 'package:moducnu/data/repository/school_repositoryImpl.dart';
 import 'package:moducnu/domain/repository/construction_repository.dart';
+import 'package:moducnu/domain/repository/place_repository.dart';
 import 'package:moducnu/domain/repository/school_repository.dart';
 import 'package:moducnu/domain/usecases/get_all_construction_news_usecase.dart';
 import 'package:moducnu/domain/usecases/get_all_support_centers_usecase.dart';
+import 'package:moducnu/domain/usecases/get_building_name_by_id_usecase.dart';
 import 'package:moducnu/domain/usecases/get_latest_construction_news_usecase.dart';
 import 'package:moducnu/presentation/school/component/construction_news_viewmodel.dart';
 import 'package:moducnu/presentation/school/component/disabled_center_viewmodel.dart';
@@ -58,6 +60,10 @@ void setupSchoolDependencies() {
       () => GetAllSupportCentersUseCase(
           repository: getIt<SchoolRepository>()));
 
+  getIt.registerFactory<GetBuildingNameByIdUsecase>(
+          () => GetBuildingNameByIdUsecase(
+              repository: getIt<PlaceRepository>())
+  );
 
   // 4. ViewModel 의존성 등록
   getIt.registerFactory<ConstructionViewModel>(
@@ -70,6 +76,7 @@ void setupSchoolDependencies() {
   );
   getIt.registerSingleton<DisabledCenterViewModel>(
     DisabledCenterViewModel(
-        getAllSupportCentersUseCase: getIt<GetAllSupportCentersUseCase>()),
+        getAllSupportCentersUseCase: getIt<GetAllSupportCentersUseCase>(),
+        getBuildingNameByIdUsecase: getIt<GetBuildingNameByIdUsecase>()),
   );
 }

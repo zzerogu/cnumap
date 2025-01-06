@@ -10,6 +10,9 @@ abstract class PlaceRepository {
   /// 특정 ID로 장소 조회
   Future<Place> getPlaceById(int id);
 
+  /// 특정 ID로 장소 이름 조회
+  Future<String> getPlaceNameById(int id);
+
   /// 모든 장소 조회
   Future<List<Place>> getAllPlaces();
 

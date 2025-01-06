@@ -37,7 +37,7 @@ void setupPlaceDependencies() {
   getIt.registerLazySingleton<PlaceRepository>(
         () => PlaceRepositoryImpl(
       getIt<BuildingApi>(),
-      getIt<LocationDataSource>(),
+      getIt<LocationDataSource>()
     ),
   );
 

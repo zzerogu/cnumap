@@ -51,6 +51,11 @@ class PlaceRepositoryImpl implements PlaceRepository {
   }
 
   @override
+  Future<String> getPlaceNameById(int id) {
+    return buildingApi.getBuildingNameByBuildingId(id);
+  }
+
+  @override
   Future<List<Place>> getAllPlaces() async {
     try {
       // BuildingResponseDto 리스트를 가져옴

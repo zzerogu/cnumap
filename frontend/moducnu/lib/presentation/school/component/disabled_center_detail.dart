@@ -1,24 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get_it/get_it.dart';
 import 'package:moducnu/presentation/school/component/disabled_center_viewmodel.dart';
 import 'package:moducnu/presentation/school/component/section_title.dart';
 import 'package:moducnu/presentation/theme/color.dart';
 
-import '../../../di/school_di.dart';
 
-
-class DisabledCenterDetail extends StatelessWidget {
-
+class DisabledCenterDetail extends StatefulWidget {
   const DisabledCenterDetail({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    // GetIt으로 ViewModel 가져오기
-    // ViewModel 주입
-    final DisabledCenterViewModel viewModel = GetIt.instance<DisabledCenterViewModel>();
+  State<DisabledCenterDetail> createState() => _DisabledCenterDetailState();
+}
 
+class _DisabledCenterDetailState extends State<DisabledCenterDetail> {
+  late final DisabledCenterViewModel viewModel;
+
+  @override
+  void initState() {
+    super.initState();
+    // ViewModel 인스턴스 가져오기
+    viewModel = GetIt.instance<DisabledCenterViewModel>();
     // 지원센터 데이터 가져오기
     viewModel.fetchSupportCenters();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('장애학습지원센터', style: TextStyle(color: Colors.black)),
@@ -27,9 +35,43 @@ class DisabledCenterDetail extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.black),
       ),
       backgroundColor: kBackgroundColor,
-      body: Container(
-        color: kBackgroundColor, 
-        child: ListView(
+      body: Obx(() {
+        // 로딩 상태 처리
+        if (viewModel.isLoading.value) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        // 데이터가 없는 경우 처리
+        if (viewModel.supportCenters.isEmpty) {
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  '지원센터 데이터를 가져올 수 없습니다.',
+                  style: TextStyle(fontSize: 16.0, color: Colors.black54),
+                ),
+                const SizedBox(height: 10.0),
+                ElevatedButton(
+                  onPressed: viewModel.fetchSupportCenters,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: kButtonColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                  child: const Text(
+                    '다시 시도',
+                    style: TextStyle(fontSize: 14.0, color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
+          );
+        }
+
+        // 데이터가 있는 경우 리스트뷰 렌더링
+        return ListView(
           padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 16.0),
           children: [
             // 안내 카드
@@ -40,11 +82,11 @@ class DisabledCenterDetail extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12.0),
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center, // 중앙 정렬
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Text(
-                    '충남대학교 장애학습 지원센터는 장애 학생을 위한  여러 지원 서비스를 제공합니다.\n자세한 내용은 아래 사이트를 이용해보세요.',
-                    textAlign: TextAlign.center, // 중앙 정렬
+                    '충남대학교 장애학습 지원센터는 장애 학생을 위한 여러 지원 서비스를 제공합니다.\n자세한 내용은 아래 사이트를 이용해보세요.',
+                    textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 16.0, color: Colors.black87, fontWeight: FontWeight.normal),
                   ),
                   const SizedBox(height: 10.0),
@@ -127,7 +169,7 @@ class DisabledCenterDetail extends StatelessWidget {
                               Text(
                                 contact.helper.position,
                                 style: const TextStyle(
-                                  fontSize: 12,
+                                  fontSize: 13,
                                   color: Colors.grey,
                                 ),
                               ),
@@ -139,7 +181,7 @@ class DisabledCenterDetail extends StatelessWidget {
                               const Icon(Icons.location_on, size: 18, color: Colors.red),
                               const SizedBox(width: 4.0),
                               Text(
-                                contact.buildingId.toString(),
+                                contact.buildingName ?? '알 수 없음',
                                 style: const TextStyle(fontSize: 14, color: Colors.black),
                               ),
                             ],
@@ -169,8 +211,8 @@ class DisabledCenterDetail extends StatelessWidget {
                 ),
               ),
           ],
-        ),
-      ),
+        );
+      }),
     );
   }
 }
