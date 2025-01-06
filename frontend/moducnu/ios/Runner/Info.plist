@@ -52,5 +52,12 @@
     <string>항상 위치 정보를 사용합니다.</string>
     <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
     <string>앱 사용 중 및 항상 위치 정보를 사용합니다.</string>
+
+    <!-- WebView 사용을 위한 보안 설정 추가 -->
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
 </dict>
 </plist>
