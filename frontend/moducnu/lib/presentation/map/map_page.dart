@@ -62,15 +62,15 @@ class _MapPageState extends State<MapPage> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
-            heroTag: 'ramp_button', // Hero 태그 추가
+            heroTag: 'ramp_button', 
             onPressed: () {
               RampDetailPopup.showPopup(context, rampIndex: 0);
             },
             child: const Icon(Icons.accessible),
           ),
-          const SizedBox(height: 12.0), // 버튼 사이 간격 추가
+          const SizedBox(height: 12.0), 
           FloatingActionButton(
-            heroTag: 'restroom_button', // Hero 태그 추가
+            heroTag: 'restroom_button', 
             onPressed: () {
               RestroomDetailPopup.showPopup(context, restroomIndex: 0);
             },

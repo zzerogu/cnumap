@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:moducnu/presentation/school/component/%08disabled_center_detail.dart';
+import 'package:moducnu/presentation/school/component/disabled_center_detail.dart';
 import 'package:moducnu/presentation/school/component/section_title.dart';
 import 'package:moducnu/presentation/theme/color.dart';
-import 'package:moducnu/presentation/school/component/disabled_center_detail.dart'; // 추가된 파일 임포트
+import 'package:moducnu/presentation/school/component/disabled_center_detail.dart'; // 추가된 파일 임포트
+import 'package:moducnu/presentation/school/component/lounge.dart';
 
 
 class ChaChaInfoSection extends StatelessWidget {
@@ -45,7 +46,7 @@ class InfoGrid extends StatelessWidget {
         crossAxisSpacing: 16,
         childAspectRatio: 1.5,
         children: [
-          const InfoCard(title: '도움 요청', icon: Icons.help),
+          
           InfoCard(
             title: '장애학습 지원센터',
             icon: Icons.accessible,
@@ -56,6 +57,18 @@ class InfoGrid extends StatelessWidget {
                   builder: (context) => const DisabledCenterDetail(),
                 ),
               );
+            },
+          ),
+          InfoCard(
+            title: '휴게실',
+            icon: Icons.local_cafe,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Lounge(),
+                ),
+              ); // 오류 수정: 닫는 괄호 추가
             },
           ),
         ],
