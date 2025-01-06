@@ -9,4 +9,19 @@ abstract class PlaceRepository {
 
   /// 특정 ID로 장소 조회
   Future<Place> getPlaceById(int id);
+
+  /// 모든 장소 조회
+  Future<List<Place>> getAllPlaces();
+
+  /// 내 저장 장소 관련
+  Future<void> addSavedLocation(Place place);
+  Future<List<Place>> getSavedLocations();
+  Future<void> deleteSavedLocation(int buildingId);
+  Future<void> clearSavedLocations();
+
+  /// 최근 방문 장소 관련
+  Future<void> addRecentLocation(Place place);
+  Future<List<Place>> getRecentLocations();
+  Future<void> deleteRecentLocation(int buildingId);
+  Future<void> clearRecentLocations();
 }

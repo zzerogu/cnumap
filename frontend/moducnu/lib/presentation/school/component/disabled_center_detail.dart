@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:moducnu/presentation/school/component/section_title.dart';
 import 'package:moducnu/presentation/theme/color.dart';
 
+
 class Contact {
   final String name;
   final String role;
@@ -50,7 +51,6 @@ class DisabledCenterDetail extends StatelessWidget {
         elevation: 1.0,
         iconTheme: const IconThemeData(color: Colors.black),
       ),
-      backgroundColor: kBackgroundColor,
       body: Container(
         color: kBackgroundColor, 
         child: ListView(

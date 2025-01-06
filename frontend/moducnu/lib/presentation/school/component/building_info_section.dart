@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:moducnu/domain/model/place.dart';
 import 'package:moducnu/presentation/school/component/section_title.dart';
+import 'package:moducnu/presentation/school/component/building_detail.dart';
 import 'package:moducnu/presentation/theme/color.dart';
+
+import '../../../di/place_di.dart';
+import 'building_info_viewmodel.dart';
 
 
 class BuildingInfoSection extends StatelessWidget {
@@ -23,78 +31,59 @@ class BuildingInfoSection extends StatelessWidget {
 }
 
 
-class BuildingList extends StatefulWidget {
+class BuildingList extends StatelessWidget {
   const BuildingList({super.key});
 
   @override
-  _BuildingListState createState() => _BuildingListState();
-}
-
-class _BuildingListState extends State<BuildingList> {
-  final PageController _pageController = PageController();
-  int _currentPage = 0;
-
-  final List<List<String>> _buildings = [
-    ['공과대학 5호관', '중앙도서관', '제2학생회관'],
-    ['체육관', '기숙사', '학생식당'],
-    ['음악관', '미술관', '언어교육원'],
-  ];
-
-  @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: 210,
-          child: PageView.builder(
-            controller: _pageController,
-            itemCount: _buildings.length,
-            onPageChanged: (index) {
-              setState(() {
-                _currentPage = index;
-              });
-            },
-            itemBuilder: (context, pageIndex) {
-              return Column(
-                children: _buildings[pageIndex].map((buildingName) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4.0),
-                    child: BuildingCard(name: buildingName),
-                  );
-                }).toList(),
-              );
-            },
-          ),
-        ),
-        const SizedBox(height: 16),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(
-            _buildings.length,
-                (index) => GestureDetector(
-              onTap: () {
-                _pageController.animateToPage(
-                  index,
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeInOut,
+    final viewModel = getIt<BuildingInfoViewModel>();
+    viewModel.init();
+
+    return Obx(() {
+      if (viewModel.isLoading.value) {
+        return const Center(child: CircularProgressIndicator());
+      }
+
+      if (viewModel.errorMessage.isNotEmpty) {
+        return Center(child: Text(viewModel.errorMessage.value));
+      }
+
+      if (viewModel.buildings.isEmpty) {
+        return const Center(child: Text('건물 데이터를 찾을 수 없습니다.'));
+      }
+
+      // 데이터를 3개의 페이지로 나누기
+      final groupSize = (viewModel.buildings.length / 20).ceil();
+      final List<List<Place>> buildingPages = List.generate(
+        18,
+            (index) {
+          final start = index * groupSize;
+          final end = (start + groupSize).clamp(0, viewModel.buildings.length);
+          return viewModel.buildings.sublist(start, end);
+        },
+      );
+
+      return SizedBox(
+        height: 320, // 높이 제한 설정
+        child: PageView.builder(
+          itemCount: buildingPages.length,
+          itemBuilder: (context, pageIndex) {
+            final buildingsForPage = buildingPages[pageIndex];
+            return Column(
+              children: buildingsForPage.map((building) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4.0),
+                  child: BuildingCard(name: building.placeName),
                 );
-              },
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                width: _currentPage == index ? 12.0 : 8.0,
-                height: 8.0,
-                decoration: BoxDecoration(
-                  color: _currentPage == index ? Colors.orange : Colors.grey,
-                  borderRadius: BorderRadius.circular(4.0),
-                ),
-              ),
-            ),
-          ),
+              }).toList(),
+            );
+          },
         ),
-      ],
-    );
+      );
+    });
   }
 }
+
 
 class BuildingCard extends StatelessWidget {
   final String name;
@@ -131,6 +120,12 @@ class BuildingCard extends StatelessWidget {
             ],
           ),
           onTap: () {
+             Navigator.push(
+             context,
+             MaterialPageRoute(
+             builder: (context) => BuildingDetailPage(buildingName: name),
+              ),
+            );
             // Handle navigation or click event
           },
         ),

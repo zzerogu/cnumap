@@ -343,69 +343,61 @@ WHERE name NOT IN (
 -- 공과대학 5호관
 INSERT INTO Ramp (building_id, node_id, floor, location_description)
 VALUES
-((SELECT building_id FROM Building WHERE name = '공과대학 5호관'), 12455433255, 1, '부출입구 쪽'),
-((SELECT building_id FROM Building WHERE name = '공과대학 5호관'), 12455433253, 1, '후문 쪽'),
-((SELECT building_id FROM Building WHERE name = '공과대학 5호관'), 12455433254, 1, '비상구 쪽');
+((SELECT building_id FROM Building WHERE name = '공과대학 5호관'), 12455433255, 1, '주출입구 램프'),
+((SELECT building_id FROM Building WHERE name = '공과대학 5호관'), 12455433253, 1, '후문 근처 램프'),
+((SELECT building_id FROM Building WHERE name = '공과대학 5호관'), 12455433254, 1, '비상구 램프');
 
 -- 백마교양관
 INSERT INTO Ramp (building_id, node_id, floor, location_description)
 VALUES
-((SELECT building_id FROM Building WHERE name = '백마교양교육관'), 12455425570, 1, '하부 공동출입구 쪽'),
-((SELECT building_id FROM Building WHERE name = '백마교양교육관'), 12455425571, 1, '하부 부출입구 쪽 (1)'),
-((SELECT building_id FROM Building WHERE name = '백마교양교육관'), 12455425572, 1, '하부 부출입구 쪽 (2)');
+((SELECT building_id FROM Building WHERE name = '백마교양교육관'), 12455425570, 1, '정문 입구 램프'),
+((SELECT building_id FROM Building WHERE name = '백마교양교육관'), 12455425571, 1, '서쪽 출입구 램프'),
+((SELECT building_id FROM Building WHERE name = '백마교양교육관'), 12455425572, 1, '북문 램프');
 
 -- 충남대학교 제3학생회관 (N7)
 INSERT INTO Ramp (building_id, node_id, floor, location_description)
 VALUES
-((SELECT building_id FROM Building WHERE name = '충남대학교 제3학생회관 (N7)'), 12455430471, 1, '중앙 출입구 쪽');
+((SELECT building_id FROM Building WHERE name = '충남대학교 제3학생회관 (N7)'), 12455430471, 1, '정문 램프');
 
 -- 제1학생회관
 INSERT INTO Ramp (building_id, node_id, floor, location_description)
 VALUES
-((SELECT building_id FROM Building WHERE name = '제1학생회관'), 12455440164, 1, '부출입구 쪽'),
-((SELECT building_id FROM Building WHERE name = '제1학생회관'), 12455440165, 1, '식당 출입구 쪽'),
-((SELECT building_id FROM Building WHERE name = '제1학생회관'), 12072814039, 1, '주출입구 쪽');
+((SELECT building_id FROM Building WHERE name = '제1학생회관'), 12455440164, 1, '정문 램프'),
+((SELECT building_id FROM Building WHERE name = '제1학생회관'), 12455440165, 1, '서쪽 출입구 램프'),
+((SELECT building_id FROM Building WHERE name = '제1학생회관'), 12072814039, 1, '후문 램프');
 
 -- 제2학생회관
 INSERT INTO Ramp (building_id, node_id, floor, location_description)
-VALUES
-((SELECT building_id FROM Building WHERE name = '제2학생회관'), 12455447051, 1, '좌측 출입구 쪽');
+VALUES 
+((SELECT building_id FROM Building WHERE name = '제2학생회관'), 12455447051, 1, '정문 램프');
 
 -- 충남대학교 중앙도서관 (N1)
 INSERT INTO Ramp (building_id, node_id, floor, location_description)
 VALUES
-((SELECT building_id FROM Building WHERE name = '충남대학교 중앙도서관 (N1)'), 12455447060, 1, '정문 쪽');
+((SELECT building_id FROM Building WHERE name = '충남대학교 중앙도서관 (N1)'), 12455447060, 1, '정문 램프');
 
 -- 공과대학 1호관
 INSERT INTO Ramp (building_id, node_id, floor, location_description)
 VALUES
-((SELECT building_id FROM Building WHERE name = '공과대학 1호관'), 12455440041, 1, '절벽에서 내려오는 계단 쪽 (1)'),
-((SELECT building_id FROM Building WHERE name = '공과대학 1호관'), 1097717909, 1, '절벽에서 내려오는 계단 쪽 (2)'),
-((SELECT building_id FROM Building WHERE name = '공과대학 1호관'), 1097718079, 1, '중앙 현관 쪽');
+((SELECT building_id FROM Building WHERE name = '공과대학 1호관'), 12455440041, 1, '주출입구 램프'),
+((SELECT building_id FROM Building WHERE name = '공과대학 1호관'), 1097717909, 1, '서쪽 출입구 램프'),
+((SELECT building_id FROM Building WHERE name = '공과대학 1호관'), 1097718079, 1, '비상구 램프');
 
--- Insert data into Disabled_Restroom table using dynamic building_id selection
+-- 공과대학 5호관 Disabled Restroom
 INSERT INTO Disabled_Restroom (building_id, node_id, floor, location_description)
 VALUES
-((SELECT building_id FROM Building WHERE name = '공과대학 5호관'), 12455490137, 1, '1층 후출입구 쪽'),
-((SELECT building_id FROM Building WHERE name = '충남대학교 중앙도서관 (N1)'), 12475068777, 2, '2층 자율 스터디룸 쪽'),
-((SELECT building_id FROM Building WHERE name = '제1학생회관'), 12475077423, 1, '1층 부출입구 쪽'),
-((SELECT building_id FROM Building WHERE name = '제2학생회관'), 12475077424, 1, '1층 좌측 출입구 쪽'),
-((SELECT building_id FROM Building WHERE name = '백마교양교육관'), 12475077521, 1, '1층 중앙 쪽'),
-((SELECT building_id FROM Building WHERE name = '백마교양교육관'), 12475077521, 1, '1층 중앙 쪽');
-
--- Insert data into Elevator table using dynamic building_id selection
-INSERT INTO Elevator (building_id, node_id, location_description)
-VALUES
-((SELECT building_id FROM Building WHERE name = '제2학생회관'), 12475077425, '좌측 출입구 쪽'),
-((SELECT building_id FROM Building WHERE name = '백마교양교육관'), 12475077520, '중앙 쪽'),
-((SELECT building_id FROM Building WHERE name = '공과대학 5호관'), 12474960951, '중앙 쪽'),
-((SELECT building_id FROM Building WHERE name = '공과대학 3호관'), 12475059332, '주출입구 쪽'),
-((SELECT building_id FROM Building WHERE name = '제1학생회관'), 12475068469, '주출입구 쪽'),
-((SELECT building_id FROM Building WHERE name = '충남대학교 중앙도서관 (N1)'), 12475068776, '중앙 계단 쪽');
-
+((SELECT building_id FROM Building WHERE name = '공과대학 5호관'), 12455490137, 1, '1층 중앙 복도에 위치한 장애인 화장실');
 
 INSERT INTO DisabilitySupportCenter (name, position, phone_number, building_id)
 VALUES
 ('송혜진', '장애학생지원센터 규정 및 지원 담당자', '042-821-5057', (SELECT building_id FROM Building WHERE name = '한누리회관')),
 ('정민규', '사회적 장애 인식 및 진로 취업지원 담당자', '042-821-5069', (SELECT building_id FROM Building WHERE name = '한누리회관')),
 ('임은주', '동반자 지원사업 및 행정 담당자', '042-821-5058', (SELECT building_id FROM Building WHERE name = '한누리회관'));
+
+INSERT INTO Construction_News (content, location, start_time, end_time)
+VALUES
+('공대 5호관 오른편 경사로가 공사중에 있습니다. 다른 출입문을 이용해주시기 바랍니다.', 
+ '공대 5호관', 
+ '2025-01-01 09:00:00', 
+ '2025-02-28 18:00:00');
+

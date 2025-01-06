@@ -35,8 +35,8 @@ class BuildingDetailResponseDto {
   final String name;
   @JsonKey(name: 'node_id')
   final String nodeId;
-  @JsonKey(name: 'phone_number')
-  final String phoneNumber;
+  @JsonKey(name: 'phone_number', defaultValue: '없음')
+  final String? phoneNumber;
   @JsonKey(name: 'roof_floors')
   final int roofFloors;
   final String tags;
