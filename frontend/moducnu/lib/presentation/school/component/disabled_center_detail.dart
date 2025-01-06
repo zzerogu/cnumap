@@ -92,7 +92,7 @@ class _DisabledCenterDetailState extends State<DisabledCenterDetail> {
                   const SizedBox(height: 10.0),
                   ElevatedButton(
                     onPressed: () {
-                      // 사이트 링크 동작 추가 가능
+                      viewModel.openSupportCenterUrl();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: kButtonColor,
