@@ -1,8 +1,8 @@
 import 'package:moducnu/domain/model/construction_news.dart';
-import 'package:moducnu/domain/repository/construction_repository.dart';
+import 'package:moducnu/domain/repository/school_repository.dart';
 
 class GetAllConstructionNewsUseCase {
-  final ConstructionRepository repository;
+  final SchoolRepository repository;
 
   GetAllConstructionNewsUseCase({required this.repository});
 

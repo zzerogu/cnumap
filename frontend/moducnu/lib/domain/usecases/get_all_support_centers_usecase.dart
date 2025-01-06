@@ -1,6 +1,5 @@
 import 'package:moducnu/domain/model/construction_news.dart';
 import 'package:moducnu/domain/model/support_center.dart';
-import 'package:moducnu/domain/repository/construction_repository.dart';
 import 'package:moducnu/domain/repository/school_repository.dart';
 
 class GetAllSupportCentersUseCase {

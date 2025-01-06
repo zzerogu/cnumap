@@ -2,9 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
 import 'package:moducnu/data/remote/api/construction/construction_api.dart';
 import 'package:moducnu/data/remote/api/disability_support_center/disability_support_center_api.dart';
-import 'package:moducnu/data/repository/construction_repositoryImpl.dart';
 import 'package:moducnu/data/repository/school_repositoryImpl.dart';
-import 'package:moducnu/domain/repository/construction_repository.dart';
 import 'package:moducnu/domain/repository/place_repository.dart';
 import 'package:moducnu/domain/repository/school_repository.dart';
 import 'package:moducnu/domain/usecases/get_all_construction_news_usecase.dart';
@@ -26,7 +24,7 @@ import 'package:moducnu/presentation/school/component/disabled_center_viewmodel.
 final getIt = GetIt.instance;
 
 void setupSchoolDependencies() {
-  // 1. ConstructionApi 의존성 등록
+  // 1. API 의존성 등록
   getIt.registerSingleton<ConstructionApi>(
     ConstructionApi(getIt<Dio>()),
   );
@@ -35,26 +33,31 @@ void setupSchoolDependencies() {
   );
 
 
-  // 2. ConstructionRepository 의존성 등록
-  getIt.registerLazySingleton<ConstructionRepository>(
+  // 2. SchoolRepository 의존성 등록
+  getIt.registerLazySingleton<SchoolRepository>(
         () =>
-        ConstructionRepositoryImpl(constructionApi: getIt<ConstructionApi>()),
+            SchoolRepositoryImpl(
+                disabilitySupportCenterApi: getIt<DisabilitySupportCenterApi>(),
+                constructionApi: getIt<ConstructionApi>()),
   );
   getIt.registerLazySingleton<SchoolRepository>(
         () =>
-        SchoolRepositoryImpl(disabilitySupportCenterApi: getIt<DisabilitySupportCenterApi>()),
+        SchoolRepositoryImpl(
+            disabilitySupportCenterApi: getIt<DisabilitySupportCenterApi>(),
+            constructionApi: getIt<ConstructionApi>(),
+            ),
   );
 
   // 3. UseCase 의존성 등록
   getIt.registerFactory<GetAllConstructionNewsUseCase>(
         () =>
         GetAllConstructionNewsUseCase(
-            repository: getIt<ConstructionRepository>()),
+            repository: getIt<SchoolRepository>()),
   );
   getIt.registerFactory<GetLatestConstructionNewsUseCase>(
         () =>
         GetLatestConstructionNewsUseCase(
-            repository: getIt<ConstructionRepository>()),
+            repository: getIt<SchoolRepository>()),
   );
   getIt.registerFactory<GetAllSupportCentersUseCase>(
       () => GetAllSupportCentersUseCase(
