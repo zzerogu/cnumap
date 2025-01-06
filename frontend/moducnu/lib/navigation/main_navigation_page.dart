@@ -4,7 +4,7 @@ import 'package:moducnu/presentation/map/map_page.dart';
 import 'package:moducnu/presentation/saved/save_page.dart';
 import 'package:moducnu/presentation/school/school_page.dart';
 import 'package:moducnu/presentation/theme/color.dart';
-import 'package:moducnu/presentation/timetable/time_page.dart';
+import 'package:moducnu/presentation/qa/qa_page.dart';
 
 class MainNavigationPage extends StatefulWidget {
   const MainNavigationPage({super.key});
@@ -21,7 +21,7 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
     const MapPage(),
     const SavePage(),
     SchoolPage(),
-    const TimetablePage(),
+    const QaPage()
   ];
 
   @override
@@ -32,35 +32,34 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
       bottomNavigationBar: SafeArea(
         // SafeArea로 하단 영역 보호
         child: GNav(
-            gap: 8,
-            activeColor: kSelectedColor,
-            selectedIndex: _selectedIndex,
-
-            onTabChange: (index) {
-              setState(() {
-                _selectedIndex = index; // 선택된 탭의 인덱스를 업데이트
-              });
-            },
-            tabs: const [
-              GButton(
-                icon: Icons.explore,
-                text: '지도',
-              ),
-              GButton(
-                icon: Icons.favorite,
-                text: '저장',
-              ),
-              GButton(
-                icon: Icons.school,
-                text: '학교',
-              ),
-              GButton(
-                icon: Icons.access_time_sharp,
-                text: '시간표',
-              ),
-            ],
-          ),
+          gap: 8,
+          activeColor: kSelectedColor,
+          selectedIndex: _selectedIndex,
+          onTabChange: (index) {
+            setState(() {
+              _selectedIndex = index; // 선택된 탭의 인덱스를 업데이트
+            });
+          },
+          tabs: const [
+            GButton(
+              icon: Icons.explore,
+              text: '지도',
+            ),
+            GButton(
+              icon: Icons.favorite,
+              text: '저장',
+            ),
+            GButton(
+              icon: Icons.school,
+              text: '학교',
+            ),
+            GButton(
+              icon: Icons.access_time_sharp,
+              text: '문의',
+            ),
+          ],
         ),
+      ),
     );
   }
 }

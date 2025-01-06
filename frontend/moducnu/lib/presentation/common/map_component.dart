@@ -105,7 +105,7 @@ class MapComponentState extends State<MapComponent> {
         // 지도 위젯
         MapWidget(
           key: const ValueKey("mapWidget"),
-          styleUri: "mapbox://styles/mapbox/streets-v12",
+          styleUri: "mapbox://styles/mapbox/streets-v12?language=ko",
           cameraOptions: CameraOptions(
             center: Point(coordinates: Position(127.3467804, 36.3688066)),
             zoom: 14.0,
@@ -116,8 +116,8 @@ class MapComponentState extends State<MapComponent> {
 
         // 내 위치 보기 버튼 (우측 하단 고정)
         Positioned(
-          bottom: 20,
-          right: 20,
+          bottom: 10,
+          right: 10,
           child: FloatingActionButton.small(
             onPressed: _moveToCurrentLocation,
             backgroundColor: Color.fromRGBO(136, 181, 197, 1),
@@ -126,7 +126,7 @@ class MapComponentState extends State<MapComponent> {
         ),
 
         Positioned(
-          top: 25,
+          top: 185,
           right: 20,
           child: Container(
             height: 25,
@@ -180,7 +180,19 @@ class MapComponentState extends State<MapComponent> {
     _mapboxMap = mapboxMap;
     _addCustomTileSource(mapboxMap);
     _initializeAnnotationManager();
-
+    await mapboxMap.style.addLayer(SymbolLayer(
+      id: "building-labels",
+      sourceId: "composite",
+      sourceLayer: "building",
+      textFieldExpression: [
+        'coalesce', // ✅ 한글 이름을 우선, 없으면 영어
+        ['get', 'name'],
+        ['get', 'name:ko'],
+        ['get', 'name:en']
+      ],
+      textSize: 14,
+      textColor: Colors.black.value,
+    ));
     await _addIcon("ic_ramp", "ramp-icon", 2.7);
     await _addIcon("ic_restroom", "restroom-icon", 2.7);
     await _addIcon("ic_store", "store-icon", 2.7);
@@ -219,6 +231,7 @@ class MapComponentState extends State<MapComponent> {
               id: "gradientLineLayer_$slopeBucket",
               sourceId: "customTileSource",
               sourceLayer: "osm_lines",
+              lineWidth: 7,
               lineCap: LineCap.ROUND,
               lineJoin: LineJoin.ROUND,
               lineColorExpression: [

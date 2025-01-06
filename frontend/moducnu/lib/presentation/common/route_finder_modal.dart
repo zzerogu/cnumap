@@ -1,10 +1,10 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:moducnu/presentation/common/building_detail_popup.dart';
 import 'package:moducnu/presentation/theme/color.dart';
-import 'package:moducnu/data/remote/api/navigation/navigation_api.dart';
 import 'package:moducnu/data/remote/dto/navigation/navigation_dto.dart';
-import 'package:dio/dio.dart';
+import 'package:moducnu/data/remote/api/navigation/navigation_api.dart';
 
 /// 경사로 데이터 모델 (nodeId + locationDescription)
 class Ramp {
@@ -72,7 +72,8 @@ class RouteFinderModal extends StatefulWidget {
 class _RouteFinderModalState extends State<RouteFinderModal> {
   TextEditingController startController = TextEditingController(text: "내 위치");
   TextEditingController endController = TextEditingController();
-  String? selectedRampNodeId; // ✅ 선택된 경사로의 nodeId만 저장
+  String? selectedRampNodeId;
+  bool isSecondStep = false;
   final Dio dio = Dio();
   final _baseUrl = "http://localhost:8000";
   late final NavigationApi navigationApi =
@@ -82,8 +83,13 @@ class _RouteFinderModalState extends State<RouteFinderModal> {
   void initState() {
     super.initState();
     endController.text = widget.buildingName;
+  }
 
-    // ✅ 모달 창이 켜질 때, 램프 마커를 추가
+  void _goToNextStep() {
+    setState(() {
+      isSecondStep = true;
+    });
+
     final List<BuildingFeature> buildingFeatures = widget.ramps.map((ramp) {
       return BuildingFeature(
         featureName: "Ramp",
@@ -146,18 +152,11 @@ class _RouteFinderModalState extends State<RouteFinderModal> {
       child: Container(
         padding: const EdgeInsets.all(16.0),
         decoration: const BoxDecoration(
-          color: kbackgroundColor,
+          color: Color.fromARGB(255, 255, 255, 255),
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(16),
             topRight: Radius.circular(16),
           ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black12,
-              blurRadius: 10,
-              spreadRadius: 5,
-            ),
-          ],
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -165,11 +164,12 @@ class _RouteFinderModalState extends State<RouteFinderModal> {
           children: [
             _buildHeader(context),
             const SizedBox(height: 16),
-            _buildRouteInputs(startController, endController),
+            if (!isSecondStep)
+              _buildRouteInputs(startController, endController)
+            else
+              _buildRampSelector(),
             const SizedBox(height: 16),
-            _buildRampSelector(), // ✅ 경사로 선택 추가
-            const SizedBox(height: 16),
-            _buildGuideButton(),
+            _buildActionButton(),
           ],
         ),
       ),
@@ -237,30 +237,15 @@ class _RouteFinderModalState extends State<RouteFinderModal> {
     );
   }
 
-  /// ✅ 경사로 선택 (locationDescription 사용, nodeId 저장)
   Widget _buildRampSelector() {
-    if (widget.ramps.isEmpty) {
-      return const Text("등록된 경사로가 없습니다.");
-    }
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          "경사로 선택",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 8),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: widget.ramps.map((ramp) {
-            return ChoiceChip(
-              label: Text(
-                ramp.locationDescription,
-                style: const TextStyle(fontSize: 14.0), // 텍스트 크기 축소
-              ), // ✅ locationDescription 표시
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: widget.ramps.map((ramp) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4.0),
+            child: ChoiceChip(
+              label: Text(ramp.locationDescription),
               selected: selectedRampNodeId == ramp.nodeId,
               onSelected: (isSelected) {
                 setState(() {
@@ -289,28 +274,28 @@ class _RouteFinderModalState extends State<RouteFinderModal> {
                   color: selectedRampNodeId == ramp.nodeId
                       ? Colors.white
                       : Colors.black),
-            );
-          }).toList(),
-        ),
-      ],
+            ),
+          );
+        }).toList(),
+      ),
     );
   }
 
-  Widget _buildGuideButton() {
+  Widget _buildActionButton() {
     return Center(
       child: ElevatedButton(
-        onPressed: _requestRoute,
+        onPressed: isSecondStep ? _requestRoute : _goToNextStep,
         style: ElevatedButton.styleFrom(
           backgroundColor: kButtonColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
         ),
-        child: const Padding(
-          padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
           child: Text(
-            '안내 받기',
-            style: TextStyle(color: Colors.white, fontSize: 16),
+            isSecondStep ? '경로 안내 시작' : '다음',
+            style: const TextStyle(color: Colors.white, fontSize: 16),
           ),
         ),
       ),
