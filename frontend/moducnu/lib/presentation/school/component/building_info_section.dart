@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moducnu/presentation/school/component/section_title.dart';
+import 'package:moducnu/presentation/school/component/building_detail.dart';
 import 'package:moducnu/presentation/theme/color.dart';
 
 
@@ -131,6 +132,12 @@ class BuildingCard extends StatelessWidget {
             ],
           ),
           onTap: () {
+             Navigator.push(
+             context,
+             MaterialPageRoute(
+             builder: (context) => BuildingDetailPage(buildingName: name),
+              ),
+            );
             // Handle navigation or click event
           },
         ),
