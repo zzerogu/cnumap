@@ -33,6 +33,7 @@ class LocationToPlaceMapper {
   static Place fromLocationEntity(LocationEntity location) {
     return Place(
       id: location.buildingId,
+      nodeId: "",
       placeName: location.name,
       category: location.category ?? "-",
       contact: location.contact ?? "-",
