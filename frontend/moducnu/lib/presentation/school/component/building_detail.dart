@@ -80,25 +80,28 @@ class _BuildingDetailPageState extends State<BuildingDetailPage> {
 
   // 층 선택 버튼 UI 구성 메서드
   Widget _buildFloorSelector() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: floorPlans.map((floorPlan) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 2.0),
-          child: ElevatedButton(
-            onPressed: () => _selectFloor(floorPlan.floorNumber),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: _isSelectedFloor(floorPlan.floorNumber)
-                  ? kButtonColor
-                  : Colors.white,
-              foregroundColor: _isSelectedFloor(floorPlan.floorNumber)
-                  ? Colors.white
-                  : kButtonColor,
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: floorPlans.map((floorPlan) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 2.0),
+            child: ElevatedButton(
+              onPressed: () => _selectFloor(floorPlan.floorNumber),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: _isSelectedFloor(floorPlan.floorNumber)
+                    ? kButtonColor
+                    : Colors.white,
+                foregroundColor: _isSelectedFloor(floorPlan.floorNumber)
+                    ? Colors.white
+                    : kButtonColor,
+              ),
+              child: Text('${floorPlan.floorNumber}층'),
             ),
-            child: Text('${floorPlan.floorNumber}층'),
-          ),
-        );
-      }).toList(),
+          );
+        }).toList(),
+      ),
     );
   }
 

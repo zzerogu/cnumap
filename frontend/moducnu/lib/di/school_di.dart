@@ -40,13 +40,6 @@ void setupSchoolDependencies() {
                 disabilitySupportCenterApi: getIt<DisabilitySupportCenterApi>(),
                 constructionApi: getIt<ConstructionApi>()),
   );
-  getIt.registerLazySingleton<SchoolRepository>(
-        () =>
-        SchoolRepositoryImpl(
-            disabilitySupportCenterApi: getIt<DisabilitySupportCenterApi>(),
-            constructionApi: getIt<ConstructionApi>(),
-            ),
-  );
 
   // 3. UseCase 의존성 등록
   getIt.registerFactory<GetAllConstructionNewsUseCase>(

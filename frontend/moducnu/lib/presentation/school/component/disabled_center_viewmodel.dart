@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:moducnu/domain/model/support_center.dart';
 import 'package:moducnu/domain/usecases/get_all_support_centers_usecase.dart';
 import 'package:moducnu/domain/usecases/get_building_name_by_id_usecase.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 class DisabledCenterViewModel extends GetxController {
@@ -58,5 +59,21 @@ class DisabledCenterViewModel extends GetxController {
   String getBuildingNameById(int id) {
     String buildingName = getBuildingNameByIdUsecase.execute(id) as String;
     return buildingName;
+  }
+
+  // 지원센터 사이트 열기 메서드
+  Future<void> openSupportCenterUrl() async {
+    const String url = 'https://doumi.cnu.ac.kr/doumi/index.do';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      Get.snackbar(
+        '링크 열기 실패',
+        '장애학습지원센터 사이트를 열 수 없습니다.',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.redAccent,
+        colorText: Colors.white,
+      );
+    }
   }
 }
