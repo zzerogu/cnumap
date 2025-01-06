@@ -1,12 +1,14 @@
 class SupportCenter {
   final int buildingId;
   final int id;
+  String? buildingName; // 건물 이름 추가
   final Helper helper;
 
   // Constructor to initialize the properties
-  const SupportCenter({
+  SupportCenter({
     required this.buildingId,
     required this.id,
+    this.buildingName,
     required this.helper
   });
 }
