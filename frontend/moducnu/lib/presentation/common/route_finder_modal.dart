@@ -113,8 +113,8 @@ class _RouteFinderModalState extends State<RouteFinderModal> {
           await navigationApi.getNodeCoordinates(selectedRampNodeId!);
 
       // 2️⃣ 출발지 좌표 (고정값 사용)
-      final startCoordinate =
-          CoordinateDto(latitude: 36.364029, longitude: 127.344919);
+      final startCoordinate = CoordinateDto(
+          latitude: 36.363905525179774, longitude: 127.3455249809536);
 
       // 3️⃣ 경로 요청 객체 생성
       final routeRequest = RouteRequestDto(
@@ -252,11 +252,16 @@ class _RouteFinderModalState extends State<RouteFinderModal> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 8),
-        Wrap(
-          spacing: 8.0,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: widget.ramps.map((ramp) {
             return ChoiceChip(
-              label: Text(ramp.locationDescription), // ✅ locationDescription 표시
+              label: Text(
+                ramp.locationDescription,
+                style: const TextStyle(fontSize: 12.0), // 텍스트 크기 축소
+              ), // ✅ locationDescription 표시
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
               selected: selectedRampNodeId == ramp.nodeId,
               onSelected: (isSelected) {
                 setState(() {

@@ -46,7 +46,6 @@ class _BuildingApi implements BuildingApi {
         )));
     final _result = await _dio.fetch<List<dynamic>>(_options);
     late List<BuildingDetailResponseDto> _value;
-    print(_result);
     try {
       _value = _result.data!
           .map((dynamic i) =>

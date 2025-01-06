@@ -80,7 +80,7 @@ async fn get_node_coordinates(
 
 #[utoipa::path(
     get,
-    path = "/api/navigation/node_coordinates/{node_id}",
+    path = "/api/navigation/polygon_center/{node_id}",
     params(
         ("node_id" = String, Path, description = "Building ID to retrieve details")
     ),
@@ -98,7 +98,8 @@ async fn get_polygon_center(
 ) -> impl Responder {
     let node_id = node_id.into_inner();
 
-    let query = r#"
+    // ✅ 첫 번째 쿼리: polygon 데이터 조회
+    let polygon_query = r#"
         SELECT 
             ST_Y(ST_Centroid(ST_Transform(way, 4326))) AS latitude,
             ST_X(ST_Centroid(ST_Transform(way, 4326))) AS longitude
@@ -106,16 +107,65 @@ async fn get_polygon_center(
         WHERE osm_id = $1::bigint
     "#;
 
+    let relation_query = r#"
+    SELECT 
+        ST_Y(
+            ST_Centroid(
+                ST_Transform(
+                    ST_Collect(
+                        ST_SetSRID(ST_MakePoint(n.lon / 10000000.0, n.lat / 10000000.0), 4326)
+                    ), 4326
+                )
+            )
+        ) AS latitude,
+        ST_X(
+            ST_Centroid(
+                ST_Transform(
+                    ST_Collect(
+                        ST_SetSRID(ST_MakePoint(n.lon / 10000000.0, n.lat / 10000000.0), 4326)
+                    ), 4326
+                )
+            )
+        ) AS longitude
+    FROM planet_osm_rels r
+    JOIN planet_osm_ways w 
+        ON w.id = ANY(
+            SELECT CAST(regexp_replace(member, '[^0-9]', '', 'g') AS bigint)
+            FROM unnest(r.members) AS member
+            WHERE member ~ '^w\d+$'
+        )
+    JOIN planet_osm_nodes n 
+        ON n.id = ANY(w.nodes)
+    WHERE r.id = $1::bigint
+"#;
+
     // ✅ 데이터베이스 쿼리 실행
-    match sqlx::query_as::<_, Coordinate>(query)
-        .bind(node_id)
+    match sqlx::query_as::<_, Coordinate>(polygon_query)
+        .bind(&node_id)
         .fetch_optional(pool.get_ref())
         .await
     {
+        // ✅ polygon 결과가 존재하는 경우
         Ok(Some(coordinate)) => HttpResponse::Ok().json(coordinate),
-        Ok(None) => HttpResponse::NotFound().json(json!({
-            "error": "No matching node_id found."
-        })),
+        
+        // ✅ polygon 결과가 없는 경우 relation 조회 실행
+        Ok(None) => {
+            match sqlx::query_as::<_, Coordinate>(relation_query)
+                .bind(&node_id)
+                .fetch_optional(pool.get_ref())
+                .await
+            {
+                Ok(Some(coordinate)) => HttpResponse::Ok().json(coordinate),
+                Ok(None) => HttpResponse::NotFound().json(json!({
+                    "error": "No matching node_id found in both polygon and relation tables."
+                })),
+                Err(e) => HttpResponse::InternalServerError().json(json!({
+                    "error": format!("Database error during relation query: {:?}", e)
+                })),
+            }
+        }
+
+        // ✅ 데이터베이스 에러 발생 처리
         Err(e) => HttpResponse::InternalServerError().json(json!({
             "error": format!("Database error: {:?}", e)
         })),

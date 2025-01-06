@@ -314,6 +314,12 @@ WHERE name IN (
 );
 
 UPDATE Building 
+SET tags = '{휴게실}' 
+WHERE name IN (
+    '한누리회관'
+);
+
+UPDATE Building 
 SET tags = '{편의점, 카페}' 
 WHERE name IN (
     '충남대학교 중앙도서관 (N1)'
