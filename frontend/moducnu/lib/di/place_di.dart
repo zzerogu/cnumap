@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:moducnu/data/local/dao/location_data_source.dart';
 import 'package:moducnu/data/remote/api/building/building_api.dart';
 import 'package:moducnu/data/repository/place_repositoryImpl.dart';
 import 'package:moducnu/domain/repository/place_repository.dart';
@@ -26,27 +27,32 @@ void setupPlaceDependencies() {
     BuildingApi(getIt<Dio>()),
   );
 
-  // 2. PlaceRepository 의존성 등록
-  getIt.registerLazySingleton<PlaceRepository>(
-        () => PlaceRepositoryImpl(getIt<BuildingApi>()),
+  // 2. LocationDataSource 의존성 등록
+  getIt.registerLazySingleton<LocationDataSource>(
+        () => LocationDataSourceImpl(),
   );
 
-  // 3. UseCase 의존성 등록
+
+  // 3. PlaceRepository 의존성 등록
+  getIt.registerLazySingleton<PlaceRepository>(
+        () => PlaceRepositoryImpl(
+      getIt<BuildingApi>(),
+      getIt<LocationDataSource>(),
+    ),
+  );
+
+  // 4. UseCase 의존성 등록
   getIt.registerFactory<GetPlacesByNameUseCase>(
         () => GetPlacesByNameUseCase(getIt<PlaceRepository>()),
   );
   getIt.registerFactory<GetPlacesByCategoryUseCase>(
         () => GetPlacesByCategoryUseCase(getIt<PlaceRepository>()),
   );
-
-  // 3. UseCase 등록
   getIt.registerFactory<GetAllBuildingsUsecase>(
         () => GetAllBuildingsUsecase(getIt<PlaceRepository>()),
   );
 
-
-
-  // 4. ViewModel 의존성 등록
+  // 5. ViewModel 의존성 등록
   getIt.registerFactory<SearchViewModel>(
         () => SearchViewModel(
       getPlacesByNameUseCase: getIt<GetPlacesByNameUseCase>(),
@@ -57,3 +63,4 @@ void setupPlaceDependencies() {
         () => BuildingInfoViewModel(getIt<GetAllBuildingsUsecase>()),
   );
 }
+
