@@ -292,7 +292,7 @@ async fn get_node_data(
     ),
     tag = "Building API",
     responses(
-        (status = 200, description = "Retrieve list of buildings", body = [BuildingSearchResponse]),
+        (status = 200, description = "Retrieve list of buildings", body = [Object]),
         (status = 500, description = "Internal server error")
     )
 )]
@@ -306,14 +306,14 @@ async fn search_buildings(
 
     let query = match name_filter {
         Some(name) => {
-            sqlx::query_as::<_, MinimalBuilding>(
-                "SELECT building_id, name, alias FROM Building WHERE name LIKE $1"
+            sqlx::query_as::<_, Building>(
+                "SELECT * FROM Building WHERE name LIKE $1"
             )
             .bind(name)
         }
         None => {
-            sqlx::query_as::<_, MinimalBuilding>(
-                "SELECT building_id, name, alias FROM Building"
+            sqlx::query_as::<_, Building>(
+                "SELECT * FROM Building"
             )
         }
     };
@@ -334,7 +334,7 @@ async fn search_buildings(
     ),
     tag = "Building API",
     responses(
-        (status = 200, description = "Retrieve buildings by category", body = [BuildingSearchResponse]),
+        (status = 200, description = "Retrieve buildings by category", body = [Object]),
         (status = 500, description = "Internal server error")
     )
 )]
@@ -346,15 +346,14 @@ async fn get_buildings_by_category(
     let category_filter = query.get("category").map(|category| category.clone());
 
     if let Some(category) = category_filter {
-        let query = sqlx::query_as::<_, MinimalBuilding>(
-            "SELECT building_id, name, alias FROM Building WHERE category = $1"
+        let query = sqlx::query_as::<_, Building>(
+            "SELECT * FROM Building WHERE category = $1"
         )
         .bind(category);
 
         match query.fetch_all(pool.get_ref()).await {
             Ok(buildings) => {
-                let response: Vec<BuildingSearchResponse> = buildings.into_iter().map(BuildingSearchResponse::from).collect();
-                HttpResponse::Ok().json(response)
+                HttpResponse::Ok().json(buildings)
             }
             Err(_) => HttpResponse::InternalServerError().json(json!({
                 "error": "Failed to retrieve buildings by category"
@@ -373,7 +372,7 @@ async fn get_buildings_by_category(
     ),
     tag = "Building API",
     responses(
-        (status = 200, description = "Retrieve buildings by tag", body = [BuildingSearchResponse]),
+        (status = 200, description = "Retrieve buildings by tag", body = [Object]),
         (status = 500, description = "Internal server error")
     )
 )]
@@ -385,15 +384,14 @@ async fn get_buildings_by_tag(
     let tag_filter = query.get("tag").map(|tag| tag.clone());
 
     if let Some(tag) = tag_filter {
-        let query = sqlx::query_as::<_, MinimalBuilding>(
-            "SELECT building_id, name, alias FROM Building WHERE tags LIKE $1"
+        let query = sqlx::query_as::<_, Building>(
+            "SELECT * FROM Building WHERE tags LIKE $1"
         )
         .bind(format!("%{}%", tag));
 
         match query.fetch_all(pool.get_ref()).await {
             Ok(buildings) => {
-                let response: Vec<BuildingSearchResponse> = buildings.into_iter().map(BuildingSearchResponse::from).collect();
-                HttpResponse::Ok().json(response)
+                HttpResponse::Ok().json(buildings)
             }
             Err(_) => HttpResponse::InternalServerError().json(json!({
                 "error": "Failed to retrieve buildings by tag"
@@ -401,5 +399,42 @@ async fn get_buildings_by_tag(
         }
     } else {
         HttpResponse::BadRequest().json(json!({ "error": "Tag parameter is required" }))
+    }
+}
+
+#[utoipa::path(
+    get,
+    path = "/api/buildings/name/{building_id}",
+    params(
+        ("building_id" = i32, Path, description = "Building ID to retrieve the name")
+    ),
+    tag = "Building API",
+    responses(
+        (status = 200, description = "Retrieve building name", body = String),
+        (status = 404, description = "Building not found"),
+        (status = 500, description = "Internal server error")
+    )
+)]
+#[get("/api/buildings/name/{building_id}")]
+async fn get_building_name(
+    pool: web::Data<PgPool>,
+    path: web::Path<i32>,
+) -> impl Responder {
+    let building_id = path.into_inner();
+
+    let query = "SELECT name FROM Building WHERE building_id = $1";
+    
+    match sqlx::query_scalar::<_, String>(query)
+        .bind(building_id)
+        .fetch_optional(pool.get_ref())
+        .await
+    {
+        Ok(Some(name)) => HttpResponse::Ok().json(name),
+        Ok(None) => HttpResponse::NotFound().json(json!({
+            "error": "Building not found"
+        })),
+        Err(_) => HttpResponse::InternalServerError().json(json!({
+            "error": "Failed to retrieve building name"
+        })),
     }
 }

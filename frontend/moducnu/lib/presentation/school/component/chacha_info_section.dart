@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:moducnu/presentation/school/component/disabled_center_detail.dart';
+
 import 'package:moducnu/presentation/school/component/section_title.dart';
 import 'package:moducnu/presentation/theme/color.dart';
 import 'package:moducnu/presentation/school/component/disabled_center_detail.dart'; // 추가된 파일 임포트
 import 'package:moducnu/presentation/school/component/lounge.dart';
+
 
 
 class ChaChaInfoSection extends StatelessWidget {

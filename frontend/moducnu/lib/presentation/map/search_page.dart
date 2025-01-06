@@ -1,51 +1,68 @@
 import 'package:flutter/material.dart';
-import 'package:moducnu/domain/model/Place.dart';
+import 'package:get/get.dart';
 import 'package:moducnu/presentation/common/custom_search_bar.dart';
 import 'package:moducnu/presentation/common/place_item.dart';
-import 'package:moducnu/presentation/theme/color.dart';
+import 'package:moducnu/presentation/map/search_viewmodel.dart';
+import '../../di/place_di.dart'; // getIt import
+
+import 'package:moducnu/presentation/common/map_component.dart'; // mapComponent import
 
 class SearchPage extends StatelessWidget {
-  const SearchPage({super.key});
+  final GlobalKey<MapComponentState> mapComponentKey; // mapComponentKey 추가
 
-  // 더미 데이터 리스트
-  final List<Place> places = const [
-    Place(
-      placeName: '충남대학교 도서관',
-      category: '도서관',
-      address: '충남대학교 도서관',
-      contact: '041-123-4567',
-    ),
-    Place(
-      placeName: '한누리회관',
-      category: '강의실',
-      address: '충남대학교 한누리회관',
-      contact: '041-234-5678',
-    ),
-    Place(
-      placeName: '학생회관',
-      category: '식당',
-      address: '충남대학교 학생회관',
-      contact: '041-345-6789',
-    ),
-  ];
+  const SearchPage({super.key, required this.mapComponentKey});
 
   @override
   Widget build(BuildContext context) {
+    // GetIt으로 ViewModel 가져오기
+    final SearchViewModel viewModel = getIt<SearchViewModel>();
+
     return Scaffold(
-      backgroundColor: kBackgroundColor,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: kBackgroundColor,
         title: const Text('검색'),
+        backgroundColor: Colors.white,
       ),
-      body: ListView(
+      body: Column(
         children: [
-          const CustomSearchBar(hasShadow: false),  // 검색 바 추가
-          const SizedBox(height: 20.0),
-          // PlaceItem 리스트를 동적으로 표시
-          for (var place in places)
-            PlaceItem(
-              place: place,
-            ),
+          CustomSearchBar(
+            hasShadow: false,
+            readOnly: false, // 텍스트 입력 활성화
+            viewModel: viewModel, // ViewModel 주입
+          ),
+          const SizedBox(height: 16.0),
+          Expanded(
+            child: Obx(() {
+              if (viewModel.isLoading) {
+                return const Center(child: CircularProgressIndicator());
+              }
+              if (viewModel.error.isNotEmpty) {
+                return const Center(
+                  child: Text(
+                    '오류가 발생했습니다.',
+                    style: TextStyle(color: Colors.red),
+                  ),
+                );
+              }
+              if (viewModel.places.isEmpty) {
+                return const Center(
+                  child: Text(
+                    '검색 결과가 없습니다.',
+                    style: TextStyle(fontSize: 16.0, color: Colors.black54),
+                  ),
+                );
+              }
+              return ListView.builder(
+                itemCount: viewModel.places.length,
+                itemBuilder: (context, index) {
+                  return PlaceItem(
+                    place: viewModel.places[index],
+                    mapComponentKey: mapComponentKey, // mapComponentKey 전달
+                  );
+                },
+              );
+            }),
+          ),
         ],
       ),
     );

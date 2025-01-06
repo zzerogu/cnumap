@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:moducnu/domain/model/Place.dart'; // Import the Place model
+import 'package:moducnu/domain/model/place.dart';
+import 'package:moducnu/presentation/common/map_component.dart'; // Import the Place model
+import 'package:get/get.dart';
 
 class PlaceItem extends StatelessWidget {
   final Place place;
+  final GlobalKey<MapComponentState> mapComponentKey; // 추가된 mapComponentKey
 
   // Constructor to initialize the properties
   const PlaceItem({
     super.key,
     required this.place,
+    required this.mapComponentKey, // key 추가
   });
 
   @override
@@ -46,7 +50,8 @@ class PlaceItem extends StatelessWidget {
                       const SizedBox(width: 16.0),
                       Text(
                         place.category,
-                        style: const TextStyle(fontSize: 14, color: Colors.grey),
+                        style:
+                            const TextStyle(fontSize: 14, color: Colors.grey),
                       ),
                     ],
                   ),
@@ -54,11 +59,13 @@ class PlaceItem extends StatelessWidget {
                   // Address
                   Row(
                     children: [
-                      const Icon(Icons.location_on, size: 18, color: Colors.red),
+                      const Icon(Icons.location_on,
+                          size: 18, color: Colors.red),
                       const SizedBox(width: 4.0),
                       Text(
-                        place.address,
-                        style: const TextStyle(fontSize: 14, color: Colors.black),
+                        place.alias,
+                        style:
+                            const TextStyle(fontSize: 14, color: Colors.black),
                       ),
                     ],
                   ),
@@ -70,7 +77,8 @@ class PlaceItem extends StatelessWidget {
                       const SizedBox(width: 4.0),
                       Text(
                         place.contact,
-                        style: const TextStyle(fontSize: 14, color: Colors.blue),
+                        style:
+                            const TextStyle(fontSize: 14, color: Colors.blue),
                       ),
                     ],
                   ),
@@ -81,8 +89,8 @@ class PlaceItem extends StatelessWidget {
             IconButton(
               icon: const Icon(Icons.arrow_forward_ios, size: 20),
               onPressed: () {
-                // Define the action when the right arrow is tapped
-                print("Right arrow clicked for ${place.placeName}");
+                Get.back();
+                mapComponentKey.currentState?.focusOnBuilding(place.nodeId);
               },
             ),
           ],

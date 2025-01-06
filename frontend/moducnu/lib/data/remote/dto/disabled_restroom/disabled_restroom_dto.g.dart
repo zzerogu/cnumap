@@ -12,7 +12,7 @@ DisabledRestroomResponseDto _$DisabledRestroomResponseDtoFromJson(
       buildingId: (json['building_id'] as num).toInt(),
       floor: (json['floor'] as num).toInt(),
       locationDescription: json['location_description'] as String,
-      nodeId: (json['node_id'] as num).toInt(),
+      nodeId: json['node_id'] as String,
       restroomId: (json['restroom_id'] as num).toInt(),
     );
 
