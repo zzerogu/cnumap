@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:moducnu/domain/model/place.dart';
+import 'package:moducnu/presentation/common/custom_search_bar.dart';
+import 'package:moducnu/presentation/school/component/school_search_bar.dart';
 import 'package:moducnu/presentation/school/component/section_title.dart';
 import 'package:moducnu/presentation/school/component/building_detail.dart';
 import 'package:moducnu/presentation/theme/color.dart';
@@ -17,11 +19,13 @@ class BuildingInfoSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 12.0),
+      padding: EdgeInsets.symmetric(horizontal: 8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SectionTitle(title: '🏫 우리 학교 건물'),
+          SizedBox(height: 10.0),
+          SchoolSearchBar(hasShadow: false, readOnly: true),
           SizedBox(height: 10.0),
           BuildingList(),
         ],
@@ -45,7 +49,12 @@ class BuildingList extends StatelessWidget {
       }
 
       if (viewModel.errorMessage.isNotEmpty) {
-        return Center(child: Text(viewModel.errorMessage.value));
+        return Column(
+          children: [
+            const SizedBox(height: 50),
+            Center(child: Text(viewModel.errorMessage.value)),
+          ],
+        );
       }
 
       if (viewModel.buildings.isEmpty) {
