@@ -20,8 +20,8 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
   final List<Widget> _pages = [
     const MapPage(),
     const SavePage(),
-    const SchoolPage(),
-    const QaPage(),
+    SchoolPage(),
+    const QaPage()
   ];
 
   @override

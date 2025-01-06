@@ -38,8 +38,6 @@ class SchoolPage extends StatelessWidget {
               SizedBox(height: 16),
               ChaChaInfoSection(),
               SizedBox(height: 20),
-              CustomSearchBar(hasShadow: false, readOnly: true),
-              SizedBox(height: 20),
               BuildingInfoSection(),
               SizedBox(height: 20),
             ],

@@ -59,8 +59,8 @@ void setupPlaceDependencies() {
       getPlacesByCategoryUseCase: getIt<GetPlacesByCategoryUseCase>(),
     ),
   );
-  getIt.registerFactory<BuildingInfoViewModel>(
-        () => BuildingInfoViewModel(getIt<GetAllBuildingsUsecase>()),
+  getIt.registerLazySingleton<BuildingInfoViewModel>(
+        () => BuildingInfoViewModel(getIt<GetAllBuildingsUsecase>(), getIt<GetPlacesByNameUseCase>()),
   );
 }
 

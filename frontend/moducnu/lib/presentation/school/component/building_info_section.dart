@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:moducnu/domain/model/place.dart';
+import 'package:moducnu/presentation/common/custom_search_bar.dart';
+import 'package:moducnu/presentation/school/component/school_search_bar.dart';
 import 'package:moducnu/presentation/school/component/section_title.dart';
 import 'package:moducnu/presentation/school/component/building_detail.dart';
 import 'package:moducnu/presentation/theme/color.dart';
@@ -17,11 +19,13 @@ class BuildingInfoSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 12.0),
+      padding: EdgeInsets.symmetric(horizontal: 8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SectionTitle(title: '🏫 우리 학교 건물'),
+          SizedBox(height: 10.0),
+          SchoolSearchBar(hasShadow: false, ),
           SizedBox(height: 10.0),
           BuildingList(),
         ],
@@ -45,21 +49,30 @@ class BuildingList extends StatelessWidget {
       }
 
       if (viewModel.errorMessage.isNotEmpty) {
-        return Center(child: Text(viewModel.errorMessage.value));
+        return Column(
+          children: [
+            const SizedBox(height: 50),
+            Center(child: Text(viewModel.errorMessage.value)),
+          ],
+        );
       }
 
       if (viewModel.buildings.isEmpty) {
         return const Center(child: Text('건물 데이터를 찾을 수 없습니다.'));
       }
+      if (viewModel.filteredBuildings.isEmpty) {
+        return const Center(child: Text('검색 결과가 없습니다.'));
+      }
 
-      // 데이터를 3개의 페이지로 나누기
-      final groupSize = (viewModel.buildings.length / 20).ceil();
+      // 그게 아니면 전체 빌딩 데이터 표시
+      final pageNumbers = (viewModel.filteredBuildings.length / 4).ceil();
+      final groupSize = (viewModel.filteredBuildings.length / pageNumbers).ceil();
       final List<List<Place>> buildingPages = List.generate(
-        18,
+        pageNumbers,
             (index) {
           final start = index * groupSize;
-          final end = (start + groupSize).clamp(0, viewModel.buildings.length);
-          return viewModel.buildings.sublist(start, end);
+          final end = (start + groupSize).clamp(0, viewModel.filteredBuildings.length);
+          return viewModel.filteredBuildings.sublist(start, end);
         },
       );
 
