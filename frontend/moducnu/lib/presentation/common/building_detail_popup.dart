@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
+import 'package:moducnu/data/remote/dto/navigation/navigation_dto.dart';
 import 'package:moducnu/presentation/theme/color.dart';
 import 'package:moducnu/presentation/common/route_finder_modal.dart';
 
@@ -32,7 +33,7 @@ class BuildingDetailPopup {
     required int buildingId,
     required String nodeId,
     required List<BuildingFeature> features,
-    required Function(List<Position>) onRouteDraw,
+    required Function(List<Position>, CoordinateDto) onRouteDraw,
     required Function(List<BuildingFeature>) onRampMarkersAdded, // ✅ 추가
     required Function(List<BuildingFeature>, String) onRampFocused, // ✅ 추가
   }) {
@@ -60,7 +61,7 @@ class _BuildingDetailPopupContent extends StatelessWidget {
   final int buildingId;
   final String nodeId;
   final List<BuildingFeature> features;
-  final Function(List<Position>) onRouteDraw;
+  final Function(List<Position>, CoordinateDto) onRouteDraw;
   final Function(List<BuildingFeature>) onRampMarkersAdded; // ✅ 추가
   final Function(List<BuildingFeature>, String) onRampFocused; // ✅ 추가
 
@@ -109,10 +110,10 @@ class _BuildingDetailPopupContent extends StatelessWidget {
                   ),
                   icon: Image.asset(
                     'assets/icons/ic_MapMarker.png',
-                    width: 19,
+                    width: 18,
                     height: 19,
                   ),
-                  label: const Text('평면도 보기',
+                  label: const Text('상세페이지',
                       style: TextStyle(color: kButtonColor)),
                 ),
                 ElevatedButton.icon(
@@ -148,8 +149,8 @@ class _BuildingDetailPopupContent extends StatelessWidget {
                   ),
                   icon: Image.asset(
                     'assets/icons/ic_PlaceMarker.png',
-                    width: 15,
-                    height: 15,
+                    width: 25,
+                    height: 25,
                   ),
                   label: const Text('경로 안내',
                       style: TextStyle(color: Colors.white)),
