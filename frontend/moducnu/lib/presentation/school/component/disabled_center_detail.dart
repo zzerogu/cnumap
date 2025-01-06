@@ -1,49 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:moducnu/presentation/school/component/disabled_center_viewmodel.dart';
 import 'package:moducnu/presentation/school/component/section_title.dart';
 import 'package:moducnu/presentation/theme/color.dart';
 
+import '../../../di/school_di.dart';
 
-class Contact {
-  final String name;
-  final String role;
-  final String location;
-  final String contact;
-
-  const Contact({
-    required this.name,
-    required this.role,
-    required this.location,
-    required this.contact,
-  });
-}
 
 class DisabledCenterDetail extends StatelessWidget {
-  const DisabledCenterDetail({super.key});
 
-  // 더미 데이터 리스트
-  final List<Contact> contacts = const [
-    Contact(
-      name: '담당자 1',
-      role: '센터장',
-      location: '한누리회관',
-      contact: '042-1234-4567',
-    ),
-    Contact(
-      name: '담당자 2',
-      role: '편의시설 관리, 프로그램 지원',
-      location: '한누리회관',
-      contact: '042-1234-4567',
-    ),
-    Contact(
-      name: '담당자 3',
-      role: '동반자 지원 사업, 편의지원',
-      location: '한누리회관',
-      contact: '042-1234-4567',
-    ),
-  ];
+  const DisabledCenterDetail({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // GetIt으로 ViewModel 가져오기
+    // ViewModel 주입
+    final DisabledCenterViewModel viewModel = GetIt.instance<DisabledCenterViewModel>();
+
+    // 지원센터 데이터 가져오기
+    viewModel.fetchSupportCenters();
     return Scaffold(
       appBar: AppBar(
         title: const Text('장애학습지원센터', style: TextStyle(color: Colors.black)),
@@ -118,7 +93,7 @@ class DisabledCenterDetail extends StatelessWidget {
             // 담당자 연락처
             const SectionTitle(title: '📞 담당자 연락처'),
             const SizedBox(height: 8.0),
-            for (var contact in contacts)
+            for (var contact in viewModel.supportCenters)
               Container(
                 padding: const EdgeInsets.all(16.0),
                 decoration: BoxDecoration(
@@ -140,7 +115,7 @@ class DisabledCenterDetail extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                contact.name,
+                                contact.helper.name,
                                 style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
@@ -149,9 +124,9 @@ class DisabledCenterDetail extends StatelessWidget {
                               ),
                               const SizedBox(width: 16.0),
                               Text(
-                                contact.role,
+                                contact.helper.position,
                                 style: const TextStyle(
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   color: Colors.grey,
                                 ),
                               ),
@@ -163,7 +138,7 @@ class DisabledCenterDetail extends StatelessWidget {
                               const Icon(Icons.location_on, size: 18, color: Colors.red),
                               const SizedBox(width: 4.0),
                               Text(
-                                contact.location,
+                                contact.buildingId.toString(),
                                 style: const TextStyle(fontSize: 14, color: Colors.black),
                               ),
                             ],
@@ -174,7 +149,7 @@ class DisabledCenterDetail extends StatelessWidget {
                               const Icon(Icons.phone, size: 18, color: Colors.blue),
                               const SizedBox(width: 4.0),
                               Text(
-                                contact.contact,
+                                contact.helper.phoneNumber,
                                 style: const TextStyle(fontSize: 14, color: Colors.blue),
                               ),
                             ],
@@ -182,10 +157,11 @@ class DisabledCenterDetail extends StatelessWidget {
                         ],
                       ),
                     ),
+                    const SizedBox(height: 16.0),
                     IconButton(
                       icon: const Icon(Icons.arrow_forward_ios, size: 20),
                       onPressed: () {
-                        print("Right arrow clicked for ${contact.name}");
+                        print("Right arrow clicked for ${contact.helper.name}");
                       },
                     ),
                   ],
