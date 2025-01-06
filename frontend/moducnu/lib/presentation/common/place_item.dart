@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:moducnu/domain/model/Place.dart'; // Import the Place model
+import 'package:moducnu/domain/model/place.dart'; // Import the Place model
 
 class PlaceItem extends StatelessWidget {
   final Place place;
@@ -46,7 +46,8 @@ class PlaceItem extends StatelessWidget {
                       const SizedBox(width: 16.0),
                       Text(
                         place.category,
-                        style: const TextStyle(fontSize: 14, color: Colors.grey),
+                        style:
+                            const TextStyle(fontSize: 14, color: Colors.grey),
                       ),
                     ],
                   ),
@@ -54,11 +55,13 @@ class PlaceItem extends StatelessWidget {
                   // Address
                   Row(
                     children: [
-                      const Icon(Icons.location_on, size: 18, color: Colors.red),
+                      const Icon(Icons.location_on,
+                          size: 18, color: Colors.red),
                       const SizedBox(width: 4.0),
                       Text(
-                        place.address,
-                        style: const TextStyle(fontSize: 14, color: Colors.black),
+                        place.alias,
+                        style:
+                            const TextStyle(fontSize: 14, color: Colors.black),
                       ),
                     ],
                   ),
@@ -70,7 +73,8 @@ class PlaceItem extends StatelessWidget {
                       const SizedBox(width: 4.0),
                       Text(
                         place.contact,
-                        style: const TextStyle(fontSize: 14, color: Colors.blue),
+                        style:
+                            const TextStyle(fontSize: 14, color: Colors.blue),
                       ),
                     ],
                   ),

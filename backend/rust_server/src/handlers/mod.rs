@@ -4,11 +4,4 @@ pub mod disabled_restroom;
 pub mod map;
 pub mod navigation;
 pub mod ramp;
-
-
-pub use building::*;
-pub use construction_news::*;
-pub use disabled_restroom::*;
-pub use map::*;
-pub use navigation::*;
-pub use ramp::*;
+pub mod disability_support_center;

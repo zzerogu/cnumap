@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:moducnu/presentation/school/component/construction_news.dart';
 import 'package:moducnu/presentation/theme/color.dart';
 
 class ConstructionNewsDetail extends StatefulWidget {

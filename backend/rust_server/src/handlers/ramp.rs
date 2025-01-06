@@ -3,7 +3,7 @@ use sqlx::PgPool;
 use crate::models::ramp::Ramp; // Ramp 모델 가져오기
 use serde_json::json;
 use log::{info, error}; // 로깅 추가
-use utoipa::path; // Swagger 문서화를 위한 매크로 추가
+ // Swagger 문서화를 위한 매크로 추가
 
 #[utoipa::path(
     get,

@@ -1,5 +1,7 @@
 PODS:
   - Flutter (1.0.0)
+  - geolocator_apple (1.2.0):
+    - Flutter
   - mapbox_maps_flutter (2.5.0):
     - Flutter
     - MapboxMaps (~> 11.9.0)
@@ -12,11 +14,15 @@ PODS:
     - MapboxCommon (= 24.9.0)
     - MapboxCoreMaps (= 11.9.0)
     - Turf (= 4.0.0)
+  - permission_handler_apple (9.3.0):
+    - Flutter
   - Turf (4.0.0)
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
+  - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
   - mapbox_maps_flutter (from `.symlinks/plugins/mapbox_maps_flutter/ios`)
+  - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
 
 SPEC REPOS:
   trunk:
@@ -28,17 +34,23 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
+  geolocator_apple:
+    :path: ".symlinks/plugins/geolocator_apple/ios"
   mapbox_maps_flutter:
     :path: ".symlinks/plugins/mapbox_maps_flutter/ios"
+  permission_handler_apple:
+    :path: ".symlinks/plugins/permission_handler_apple/ios"
 
 SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  geolocator_apple: 9bcea1918ff7f0062d98345d238ae12718acfbc1
   mapbox_maps_flutter: d51b6d48ba9d8231a77269f1743ec175099d7b15
   MapboxCommon: 678bfc4b477a804244fd7323c79cc7f2402f844e
   MapboxCoreMaps: 5cd77c7251dea10903135e8427c788212bd26346
   MapboxMaps: 2ce57c4ec89d8f05eacfebdd39b01216e0c06168
+  permission_handler_apple: 9878588469a2b0d0fc1e048d9f43605f92e6cec2
   Turf: c9eb11a65d96af58cac523460fd40fec5061b081
 
 PODFILE CHECKSUM: 819463e6a0290f5a72f145ba7cde16e8b6ef0796
 
-COCOAPODS: 1.16.2
+COCOAPODS: 1.15.2

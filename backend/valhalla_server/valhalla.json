@@ -270,7 +270,39 @@
     "port": 8125,
     "prefix": "valhalla"
   },
-  "thor": {
+  "costing_options": {
+    "standard_wheelchair": {
+      "type": "pedestrian",
+      "walking_speed": 1.5,
+      "slope_penalty": 1.0,
+      "surface_penalty": 1.2,
+      "max_distance": 250000.0,
+      "max_locations": 50,
+      "max_matrix_distance": 200000.0,
+      "max_matrix_location_pairs": 2500
+    },
+    "basic_power_wheelchair": {
+      "type": "pedestrian",
+      "walking_speed": 5.0,
+      "slope_penalty": 0.8,
+      "surface_penalty": 1.1,
+      "max_distance": 250000.0,
+      "max_locations": 50,
+      "max_matrix_distance": 200000.0,
+      "max_matrix_location_pairs": 2500
+    },
+    "advanced_power_wheelchair": {
+      "type": "pedestrian",
+      "walking_speed": 10.0,
+      "slope_penalty": 0.5,
+      "surface_penalty": 1.0,
+      "max_distance": 250000.0,
+      "max_locations": 50,
+      "max_matrix_distance": 200000.0,
+      "max_matrix_location_pairs": 2500
+    }
+  },
+  "thor": {   
     "clear_reserved_memory": false,
     "costmatrix_allow_second_pass": false,
     "costmatrix_check_reverse_connection": false,

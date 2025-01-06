@@ -25,23 +25,28 @@ use env_logger;
         crate::handlers::building::search_buildings,
         crate::handlers::building::get_buildings_by_category,
         crate::handlers::building::get_buildings_by_tag,
+        crate::handlers::building::get_building_name,
         crate::handlers::construction_news::get_all_construction_news,
         crate::handlers::disabled_restroom::get_all_disabled_restrooms,
         crate::handlers::map::get_pbf_tile,
         crate::handlers::map::get_user_location,
         crate::handlers::navigation::calculate_route,
-        crate::handlers::ramp::get_all_ramps
+        crate::handlers::navigation::get_node_coordinates,
+        crate::handlers::navigation::get_polygon_center,
+        crate::handlers::ramp::get_all_ramps,
+        crate::handlers::disability_support_center::get_all_disability_support_centers
     ),
     components(
         schemas(
             crate::models::building::Building,
+            crate::models::disability_support_center::DisabilitySupportCenter,
             crate::handlers::building::BuildingSearchResponse,
             crate::handlers::building::MinimalBuilding,
             crate::models::construction_news::ConstructionNewsResponse,
             crate::models::disabled_restroom::DisabledRestroom,
             crate::models::ramp::Ramp,
             crate::handlers::navigation::Coordinate,
-            crate::handlers::navigation::AvoidArea,
+            crate::handlers::navigation::WheelchairVersion,
             crate::handlers::navigation::NavigationRequest,
             crate::handlers::navigation::NavigationResponse
         )
