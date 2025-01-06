@@ -33,11 +33,13 @@ use env_logger;
         crate::handlers::navigation::calculate_route,
         crate::handlers::navigation::get_node_coordinates,
         crate::handlers::navigation::get_polygon_center,
-        crate::handlers::ramp::get_all_ramps
+        crate::handlers::ramp::get_all_ramps,
+        crate::handlers::disability_support_center::get_all_disability_support_centers
     ),
     components(
         schemas(
             crate::models::building::Building,
+            crate::models::disability_support_center::DisabilitySupportCenter,
             crate::handlers::building::BuildingSearchResponse,
             crate::handlers::building::MinimalBuilding,
             crate::models::construction_news::ConstructionNewsResponse,

@@ -141,39 +141,87 @@ async fn calculate_route(
     let request = body.into_inner();
     let valhalla_url = "http://localhost:8002/route";
 
-    // ✅ 휠체어 코스팅 고정 옵션
+    // ----------------------------------------------------
+    // 1) Valhalla Bicycle 코스팅 옵션 (실제로 동작하는 필드만 사용)
+    // ----------------------------------------------------
     let costing = "bicycle";
     let costing_options = json!({
         "bicycle": {
+            // ① 자전거 유형: "road", "cross", "mountain", "hybrid", "city" 등이 가능
             "bicycle_type": "road",
+
+            // ② 자전거 속도(km/h), 기본값은 20 정도
             "cycling_speed": 5.0,
+
+            // ③ 차도(도로) 사용 선호도: [0.0 ~ 1.0], 높을수록 차도를 더 활용
             "use_roads": 1.0,
+
+            // ④ 언덕 기피 정도: [0.0 ~ 1.0], 0.0이면 언덕 최소화
             "use_hills": 0.0,
-            "avoid_bad_surfaces": true,
-            "max_slope": 5.0,
-            "wheelchair_accessible": true,
-            "country_crossing_penalty": 1000.0,
-            "service_penalty": 10.0,
-            "maneuver_penalty": 5.0,
+
+            // ⑤ 노면이 나쁜 구간 기피 (버전별로 동작 방식이 다를 수 있음)
+            //    - 어떤 버전은 0.0 ~ 1.0 범위로 쓰기도 하며,
+            //    - 어떤 버전은 boolean으로 쓰기도 합니다.
+            "avoid_bad_surfaces": 1.0,
+
+            // ⑥ 골목(Alley)에 대한 추가 페널티
+            //    - alley_factor + alley_penalty 형태로 상세 조절 가능
             "alley_penalty": 20.0,
-            "gate_penalty": 1000.0,
-            "ferry_penalty": 5000.0,
+            "alley_factor": 1.0,
+
+            // ⑦ 인도(Walkway), 보도(footway) 등에 대한 추가 페널티 or 가중치
+            "walkway_penalty": 10.0,
             "walkway_factor": 1.0,
-            "sidewalk_factor": 1.0,
-            "search_radius": 100.0
+
+            // ⑧ 게이트/국경/페리 등 지나갈 때의 페널티
+            //    (실제로는 *_cost / *_penalty 구조로 세분화되어 있음)
+            "gate_penalty": 1000.0,
+            "country_crossing_penalty": 1000.0,
+            "ferry_penalty": 5000.0,
+
+            // ⑨ 서비스 도로(진입로 등) 페널티 (service_penalty + service_factor)
+            "service_penalty": 10.0,
+            "service_factor": 1.0
         }
     });
 
-    // ✅ Valhalla 요청 데이터 구성
+    // let costing = "pedestrian";
+    // let costing_options = json!({
+    //     "pedestrian": {
+    //         "walking_speed": 4.0,     // 기본 보행 속도(4km/h)
+    //         "exclude_stairs": false,  // true로 하면 계단 배제
+    //         "alley_penalty": 5.0,
+    //         "alley_factor": 1.0,
+    //         "country_crossing_penalty": 1000.0,
+    //         "gate_penalty": 1000.0,
+    //         "ferry_penalty": 5000.0
+    //     }
+    // });
+
+    // ----------------------------------------------------
+    // 2) Valhalla 요청 바디
+    // ----------------------------------------------------
     let valhalla_request = json!({
         "locations": [
-            { "lat": request.start.latitude, "lon": request.start.longitude },
-            { "lat": request.end.latitude, "lon": request.end.longitude }
+            {
+                "lat": request.start.latitude,
+                "lon": request.start.longitude
+            },
+            {
+                "lat": request.end.latitude,
+                "lon": request.end.longitude
+            }
         ],
         "costing": costing,
         "costing_options": costing_options,
+
+        // 참고: shape_format → "polyline" | "polyline6" | "geojson" 등 지원
         "shape_format": "polyline5",
-        "directions_options": { "units": "km" }
+
+        // 결과 단위 (km or miles)
+        "directions_options": {
+            "units": "km"
+        }
     });
 
     let client = Client::new();
