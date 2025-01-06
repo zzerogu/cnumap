@@ -20,7 +20,7 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
   final List<Widget> _pages = [
     const MapPage(),
     const SavePage(),
-    const SchoolPage(),
+    SchoolPage(),
     const TimetablePage(),
   ];
 

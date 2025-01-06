@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
           GetPage(name: '/', page: () => const MainNavigationPage()), // 초기 경로 설정
           GetPage(name: '/main', page: () => const MainNavigationPage()), // 메인 화면 경로
           GetPage(name: '/map', page: () => const MapPage()), // 채팅 화면 경로
-          GetPage(name: '/school', page: () => const SchoolPage()), // 퀘스트 화면 경로
+          GetPage(name: '/school', page: () => SchoolPage()), // 퀘스트 화면 경로
           GetPage(name: '/save', page: () => const SavePage()),
           GetPage(name: '/timetable', page: () => const TimetablePage())
         ],
