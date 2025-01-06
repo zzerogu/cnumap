@@ -58,15 +58,21 @@ BuildingFullResponseDto _$BuildingFullResponseDtoFromJson(
     BuildingFullResponseDto(
       building: BuildingDetailResponseDto.fromJson(
           json['building'] as Map<String, dynamic>),
-      disabledRestrooms: (json['disabledRestrooms'] as List<dynamic>)
-          .map((e) => RestroomDto.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      elevators: (json['elevators'] as List<dynamic>)
-          .map((e) => ElevatorDto.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      ramps: (json['ramps'] as List<dynamic>)
-          .map((e) => RampDto.fromJson(e as Map<String, dynamic>))
-          .toList(),
+
+      disabledRestrooms: (json['disabledRestrooms'] as List<dynamic>?)
+              ?.map((e) => RestroomDto.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [], // ✅ null일 경우 빈 리스트로 처리
+
+      elevators: (json['elevators'] as List<dynamic>?)
+              ?.map((e) => ElevatorDto.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [], // ✅ null일 경우 빈 리스트로 처리
+
+      ramps: (json['ramps'] as List<dynamic>?)
+              ?.map((e) => RampDto.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [], // ✅ null일 경우 빈 리스트로 처리
     );
 
 Map<String, dynamic> _$BuildingFullResponseDtoToJson(
@@ -79,11 +85,11 @@ Map<String, dynamic> _$BuildingFullResponseDtoToJson(
     };
 
 RestroomDto _$RestroomDtoFromJson(Map<String, dynamic> json) => RestroomDto(
-      restroomId: (json['restroomId'] as num).toInt(),
-      buildingId: (json['buildingId'] as num).toInt(),
-      nodeId: json['nodeId'] as String,
+      restroomId: (json['restroom_id'] as num).toInt(),
+      buildingId: (json['building_id'] as num).toInt(),
+      nodeId: json['node_id'] as String,
       floor: (json['floor'] as num).toInt(),
-      locationDescription: json['locationDescription'] as String,
+      locationDescription: json['location_description'] as String,
     );
 
 Map<String, dynamic> _$RestroomDtoToJson(RestroomDto instance) =>
@@ -96,10 +102,10 @@ Map<String, dynamic> _$RestroomDtoToJson(RestroomDto instance) =>
     };
 
 ElevatorDto _$ElevatorDtoFromJson(Map<String, dynamic> json) => ElevatorDto(
-      elevatorId: (json['elevatorId'] as num).toInt(),
-      buildingId: (json['buildingId'] as num).toInt(),
-      nodeId: json['nodeId'] as String,
-      locationDescription: json['locationDescription'] as String,
+      elevatorId: (json['elevator_id'] as num).toInt(),
+      buildingId: (json['building_id'] as num).toInt(),
+      nodeId: json['node_id'] as String,
+      locationDescription: json['location_description'] as String,
     );
 
 Map<String, dynamic> _$ElevatorDtoToJson(ElevatorDto instance) =>
@@ -111,11 +117,11 @@ Map<String, dynamic> _$ElevatorDtoToJson(ElevatorDto instance) =>
     };
 
 RampDto _$RampDtoFromJson(Map<String, dynamic> json) => RampDto(
-      rampId: (json['rampId'] as num).toInt(),
-      buildingId: (json['buildingId'] as num).toInt(),
-      nodeId: json['nodeId'] as String,
+      rampId: (json['ramp_id'] as num).toInt(),
+      buildingId: (json['building_id'] as num).toInt(),
+      nodeId: json['node_id'] as String,
       floor: (json['floor'] as num).toInt(),
-      locationDescription: json['locationDescription'] as String,
+      locationDescription: json['location_description'] as String,
     );
 
 Map<String, dynamic> _$RampDtoToJson(RampDto instance) => <String, dynamic>{

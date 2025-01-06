@@ -691,7 +691,6 @@ class MapComponentState extends State<MapComponent> {
           if (features != null && features.isNotEmpty) {
             for (var feature in features) {
               final buildingId = feature?.queriedFeature.feature['id'];
-              // print(buildingId);
               if (buildingId != null) {
                 // 서버 요청으로 빌딩 상세 정보 가져오기
                 final buildingData =
