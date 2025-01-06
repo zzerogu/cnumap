@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:moducnu/presentation/school/component/section_title.dart';
 import 'package:moducnu/presentation/theme/color.dart';
 
+
 class Contact {
   final String name;
   final String role;
