@@ -7,6 +7,7 @@ class BuildingToPlaceMapper {
   static Place fromResponseDto(BuildingResponseDto dto) {
     return Place(
       id: dto.buildingId,
+      nodeId: "",
       placeName: dto.name,
       category: dto.alias, // Assume `alias` is used as the category here
       contact: "", // Contact is not present in `BuildingResponseDto`
@@ -18,6 +19,7 @@ class BuildingToPlaceMapper {
   static Place fromDetailResponseDto(BuildingDetailResponseDto dto) {
     return Place(
       id: dto.buildingId,
+      nodeId: dto.nodeId,
       placeName: dto.name,
       category: dto.category ?? "없음",
       contact: dto.phoneNumber ?? "없음",

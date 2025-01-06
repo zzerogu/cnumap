@@ -64,12 +64,12 @@ class _MapPageState extends State<MapPage> {
             child: Column(
               children: [
                 CustomSearchBar(
-                  hasShadow: true,
-                  readOnly: true,
-                  onTap: () {
-                    Get.to(() => const SearchPage());
-                  },
-                ),
+                    hasShadow: true,
+                    readOnly: true,
+                    onTap: () {
+                      Get.to(
+                          () => SearchPage(mapComponentKey: _mapComponentKey));
+                    }),
                 const SizedBox(height: 12.0),
                 CategoryList(
                   buildingApi: _buildingApi,

@@ -300,13 +300,13 @@ VALUES
 
 
 UPDATE Building 
-SET tags = '{편의점, 식당, 승강기}' 
+SET tags = '{편의점, 식당}' 
 WHERE name IN (
     '충남대학교 제3학생회관 (N7)'
 );
 
 UPDATE Building 
-SET tags = '{편의점, 카페, 식당, 승강기}' 
+SET tags = '{편의점, 카페, 식당}' 
 WHERE name IN (
     '상록회관',
     '제2학생회관',
@@ -314,7 +314,13 @@ WHERE name IN (
 );
 
 UPDATE Building 
-SET tags = '{편의점, 카페, 승강기}' 
+SET tags = '{휴게실}' 
+WHERE name IN (
+    '한누리회관'
+);
+
+UPDATE Building 
+SET tags = '{편의점, 카페}' 
 WHERE name IN (
     '충남대학교 중앙도서관 (N1)'
 );

@@ -75,9 +75,9 @@ class MapComponentState extends State<MapComponent> {
         Positioned(
           bottom: 20,
           right: 20,
-          child: FloatingActionButton(
+          child: FloatingActionButton.small(
             onPressed: _moveToCurrentLocation,
-            backgroundColor: Colors.blueAccent,
+            backgroundColor: Color.fromRGBO(136, 181, 197, 1),
             child: const Icon(Icons.my_location, color: Colors.white),
           ),
         ),
@@ -94,7 +94,7 @@ class MapComponentState extends State<MapComponent> {
         return "restroom-icon";
       case "편의점":
         return "store-icon";
-      case "휠체어 충전소":
+      case "휴게실":
         return "wheel-icon";
       default:
         return "marker-15"; // 기본 아이콘
@@ -110,6 +110,8 @@ class MapComponentState extends State<MapComponent> {
     await _addIcon("ic_restroom", "restroom-icon", 2.7);
     await _addIcon("ic_store", "store-icon", 2.7);
     await _addIcon("ic_wheelchairCharge", "wheel-icon", 2.7);
+    await _addIcon("ic_CurrentUser", "current-icon", 2.7);
+    await _addIcon("ic_PlaceMarker", "placeMarker-icon", 2.7);
   }
 
   Future<void> _addIcon(
@@ -161,7 +163,8 @@ class MapComponentState extends State<MapComponent> {
       // mapbox의 Position 사용 (경도, 위도)
       _mapboxMap?.setCamera(
         CameraOptions(
-          center: Point(coordinates: Position(127.344919, 36.364029)),
+          center: Point(
+              coordinates: Position(127.3455249809536, 36.363905525179774)),
           zoom: 16.0,
         ),
       );
@@ -171,9 +174,10 @@ class MapComponentState extends State<MapComponent> {
       // 새로운 마커 추가
       await _pointAnnotationManager?.create(
         PointAnnotationOptions(
-          geometry: Point(coordinates: Position(127.344919, 36.364029)),
-          iconSize: 2.0,
-          iconImage: "marker-15", // Mapbox 기본 아이콘 사용
+          geometry: Point(
+              coordinates: Position(127.3455249809536, 36.363905525179774)),
+          iconSize: 1.0,
+          iconImage: "current-icon", // Mapbox 기본 아이콘 사용
         ),
       );
 
@@ -240,10 +244,24 @@ class MapComponentState extends State<MapComponent> {
         id: "routeLayer",
         sourceId: "routeSource",
         lineWidth: 5.0,
+        lineCap: LineCap.ROUND, // ✅ 라인 끝을 둥글게
+        lineJoin: LineJoin.ROUND, // ✅ 라인 연결부 둥글게
         lineColorExpression: [
-          'rgb', 0, 0, 255 // ✅ RGB 포맷 사용 (파란색)
+          'rgb', 100, 149, 237 // ✅ RGB 포맷 사용 (파란색)
         ],
       ));
+
+      await _pointAnnotationManager?.deleteAll();
+
+      // 새로운 마커 추가
+      await _pointAnnotationManager?.create(
+        PointAnnotationOptions(
+          geometry: Point(
+              coordinates: Position(127.3455249809536, 36.363905525179774)),
+          iconSize: 1.0,
+          iconImage: "current-icon", // Mapbox 기본 아이콘 사용
+        ),
+      );
 
       print("경로가 성공적으로 추가되었습니다.");
     } catch (e) {
@@ -266,7 +284,7 @@ class MapComponentState extends State<MapComponent> {
             geometry: Point(
                 coordinates:
                     Position(coordinate.longitude, coordinate.latitude)),
-            iconSize: 2.0,
+            iconSize: 1.5,
             iconImage: "ramp-icon",
           ),
         );
@@ -298,7 +316,7 @@ class MapComponentState extends State<MapComponent> {
             geometry: Point(
                 coordinates: Position(
                     rampCoordinate.longitude, rampCoordinate.latitude)),
-            iconSize: isSelected ? 3.0 : 2.0, // ✅ 포커스 여부에 따라 크기 변경
+            iconSize: isSelected ? 2.0 : 1.5, // ✅ 포커스 여부에 따라 크기 변경
             iconImage: "ramp-icon",
           ),
         );
@@ -319,6 +337,54 @@ class MapComponentState extends State<MapComponent> {
       });
     } catch (e) {
       print("Failed to focus on ramp: $e");
+    }
+  }
+
+  //// ✅ 검색 후 건물을 선택했을 때 포커스
+  Future<void> focusOnBuilding(String nodeId) async {
+    try {
+      final CoordinateDto coordinate =
+          await widget.navigationApi.getNodePolygonCoordinates(nodeId);
+      // ✅ 기존 마커를 삭제하고 다시 생성 (크기 조정)
+      await _pointAnnotationManager?.deleteAll();
+      _annotations.clear();
+      final annotation = await _pointAnnotationManager!.create(
+        PointAnnotationOptions(
+          geometry: Point(
+              coordinates: Position(coordinate.longitude, coordinate.latitude)),
+          iconSize: 0.7, // ✅ 포커스 여부에 따라 크기 변경
+          iconImage: "placeMarker-icon",
+        ),
+      );
+      _annotations.add(annotation);
+      // ✅ 선택한 경사로로 카메라 이동
+      _mapboxMap?.setCamera(
+        CameraOptions(
+          center: Point(
+              coordinates: Position(coordinate.longitude, coordinate.latitude)),
+          zoom: 16.0,
+        ),
+      );
+
+      _pointAnnotationManager?.addOnPointAnnotationClickListener(
+        CustomPointAnnotationClickListener((clickedAnnotation) async {
+          try {
+            final response =
+                await widget.buildingApi.getBuildingByNodeId(nodeId);
+
+            if (response != null) {
+              _showBuildingDetailPopup(response);
+            } else {
+              print("Building data not found.");
+            }
+          } catch (e) {
+            print("Error handling marker click: $e");
+          }
+          return true;
+        }),
+      );
+    } catch (e) {
+      print("Failed to focus on building: $e");
     }
   }
 
@@ -410,7 +476,7 @@ class MapComponentState extends State<MapComponent> {
                   buildingId: buildingId,
                   location: locationDescription,
                 );
-              } else if (category == "편의점" || category == "휠체어 충전소") {
+              } else if (category == "편의점" || category == "휴게실") {
                 final response =
                     await widget.buildingApi.getBuildingByNodeId(nodeId);
                 if (response != null) {
@@ -543,23 +609,23 @@ class MapComponentState extends State<MapComponent> {
       },
       {
         'slope_bucket': 'slope_6_7',
-        'color': ['rgba', 200, 0, 0, 1.0], // 밝은 빨강
+        'color': ['rgba', 180, 0, 0, 1.0], // 밝은 빨강
       },
       {
         'slope_bucket': 'slope_7_8',
-        'color': ['rgba', 220, 0, 0, 1.0], // 더 밝은 빨강
+        'color': ['rgba', 160, 0, 0, 1.0], // 더 밝은 빨강
       },
       {
         'slope_bucket': 'slope_8_9',
-        'color': ['rgba', 240, 0, 0, 1.0], // 거의 완전 빨강
+        'color': ['rgba', 140, 0, 0, 1.0], // 거의 완전 빨강
       },
       {
         'slope_bucket': 'slope_9_10',
-        'color': ['rgba', 255, 0, 0, 1.0], // 순수 빨강
+        'color': ['rgba', 120, 0, 0, 1.0], // 순수 빨강
       },
       {
         'slope_bucket': 'slope_10_∞',
-        'color': ['rgba', 255, 50, 50, 1.0], // 약간 연한 빨강
+        'color': ['rgba', 100, 0, 0, 1.0], // 약간 연한 빨강
       }
     ];
 
@@ -585,14 +651,6 @@ class MapComponentState extends State<MapComponent> {
         ),
       );
     }
-
-    mapboxMap.style.addLayer(
-      SymbolLayer(
-        id: "markerLayer",
-        sourceId: "customTileSource",
-        iconImage: "marker-15",
-      ),
-    );
   }
 
   void _onMapTapped(MapContentGestureContext context) {
