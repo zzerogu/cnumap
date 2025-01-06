@@ -5,8 +5,12 @@ import 'package:moducnu/presentation/common/place_item.dart';
 import 'package:moducnu/presentation/map/search_viewmodel.dart';
 import '../../di/place_di.dart'; // getIt import
 
+import 'package:moducnu/presentation/common/map_component.dart'; // mapComponent import
+
 class SearchPage extends StatelessWidget {
-  const SearchPage({super.key});
+  final GlobalKey<MapComponentState> mapComponentKey; // mapComponentKey 추가
+
+  const SearchPage({super.key, required this.mapComponentKey});
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +55,10 @@ class SearchPage extends StatelessWidget {
               return ListView.builder(
                 itemCount: viewModel.places.length,
                 itemBuilder: (context, index) {
-                  return PlaceItem(place: viewModel.places[index]);
+                  return PlaceItem(
+                    place: viewModel.places[index],
+                    mapComponentKey: mapComponentKey, // mapComponentKey 전달
+                  );
                 },
               );
             }),

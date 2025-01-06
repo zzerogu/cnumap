@@ -1,4 +1,5 @@
 class Place {
+  final String nodeId;
   final int? id;
   final String placeName;
   final String category;
@@ -7,6 +8,7 @@ class Place {
 
   // Constructor to initialize the properties
   const Place({
+    required this.nodeId,
     this.id,
     required this.placeName,
     required this.category,

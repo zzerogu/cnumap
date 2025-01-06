@@ -22,9 +22,7 @@ class CustomSearchBar extends StatelessWidget {
     final TextEditingController controller = TextEditingController();
 
     return GestureDetector(
-      onTap: readOnly
-          ? onTap
-          : null, // readOnly가 false일 때는 탭 이벤트를 무시
+      onTap: readOnly ? onTap : null, // readOnly가 false일 때는 탭 이벤트를 무시
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 2.0),
         decoration: BoxDecoration(
@@ -32,13 +30,13 @@ class CustomSearchBar extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.0),
           boxShadow: hasShadow
               ? [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
-              spreadRadius: 3,
-              blurRadius: 5,
-              offset: const Offset(0, 3),
-            ),
-          ]
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.2),
+                    spreadRadius: 3,
+                    blurRadius: 5,
+                    offset: const Offset(0, 3),
+                  ),
+                ]
               : [],
         ),
         child: Row(
@@ -70,9 +68,9 @@ class CustomSearchBar extends StatelessWidget {
                   ),
                   border: hasShadow
                       ? OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(6.0),
-                    borderSide: BorderSide.none, // 테두리 없음
-                  )
+                          borderRadius: BorderRadius.circular(6.0),
+                          borderSide: BorderSide.none, // 테두리 없음
+                        )
                       : null, // 기본 테두리는 enabledBorder로 대체
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(6.0),
@@ -84,7 +82,8 @@ class CustomSearchBar extends StatelessWidget {
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(6.0),
                     borderSide: const BorderSide(
-                      color: Color.fromRGBO(100, 100, 100, 1.0), // 포커스 상태 연한 검정색
+                      color:
+                          Color.fromRGBO(100, 100, 100, 1.0), // 포커스 상태 연한 검정색
                       width: 0.8,
                     ),
                   ),

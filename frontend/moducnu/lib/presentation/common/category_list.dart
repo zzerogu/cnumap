@@ -29,7 +29,7 @@ class CategoryList extends StatefulWidget {
 class _CategoryListState extends State<CategoryList> {
   int? activeIndex;
 
-  final List<String> categories = ['화장실', '경사로', '편의점', '휠체어 충전소'];
+  final List<String> categories = ['화장실', '경사로', '편의점', '휴게실'];
 
   /// ✅ nodeId를 기반으로 경도, 위도를 가져오는 함수
   Future<List<CoordinateDto>> _fetchCoordinatesByNodeIds(
@@ -62,9 +62,9 @@ class _CategoryListState extends State<CategoryList> {
       } else if (category == '편의점') {
         final buildings = await widget.buildingApi.getBuildingTags("편의점");
         widget.onDisplayMarkers(buildings, '편의점');
-      } else if (category == '휠체어 충전소') {
-        final buildings = await widget.buildingApi.getBuildingTags("편의점");
-        widget.onDisplayMarkers(buildings, '휠체어 충전소');
+      } else if (category == '휴게실') {
+        final buildings = await widget.buildingApi.getBuildingTags("휴게실");
+        widget.onDisplayMarkers(buildings, '휴게실');
       }
     } catch (e) {
       print('Failed to fetch markers for $category: $e');

@@ -4,6 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:moducnu/domain/model/place.dart';
 import 'package:moducnu/presentation/school/component/section_title.dart';
+import 'package:moducnu/presentation/school/component/building_detail.dart';
 import 'package:moducnu/presentation/theme/color.dart';
 
 import '../../../di/place_di.dart';
@@ -119,6 +120,12 @@ class BuildingCard extends StatelessWidget {
             ],
           ),
           onTap: () {
+             Navigator.push(
+             context,
+             MaterialPageRoute(
+             builder: (context) => BuildingDetailPage(buildingName: name),
+              ),
+            );
             // Handle navigation or click event
           },
         ),
