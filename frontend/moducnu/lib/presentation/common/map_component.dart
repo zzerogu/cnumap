@@ -54,6 +54,49 @@ class MapComponentState extends State<MapComponent> {
   String? selectedRampNodeId;
   final List<PointAnnotation> _annotations = [];
   final Map<String, Map<String, dynamic>> _markerData = {};
+  bool _isLayerVisible = false;
+  final slopeStyles = [
+    {
+      'slope_bucket': 'slope_-∞_~_-10',
+      'color': ['rgba', 100, 0, 0, 0.4], // 진한 어두운 빨강
+    },
+    {
+      'slope_bucket': 'slope_-9_-8',
+      'color': ['rgba', 120, 0, 0, 0.4], // 조금 밝아진 빨강
+    },
+    {
+      'slope_bucket': 'slope_-8_-7',
+      'color': ['rgba', 140, 0, 0, 0.4], // 더 밝은 빨강
+    },
+    {
+      'slope_bucket': 'slope_-7_-6',
+      'color': ['rgba', 160, 0, 0, 0.4], // 더 밝은 빨강
+    },
+    {
+      'slope_bucket': 'slope_-6_-5',
+      'color': ['rgba', 180, 0, 0, 0.4], // 더 밝은 빨강
+    },
+    {
+      'slope_bucket': 'slope_6_7',
+      'color': ['rgba', 180, 0, 0, 0.4], // 밝은 빨강
+    },
+    {
+      'slope_bucket': 'slope_7_8',
+      'color': ['rgba', 160, 0, 0, 0.4], // 더 밝은 빨강
+    },
+    {
+      'slope_bucket': 'slope_8_9',
+      'color': ['rgba', 140, 0, 0, 0.4], // 거의 완전 빨강
+    },
+    {
+      'slope_bucket': 'slope_9_10',
+      'color': ['rgba', 120, 0, 0, 0.4], // 순수 빨강
+    },
+    {
+      'slope_bucket': 'slope_10_∞',
+      'color': ['rgba', 100, 0, 0, 0.4], // 약간 연한 빨강
+    }
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +105,7 @@ class MapComponentState extends State<MapComponent> {
         // 지도 위젯
         MapWidget(
           key: const ValueKey("mapWidget"),
-          styleUri: "mapbox://styles/mapbox/outdoors-v12",
+          styleUri: "mapbox://styles/mapbox/streets-v12",
           cameraOptions: CameraOptions(
             center: Point(coordinates: Position(127.3467804, 36.3688066)),
             zoom: 14.0,
@@ -79,6 +122,38 @@ class MapComponentState extends State<MapComponent> {
             onPressed: _moveToCurrentLocation,
             backgroundColor: Color.fromRGBO(136, 181, 197, 1),
             child: const Icon(Icons.my_location, color: Colors.white),
+          ),
+        ),
+
+        Positioned(
+          top: 25,
+          right: 20,
+          child: Container(
+            height: 25,
+            decoration: BoxDecoration(
+              color: _isLayerVisible
+                  ? Colors.white // ✅ 활성화 시 흰색
+                  : const Color.fromARGB(255, 112, 197, 163), // 경사로와 어울리는
+              borderRadius: BorderRadius.circular(10), // 둥근 모서리
+            ),
+            child: TextButton.icon(
+              onPressed: _toggleSlopeLayer,
+              label: Text(
+                '경사로 표시',
+                style: TextStyle(
+                  color: _isLayerVisible
+                      ? const Color.fromARGB(
+                          255, 112, 197, 163) // ✅ 활성화 시 글자색 변경
+                      : const Color.fromARGB(
+                          255, 230, 254, 246), // ✅ 비활성화 시 글자색 흰색
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              style: TextButton.styleFrom(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+              ),
+            ),
           ),
         ),
       ],
@@ -112,6 +187,57 @@ class MapComponentState extends State<MapComponent> {
     await _addIcon("ic_wheelchairCharge", "wheel-icon", 2.7);
     await _addIcon("ic_CurrentUser", "current-icon", 2.7);
     await _addIcon("ic_PlaceMarker", "placeMarker-icon", 2.7);
+  }
+
+  void _toggleSlopeLayer() async {
+    final style = _mapboxMap?.style;
+    if (style == null) return;
+
+    if (_isLayerVisible) {
+      // ✅ 레이어를 제거하는 로직
+      try {
+        for (var slopeStyle in slopeStyles) {
+          final String slopeBucket = slopeStyle['slope_bucket'] as String;
+          await style.removeStyleLayer("gradientLineLayer_$slopeBucket");
+        }
+        setState(() {
+          _isLayerVisible = !_isLayerVisible; // ✅ setState로 UI 반영
+        });
+        print("레이어 제거 완료");
+      } catch (e) {
+        print("레이어 제거 실패: $e");
+      }
+    } else {
+      // ✅ 레이어를 추가하는 로직
+      try {
+        for (var slopeStyle in slopeStyles) {
+          final String slopeBucket = slopeStyle['slope_bucket'] as String;
+          final List<Object> color = slopeStyle['color'] as List<Object>;
+
+          style.addLayer(
+            LineLayer(
+              id: "gradientLineLayer_$slopeBucket",
+              sourceId: "customTileSource",
+              sourceLayer: "osm_lines",
+              lineCap: LineCap.ROUND,
+              lineJoin: LineJoin.ROUND,
+              lineColorExpression: [
+                'match',
+                ['get', 'slope_bucket'],
+                slopeBucket, color,
+                ['rgba', 150, 150, 150, 0.0] // 기본값 회색
+              ],
+            ),
+          );
+        }
+        setState(() {
+          _isLayerVisible = !_isLayerVisible; // ✅ setState로 UI 반영
+        });
+        print("레이어 추가 완료");
+      } catch (e) {
+        print("레이어 추가 실패: $e");
+      }
+    }
   }
 
   Future<void> _addIcon(
@@ -199,7 +325,8 @@ class MapComponentState extends State<MapComponent> {
     return null;
   }
 
-  Future<void> _drawRouteOnMap(List<Position> route) async {
+  Future<void> _drawRouteOnMap(
+      List<Position> route, CoordinateDto destination) async {
     try {
       final style = _mapboxMap?.style;
 
@@ -208,19 +335,25 @@ class MapComponentState extends State<MapComponent> {
         return;
       }
 
-      // ✅ 기존 레이어와 소스 제거 전에 존재 여부 확인
-      try {
-        await style.getLayer("routeLayer");
-        await style.removeStyleLayer("routeLayer");
-      } catch (e) {
-        print("routeLayer가 존재하지 않음: $e");
+      final sourcesToRemove = ["routeSource", "dashedLineSource"];
+      final layersToRemove = ["routeLayer", "dashedLineLayer"];
+
+      for (var layer in layersToRemove) {
+        try {
+          await style.getLayer(layer);
+          await style.removeStyleLayer(layer);
+        } catch (e) {
+          print("$layer 레이어가 존재하지 않음: $e");
+        }
       }
 
-      try {
-        await style.getSource("routeSource");
-        await style.removeStyleSource("routeSource");
-      } catch (e) {
-        print("routeSource가 존재하지 않음: $e");
+      for (var source in sourcesToRemove) {
+        try {
+          await style.getSource(source);
+          await style.removeStyleSource(source);
+        } catch (e) {
+          print("$source 소스가 존재하지 않음: $e");
+        }
       }
 
       // ✅ Polyline 좌표를 GeoJSON 형식으로 변환
@@ -237,6 +370,22 @@ class MapComponentState extends State<MapComponent> {
       await style.addSource(GeoJsonSource(
         id: "routeSource",
         data: geoJsonRoute,
+      )); // ✅ 점선 GeoJSON 좌표 (마지막 지점 -> 목적지)
+
+      final dashedLineRoute = jsonEncode({
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [route.last.lng, route.last.lat],
+            [destination.longitude, destination.latitude]
+          ],
+        }
+      });
+
+      await style.addSource(GeoJsonSource(
+        id: "dashedLineSource",
+        data: dashedLineRoute,
       ));
 
       // ✅ 경로를 시각적으로 표현하는 라인 레이어 추가
@@ -251,6 +400,17 @@ class MapComponentState extends State<MapComponent> {
         ],
       ));
 
+      // ✅ 점선 경로 (마지막 -> 목적지)
+      await style.addLayer(LineLayer(
+        id: "dashedLineLayer",
+        sourceId: "dashedLineSource",
+        lineWidth: 4.0,
+        lineCap: LineCap.ROUND,
+        lineJoin: LineJoin.ROUND,
+        lineColorExpression: ['rgb', 100, 149, 237], // ✅ 빨간색 점선
+        lineDasharrayExpression: [1, 3], // ✅ 점선 설정 (2px 선, 2px 간격)
+      ));
+
       await _pointAnnotationManager?.deleteAll();
 
       // 새로운 마커 추가
@@ -260,6 +420,16 @@ class MapComponentState extends State<MapComponent> {
               coordinates: Position(127.3455249809536, 36.363905525179774)),
           iconSize: 1.0,
           iconImage: "current-icon", // Mapbox 기본 아이콘 사용
+        ),
+      );
+
+      await _pointAnnotationManager?.create(
+        PointAnnotationOptions(
+          geometry: Point(
+              coordinates:
+                  Position(destination.longitude, destination.latitude)),
+          iconSize: 1.0,
+          iconImage: "placeMarker-icon", // Mapbox 기본 아이콘 사용
         ),
       );
 
@@ -585,72 +755,6 @@ class MapComponentState extends State<MapComponent> {
         maxzoom: 14,
       ),
     );
-
-    final slopeStyles = [
-      {
-        'slope_bucket': 'slope_-∞_~_-10',
-        'color': ['rgba', 100, 0, 0, 1.0], // 진한 어두운 빨강
-      },
-      {
-        'slope_bucket': 'slope_-9_-8',
-        'color': ['rgba', 120, 0, 0, 1.0], // 조금 밝아진 빨강
-      },
-      {
-        'slope_bucket': 'slope_-8_-7',
-        'color': ['rgba', 140, 0, 0, 1.0], // 더 밝은 빨강
-      },
-      {
-        'slope_bucket': 'slope_-7_-6',
-        'color': ['rgba', 160, 0, 0, 1.0], // 더 밝은 빨강
-      },
-      {
-        'slope_bucket': 'slope_-6_-5',
-        'color': ['rgba', 180, 0, 0, 1.0], // 더 밝은 빨강
-      },
-      {
-        'slope_bucket': 'slope_6_7',
-        'color': ['rgba', 180, 0, 0, 1.0], // 밝은 빨강
-      },
-      {
-        'slope_bucket': 'slope_7_8',
-        'color': ['rgba', 160, 0, 0, 1.0], // 더 밝은 빨강
-      },
-      {
-        'slope_bucket': 'slope_8_9',
-        'color': ['rgba', 140, 0, 0, 1.0], // 거의 완전 빨강
-      },
-      {
-        'slope_bucket': 'slope_9_10',
-        'color': ['rgba', 120, 0, 0, 1.0], // 순수 빨강
-      },
-      {
-        'slope_bucket': 'slope_10_∞',
-        'color': ['rgba', 100, 0, 0, 1.0], // 약간 연한 빨강
-      }
-    ];
-
-    for (var style in slopeStyles) {
-      final String slopeBucket = style['slope_bucket'] as String;
-      final List<Object> color = style['color'] as List<Object>;
-
-      mapboxMap.style.addLayer(
-        LineLayer(
-          id: "gradientLineLayer_$slopeBucket",
-          sourceId: "customTileSource",
-          sourceLayer: "osm_lines",
-          lineWidth: 4,
-          lineBlur: 10,
-          lineCap: LineCap.ROUND, // ✅ 라인 끝을 둥글게
-          lineJoin: LineJoin.ROUND, // ✅ 라인 연결부 둥글게
-          lineColorExpression: [
-            'match',
-            ['get', 'slope_bucket'],
-            slopeBucket, color,
-            ['rgba', 150, 150, 150, 0.0] // ✅ 기본값 회색
-          ],
-        ),
-      );
-    }
   }
 
   void _onMapTapped(MapContentGestureContext context) {

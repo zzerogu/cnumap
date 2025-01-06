@@ -4,7 +4,6 @@ import 'package:moducnu/presentation/common/building_detail_popup.dart';
 import 'package:moducnu/presentation/theme/color.dart';
 import 'package:moducnu/data/remote/api/navigation/navigation_api.dart';
 import 'package:moducnu/data/remote/dto/navigation/navigation_dto.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:dio/dio.dart';
 
 /// 경사로 데이터 모델 (nodeId + locationDescription)
@@ -21,7 +20,7 @@ class RouteFinderModal extends StatefulWidget {
   final int buildingId;
   final String nodeId;
   final List<Ramp> ramps; // ✅ Ramp 모델 사용
-  final Function(List<Position>) onRouteDraw;
+  final Function(List<Position>, CoordinateDto) onRouteDraw;
   final Function(List<BuildingFeature>) onRampMarkersAdded; // ✅ 추가
   final Function(List<BuildingFeature>, String) onRampFocused;
 
@@ -44,7 +43,7 @@ class RouteFinderModal extends StatefulWidget {
     required int buildingId,
     required String nodeId,
     required List<Ramp> ramps, // ✅ 수정됨
-    required Function(List<Position>) onRouteDraw,
+    required Function(List<Position>, CoordinateDto) onRouteDraw,
     required Function(List<BuildingFeature>) onRampMarkersAdded, // ✅ 추가
     required Function(List<BuildingFeature>, String) onRampFocused, // ✅ 추가
   }) async {
@@ -132,7 +131,7 @@ class _RouteFinderModalState extends State<RouteFinderModal> {
           )
           .toList();
 
-      widget.onRouteDraw(decodedRoute); // ✅ 경로 그리기 함수 호출
+      widget.onRouteDraw(decodedRoute, destinationCoordinate); // ✅ 경로 그리기 함수 호출
       Navigator.pop(context);
       print(
           "경로 안내 결과: 거리 = ${routeResponse.distance}, 소요 시간 = ${routeResponse.duration}");
@@ -258,7 +257,7 @@ class _RouteFinderModalState extends State<RouteFinderModal> {
             return ChoiceChip(
               label: Text(
                 ramp.locationDescription,
-                style: const TextStyle(fontSize: 12.0), // 텍스트 크기 축소
+                style: const TextStyle(fontSize: 14.0), // 텍스트 크기 축소
               ), // ✅ locationDescription 표시
               padding:
                   const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
