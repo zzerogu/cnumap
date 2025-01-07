@@ -23,7 +23,6 @@ class _QaPageState extends State<QaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('구글폼 문의 페이지')),
       body: WebViewWidget(controller: _controller), // 폼이 바로 로딩됨
     );
   }
