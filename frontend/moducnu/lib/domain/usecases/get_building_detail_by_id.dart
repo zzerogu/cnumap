@@ -1,13 +1,14 @@
+import 'package:moducnu/domain/model/building.dart';
 import 'package:moducnu/domain/model/place.dart';
 
 import '../repository/place_repository.dart';
 
-class GetPlaceByIdUseCase {
+class GetBuildingDetailUseCase {
   final PlaceRepository placeRepository;
 
-  GetPlaceByIdUseCase(this.placeRepository);
+  GetBuildingDetailUseCase(this.placeRepository);
 
-  Future<Place> execute(int id) async {
+  Future<Building> execute(int id) async {
     return await placeRepository.getPlaceById(id);
   }
 }

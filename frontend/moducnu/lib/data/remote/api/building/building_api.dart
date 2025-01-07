@@ -29,7 +29,7 @@ abstract class BuildingApi {
 
   /// Retrieve a specific building by its ID.
   @GET("/api/buildings/{id}")
-  Future<BuildingDetailResponseDto> getBuildingById(@Path("id") int id);
+  Future<BuildingFullResponseDto> getBuildingById(@Path("id") int id);
 
   @GET("/api/buildings_node/{node_id}")
   Future<BuildingFullResponseDto> getBuildingByNodeId(

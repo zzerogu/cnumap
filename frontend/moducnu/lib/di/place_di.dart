@@ -4,10 +4,12 @@ import 'package:moducnu/data/remote/api/building/building_api.dart';
 import 'package:moducnu/data/repository/place_repositoryImpl.dart';
 import 'package:moducnu/domain/repository/place_repository.dart';
 import 'package:moducnu/domain/usecases/get_all_buildings_usecase.dart';
+import 'package:moducnu/domain/usecases/get_building_detail_by_id.dart';
 import 'package:moducnu/domain/usecases/get_place_by_name_usecase.dart';
 import 'package:moducnu/domain/usecases/get_places_by_category_usecase.dart';
 import 'package:dio/dio.dart';
 import 'package:moducnu/presentation/map/search_viewmodel.dart';
+import 'package:moducnu/presentation/school/component/building_detail_viewmodel.dart';
 import 'package:moducnu/presentation/school/component/building_info_viewmodel.dart';
 
 /*
@@ -51,6 +53,9 @@ void setupPlaceDependencies() {
   getIt.registerFactory<GetAllBuildingsUsecase>(
         () => GetAllBuildingsUsecase(getIt<PlaceRepository>()),
   );
+  getIt.registerFactory<GetBuildingDetailUseCase>(
+        () => GetBuildingDetailUseCase(getIt<PlaceRepository>()),
+  );
 
   // 5. ViewModel 의존성 등록
   getIt.registerFactory<SearchViewModel>(
@@ -62,5 +67,9 @@ void setupPlaceDependencies() {
   getIt.registerLazySingleton<BuildingInfoViewModel>(
         () => BuildingInfoViewModel(getIt<GetAllBuildingsUsecase>(), getIt<GetPlacesByNameUseCase>()),
   );
+  getIt.registerLazySingleton<BuildingDetailViewmodel>(
+        () => BuildingDetailViewmodel(getIt<GetBuildingDetailUseCase>()),
+  );
+
 }
 

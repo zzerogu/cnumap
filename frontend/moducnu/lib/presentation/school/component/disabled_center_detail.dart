@@ -169,7 +169,7 @@ class _DisabledCenterDetailState extends State<DisabledCenterDetail> {
                               Text(
                                 contact.helper.position,
                                 style: const TextStyle(
-                                  fontSize: 13,
+                                  fontSize: 12,
                                   color: Colors.grey,
                                 ),
                               ),

@@ -64,8 +64,11 @@ class BuildingDetailResponseDto {
 @JsonSerializable()
 class BuildingFullResponseDto {
   final BuildingDetailResponseDto building;
+  @JsonKey(defaultValue: [])
   final List<RestroomDto> disabledRestrooms;
+  @JsonKey(defaultValue: [])
   final List<ElevatorDto> elevators;
+  @JsonKey(defaultValue: [])
   final List<RampDto> ramps;
 
   BuildingFullResponseDto({
@@ -81,13 +84,19 @@ class BuildingFullResponseDto {
   Map<String, dynamic> toJson() => _$BuildingFullResponseDtoToJson(this);
 }
 
+
 /// ✅ RestroomDto 정의
 @JsonSerializable()
 class RestroomDto {
+  @JsonKey(name: 'restroom_id', defaultValue: -1)
   final int restroomId;
+  @JsonKey(name: 'building_id', defaultValue: -1)
   final int buildingId;
+  @JsonKey(name: 'node_id', defaultValue: "")
   final String nodeId;
+  @JsonKey(name: 'floor', defaultValue: 1)
   final int floor;
+  @JsonKey(name: 'location_description', defaultValue: "없음")
   final String locationDescription;
 
   RestroomDto({
@@ -107,9 +116,13 @@ class RestroomDto {
 /// ✅ ElevatorDto 정의
 @JsonSerializable()
 class ElevatorDto {
+  @JsonKey(name: 'elevator_id', defaultValue: -1)
   final int elevatorId;
+  @JsonKey(name: 'building_id', defaultValue: -1)
   final int buildingId;
+  @JsonKey(name: 'node_id', defaultValue: "")
   final String nodeId;
+  @JsonKey(name: 'location_description', defaultValue: "없음")
   final String locationDescription;
 
   ElevatorDto({
@@ -128,10 +141,15 @@ class ElevatorDto {
 /// ✅ RampDto 정의
 @JsonSerializable()
 class RampDto {
+  @JsonKey(name:'ramp_id', defaultValue: -1)
   final int rampId;
+  @JsonKey(name:'building_id', defaultValue: -1)
   final int buildingId;
+  @JsonKey(name:'node_id', defaultValue: "")
   final String nodeId;
+  @JsonKey(name:"floor", defaultValue: 0)
   final int floor;
+  @JsonKey(name:'location_description', defaultValue: "없음")
   final String locationDescription;
 
   RampDto({

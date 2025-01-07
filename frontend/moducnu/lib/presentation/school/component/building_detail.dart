@@ -1,138 +1,156 @@
 import 'package:flutter/material.dart';
 import 'package:moducnu/presentation/theme/color.dart';
 
-class BuildingDetailPage extends StatefulWidget {
-  final String buildingName;
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get_it/get_it.dart';
+import 'package:moducnu/domain/model/building.dart';
+import 'package:moducnu/presentation/theme/color.dart';
+import 'building_detail_viewmodel.dart';
 
-  const BuildingDetailPage({super.key, required this.buildingName});
+class BuildingDetailPage extends StatelessWidget {
+  final int buildingId; // buildingId를 전달받음
+  final BuildingDetailViewmodel viewModel = GetIt.instance<BuildingDetailViewmodel>();
 
-  @override
-  State<BuildingDetailPage> createState() => _BuildingDetailPageState();
-}
-
-// 시설 정보 데이터 클래스
-class FacilityInfo {
-  final String title;
-  final String description;
-
-  const FacilityInfo({required this.title, required this.description});
-}
-
-// 층별 평면도 데이터 클래스
-class FloorPlan {
-  final int floorNumber;
-  final String imagePath;
-
-  const FloorPlan({required this.floorNumber, required this.imagePath});
-}
-
-// 시설 정보 리스트
-final List<FacilityInfo> facilities = const [
-  FacilityInfo(title: '장애인 화장실', description: '1층 후출입구 쪽'),
-  FacilityInfo(title: '승강기', description: '공과대학 5호관 입구쪽'),
-  FacilityInfo(title: '휠체어 충전', description: '불가능'),
-  FacilityInfo(title: '휠체어 리프트', description: '없음'),
-  FacilityInfo(title: '경사로 입구', description: '건물 왼편 및 오른편'),
-];
-
-// 층별 평면도 리스트
-final List<FloorPlan> floorPlans = const [
-  FloorPlan(floorNumber: 1, imagePath: 'assets/images/floor1.png'),
-  FloorPlan(floorNumber: 2, imagePath: 'assets/images/floor2.png'),
-  FloorPlan(floorNumber: 3, imagePath: 'assets/images/floor3.png'),
-  FloorPlan(floorNumber: 4, imagePath: 'assets/images/floor4.png'),
-  FloorPlan(floorNumber: 5, imagePath: 'assets/images/floor5.png'),
-];
-
-class _BuildingDetailPageState extends State<BuildingDetailPage> {
-  int selectedFloor = 1; // 선택된 층수 상태 관리
+  BuildingDetailPage({super.key, required this.buildingId}) {
+    viewModel.fetchBuildingDetail(buildingId); // 초기화 시 데이터 로드
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppBar(), // 상단 바 구성
-      backgroundColor: kBackgroundColor, // 배경색 설정
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildFloorSelector(), // 층 선택 버튼 UI
-              const SizedBox(height: 20.0),
-              _buildFloorPlan(), // 선택된 층수 평면도 UI
-              const SizedBox(height: 40.0),
-              _buildFacilityInfo(), // 시설 정보 섹션
-            ],
-          ),
-        ),
+      appBar: AppBar(
+        title: Obx(() {
+          final building = viewModel.building.value;
+          return Text(building?.name ?? '건물 상세 정보');
+        }),
+        backgroundColor: kBackgroundColor,
       ),
-    );
-  }
-
-  // 상단 바 구성 메서드
-  AppBar _buildAppBar() {
-    return AppBar(
-      title: Text(widget.buildingName),
       backgroundColor: kBackgroundColor,
+      body: Obx(() {
+        if (viewModel.isLoading.value) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        if (viewModel.errorMessage.isNotEmpty) {
+          return Center(child: Text(viewModel.errorMessage.value));
+        }
+
+        final building = viewModel.building.value;
+        if (building == null) {
+          return const Center(child: Text('건물 데이터를 찾을 수 없습니다.'));
+        }
+
+        return SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildFloorSelector(building),
+                const SizedBox(height: 20.0),
+                _buildFloorPlan(building),
+                const SizedBox(height: 40.0),
+                _buildFacilityInfo(context, building),
+              ],
+            ),
+          ),
+        );
+      }),
     );
   }
 
-  // 층 선택 버튼 UI 구성 메서드
-  Widget _buildFloorSelector() {
+
+  Widget _buildFloorSelector(Building building) {
+    // Building 데이터를 기반으로 층수 리스트 생성
+    final List<FloorPlan> defaultFloorPlans = [];
+
+    // 지하층 추가
+    if (building.basementFloors != null && building.basementFloors! > 0) {
+      for (int i = 1; i <= building.basementFloors!; i++) {
+        defaultFloorPlans.add(
+          FloorPlan(floorNumber: -i, imagePath: 'assets/images/floor_basement_$i.png'),
+        );
+      }
+    }
+
+    // 지상층 추가
+    if (building.groundFloors != null && building.groundFloors! > 0) {
+      for (int i = 1; i <= building.groundFloors!; i++) {
+        defaultFloorPlans.add(
+          FloorPlan(floorNumber: i, imagePath: 'assets/images/floor${i}.png'),
+        );
+      }
+    }
+
+    // 옥상층 추가
+    if (building.roofFloors != null && building.roofFloors! > 0) {
+      for (int i = 1; i <= building.roofFloors!; i++) {
+        defaultFloorPlans.add(
+          FloorPlan(floorNumber: building.groundFloors! + i, imagePath: 'assets/images/roof_floor_$i.png'),
+        );
+      }
+    }
+
+    // 실제 데이터 또는 기본 데이터 설정
+    final displayFloorPlans = building.floorPlans?.isNotEmpty == true
+        ? building.floorPlans!
+        : defaultFloorPlans;
+
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: floorPlans.map((floorPlan) {
+        children: displayFloorPlans.map((floorPlan) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 2.0),
-            child: ElevatedButton(
-              onPressed: () => _selectFloor(floorPlan.floorNumber),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: _isSelectedFloor(floorPlan.floorNumber)
-                    ? kButtonColor
-                    : Colors.white,
-                foregroundColor: _isSelectedFloor(floorPlan.floorNumber)
-                    ? Colors.white
-                    : kButtonColor,
-              ),
-              child: Text('${floorPlan.floorNumber}층'),
-            ),
+            child: Obx(() {
+              final isSelected = viewModel.selectedFloor.value == floorPlan.floorNumber;
+              return ElevatedButton(
+                onPressed: () => viewModel.selectedFloor.value = floorPlan.floorNumber,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: isSelected ? kButtonColor : Colors.white,
+                  foregroundColor: isSelected ? Colors.white : kButtonColor,
+                ),
+                child: Text(
+                  floorPlan.floorNumber > 0
+                      ? '${floorPlan.floorNumber}층'
+                      : 'B${-floorPlan.floorNumber}층', // 지하층은 'B' 접두사 추가
+                ),
+              );
+            }),
           );
         }).toList(),
       ),
     );
   }
 
-  // 층수 선택 상태 변경 메서드
-  void _selectFloor(int floorNumber) {
-    setState(() {
-      selectedFloor = floorNumber;
-    });
-  }
+  Widget _buildFloorPlan(Building building) {
+    final selectedFloor = viewModel.selectedFloor.value;
+    final defaultFloorPlans = List.generate(
+      5,
+          (index) => FloorPlan(floorNumber: index + 1, imagePath: 'assets/images/floor${index + 1}.png'),
+    );
 
-  // 선택된 층수 확인 메서드
-  bool _isSelectedFloor(int floorNumber) {
-    return selectedFloor == floorNumber;
-  }
+    final floorPlan = (building.floorPlans?.isNotEmpty == true
+        ? building.floorPlans
+        : defaultFloorPlans)
+        ?.firstWhere(
+          (plan) => plan.floorNumber == selectedFloor,
+      orElse: () => FloorPlan(floorNumber: selectedFloor, imagePath: 'assets/images/floor1.png'),
+    );
 
-  // 층수에 따른 평면도 UI 구성 메서드
-  Widget _buildFloorPlan() {
     return Center(
-      child: Container(
+      child: Image.asset(
+        floorPlan?.imagePath ?? "assets/images/floor1.png",
         height: 200,
         width: double.infinity,
-        color: Colors.grey[300],
-        child: Center(
-          child: Text('층수 $selectedFloor 평면도'),
-        ),
+        fit: BoxFit.cover,
       ),
     );
   }
 
-  // 시설 정보 섹션 UI 구성 메서드
-  Widget _buildFacilityInfo() {
+
+  Widget _buildFacilityInfo(BuildContext context, Building building) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -141,34 +159,52 @@ class _BuildingDetailPageState extends State<BuildingDetailPage> {
           style: Theme.of(context).textTheme.titleLarge,
           textAlign: TextAlign.center,
         ),
-        const SizedBox(height: 10.0),
-        ...facilities.map((facility) => _buildFacilityItem(facility)).toList(),
+        const SizedBox(height: 12.0),
+        // NOTE: 실제로는 존재하지 않는 데이터
+        _buildFacilityItem(context, "휠체어 충전", "불가능"),
+        _buildFacilityItem(context, "휠체어 리프트", "없음"),
+        // 실제 데이터
+        _buildFacilityItem(context, "장애인 화장실", building.disabledRestrooms),
+        _buildFacilityItem(context, "승강기", building.elevators),
+        _buildFacilityItem(context, "경사로 입구", building.ramps),
       ],
     );
   }
 
-  // 개별 시설 정보 항목 UI 구성 메서드
-  Widget _buildFacilityItem(FacilityInfo facility) {
+  Widget _buildFacilityItem(BuildContext context, String title, String description) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start, // 세로로 늘어날 수 있도록 정렬
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween, // title과 description 사이 공간 조정
+            crossAxisAlignment: CrossAxisAlignment.start, // 텍스트 정렬을 위쪽으로
             children: [
-              Text(
-                facility.title,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyLarge
-                    ?.copyWith(color: Colors.grey[430]),
+              Expanded(
+                flex: 2, // title은 상대적으로 적은 공간을 차지
+                child: Text(
+                  title,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyLarge
+                      ?.copyWith(color: Colors.grey[430]),
+                  textAlign: TextAlign.left,
+                ),
               ),
-              Text(
-                facility.description,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyLarge
-                    ?.copyWith(fontWeight: FontWeight.bold),
+              const SizedBox(width: 10), // 제목과 설명 사이 간격 추가
+              Expanded(
+                flex: 3, // description은 더 많은 공간을 차지
+                child: Text(
+                  description,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyLarge
+                      ?.copyWith(fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.right,
+                  softWrap: true, // 텍스트를 자동으로 줄바꿈
+                  overflow: TextOverflow.visible, // 텍스트가 잘리지 않도록 설정
+                ),
               ),
             ],
           ),

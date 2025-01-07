@@ -1,6 +1,7 @@
 import 'package:moducnu/data/local/dao/location_data_source.dart';
 import 'package:moducnu/data/mapper/building_mapper.dart';
 import 'package:moducnu/data/remote/api/building/building_api.dart';
+import 'package:moducnu/domain/model/building.dart';
 import 'package:moducnu/domain/model/place.dart';
 import 'package:moducnu/domain/repository/place_repository.dart';
 
@@ -39,16 +40,22 @@ class PlaceRepositoryImpl implements PlaceRepository {
   }
 
   @override
-  Future<Place> getPlaceById(int id) async {
+  Future<Building> getPlaceById(int id) async {
+    print('getPlaceById 호출: $id');
     try {
-      // BuildingDetailResponseDto를 가져옴
+      print('API 요청 시작');
       final detailDto = await buildingApi.getBuildingById(id);
-      // BuildingDetailResponseDto -> Place 매핑
-      return BuildingToPlaceMapper.fromDetailResponseDto(detailDto);
-    } catch (e) {
+      print('API 응답 수신: ${detailDto.toJson()}'); // 응답 데이터 출력
+      final building = BuildingToPlaceMapper.fromFullResponse(detailDto);
+      print('매핑된 Building 객체: $building');
+      return building;
+    } catch (e, stackTrace) {
+      print('getPlaceById 실패: $e');
+      print('스택 추적: $stackTrace');
       throw Exception('Failed to fetch place by ID: $e');
     }
   }
+
 
   @override
   Future<String> getPlaceNameById(int id) {
