@@ -74,7 +74,7 @@ class LocationToPlaceMapper {
   static Place fromLocationEntity(LocationEntity location) {
     return Place(
       id: location.buildingId,
-      nodeId: "",
+      nodeId: location.nodeId,
       placeName: location.name,
       category: location.category ?? "-",
       contact: location.contact ?? "-",
@@ -86,6 +86,7 @@ class LocationToPlaceMapper {
   static LocationEntity toLocationEntity(Place place) {
     return LocationEntity(
       buildingId: place.id!,
+      nodeId: place.nodeId,
       name: place.placeName,
       alias: place.alias,
       contact: place.contact,
