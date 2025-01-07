@@ -17,7 +17,7 @@ class ChaChaInfoSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SectionTitle(title: '📻 도움이 필요하신가요?'),
+          SectionTitle(title: 'ℹ️ 도움이 필요하신가요?'),
           SizedBox(height: 10.0),
           InfoGrid(),
         ],
@@ -33,11 +33,6 @@ class InfoGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10.0),
-        border: Border.all(color: kInfoBorderColor, width: 1.0),
-      ),
       padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
       child: GridView.count(
         shrinkWrap: true,
@@ -95,18 +90,25 @@ class InfoCard extends StatelessWidget {
         height: 95.0,
         decoration: BoxDecoration(
           color: kInfoBackgroundColor, // 배경색
-          borderRadius: BorderRadius.circular(8.0), // 모서리 둥글게
-          border: Border.all(color: kInfoBorderColor, width: 0.8), // 보더 추가
+          boxShadow:  [
+            BoxShadow(
+              color: const Color(0xff000000).withOpacity(0.2), // 그림자 색상
+              offset: const Offset(0, 4),
+              blurRadius: 4,
+            ),
+          ],
+          borderRadius: BorderRadius.circular(6.0), // 모서리 둥글게
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            const SizedBox(height: 12),
             Text(
               title,
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 16.0),
+              textAlign: TextAlign.start,
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 16.0, fontWeight: FontWeight.w500), // 텍스트 스타일
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 6),
             Icon(icon, size: 36, color: kNoticeButtonColor),
           ],
         ),

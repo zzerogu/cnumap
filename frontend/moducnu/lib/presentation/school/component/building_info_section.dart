@@ -24,7 +24,7 @@ class BuildingInfoSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SectionTitle(title: '🏫 우리 학교 건물'),
+          SectionTitle(title: '👋 교내 건물 편의시설'),
           SizedBox(height: 10.0),
           SchoolSearchBar(hasShadow: false, ),
           SizedBox(height: 10.0),
@@ -107,11 +107,17 @@ class BuildingCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 2.0), // 아이템 간 간격
+      margin: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 10.0), // 아이템 간 간격
       decoration: BoxDecoration(
         color: kInfoBackgroundColor,
-        borderRadius: BorderRadius.circular(6.0),
-        border: Border.all(color: kInfoBorderColor, width: 0.8),
+        borderRadius: BorderRadius.circular(5.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.25), // 그림자 색상
+            offset: const Offset(0, 4),
+            blurRadius: 4,
+          ),
+        ],
       ),
       child: Center( // 내용물을 수직으로 가운데 정렬
         child: ListTile(
@@ -129,7 +135,7 @@ class BuildingCard extends StatelessWidget {
                 '도면보기',
                 style: TextStyle(color: Colors.grey, fontSize: 12.0),
               ),
-              SizedBox(width: 8), // 텍스트와 아이콘 사이 간격
+              SizedBox(width: 4), // 텍스트와 아이콘 사이 간격
               Icon(Icons.arrow_circle_right, color: Colors.orange),
             ],
           ),

@@ -117,12 +117,6 @@ class Lounge extends StatelessWidget {
                         ],
                       ),
                     ),
-                    IconButton(
-                      icon: const Icon(Icons.arrow_forward_ios, size: 20),
-                      onPressed: () {
-                        print("Right arrow clicked for ${place.placeName}");
-                      },
-                    ),
                   ],
                 ),
               ),

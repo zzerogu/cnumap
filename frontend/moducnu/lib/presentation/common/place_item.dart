@@ -42,16 +42,16 @@ class PlaceItem extends StatelessWidget {
                       Text(
                         place.placeName,
                         style: const TextStyle(
-                          fontSize: 18,
+                          fontSize: 17,
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
                         ),
                       ),
-                      const SizedBox(width: 16.0),
+                      const SizedBox(width: 8.0),
                       Text(
                         place.category,
                         style:
-                            const TextStyle(fontSize: 14, color: Colors.grey),
+                            const TextStyle(fontSize: 12, color: Colors.grey),
                       ),
                     ],
                   ),

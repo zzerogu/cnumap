@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moducnu/presentation/theme/color.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class QaPage extends StatefulWidget {
@@ -23,7 +24,7 @@ class _QaPageState extends State<QaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('구글폼 문의 페이지')),
+      appBar: AppBar(title: const Text('구글폼 문의 페이지'), backgroundColor: kBackgroundColor,),
       body: WebViewWidget(controller: _controller), // 폼이 바로 로딩됨
     );
   }

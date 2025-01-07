@@ -26,13 +26,13 @@ class ConstructionNewsComponent extends StatelessWidget {
       return const SizedBox.shrink();
     }
       return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // 섹션 제목
-            const SectionTitle(title: '🚨 공사 소식'),
-            const SizedBox(height: 10.0),
+            // const SectionTitle(title: '🚨 공사 소식'),
+            // const SizedBox(height: 10.0),
 
             // 공사 소식 리스트 출력
             Column(
@@ -48,18 +48,17 @@ class ConstructionNewsComponent extends StatelessWidget {
 
   /// 날짜와 시간 포맷팅
   String _formattedDateRange(DateTime startTime, DateTime endTime) {
-    return '${DateFormat('MM/dd HH:mm').format(startTime)} ~ ${DateFormat('MM/dd HH:mm').format(endTime)}의 소식';
+    return '${DateFormat('MM/dd HH:mm').format(startTime)} ~ ${DateFormat('MM/dd HH:mm').format(endTime)} 소식';
   }
 
   /// 공사 소식 카드 위젯 생성
   Widget _buildNewsCard(BuildContext context, ConstructionNews news) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12.0),
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
       decoration: BoxDecoration(
-        color: Colors.amber[50],
+        color: kNoticeBackgroundColor,
         borderRadius: BorderRadius.circular(12.0),
-        border: Border.all(color: Colors.amber, width: 1.0),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,29 +72,34 @@ class ConstructionNewsComponent extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(height: 8.0),
+          const SizedBox(height: 6.0),
 
           // 공사 소식 내용 표시
           Text(
             news.content,
-            style: const TextStyle(fontSize: 16.0, color: Colors.black87),
+            style: const TextStyle(
+                fontSize: 16.0, color: Colors.black87,
+                fontWeight: FontWeight.bold,
+                height: 1.4
+            ),
           ),
-          const SizedBox(height: 16.0),
-
+          const SizedBox(height: 8.0),
           // '자세히 보기' 버튼
           Center(
             child: ElevatedButton(
               onPressed: () => _onDetailButtonPressed(context),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.amber,
+                backgroundColor: kNoticeButtonColor,
+                elevation: 2.0,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 9.0),
+                minimumSize: const Size(0, 30),
+                padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 8.0),
               ),
               child: const Text(
                 '자세히 보기',
-                style: TextStyle(fontSize: 12.0, color: Colors.black),
+                style: TextStyle(fontSize: 12.0, color: Colors.white, fontWeight: FontWeight.bold),
               ),
             ),
           ),
