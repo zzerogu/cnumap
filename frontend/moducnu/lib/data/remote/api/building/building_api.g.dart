@@ -168,12 +168,12 @@ class _BuildingApi implements BuildingApi {
   }
 
   @override
-  Future<BuildingDetailResponseDto> getBuildingById(int id) async {
+  Future<BuildingFullResponseDto> getBuildingById(int id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<BuildingDetailResponseDto>(Options(
+    final _options = _setStreamType<BuildingFullResponseDto>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -190,9 +190,9 @@ class _BuildingApi implements BuildingApi {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late BuildingDetailResponseDto _value;
+    late BuildingFullResponseDto _value;
     try {
-      _value = BuildingDetailResponseDto.fromJson(_result.data!);
+      _value = BuildingFullResponseDto.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

@@ -22,6 +22,6 @@ Map<String, dynamic> _$DisabilitySupportCentersResponseDtoToJson(
       'id': instance.id,
       'name': instance.name,
       'position': instance.position,
-      'building_id': instance.buildingId,
       'phone_number': instance.phoneNumber,
+      'building_id': instance.buildingId,
     };

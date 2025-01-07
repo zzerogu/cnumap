@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:moducnu/domain/model/building.dart';
 import 'package:moducnu/domain/model/place.dart';
 import 'package:moducnu/presentation/common/custom_search_bar.dart';
 import 'package:moducnu/presentation/school/component/school_search_bar.dart';
@@ -86,7 +87,7 @@ class BuildingList extends StatelessWidget {
               children: buildingsForPage.map((building) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4.0),
-                  child: BuildingCard(name: building.placeName),
+                  child: BuildingCard(place: building),
                 );
               }).toList(),
             );
@@ -99,9 +100,9 @@ class BuildingList extends StatelessWidget {
 
 
 class BuildingCard extends StatelessWidget {
-  final String name;
+  final Place place;
 
-  const BuildingCard({super.key, required this.name});
+  const BuildingCard({super.key, required this.place});
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +117,7 @@ class BuildingCard extends StatelessWidget {
         child: ListTile(
           contentPadding: const EdgeInsets.symmetric(horizontal: 12.0), // 패딩 조정
           title: Text(
-            name,
+            place.placeName,
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 16.0),
           ),
           trailing: const Row(
@@ -136,7 +137,7 @@ class BuildingCard extends StatelessWidget {
              Navigator.push(
              context,
              MaterialPageRoute(
-             builder: (context) => BuildingDetailPage(buildingName: name),
+             builder: (context) => BuildingDetailPage(buildingId: place.id!!),
               ),
             );
             // Handle navigation or click event
