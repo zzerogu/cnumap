@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:moducnu/presentation/common/building_detail_popup.dart';
 import 'package:moducnu/presentation/theme/color.dart';
@@ -75,7 +76,7 @@ class _RouteFinderModalState extends State<RouteFinderModal> {
   String? selectedRampNodeId;
   bool isSecondStep = false;
   final Dio dio = Dio();
-  final _baseUrl = "http://localhost:8000";
+  final _baseUrl = dotenv.env['SERVER_URL'] ?? "";
   late final NavigationApi navigationApi =
       NavigationApi(dio, baseUrl: _baseUrl);
 

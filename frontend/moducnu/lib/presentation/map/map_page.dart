@@ -33,7 +33,7 @@ class _MapPageState extends State<MapPage> {
   void initState() {
     super.initState();
     final dio = Dio();
-    _baseUrl = "http://localhost:8000/"; // .env에서 타일 서버 URL 가져오기
+    _baseUrl = dotenv.env['SERVER_URL'] ?? ""; // .env에서 타일 서버 URL 가져오기
     _accessToken =
         dotenv.env['MAPBOX_ACCESS_TOKEN'] ?? ""; // .env에서 Access Token 가져오기
     _buildingApi = BuildingApi(dio, baseUrl: _baseUrl); // 사용자 API 설정
