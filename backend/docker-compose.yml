@@ -3,6 +3,8 @@ services:
     build:
       context: ./tegola_server
       dockerfile: Dockerfile
+    platform: linux/amd64
+    image: wnsrn4970/backend-tegola_server:latest
     container_name: tegola_server
     ports:
       - "8080:8080"
@@ -16,6 +18,7 @@ services:
       context: ./valhalla_server
       dockerfile: Dockerfile
     platform: linux/amd64
+    image: wnsrn4970/backend-valhalla_server:latest
     container_name: valhalla_server
     volumes:
       - ./valhalla_server/valhalla.json:/data/valhalla/valhalla.json
@@ -28,6 +31,8 @@ services:
       dockerfile: Dockerfile
       args:
         DATABASE_URL: postgres://postgres:postgres@host.docker.internal:5432/osm
+    platform: linux/amd64
+    image: wnsrn4970/backend-rust_server:latest
     container_name: rust_server
     environment:
       DATABASE_URL: postgres://postgres:postgres@host.docker.internal:5432/osm
@@ -44,8 +49,10 @@ services:
   nginx_proxy:
     image: nginx:latest
     container_name: nginx_proxy
+    platform: linux/amd64
     ports:
       - "8081:8081" # NGINX가 외부에 노출될 포트
+      - "80:80"
     depends_on:
       - tegola_server
     volumes:
