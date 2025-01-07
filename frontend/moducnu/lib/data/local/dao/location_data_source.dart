@@ -31,6 +31,7 @@ class LocationDataSourceImpl implements LocationDataSource {
           CREATE TABLE saved_locations (
             building_id INTEGER PRIMARY KEY,
             name TEXT NOT NULL,
+            node_id TEXT NOT NULL,
             alias TEXT NOT NULL,
             contact TEXT NULLABLE,
             category TEXT NULLABLE
@@ -42,6 +43,7 @@ class LocationDataSourceImpl implements LocationDataSource {
           CREATE TABLE recent_locations (
             building_id INTEGER PRIMARY KEY,
             name TEXT NOT NULL,
+            node_id TEXT NOT NULL,
             alias TEXT NOT NULL,
             contact TEXT NULLABLE,
             category TEXT NULLABLE

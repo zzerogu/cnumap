@@ -1,15 +1,18 @@
 import 'package:moducnu/data/local/dao/location_data_source.dart';
 import 'package:moducnu/data/mapper/building_mapper.dart';
 import 'package:moducnu/data/remote/api/building/building_api.dart';
+import 'package:moducnu/data/remote/api/navigation/navigation_api.dart';
+import 'package:moducnu/data/remote/dto/navigation/navigation_dto.dart';
 import 'package:moducnu/domain/model/building.dart';
 import 'package:moducnu/domain/model/place.dart';
 import 'package:moducnu/domain/repository/place_repository.dart';
 
 class PlaceRepositoryImpl implements PlaceRepository {
   final BuildingApi buildingApi;
+  final NavigationApi navigationApi;
   final LocationDataSource locationDataSource;
 
-  PlaceRepositoryImpl(this.buildingApi, this.locationDataSource);
+  PlaceRepositoryImpl(this.buildingApi, this.navigationApi, this.locationDataSource);
 
   @override
   Future<List<Place>> getPlacesByName(String name) async {
@@ -121,5 +124,13 @@ class PlaceRepositoryImpl implements PlaceRepository {
   @override
   Future<bool> isPlaceSaved(int buildingId) async {
     return await locationDataSource.isLocationSaved(buildingId, 'saved_locations');
+  }
+
+  @override
+  Future<Position> getSavedLocationPosition(String nodeId) async {
+    var response = await navigationApi.getNodePolygonCoordinates(nodeId) as CoordinateDto;
+    Position position = Position(latitude: response.latitude, longitude: response.longitude);
+    print('getSavedLocationPosition 응답: $position');
+    return await position;
   }
 }
