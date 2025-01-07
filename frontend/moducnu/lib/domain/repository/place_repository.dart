@@ -22,6 +22,7 @@ abstract class PlaceRepository {
   Future<List<Place>> getSavedLocations();
   Future<void> deleteSavedLocation(int buildingId);
   Future<void> clearSavedLocations();
+  Future<bool> isPlaceSaved(int buildingId);
 
   /// 최근 방문 장소 관련
   Future<void> addRecentLocation(Place place);

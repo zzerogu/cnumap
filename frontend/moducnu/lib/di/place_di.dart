@@ -3,12 +3,17 @@ import 'package:moducnu/data/local/dao/location_data_source.dart';
 import 'package:moducnu/data/remote/api/building/building_api.dart';
 import 'package:moducnu/data/repository/place_repositoryImpl.dart';
 import 'package:moducnu/domain/repository/place_repository.dart';
+import 'package:moducnu/domain/usecases/add_saved_location_usecase.dart';
+import 'package:moducnu/domain/usecases/check_if_place_saved_usecase.dart';
+import 'package:moducnu/domain/usecases/delete_saved_location_usecase.dart';
 import 'package:moducnu/domain/usecases/get_all_buildings_usecase.dart';
 import 'package:moducnu/domain/usecases/get_building_detail_by_id.dart';
 import 'package:moducnu/domain/usecases/get_place_by_name_usecase.dart';
 import 'package:moducnu/domain/usecases/get_places_by_category_usecase.dart';
 import 'package:dio/dio.dart';
+import 'package:moducnu/domain/usecases/get_saved_locations_usecase.dart';
 import 'package:moducnu/presentation/map/search_viewmodel.dart';
+import 'package:moducnu/presentation/saved/save_viewmodel.dart';
 import 'package:moducnu/presentation/school/component/building_detail_viewmodel.dart';
 import 'package:moducnu/presentation/school/component/building_info_viewmodel.dart';
 
@@ -56,6 +61,19 @@ void setupPlaceDependencies() {
   getIt.registerFactory<GetBuildingDetailUseCase>(
         () => GetBuildingDetailUseCase(getIt<PlaceRepository>()),
   );
+  getIt.registerFactory<GetSavedLocationsUseCase>(
+        () => GetSavedLocationsUseCase(getIt<PlaceRepository>()),
+  );
+  getIt.registerFactory<CheckIfPlaceIsSavedUseCase>(
+        () => CheckIfPlaceIsSavedUseCase(getIt<PlaceRepository>()),
+  );
+
+getIt.registerFactory<AddSavedLocationUseCase>(
+        () => AddSavedLocationUseCase(getIt<PlaceRepository>()),
+  );
+  getIt.registerFactory<DeleteSavedLocationUseCase>(
+        () => DeleteSavedLocationUseCase(getIt<PlaceRepository>()),
+  );
 
   // 5. ViewModel 의존성 등록
   getIt.registerFactory<SearchViewModel>(
@@ -68,7 +86,10 @@ void setupPlaceDependencies() {
         () => BuildingInfoViewModel(getIt<GetAllBuildingsUsecase>(), getIt<GetPlacesByNameUseCase>()),
   );
   getIt.registerLazySingleton<BuildingDetailViewmodel>(
-        () => BuildingDetailViewmodel(getIt<GetBuildingDetailUseCase>()),
+        () => BuildingDetailViewmodel(getIt<GetBuildingDetailUseCase>(), getIt<CheckIfPlaceIsSavedUseCase>(), getIt<AddSavedLocationUseCase>(), getIt<DeleteSavedLocationUseCase>()),
+  );
+  getIt.registerLazySingleton<SaveViewmodel>(
+        () => SaveViewmodel(getIt<GetSavedLocationsUseCase>(), getIt<AddSavedLocationUseCase>(), getIt<DeleteSavedLocationUseCase>() ),
   );
 
 }

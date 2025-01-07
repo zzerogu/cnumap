@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:moducnu/presentation/theme/color.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
@@ -25,6 +24,18 @@ class BuildingDetailPage extends StatelessWidget {
           return Text(building?.name ?? '건물 상세 정보');
         }),
         backgroundColor: kBackgroundColor,
+        actions: [
+          Obx(() {
+            final isSaved = viewModel.isSaved.value; // 저장 상태 확인
+            return IconButton(
+              icon: Icon(
+                isSaved ? Icons.favorite : Icons.favorite_border,
+                color: isSaved ? Colors.red : Colors.grey,
+              ),
+              onPressed: () => viewModel.toggleSavedStatus(), // 상태 변경 메서드 호출
+            );
+          }),
+        ],
       ),
       backgroundColor: kBackgroundColor,
       body: Obx(() {

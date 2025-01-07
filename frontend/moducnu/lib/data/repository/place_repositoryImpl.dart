@@ -117,4 +117,9 @@ class PlaceRepositoryImpl implements PlaceRepository {
     final entities = await locationDataSource.getLocations('saved_locations');
     return entities.map(LocationToPlaceMapper.fromLocationEntity).toList();
   }
+
+  @override
+  Future<bool> isPlaceSaved(int buildingId) async {
+    return await locationDataSource.isLocationSaved(buildingId, 'saved_locations');
+  }
 }

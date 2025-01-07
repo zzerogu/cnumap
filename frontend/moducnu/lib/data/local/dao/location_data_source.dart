@@ -7,6 +7,7 @@ abstract class LocationDataSource {
   Future<List<LocationEntity>> getLocations(String tableName);
   Future<void> deleteLocation(int buildingId, String tableName);
   Future<void> clearLocations(String tableName);
+  Future<bool> isLocationSaved(int buildingId, String tableName);
 }
 
 class LocationDataSourceImpl implements LocationDataSource {
@@ -91,5 +92,16 @@ class LocationDataSourceImpl implements LocationDataSource {
   Future<void> clearLocations(String tableName) async {
     final db = await database;
     await db.delete(tableName);
+  }
+
+  @override
+  Future<bool> isLocationSaved(int buildingId, String tableName) async {
+    final db = await database;
+    final maps = await db.query(
+      tableName,
+      where: 'building_id = ?',
+      whereArgs: [buildingId],
+    );
+    return maps.isNotEmpty;
   }
 }
