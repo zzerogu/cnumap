@@ -35,6 +35,7 @@ class MapComponent extends StatefulWidget {
   final NavigationApi navigationApi;
   final String baseUrl;
   final String accessToken;
+  final bool main;
 
   const MapComponent({
     Key? key,
@@ -42,6 +43,7 @@ class MapComponent extends StatefulWidget {
     required this.navigationApi,
     required this.baseUrl,
     required this.accessToken,
+    required this.main,
   }) : super(key: key);
 
   @override
@@ -125,37 +127,38 @@ class MapComponentState extends State<MapComponent> {
           ),
         ),
 
-        Positioned(
-          top: 185,
-          right: 20,
-          child: Container(
-            height: 25,
-            decoration: BoxDecoration(
-              color: _isLayerVisible
-                  ? Colors.white // ✅ 활성화 시 흰색
-                  : const Color.fromARGB(255, 112, 197, 163), // 경사로와 어울리는
-              borderRadius: BorderRadius.circular(10), // 둥근 모서리
-            ),
-            child: TextButton.icon(
-              onPressed: _toggleSlopeLayer,
-              label: Text(
-                '경사로 표시',
-                style: TextStyle(
-                  color: _isLayerVisible
-                      ? const Color.fromARGB(
-                          255, 112, 197, 163) // ✅ 활성화 시 글자색 변경
-                      : const Color.fromARGB(
-                          255, 230, 254, 246), // ✅ 비활성화 시 글자색 흰색
-                  fontWeight: FontWeight.bold,
-                ),
+        if (widget.main)
+          Positioned(
+            top: 185,
+            right: 20,
+            child: Container(
+              height: 25,
+              decoration: BoxDecoration(
+                color: _isLayerVisible
+                    ? Colors.white // ✅ 활성화 시 흰색
+                    : const Color.fromARGB(255, 112, 197, 163), // 경사로와 어울리는
+                borderRadius: BorderRadius.circular(10), // 둥근 모서리
               ),
-              style: TextButton.styleFrom(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+              child: TextButton.icon(
+                onPressed: _toggleSlopeLayer,
+                label: Text(
+                  '경사로 표시',
+                  style: TextStyle(
+                    color: _isLayerVisible
+                        ? const Color.fromARGB(
+                            255, 112, 197, 163) // ✅ 활성화 시 글자색 변경
+                        : const Color.fromARGB(
+                            255, 230, 254, 246), // ✅ 비활성화 시 글자색 흰색
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                style: TextButton.styleFrom(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                ),
               ),
             ),
           ),
-        ),
       ],
     );
   }
@@ -171,6 +174,8 @@ class MapComponentState extends State<MapComponent> {
         return "store-icon";
       case "휴게실":
         return "wheel-icon";
+      case "저장":
+        return "love-icon";
       default:
         return "marker-15"; // 기본 아이콘
     }
@@ -210,6 +215,7 @@ class MapComponentState extends State<MapComponent> {
     await _addIcon("ic_wheelchairCharge", "wheel-icon", 2.7);
     await _addIcon("ic_CurrentUser", "current-icon", 2.7);
     await _addIcon("ic_PlaceMarker", "placeMarker-icon", 2.7);
+    await _addIcon("ic_love", "love-icon", 5.8);
   }
 
   void _toggleSlopeLayer() async {
@@ -294,32 +300,32 @@ class MapComponentState extends State<MapComponent> {
 
   Future<void> _moveToCurrentLocation() async {
     try {
-      var status = await Permission.location.request();
+      // var status = await Permission.location.request();
 
-      if (status.isGranted) {
-        print("위치 권한 승인됨.");
-      } else if (status.isDenied) {
-        print("위치 권한 거부됨. 다시 요청");
-        status = await Permission.location.request();
-      } else if (status.isRestricted) {
-        print("위치 권한이 제한됨. 사용자가 변경할 수 없습니다.");
-        return;
-      } else if (status.isPermanentlyDenied) {
-        print("위치 권한 영구적으로 거부됨. 설정으로 이동");
-        await openAppSettings(); // 설정 화면 열기
-        return;
-      }
+      // if (status.isGranted) {
+      //   print("위치 권한 승인됨.");
+      // } else if (status.isDenied) {
+      //   print("위치 권한 거부됨. 다시 요청");
+      //   status = await Permission.location.request();
+      // } else if (status.isRestricted) {
+      //   print("위치 권한이 제한됨. 사용자가 변경할 수 없습니다.");
+      //   return;
+      // } else if (status.isPermanentlyDenied) {
+      //   print("위치 권한 영구적으로 거부됨. 설정으로 이동");
+      //   await openAppSettings(); // 설정 화면 열기
+      //   return;
+      // }
 
-      // geolocator의 Position 사용
-      geo.Position position = await geo.Geolocator.getCurrentPosition(
-        desiredAccuracy: geo.LocationAccuracy.high,
-      );
+      // // geolocator의 Position 사용
+      // geo.Position position = await geo.Geolocator.getCurrentPosition(
+      //   desiredAccuracy: geo.LocationAccuracy.high,
+      // );
 
       // mapbox의 Position 사용 (경도, 위도)
       _mapboxMap?.setCamera(
         CameraOptions(
           center: Point(
-              coordinates: Position(position.longitude, position.latitude)),
+              coordinates: Position(127.3455249809536, 36.363905525179774)),
           zoom: 16.0,
         ),
       );
@@ -330,7 +336,7 @@ class MapComponentState extends State<MapComponent> {
       await _pointAnnotationManager?.create(
         PointAnnotationOptions(
           geometry: Point(
-              coordinates: Position(position.longitude, position.latitude)),
+              coordinates: Position(127.3455249809536, 36.363905525179774)),
           iconSize: 1.0,
           iconImage: "current-icon", // Mapbox 기본 아이콘 사용
         ),
@@ -466,6 +472,11 @@ class MapComponentState extends State<MapComponent> {
     } catch (e) {
       print("경로 그리기 오류 발생: $e");
     }
+  }
+
+  Future<void> clearMarkers() async {
+    await _pointAnnotationManager?.deleteAll(); // 기존 마커 삭제
+    _annotations.clear();
   }
 
   /// ✅ 경사로 마커를 추가하는 함수 (node_id 기반 좌표 적용)
@@ -631,6 +642,10 @@ class MapComponentState extends State<MapComponent> {
           locationDescription = item.address;
           buildingId = item.buildingId;
           nodeId = item.nodeId;
+        } else if (category == "저장") {
+          latitude = item['latitude'];
+          longitude = item['longitude'];
+          nodeId = item['id'];
         }
 
         final String iconImage = _getIconForCategory(category);
@@ -675,7 +690,9 @@ class MapComponentState extends State<MapComponent> {
                   buildingId: buildingId,
                   location: locationDescription,
                 );
-              } else if (category == "편의점" || category == "휴게실") {
+              } else if (category == "편의점" ||
+                  category == "휴게실" ||
+                  category == "저장") {
                 final response =
                     await widget.buildingApi.getBuildingByNodeId(nodeId);
                 if (response != null) {

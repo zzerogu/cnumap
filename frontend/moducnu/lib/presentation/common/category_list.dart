@@ -12,6 +12,7 @@ class CategoryList extends StatefulWidget {
   final NavigationApi navigationApi;
   final BuildingApi buildingApi;
   final Function(List<dynamic>, String) onDisplayMarkers; // ✅ 마커 추가 콜백
+  final Function() onClearMarkers;
 
   const CategoryList({
     Key? key,
@@ -20,6 +21,7 @@ class CategoryList extends StatefulWidget {
     required this.navigationApi,
     required this.buildingApi,
     required this.onDisplayMarkers, // ✅ 콜백 추가
+    required this.onClearMarkers,
   }) : super(key: key);
 
   @override
@@ -79,13 +81,16 @@ class _CategoryListState extends State<CategoryList> {
         children: [
           const SizedBox(width: 16),
           MyPlaceCategoryChip(
-            isActive: activeIndex == -1,
-            onTap: () {
-              setState(() {
-                activeIndex = activeIndex == -1 ? null : -1;
-              });
-            },
-          ),
+              isActive: activeIndex == -1,
+              onTap: () {
+                if (activeIndex == -1) {
+                  widget.onClearMarkers();
+                }
+                setState(() {
+                  activeIndex = activeIndex == -1 ? null : -1;
+                });
+              },
+              onDisplayMarkers: widget.onDisplayMarkers),
           const SizedBox(width: 6),
           ...List.generate(categories.length, (index) {
             return Padding(
@@ -94,10 +99,14 @@ class _CategoryListState extends State<CategoryList> {
                 label: categories[index],
                 isActive: activeIndex == index,
                 onTap: () async {
+                  if (activeIndex == index) {
+                    widget.onClearMarkers();
+                  } else {
+                    await _fetchMarkers(categories[index]);
+                  }
                   setState(() {
                     activeIndex = activeIndex == index ? null : index;
                   });
-                  await _fetchMarkers(categories[index]);
                 },
               ),
             );
