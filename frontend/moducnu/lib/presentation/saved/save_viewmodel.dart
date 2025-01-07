@@ -12,11 +12,8 @@ class SaveViewmodel extends GetxController {
   final DeleteSavedLocationUseCase deleteSavedLocationUseCase;
   final GetCoordinateByNodeidUsecase getCoordinateByNodeidUsecase;
 
-  SaveViewmodel(
-    this.getSavedLocationsUseCase,
-    this.addSavedLocationUseCase,
-    this.deleteSavedLocationUseCase, this.getCoordinateByNodeidUsecase
-  );
+  SaveViewmodel(this.getSavedLocationsUseCase, this.addSavedLocationUseCase,
+      this.deleteSavedLocationUseCase, this.getCoordinateByNodeidUsecase);
 
   // Observable 리스트
   final savedLocations = <Place>[].obs;
@@ -61,21 +58,20 @@ class SaveViewmodel extends GetxController {
 
     for (var place in savedLocations) {
       try {
-        final position =
-        await getCoordinateByNodeidUsecase.execute(place);
+        final position = await getCoordinateByNodeidUsecase.execute(place);
         // 디버깅
         print('Fetched position for ${place.placeName}: $position');
         markers.add({
           'latitude': position.latitude,
           'longitude': position.longitude,
-          'name': place.placeName,
+          'id': place.nodeId,
         });
       } catch (e) {
-        Get.snackbar('Error', 'Failed to fetch coordinates for ${place.nodeId}');
+        Get.snackbar(
+            'Error', 'Failed to fetch coordinates for ${place.nodeId}');
       }
     }
 
     return markers;
   }
 }
-

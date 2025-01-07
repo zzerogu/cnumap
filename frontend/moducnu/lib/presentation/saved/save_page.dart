@@ -16,7 +16,8 @@ class SavePage extends StatefulWidget {
 class _SavePageState extends State<SavePage> {
   final SaveViewmodel viewModel = GetIt.instance<SaveViewmodel>();
   final GlobalKey<MapComponentState> _mapComponentKey =
-  GlobalKey<MapComponentState>();
+      GlobalKey<MapComponentState>();
+  late String _baseUrl;
 
   @override
   void initState() {
@@ -25,6 +26,7 @@ class _SavePageState extends State<SavePage> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _addMarkersToMap();
     });
+    _baseUrl = dotenv.env['SERVER_URL'] ?? "";
   }
 
   Future<void> _addMarkersToMap() async {
@@ -58,12 +60,13 @@ class _SavePageState extends State<SavePage> {
         children: [
           // 지도 컴포넌트
           MapComponent(
-            key: _mapComponentKey,
-            buildingApi: GetIt.instance.get(), // BuildingApi 주입
-            navigationApi: GetIt.instance.get(), // NavigationApi 주입
-            baseUrl: "http://localhost:8000", // Base URL
-            accessToken: dotenv.env['MAPBOX_ACCESS_TOKEN'] ?? "", // Mapbox Access Token
-          ),
+              key: _mapComponentKey,
+              buildingApi: GetIt.instance.get(), // BuildingApi 주입
+              navigationApi: GetIt.instance.get(), // NavigationApi 주입
+              baseUrl: _baseUrl, // Base URL
+              accessToken: dotenv.env['MAPBOX_ACCESS_TOKEN'] ??
+                  "", // Mapbox Access Token
+              main: false),
           // 저장된 장소 목록
           SavedBottomsheet(),
         ],
