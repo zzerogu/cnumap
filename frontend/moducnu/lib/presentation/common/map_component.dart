@@ -180,19 +180,30 @@ class MapComponentState extends State<MapComponent> {
     _mapboxMap = mapboxMap;
     _addCustomTileSource(mapboxMap);
     _initializeAnnotationManager();
-    await mapboxMap.style.addLayer(SymbolLayer(
-      id: "building-labels",
-      sourceId: "composite",
-      sourceLayer: "building",
-      textFieldExpression: [
-        'coalesce', // ✅ 한글 이름을 우선, 없으면 영어
-        ['get', 'name'],
-        ['get', 'name:ko'],
-        ['get', 'name:en']
-      ],
-      textSize: 14,
-      textColor: Colors.black.value,
-    ));
+
+    _mapboxMap?.style
+        .setStyleLayerProperty('country-label', 'text-field', ['get', 'name']);
+    _mapboxMap?.style
+        .setStyleLayerProperty('state-label', 'text-field', ['get', 'name']);
+    _mapboxMap?.style.setStyleLayerProperty(
+        'settlement-subdivision-label', 'text-field', ['get', 'name']);
+    _mapboxMap?.style
+        .setStyleLayerProperty('airport-label', 'text-field', ['get', 'name']);
+    _mapboxMap?.style
+        .setStyleLayerProperty('poi-label', 'text-field', ['get', 'name']);
+    _mapboxMap?.style.setStyleLayerProperty(
+        'water-point-label', 'text-field', ['get', 'name']);
+    _mapboxMap?.style.setStyleLayerProperty(
+        'water-line-label', 'text-field', ['get', 'name']);
+    _mapboxMap?.style.setStyleLayerProperty(
+        'natural-point-label', 'text-field', ['get', 'name']);
+    _mapboxMap?.style.setStyleLayerProperty(
+        'natural-line-label', 'text-field', ['get', 'name']);
+    _mapboxMap?.style
+        .setStyleLayerProperty('waterway-label', 'text-field', ['get', 'name']);
+    _mapboxMap?.style
+        .setStyleLayerProperty('road-label', 'text-field', ['get', 'name']);
+
     await _addIcon("ic_ramp", "ramp-icon", 2.7);
     await _addIcon("ic_restroom", "restroom-icon", 2.7);
     await _addIcon("ic_store", "store-icon", 2.7);
@@ -283,27 +294,32 @@ class MapComponentState extends State<MapComponent> {
 
   Future<void> _moveToCurrentLocation() async {
     try {
-      // var status = await Permission.location.request();
-      // if (status.isGranted) {
-      //   print("위치 권한 승인됨.");
-      // } else if (status.isDenied) {
-      //   print("위치 권한 거부됨. 다시 요청");
-      //   await Permission.location.request();
-      // } else if (status.isPermanentlyDenied) {
-      //   print("위치 권한 영구적으로 거부됨. 설정으로 이동");
-      //   await openAppSettings(); // 설정 화면 열기
-      // }
+      var status = await Permission.location.request();
+
+      if (status.isGranted) {
+        print("위치 권한 승인됨.");
+      } else if (status.isDenied) {
+        print("위치 권한 거부됨. 다시 요청");
+        status = await Permission.location.request();
+      } else if (status.isRestricted) {
+        print("위치 권한이 제한됨. 사용자가 변경할 수 없습니다.");
+        return;
+      } else if (status.isPermanentlyDenied) {
+        print("위치 권한 영구적으로 거부됨. 설정으로 이동");
+        await openAppSettings(); // 설정 화면 열기
+        return;
+      }
 
       // geolocator의 Position 사용
-      // geo.Position position = await geo.Geolocator.getCurrentPosition(
-      //   desiredAccuracy: geo.LocationAccuracy.high,
-      // );
+      geo.Position position = await geo.Geolocator.getCurrentPosition(
+        desiredAccuracy: geo.LocationAccuracy.high,
+      );
 
       // mapbox의 Position 사용 (경도, 위도)
       _mapboxMap?.setCamera(
         CameraOptions(
           center: Point(
-              coordinates: Position(127.3455249809536, 36.363905525179774)),
+              coordinates: Position(position.longitude, position.latitude)),
           zoom: 16.0,
         ),
       );
@@ -314,7 +330,7 @@ class MapComponentState extends State<MapComponent> {
       await _pointAnnotationManager?.create(
         PointAnnotationOptions(
           geometry: Point(
-              coordinates: Position(127.3455249809536, 36.363905525179774)),
+              coordinates: Position(position.longitude, position.latitude)),
           iconSize: 1.0,
           iconImage: "current-icon", // Mapbox 기본 아이콘 사용
         ),

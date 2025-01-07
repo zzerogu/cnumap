@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import 'package:moducnu/data/remote/dto/navigation/navigation_dto.dart';
+import 'package:moducnu/presentation/school/component/building_detail.dart';
 import 'package:moducnu/presentation/theme/color.dart';
 import 'package:moducnu/presentation/common/route_finder_modal.dart';
 
@@ -100,6 +101,13 @@ class _BuildingDetailPopupContent extends StatelessWidget {
                 ElevatedButton.icon(
                   onPressed: () {
                     Navigator.pop(context); // 평면도 보기 (닫기)
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            BuildingDetailPage(buildingId: buildingId),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     padding:
