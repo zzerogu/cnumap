@@ -50,12 +50,12 @@ class _MapPageState extends State<MapPage> {
         children: [
           // Map 위젯
           MapComponent(
-            key: _mapComponentKey,
-            buildingApi: _buildingApi,
-            navigationApi: _navigationApi,
-            baseUrl: _baseUrl,
-            accessToken: _accessToken,
-          ),
+              key: _mapComponentKey,
+              buildingApi: _buildingApi,
+              navigationApi: _navigationApi,
+              baseUrl: _baseUrl,
+              accessToken: _accessToken,
+              main: true),
           // 검색바
           Positioned(
             top: 70.0, // 화면 상단에서 50px 떨어짐
@@ -79,6 +79,9 @@ class _MapPageState extends State<MapPage> {
                   onDisplayMarkers: (coordinates, category) {
                     _mapComponentKey.currentState
                         ?.addMarkers(coordinates, category);
+                  },
+                  onClearMarkers: () {
+                    _mapComponentKey.currentState?.clearMarkers();
                   },
                 )
               ],
