@@ -25,13 +25,13 @@ class Lounge extends StatelessWidget {
       placeName: '장애학습지원센터 내 휴게실',
       category: '카페',
       address: '충남대학교 한누리회관',
-      contact: '042-1234-5678',
+      contact: '042-821-5169',
     ),
     Place(
       placeName: '한누리회관 309호',
       category: '중증 장애 휴식형',
       address: '충남대학교 한누리회관',
-      contact: '041-234-5678',
+      contact: '042-821-5169',
     ),
   ];
 
