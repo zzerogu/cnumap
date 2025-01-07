@@ -26,12 +26,14 @@ services:
       context: ./rust_server
       dockerfile: Dockerfile
       args:
-        DATABASE_URL: postgres://postgres:postgres@host.docker.internal:5432/osm
+        DATABASE_URL: postgres://postgres:postgres@172.17.0.1:5432/osm
     image: wnsrn4970/backend-rust_server:latest
     platform: linux/amd64
     container_name: rust_server
     environment:
       DATABASE_URL: postgres://postgres:postgres@host.docker.internal:5432/osm
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     ports:
       - "8000:8000"
     depends_on:
@@ -39,6 +41,8 @@ services:
       - valhalla_server
     networks:
       - navigation-network
+    volumes:
+      - ./rust_server/src:/app/src
   
 
   nginx_proxy:
