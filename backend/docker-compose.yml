@@ -3,7 +3,6 @@ services:
     build:
       context: ./tegola_server
       dockerfile: Dockerfile
-    image: wnsrn4970/backend-tegola_server:latest
     container_name: tegola_server
     ports:
       - "8080:8080"
@@ -17,7 +16,6 @@ services:
       context: ./valhalla_server
       dockerfile: Dockerfile
     platform: linux/amd64
-    image: wnsrn4970/backend-valhalla_server:latest
     container_name: valhalla_server
     volumes:
       - ./valhalla_server/valhalla.json:/data/valhalla/valhalla.json
@@ -30,7 +28,6 @@ services:
       dockerfile: Dockerfile
       args:
         DATABASE_URL: postgres://postgres:postgres@host.docker.internal:5432/osm
-    image: wnsrn4970/backend-rust_server:latest
     container_name: rust_server
     environment:
       DATABASE_URL: postgres://postgres:postgres@host.docker.internal:5432/osm
