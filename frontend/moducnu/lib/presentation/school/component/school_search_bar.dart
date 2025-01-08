@@ -18,7 +18,7 @@ class SchoolSearchBar extends StatelessWidget {
     final TextEditingController controller = TextEditingController();
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 2.0),
+      padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 2.0),
       decoration: BoxDecoration(
         color: Colors.transparent,
         borderRadius: BorderRadius.circular(10.0),
@@ -45,6 +45,7 @@ class SchoolSearchBar extends StatelessWidget {
               },
               decoration: InputDecoration(
                 hintText: '학교 장소 검색',
+                hintStyle: const TextStyle(color: Color(0xffA5A5A5), fontSize: 14.0),
                 fillColor: Colors.white,
                 filled: true,
                 contentPadding: const EdgeInsets.symmetric(

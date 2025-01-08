@@ -201,12 +201,6 @@ class _DisabledCenterDetailState extends State<DisabledCenterDetail> {
                       ),
                     ),
                     const SizedBox(height: 16.0),
-                    IconButton(
-                      icon: const Icon(Icons.arrow_forward_ios, size: 20),
-                      onPressed: () {
-                        print("Right arrow clicked for ${contact.helper.name}");
-                      },
-                    ),
                   ],
                 ),
               ),

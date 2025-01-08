@@ -171,13 +171,13 @@ class BuildingDetailPage extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 12.0),
-        // NOTE: 실제로는 존재하지 않는 데이터
-        _buildFacilityItem(context, "휠체어 충전", "불가능"),
-        _buildFacilityItem(context, "휠체어 리프트", "없음"),
         // 실제 데이터
         _buildFacilityItem(context, "장애인 화장실", building.disabledRestrooms),
         _buildFacilityItem(context, "승강기", building.elevators),
         _buildFacilityItem(context, "경사로 입구", building.ramps),
+        // NOTE: 실제로는 존재하지 않는 데이터
+        _buildFacilityItem(context, "휠체어 충전", "불가능"),
+        _buildFacilityItem(context, "휠체어 리프트", "없음"),
       ],
     );
   }

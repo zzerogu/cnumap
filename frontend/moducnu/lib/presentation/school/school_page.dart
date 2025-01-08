@@ -17,7 +17,7 @@ class SchoolPage extends StatelessWidget {
       backgroundColor: kBackgroundColor,
       appBar: AppBar(
         backgroundColor: kBackgroundColor,
-        title: const Text('우리 학교 장소'),
+        title: const Text('우리 학교 정보'),
         centerTitle: false,
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(1.4),
@@ -33,7 +33,7 @@ class SchoolPage extends StatelessWidget {
           child: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 16),
+              SizedBox(height: 4),
               ConstructionNewsComponent(),
               SizedBox(height: 16),
               ChaChaInfoSection(),
