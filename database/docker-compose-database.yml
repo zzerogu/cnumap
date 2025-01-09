@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+  osm-database:
+    build:  # Dockerfile을 빌드하도록 설정
+      context: .  # 현재 디렉토리에서 Dockerfile을 찾음
+      dockerfile: Dockerfile  # 사용할 Dockerfile 이름 (생략 가능, 기본값은 "Dockerfile")
+    image: wnsrn4970/database-osm-database:latest
+    platform: linux/amd64
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: osm
+    ports:
+      - "5432:5432"
+    networks:
+      - navigation-network
+
+networks:
+  navigation-network:
+    external: true

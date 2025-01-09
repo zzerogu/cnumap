@@ -344,15 +344,15 @@ WHERE name NOT IN (
 INSERT INTO Ramp (building_id, node_id, floor, location_description)
 VALUES
 ((SELECT building_id FROM Building WHERE name = '공과대학 5호관'), 12455433255, 1, '부출입구 쪽'),
-((SELECT building_id FROM Building WHERE name = '공과대학 5호관'), 12455433253, 1, '후문 쪽'),
-((SELECT building_id FROM Building WHERE name = '공과대학 5호관'), 12455433254, 1, '비상구 쪽');
+((SELECT building_id FROM Building WHERE name = '공과대학 5호관'), 12455433253, 1, '비상구 쪽'),
+((SELECT building_id FROM Building WHERE name = '공과대학 5호관'), 12455433254, 1, '후문 쪽');
 
 -- 백마교양관
 INSERT INTO Ramp (building_id, node_id, floor, location_description)
 VALUES
-((SELECT building_id FROM Building WHERE name = '백마교양교육관'), 12455425570, 1, '하부 공동출입구 쪽'),
+((SELECT building_id FROM Building WHERE name = '백마교양교육관'), 12455425570, 1, '하부 부출입구 쪽 (2)'),
 ((SELECT building_id FROM Building WHERE name = '백마교양교육관'), 12455425571, 1, '하부 부출입구 쪽 (1)'),
-((SELECT building_id FROM Building WHERE name = '백마교양교육관'), 12455425572, 1, '하부 부출입구 쪽 (2)');
+((SELECT building_id FROM Building WHERE name = '백마교양교육관'), 12455425572, 1, '하부 공동출입구 쪽');
 
 -- 충남대학교 제3학생회관 (N7)
 INSERT INTO Ramp (building_id, node_id, floor, location_description)
@@ -362,8 +362,8 @@ VALUES
 -- 제1학생회관
 INSERT INTO Ramp (building_id, node_id, floor, location_description)
 VALUES
-((SELECT building_id FROM Building WHERE name = '제1학생회관'), 12455440164, 1, '부출입구 쪽'),
-((SELECT building_id FROM Building WHERE name = '제1학생회관'), 12455440165, 1, '식당 출입구 쪽'),
+((SELECT building_id FROM Building WHERE name = '제1학생회관'), 12455440164, 1, '식당 출입구 쪽'),
+((SELECT building_id FROM Building WHERE name = '제1학생회관'), 12455440165, 1, '부출입구 쪽'),
 ((SELECT building_id FROM Building WHERE name = '제1학생회관'), 12072814039, 1, '주출입구 쪽');
 
 -- 제2학생회관
@@ -379,9 +379,9 @@ VALUES
 -- 공과대학 1호관
 INSERT INTO Ramp (building_id, node_id, floor, location_description)
 VALUES
-((SELECT building_id FROM Building WHERE name = '공과대학 1호관'), 12455440041, 1, '절벽에서 내려오는 계단 쪽 (1)'),
-((SELECT building_id FROM Building WHERE name = '공과대학 1호관'), 1097717909, 1, '절벽에서 내려오는 계단 쪽 (2)'),
-((SELECT building_id FROM Building WHERE name = '공과대학 1호관'), 1097718079, 1, '중앙 현관 쪽');
+((SELECT building_id FROM Building WHERE name = '공과대학 1호관'), 12455440041, 1, '중앙 현관 쪽'),
+((SELECT building_id FROM Building WHERE name = '공과대학 1호관'), 1097717909, 1, '절벽에서 내려오는 계단 쪽'),
+((SELECT building_id FROM Building WHERE name = '공과대학 1호관'), 1097718079, 1, '좌측 입구 쪽');
 
 -- 공과대학 5호관 Disabled Restroom
 INSERT INTO Disabled_Restroom (building_id, node_id, floor, location_description)

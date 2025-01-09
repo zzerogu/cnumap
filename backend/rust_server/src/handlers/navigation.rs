@@ -189,7 +189,7 @@ async fn calculate_route(
     body: web::Json<NavigationRequest>,
 ) -> impl Responder {
     let request = body.into_inner();
-    let valhalla_url = "http://localhost:8002/route";
+    let valhalla_url = "http://valhalla_server:8002/route";
 
     // ----------------------------------------------------
     // 1) Valhalla Bicycle 코스팅 옵션 (실제로 동작하는 필드만 사용)
