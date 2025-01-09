@@ -171,6 +171,7 @@ class _RouteFinderModalState extends State<RouteFinderModal> {
               _buildRampSelector(),
             const SizedBox(height: 16),
             _buildActionButton(),
+            const SizedBox(height: 24),
           ],
         ),
       ),
