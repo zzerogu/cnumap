@@ -190,8 +190,7 @@ https://github.com/user-attachments/assets/2ced08c5-fcca-4068-ba66-3ffe5e2f9f48
         ├── domain/                    # 비즈니스 로직 (도메인 계층)
         │   ├── model/                 # 도메인 모델 (핵심 데이터 모델)
         │   │   ├── construction_news.dart   # 건설 뉴스 모델
-        │   │   ├── place.dart             # 장소 모델
-        │   │   └── user.dart              # 사용자 모델
+        │   │   └── place.dart             # 장소 모델
         │   ├── repository/             # 도메인 레포지토리 (비즈니스 로직을 다루는 추상화)
         │   └── usecases/               # 유즈케이스 (실제 비즈니스 로직 실행)
         │
@@ -199,10 +198,6 @@ https://github.com/user-attachments/assets/2ced08c5-fcca-4068-ba66-3ffe5e2f9f48
         │   └── main_navigation_page.dart   # 앱의 메인 네비게이션 페이지
         │
         ├── presentation/               # 사용자 인터페이스(UI) 관련 코드
-        │   ├── auth/                   # 인증 화면 관련 UI 코드
-        │   │   ├── login_page.dart     # 로그인 화면
-        │   │   ├── login_viewmodel.dart    # 로그인 화면의 ViewModel
-        │   │   └── signup_page.dart    # 회원가입 화면
         │   ├── common/                 # 공통 UI 컴포넌트
         │   │   ├── category_chip.dart  # 카테고리 칩 UI
         │   │   ├── category_list.dart  # 카테고리 목록 UI
@@ -291,4 +286,4 @@ https://github.com/user-attachments/assets/2ced08c5-fcca-4068-ba66-3ffe5e2f9f48
 |<img src="https://avatars.githubusercontent.com/u/102356873?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/87114004?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/81271644?v=4" width="150" height="150"/>|
 |:-:|:-:|:-:|
 |[@aengzu](https://github.com/aengzu)|[@paintedblue](https://github.com/paintedblue)|[@Yijungu](https://github.com/Yijungu)|
-| FE 주도 개발, 작업 문서 관리, 기획 | BE 주도 개발 및 배포, FE, 기획, DB | 기획 및 디자인 주도 개발, FE |
+| FE 주도 개발, 작업 문서 관리, 기획 | 기획 및 디자인 주도 개발, FE | BE 주도 개발 및 배포, FE, 기획, DB |
