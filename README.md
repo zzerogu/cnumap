@@ -47,6 +47,8 @@
 | 타 배리어프리맵 서비스를 사용하면, 교내에 특화된 정보 및 경로 안내가 어렵습니다 |➡️  | 교내 특화 정보(편의시설 안내, 건물 상세 정보(승강기, 출입구, 장애인 화장실 등))을 알 수 있다면? |
 | 배리어프리맵 제작 지도가 있지만, 손으로 들고 다니는 것은 불편함을 야기합니다. | ➡️ | 충남대학교의 배리어프리맵 실물 지도를 언제나 볼 수 있도록 어플로 제공한다면? |
 
+
+
 > ⇒ **휠체어 이용자들을 위한 배리어프리맵 어플리케이션 ‘모두의 지도’**
 
 
@@ -71,6 +73,7 @@ https://github.com/user-attachments/assets/2ced08c5-fcca-4068-ba66-3ffe5e2f9f48
 ### 2. 휠체어 경로 안내
 
 자체 제작 **경로 찾기 알고리즘**을 통해 경사가 심한 도로, 골목길, 계단 등 **휠체어가 다니기 어려운 길은 경로 안내 시 배제**하고자 하였습니다.
+- 경로 찾기 알고리즘 : 경사가 심한 도로, 골목길, 계단 등 휠체어가 다니기 어려운 길에 대한 비용을 높게 설정하여 그러한 경로들을 배제하는 알고리즘
 
 ![서비스 플로우 (2)](https://github.com/user-attachments/assets/33d32958-cbb3-4d01-9308-0704593181ca)
 
@@ -131,8 +134,7 @@ https://github.com/user-attachments/assets/2ced08c5-fcca-4068-ba66-3ffe5e2f9f48
 ### 개발 세부 내용
 
 1. **활용 공공데이터**
-    - **교내 데이터**
-        
+    - **교내 데이터**    
         <table>
             <thead>
                 <tr style="background-color: #f2f2f2;">
@@ -161,11 +163,125 @@ https://github.com/user-attachments/assets/2ced08c5-fcca-4068-ba66-3ffe5e2f9f48
 
 
 2. **ERD 설계서**
-> <img width="500" alt="erd" src="https://github.com/user-attachments/assets/196a8b31-78ed-4560-af8f-103f488f39cd" />
+-  <img width="500" alt="erd" src="https://github.com/user-attachments/assets/196a8b31-78ed-4560-af8f-103f488f39cd" />
 
 
 3. **프로젝트 구조**
-
+    - **FE**
+        ```plaintext
+        lib/
+        ├── data/                      # 데이터 처리 관련 코드
+        │   ├── local/                 # 로컬 데이터 처리 (예: SQLite, SharedPreferences 등)
+        │   │   ├── dao/               # 데이터 접근 객체 (DAO)
+        │   │   └── entity/            # 엔티티 클래스 (DB 모델 등)
+        │   ├── mapper/                # 데이터 매핑 관련 코드 (DTO -> Domain 모델 변환 등)
+        │   ├── remote/                # 원격 데이터 처리 (API, 네트워크 호출 등)
+        │   │   ├── api/               # API 통신 관련 코드
+        │   │   └── dto/               # 데이터 전송 객체 (DTO)
+        │   └── repository/            # 데이터 레포지토리 (데이터 처리 로직을 포함)
+        │
+        ├── di/                        # 의존성 주입 관련 코드
+        │   ├── auth_di.dart           # 인증 관련 의존성 주입
+        │   ├── construction_di.dart   # 건물 관련 의존성 주입
+        │   ├── network_di.dart        # 네트워크 관련 의존성 주입
+        │   └── service_locator.dart   # 서비스 로케이터 (DI 관리)
+        │
+        ├── domain/                    # 비즈니스 로직 (도메인 계층)
+        │   ├── model/                 # 도메인 모델 (핵심 데이터 모델)
+        │   │   ├── construction_news.dart   # 건설 뉴스 모델
+        │   │   ├── place.dart             # 장소 모델
+        │   │   └── user.dart              # 사용자 모델
+        │   ├── repository/             # 도메인 레포지토리 (비즈니스 로직을 다루는 추상화)
+        │   └── usecases/               # 유즈케이스 (실제 비즈니스 로직 실행)
+        │
+        ├── navigation/                # 네비게이션 관련 코드
+        │   └── main_navigation_page.dart   # 앱의 메인 네비게이션 페이지
+        │
+        ├── presentation/               # 사용자 인터페이스(UI) 관련 코드
+        │   ├── auth/                   # 인증 화면 관련 UI 코드
+        │   │   ├── login_page.dart     # 로그인 화면
+        │   │   ├── login_viewmodel.dart    # 로그인 화면의 ViewModel
+        │   │   └── signup_page.dart    # 회원가입 화면
+        │   ├── common/                 # 공통 UI 컴포넌트
+        │   │   ├── category_chip.dart  # 카테고리 칩 UI
+        │   │   ├── category_list.dart  # 카테고리 목록 UI
+        │   │   └── custom_search_bar.dart  # 검색 바 UI
+        │   ├── map/                    # 지도 관련 UI 코드
+        │   │   ├── map_page.dart       # 지도 페이지
+        │   │   ├── search_page.dart    # 검색 페이지
+        │   │   └── search_viewmodel.dart   # 검색 화면의 ViewModel
+        │   ├── saved/                  # 저장된 항목들 관련 UI
+        │   │   └── save_page.dart      # 저장된 항목 페이지
+        │   ├── school/                 # 학교 관련 UI
+        │   │   └── school_page.dart    # 학교 페이지
+        │   ├── theme/                  # 테마 및 스타일 관련 코드
+        │   │   └── color.dart          # 색상 정의 파일
+        │   ├── timetable/              # 시간표 관련 UI
+        │   │   └── time_page.dart      # 시간표 페이지
+        │   └── component/              # 학교 관련 컴포넌트들
+        │       ├── building_info_section.dart  # 건물 정보 섹션
+        │       ├── chacha_info_section.dart   # 차차 정보 섹션
+        │       ├── construction_news_component.dart  # 건설 뉴스 컴포넌트
+        │       ├── disabled_center_detail.dart   # 장애인 센터 상세 정보
+        │       └── section_title.dart  # 섹션 제목
+        ```
+   - **BE**
+        ```plaintext
+        src/
+        ├── config/                    # 설정 관련 코드
+        │   ├── app.rs                 # 애플리케이션 설정 파일
+        │   └── mod.rs                 # 모듈 설정 파일
+        │
+        ├── db/                        # 데이터베이스 관련 코드
+        │   ├── connection.rs          # 데이터베이스 연결 설정
+        │   └── mod.rs                 # 데이터베이스 관련 모듈 설정
+        │
+        ├── handlers/                  # 요청 처리 로직 (API 핸들러)
+        │   ├── building.rs            # 건물 관련 API 핸들러
+        │   ├── construction_news.rs   # 건설 뉴스 관련 API 핸들러
+        │   ├── disabled_restroom.rs   # 장애인 화장실 관련 API 핸들러
+        │   ├── map.rs                 # 지도 관련 API 핸들러
+        │   ├── mod.rs                 # 모듈 설정 파일
+        │   ├── navigation.rs          # 네비게이션 관련 API 핸들러
+        │   └── ramp.rs                # 경사로 관련 API 핸들러
+        │
+        ├── models/                    # 데이터 모델 (DB 모델 등)
+        │   ├── building.rs            # 건물 모델
+        │   ├── construction_news.rs   # 건설 뉴스 모델
+        │   ├── disabled_restroom.rs   # 장애인 화장실 모델
+        │   ├── elevator.rs            # 엘리베이터 모델
+        │   ├── mod.rs                 # 모델 관련 설정
+        │   └── ramp.rs                # 경사로 모델
+        │
+        ├── routes/                    # 라우팅 관련 코드
+        │   ├── building.rs            # 건물 관련 라우트
+        │   ├── construction_news.rs   # 건설 뉴스 관련 라우트
+        │   ├── disabled_restroom.rs   # 장애인 화장실 관련 라우트
+        │   ├── health.rs              # 건강 관련 라우트
+        │   ├── map.rs                 # 지도 관련 라우트
+        │   ├── mod.rs                 # 라우팅 설정 파일
+        │   ├── navigation.rs          # 네비게이션 관련 라우트
+        │   └── ramp.rs                # 경사로 관련 라우트
+        │
+        ├── services/                  # 서비스 로직 (비즈니스 로직)
+        │   ├── auth_service.rs        # 인증 관련 서비스
+        │   ├── mod.rs                 # 서비스 관련 설정 파일
+        │   └── user_service.rs        # 사용자 관련 서비스
+        │
+        ├── tests/                     # 테스트 코드
+        │   ├── health.rs              # 건강 관련 테스트
+        │   ├── integration.rs         # 통합 테스트
+        │   └── mod.rs                 # 테스트 모듈 설정
+        │
+        ├── utils/                     # 유틸리티 함수들
+        │   ├── hasher.rs              # 해시 함수 관련 코드
+        │   ├── logger.rs              # 로깅 관련 코드
+        │   └── mod.rs                 # 유틸리티 관련 설정 파일
+        │
+        ├── lib.rs                     # 라이브러리 코드
+        └── main.rs                    # 메인 애플리케이션 실행 코드
+        ```
+   
 
 <br>
 
