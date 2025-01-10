@@ -145,8 +145,8 @@ https://github.com/user-attachments/assets/2ced08c5-fcca-4068-ba66-3ffe5e2f9f48
             </thead>
             <tbody>
                 <tr>
-                    <td><img src="https://github.com/user-attachments/assets/77e01425-a501-4ddf-a0b0-39576ed7a90e" alt="image"></td>
-                    <td><img src="https://github.com/user-attachments/assets/24835c13-bef9-47ae-8674-59258c731606" alt="image"></td>
+                    <td><img src="https://github.com/user-attachments/assets/77e01425-a501-4ddf-a0b0-39576ed7a90e" alt="image" width="400"></td>
+                    <td><img src="https://github.com/user-attachments/assets/24835c13-bef9-47ae-8674-59258c731606" alt="image" width="400"></td>
                 </tr>
                 <tr>
                     <td>교내 건물 카테고리 데이터를 통해 교내 건물 대분류, 소분류에 활용하였습니다.</td>
@@ -154,7 +154,7 @@ https://github.com/user-attachments/assets/2ced08c5-fcca-4068-ba66-3ffe5e2f9f48
                 </tr>
             </tbody>
         </table>
-    
+
     - **교외 데이터**
         | Open Street map |
         | --- |
