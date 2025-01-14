@@ -364,6 +364,11 @@ https://github.com/user-attachments/assets/2ced08c5-fcca-4068-ba66-3ffe5e2f9f48
             └── 📄 main.rs                      # 메인 프로그램 진입점
     </details>
 
+4. **코드 사용 매뉴얼**
+    | 😸 코드 사용 매뉴얼 |
+    | --- |
+    | [[moduCNU] 코드사용 매뉴얼.pdf](https://github.com/user-attachments/files/18406276/moduCNU.pdf) |
+
 <br>
 
 ## 팀원
