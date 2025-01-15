@@ -125,7 +125,7 @@ https://github.com/user-attachments/assets/2ced08c5-fcca-4068-ba66-3ffe5e2f9f48
 
 ### 시스템 아키텍처
 
-![21](https://github.com/user-attachments/assets/d764a21c-b9a6-4abc-b829-389c8b023afb)
+![stacks with flow (1)](https://github.com/user-attachments/assets/32e4adb9-82e8-4bfa-9a59-a1869e903d9e)
 
 
 | FE | BE | Database | Others |
